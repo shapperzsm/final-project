@@ -1,0 +1,86 @@
+\documentclass[12pt, oneside, a4paper]{book} 
+
+\usepackage[a4paper, top=25.4mm, bottom=25.4mm, right=25.4mm, left=40mm]{geometry}
+
+\linespread{1.25}
+
+\usepackage[toc]{appendix}
+
+\usepackage[parfill]{parskip}
+
+\usepackage{fancyhdr}
+\fancypagestyle{normal}{
+	\fancyhf{}
+	\fancyhead[L]{\slshape \leftmark}
+	\fancyhead[R]{\thepage}
+	\renewcommand{\headrulewidth}{0pt}
+}
+
+\fancypagestyle{chapterstyle}{
+	\fancyhf{}
+	\fancyhead[R]{\thepage}
+	\renewcommand{\headrulewidth}{0pt}
+}
+
+
+\usepackage{etoolbox}
+\patchcmd{\chapter}{\thispagestyle{plain}}{\thispagestyle{chapterstyle}}{}{}
+
+\usepackage{hyperref}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+
+\usepackage{graphicx}
+\graphicspath{{C:/Users/sophi/Documents/final-project/images}}
+
+\usepackage[backend=biber,
+				maxcitenames=2,
+				maxbibnames=99,
+				doi=false,
+				url=false,
+				bibstyle=apa,
+				giveninits,
+				uniquename=init,
+				style=authoryear
+			]{biblatex}
+\addbibresource{References.bib}
+
+\usepackage{subcaption}
+
+
+
+\begin{document}
+
+\newgeometry{a4paper, top=25.4mm, bottom=25.4mm, right=25.4mm, left=25.4mm}
+\input{title-page.tex}
+\restoregeometry
+
+\frontmatter
+\pagestyle{chapterstyle}
+\input{summary.tex}
+\input{acknowledgements.tex}
+
+\tableofcontents
+\listoffigures
+
+\mainmatter
+\pagestyle{normal}
+
+\input{chapters/ch1.tex}
+
+
+
+\addcontentsline{toc}{chapter}{References}
+\printbibliography[title=References]
+
+\begin{appendices}
+	\input{chapters/appendices.tex}
+\end{appendices}
+
+
+\end{document}
+
+
+
