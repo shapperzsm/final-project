@@ -32,8 +32,12 @@
 \usepackage{amssymb}
 \usepackage{mathtools}
 
+\usepackage{kbordermatrix}
+\renewcommand{\kbldelim}{(}
+\renewcommand{\kbrdelim}{)}
+
 \usepackage{graphicx}
-\graphicspath{{C:/Users/sophi/Documents/final-project/images}}
+\graphicspath{{images/}}
 
 \usepackage[backend=biber,
 				maxcitenames=2,
@@ -45,7 +49,7 @@
 				uniquename=init,
 				style=authoryear
 			]{biblatex}
-\addbibresource{References.bib}
+\addbibresource{tex/references/main.bib}
 
 \usepackage{subcaption}
 
@@ -54,13 +58,13 @@
 \begin{document}
 
 \newgeometry{a4paper, top=25.4mm, bottom=25.4mm, right=25.4mm, left=25.4mm}
-\input{title-page.tex}
+\input{tex/title-page/main.tex}
 \restoregeometry
 
 \frontmatter
 \pagestyle{chapterstyle}
-\input{summary.tex}
-\input{acknowledgements.tex}
+\input{tex/summary/main.tex}
+\input{tex/acknowledgements/main.tex}
 
 \tableofcontents
 \listoffigures
@@ -68,7 +72,7 @@
 \mainmatter
 \pagestyle{normal}
 
-\input{chapters/ch1.tex}
+\input{chapters/ch1/main.tex}
 
 
 
@@ -76,7 +80,7 @@
 \printbibliography[title=References]
 
 \begin{appendices}
-	\input{chapters/appendices.tex}
+	\input{chapters/appendices/main.tex}
 \end{appendices}
 
 
