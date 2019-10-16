@@ -93,8 +93,3 @@ def probabilities_of_defection(num_of_repeats, player_list, probs_of_game_ending
             least_prob_of_defection_in_equilibria.append(min([sigma_1[-1] for sigma_1, _ in game.lemke_howson_enumeration()]))
             greatest_prob_of_defection_in_equilibria.append(min([sigma_1[-1] for sigma_1, _ in game.lemke_howson_enumeration()]))
     return least_prob_of_defection_in_equilibria, greatest_prob_of_defection_in_equilibria
-
-
-results = probabilities_of_defection(4, [axl.Random(), axl.MetaMixer()], [0.2, 0.3, 0.4, 0.5], "Vertex Enumeration", 0)
-
-results == probabilities_of_defection(4, [axl.Random(), axl.MetaMixer()], [0.2, 0.3, 0.4, 0.5], "Vertex Enumeration", 0)
