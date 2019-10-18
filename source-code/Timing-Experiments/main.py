@@ -6,7 +6,7 @@ import random
 
 
 
-def who_is_playing(num_of_opponents, long_run_strategies = False):
+def who_is_playing(num_of_opponents, long_run_strategies=False):
     """
     A function to choose which strategies will be playing against the Defector.
 
@@ -36,7 +36,6 @@ def who_is_playing(num_of_opponents, long_run_strategies = False):
 
     opponent_strategies = random.sample(filtered_strategies, num_of_opponents)
     list_of_players = [opponent() for opponent in opponent_strategies]
-    #list_of_players = [opponent_strategies[i]() for i in range(num_of_opponents)]
     list_of_players.append(axl.Defector())
 
     return list_of_players
@@ -81,15 +80,21 @@ def probabilities_of_defection(num_of_repeats, player_list, probs_of_game_ending
         game = nash.Game(mean_payoff_matrix, mean_payoff_matrix.transpose())
 
 
-        if nash_equilibrium_algorithm == 'Support Enumeration':
-            least_prob_of_defection_in_equilibria.append(min([sigma_1[-1] for sigma_1, _ in game.support_enumeration()]))
-            greatest_prob_of_defection_in_equilibria.append(max([sigma_1[-1] for sigma_1, _ in game.support_enumeration()]))
-    
-        elif nash_equilibrium_algorithm == 'Vertex Enumeration':
-            least_prob_of_defection_in_equilibria.append(min([sigma_1[-1] for sigma_1, _ in game.vertex_enumeration()]))
-            greatest_prob_of_defection_in_equilibria.append(min([sigma_1[-1] for sigma_1, _ in game.vertex_enumeration()]))
-            
-        elif nash_equilibrium_algorithm == 'Lemke Howson':
-            least_prob_of_defection_in_equilibria.append(min([sigma_1[-1] for sigma_1, _ in game.lemke_howson_enumeration()]))
-            greatest_prob_of_defection_in_equilibria.append(min([sigma_1[-1] for sigma_1, _ in game.lemke_howson_enumeration()]))
+        if nash_equilibrium_algorithm == "Support Enumeration":
+            nash_equilibria = list(game.support_enumeration())
+            print(nash_equilibria)
+
+        elif nash_equilibrium_algorithm == "Vertex Enumeration":
+            nash_equilibria = list(game.vertex_enumeration())
+            print(nash_equilibria)
+
+        elif nash_equilibrium_algorithm == "Lemke Howson":
+            nash_equilibria = list(game.lemke_howson_enumeration())
+            print(nash_equilibria)
+
+        least_prob_of_defection_in_equilibria.append( min( [sigma_1[-1] for sigma_1, _ in nash_equilibria] ) )
+        
+        greatest_prob_of_defection_in_equilibria.append( max( [sigma_1[-1] for sigma_1, _ in nash_equilibria] ) )
+
+
     return least_prob_of_defection_in_equilibria, greatest_prob_of_defection_in_equilibria

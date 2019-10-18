@@ -26,7 +26,7 @@ for algorithm in algorithm_to_time_dict:
         
      # print(same_number_of_players_repeat)
 
-      players = main.who_is_playing(number_of_opponents)
+      players = main.who_is_playing(num_of_opponents=number_of_opponents)
         
       execution_time = []
       for same_opponents_repeat in range(5):
@@ -35,7 +35,7 @@ for algorithm in algorithm_to_time_dict:
       #  print(players)
 
         initial_time = time.perf_counter()
-        main.probabilities_of_defection(10, players, game_ending_probs, str(algorithm), 123)
+        main.probabilities_of_defection(num_of_repeats=10, player_list=players, probs_of_game_ending=game_ending_probs, nash_equilibrium_algorithm=str(algorithm), set_seed=123)
         final_time = time.perf_counter()
         execution_time.append(final_time - initial_time)
             
