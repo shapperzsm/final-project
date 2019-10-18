@@ -19,21 +19,20 @@ def array_to_string(numpy_array):
 
 
 
-def string_to_array(string_of_int, num_of_rows, num_of_cols):
+def string_to_array(string_of_float, num_of_rows, num_of_cols):
 
     """
-    Numpy is required for this function to execute!
 
     A function which converts a string into a numpy array of the required dimensions, where:
 
-    'string_of_int' is a space separated string variable containing integers;
+    'string_of_float' is a space separated string variable containing float;
 
     'num_of_rows' is an integer-valued variable stating the number of rows required for the array; and
 
     'num_of_cols' is an integer-valued variable stating the number of columns required for the array.
     """
 
-    string_to_array = np.array([int(i) for i in string_of_int.split(' ')])
+    string_to_array = np.array([float(i) for i in string_of_float.split(' ')])
     reshape_array = np.reshape(string_to_array, (num_of_rows, num_of_cols))
     return reshape_array
 
@@ -81,8 +80,8 @@ greatest_prob, noise):
 #payoff_matrix = np.array([[3, 0], [5, 1]])
 #payoff_matrix_as_string = array_to_string(payoff_matrix)
 
-#equilibria = [[1, 0, 0, 1], [0.3, 0.7, 0.7, 0.3]]
-#equilibria_as_string = str(str(equilibria).strip('[]').split('], [')).strip('[]')
+equilibria = [[1, 0, 0, 1], [0.3, 0.7, 0.7, 0.3]]
+equilibria_as_string = str(str(equilibria).strip('[]').split('], [')).strip('[]')
 
 #record = result(1, 'Tit for Tat', False, False, 1, 0.4, payoff_matrix_as_string, 4, equilibria_as_string, 0, 0.944, 0)  
 

@@ -35,8 +35,8 @@ def who_is_playing(num_of_opponents, long_run_strategies = False):
     filtered_strategies.remove(axl.Defector)
 
     opponent_strategies = random.sample(filtered_strategies, num_of_opponents)
-
-    list_of_players = [opponent_strategies[i]() for i in range(num_of_opponents)]
+    list_of_players = [opponent() for opponent in opponent_strategies]
+    #list_of_players = [opponent_strategies[i]() for i in range(num_of_opponents)]
     list_of_players.append(axl.Defector())
 
     return list_of_players
