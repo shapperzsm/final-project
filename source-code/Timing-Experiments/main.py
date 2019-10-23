@@ -206,7 +206,7 @@ def same_num_of_players_rep(same_player_rep, number_of_opponents, same_strategie
         
         same_strategy_time = same_strategies_repeat(same_strategies_rep=same_strategies_rep, players=players, number_of_repeats=number_of_repeats, game_end_probs=game_end_probs, algorithm=algorithm, execution_time=[])
 
-        #print("Finished inner for loop!")
+        print("Finished inner for loop!")
 
         mean_execution_time_for_same_players = sum(same_strategy_time) / len(same_strategy_time)
         average_running_time_for_same_players.append(mean_execution_time_for_same_players)
@@ -246,14 +246,14 @@ def run_tournament_over_diff_group_sizes(max_num_of_opponents, same_player_rep, 
         
         average_time_same_num = same_num_of_players_rep(same_player_rep=same_player_rep, number_of_opponents=number_of_opponents, same_strategies_rep=same_strategies_rep, number_of_repeats=number_of_repeats, game_end_probs=game_end_probs, algorithm=algorithm, average_running_time_for_same_players=[])
         
-        #print("Finished outer for loop!")
+        print("Finished outer for loop!")
 
         mean_execution_time_for_same_num = sum(average_time_same_num) / len(average_time_same_num)
         average_running_time.append(mean_execution_time_for_same_num)
 
         #print(average_running_time)
 
-        json_file = open("timings-dict.json", "w")
+        json_file = open("timings-dict1.json", "w")
         algorithm_to_time_dict[algorithm].append(mean_execution_time_for_same_num)
         save_to_json = json.dumps(algorithm_to_time_dict)
         json_file.write(save_to_json)
@@ -272,12 +272,25 @@ def repeating_for_all_algorithm(max_num_of_opponents, same_player_rep, same_stra
     """
 
     for algorithm in alg_dict:
-        #print(algorithm)
+        print(algorithm)
         run_tournament_over_diff_group_sizes(max_num_of_opponents=max_num_of_opponents, same_player_rep=same_player_rep, number_of_opponents=number_of_opponents, same_strategies_rep=same_strategies_rep, number_of_repeats=number_of_repeats, game_end_probs=game_ending_probs, algorithm=algorithm)
-        #print("Finished while loop!")
+        print("Finished while loop!")
     return algorithm_to_time_dict
 
 
-ending_probabilities = np.linspace(0.001, 1-0.001, 50)
+#ending_probabilities = np.linspace(0.001, 1-0.001, 50)
+ending_probabilities = np.linspace(0.001, 1-0.001, 10)
 
-repeating_for_all_algorithm(max_num_of_opponents=12, same_player_rep=10, same_strategies_rep=5, number_of_repeats=100, game_ending_probs=ending_probabilities)
+print("I have started...")
+
+#repeating_for_all_algorithm(max_num_of_opponents=11, same_player_rep=10,
+#same_strategies_rep=5, number_of_repeats=50,
+#game_ending_probs=ending_probabilities)
+
+#repeating_for_all_algorithm(max_num_of_opponents=11, same_player_rep=10, same_strategies_rep=5, number_of_repeats=50, game_ending_probs=ending_probabilities, alg_dict=["Lemke Howson", "Vertex Enumeration"])
+
+#repeating_for_all_algorithm(max_num_of_opponents=11, same_player_rep=5,same_strategies_rep=2, number_of_repeats=10,game_ending_probs=ending_probabilities)
+
+repeating_for_all_algorithm(max_num_of_opponents=9, same_player_rep=5, same_strategies_rep=2, number_of_repeats=10, game_ending_probs=ending_probabilities, alg_dict=["Lemke Howson", "Vertex Enumeration"])
+
+print("I have finished!")
