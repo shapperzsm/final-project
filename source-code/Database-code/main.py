@@ -1,10 +1,13 @@
+from collections import namedtuple
+import numpy as np
+
 import sqlalchemy as sa
-dbms = sa.create_engine('sqlite:///source-code/Database-code/Eperiment_Database.db')
+dbms = sa.create_engine('sqlite:///source-code/Database-code/Experiment_Database.db')
 connect_dbms_to_db = dbms.connect()
 
 
 
-import numpy as np
+
 
 def array_to_string(numpy_array):
 
@@ -45,12 +48,12 @@ read_into_sql = """
         (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
 """
 
-from collections import namedtuple
-result = namedtuple('result', 'experiment_number, player_strategy_name, long_run_time_strategy, stochastic_strategy, memory_depth_of_strategy, prob_of_game_ending, payoff_matrix, num_of_repetitions, nash_equilibria, least_prob_of_defection, greatest_prob_of_defection, amount_of_noise')
+
+Record = namedtuple('Record', 'experiment_number, player_strategy_name, long_run_time_strategy, stochastic_strategy, memory_depth_of_strategy, prob_of_game_ending, payoff_matrix, num_of_repetitions, nash_equilibria, least_prob_of_defection, greatest_prob_of_defection, amount_of_noise')
 
 
 
-def write_single_record(exp_num, player_strat_name, long_run_strat, stoch_strat,
+def Record(exp_num, player_strat_name, long_run_strat, stoch_strat,
 strat_mem_depth, game_end_prob, payoff_mat, num_of_rep, nash_eq, least_prob,
 greatest_prob, noise):
     

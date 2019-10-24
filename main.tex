@@ -40,16 +40,16 @@
 \graphicspath{{images/}}
 
 \usepackage[backend=biber,
-				maxcitenames=2,
-				maxbibnames=99,
-				doi=false,
-				url=false,
-				bibstyle=apa,
-				giveninits,
-				uniquename=init,
-				style=authoryear
-			]{biblatex}
-\addbibresource{tex/references/main.bib}
+maxcitenames=2,
+maxbibnames=99,
+doi=false,
+url=false,
+bibstyle=apa,
+giveninits,
+uniquename=init,
+style=authoryear]{biblatex}
+
+\addbibresource{tex/references/main}
 
 \usepackage{subcaption}
 
@@ -72,7 +72,8 @@
 \mainmatter
 \pagestyle{normal}
 
-\input{chapters/ch1/main.tex}
+\input{tex/chapters/ch1/main.tex}
+\input{tex/chapters/ch3/main.tex}
 
 
 
@@ -80,7 +81,7 @@
 \printbibliography[title=References]
 
 \begin{appendices}
-	\input{chapters/appendices/main.tex}
+	\input{tex/chapters/appendices/main.tex}
 \end{appendices}
 
 

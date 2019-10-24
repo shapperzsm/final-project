@@ -224,19 +224,26 @@ def run_tournament_over_diff_group_sizes(max_num_of_opponents, same_player_rep, 
 
     'max_num_of_opponents' is a numeric variable which indicates the maximum number of opponents axl.Defector will have;
 
-    'same_player_rep' is a ...
+    'same_player_rep' is a numeric variable stating how many different sets,
+    with the same number of strategies, will be used in the experiment;
+    
+    'number_of_opponents' is a numeric variable stating how many opponents the
+    axl.Defector() will have;
 
-    'number_of_opponents' is a ...
+    'same_strategies_rep' is a numeric variable indicating the number of times the experiment will be executed for one particular set of strategies;
 
-    'same_strategies_rep'
+    'number of repeats' is a numeric variable stating how many times a single tournament will be executed;
 
-    'number_of_repeats'
+    'game_end_probs' is a list containing numeric variables, between 0 and 1, indicating the probabilities of the tournament ending;
 
-    'game_end_probs'
-
-    'algorithm'
-
+    'algorithm' is one of the three algorithms used to calculate the Nash
+    Equilibria of the obtained payoff matrix from the tournaments, taken from
+    the algorithm_to_time_dict; and
+    
     'average_running_time' is an empty list.
+
+    This function also continually saves the dictionary containing the execution
+    times to a json file.
     """
 
     while number_of_opponents <= max_num_of_opponents:
@@ -268,7 +275,26 @@ def run_tournament_over_diff_group_sizes(max_num_of_opponents, same_player_rep, 
 def repeating_for_all_algorithm(max_num_of_opponents, same_player_rep, same_strategies_rep, number_of_repeats, game_ending_probs, alg_dict=algorithm_to_time_dict, number_of_opponents=1):
 
     """
-    A function which runs the repeated timing experiments for all three algorithms in the algorithm_to_time_dict
+    A function which runs the repeated timing experiments for all three
+    algorithms in the algorithm_to_time_dict, where:
+
+    'max_num_of_opponents' is a numeric variable which indicates the maximum number of opponents axl.Defector will have;
+
+    'same_player_rep' is a numeric variable stating how many different sets,
+    with the same number of strategies, will be used in the experiment;
+
+    'same_strategies_rep' is a numeric variable indicating the number of times the experiment will be executed for one particular set of strategies;
+
+    'number of repeats' is a numeric variable stating how many times a single tournament will be executed;
+
+    'game_end_probs' is a list containing numeric variables, between 0 and 1, indicating the probabilities of the tournament ending;
+
+    'alg_dict' is a dictionary containing as keys the three algorithms for
+    calculating Nash Equilibria, along with an empty list in which the execution
+    times will be inputted; 
+    
+    'number_of_opponents' is the minimum number of opponents that the Defector
+    will play against;
     """
 
     for algorithm in alg_dict:
