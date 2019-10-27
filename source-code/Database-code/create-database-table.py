@@ -18,6 +18,7 @@ CREATE TABLE folk_theorem_experiment (
     least_prob_of_defection     REAL NOT NULL,
     greatest_prob_of_defection  REAL NOT NULL,
     noise                       REAL NOT NULL,
+    could_be_degenerate         BOOLEAN NOT NULL,
         
     CONSTRAINT folk_theorem_experiment_pk PRIMARY KEY (experiment_number, player_strategy_name),
     CONSTRAINT prob_of_game_ending_ck CHECK (prob_of_game_ending BETWEEN 0 AND 1),
