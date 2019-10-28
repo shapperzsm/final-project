@@ -1,12 +1,12 @@
-import numpy as np
-import nashpy as nash
-import axelrod as axl
-import random
+#import numpy as np
+#import nashpy as nash
+#import axelrod as axl
+#import random
 import functions
 
-import sqlalchemy as sa
-dbms = sa.create_engine('sqlite:///Experiment_Database.db')
-connect_dbms_to_db = dbms.connect()
+#import sqlalchemy as sa
+#dbms = sa.create_engine('sqlite:///Experiment_Database.db')
+#connect_dbms_to_db = dbms.connect()
 
 
 
@@ -20,12 +20,12 @@ players = functions.who_is_playing(3)
 #players
 
 
-read_into_sql = """
-    INSERT into folk_theorem_experiment 
-        (experiment_number, player_strategy_name, is_long_run_time, is_stochastic, memory_depth_of_strategy, prob_of_game_ending, payoff_matrix, num_of_repetitions, num_of_equilibria, nash_equilibria, least_prob_of_defection, greatest_prob_of_defection, noise, could_be_degenerate)
-    VALUES 
-        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-"""
+#read_into_sql = """
+    #INSERT into folk_theorem_experiment 
+       # (experiment_number, player_strategy_name, is_long_run_time, is_stochastic, memory_depth_of_strategy, prob_of_game_ending, payoff_matrix, num_of_repetitions, num_of_equilibria, nash_equilibria, least_prob_of_defection, greatest_prob_of_defection, noise, could_be_degenerate)
+  #  VALUES 
+      #  (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+#"""
 
 
 trial_run = functions.get_game(tournament_repeat=30, player_list=players, prob_of_game_ending=0.22, set_seed=123, noise=0)

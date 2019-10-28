@@ -2,6 +2,22 @@ import numpy as np
 import nashpy as nash
 import axelrod as axl
 import random
+import sqlalchemy as sa
+dbms = sa.create_engine('sqlite:///Experiment_Database.db')
+connect_dbms_to_db = dbms.connect()
+
+
+
+
+read_into_sql = """
+    INSERT into folk_theorem_experiment 
+        (experiment_number, player_strategy_name, is_long_run_time, is_stochastic, memory_depth_of_strategy, prob_of_game_ending, payoff_matrix, num_of_repetitions, num_of_equilibria, nash_equilibria, least_prob_of_defection, greatest_prob_of_defection, noise, could_be_degenerate)
+    VALUES 
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+"""
+
+
+
 
 ####################################################
 def who_is_playing(num_of_opponents, long_run_strategies=False):
@@ -163,9 +179,9 @@ def write_record(experiment_number, player_strategy_name, is_long_run_time, is_s
     'could_be_degenerate' is a boolean variable which highlights whether, during the execution of the algorithms for calculating the Nash equilibria, a warning was produced indicating that the game could possibly be degenerate.
     """
 
-    payoff_matrix_as_string = functions.array_to_string(payoff_matrix)
+    payoff_matrix_as_string = array_to_string(payoff_matrix)
     num_of_equilibria = len(nash_equilibria)
-    nash_equilibria_as_string = functions.array_to_string(nash_equilibria)
+    nash_equilibria_as_string = array_to_string(nash_equilibria)
 
     record = (experiment_number, str(player_strategy_name), is_long_run_time, is_stochastic, memory_depth_of_strategy, prob_of_game_ending, payoff_matrix_as_string, num_of_repetitions, num_of_equilibria, nash_equilibria_as_string, least_prob_of_defection, greatest_prob_of_defection, noise, could_be_degenerate)
 
