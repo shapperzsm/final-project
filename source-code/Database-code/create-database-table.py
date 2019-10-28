@@ -1,5 +1,5 @@
 import sqlalchemy as sa
-dbms = sa.create_engine('sqlite:///Eperiment_Database.db')
+dbms = sa.create_engine('sqlite:///Experiment_Database.db')
 connect_dbms_to_db = dbms.connect()
 
 
@@ -9,7 +9,7 @@ CREATE TABLE folk_theorem_experiment (
     player_strategy_name        TEXT NOT NULL,
     is_long_run_time            BOOLEAN NOT NULL,
     is_stochastic               BOOLEAN NOT NULL,
-    memory_depth_of_strategy    INTEGER NOT NULL,
+    memory_depth_of_strategy    TEXT NOT NULL,
     prob_of_game_ending         REAL NOT NULL,
     payoff_matrix               TEXT NOT NULL,
     num_of_repetitions          INTEGER NOT NULL,

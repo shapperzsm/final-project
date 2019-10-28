@@ -111,7 +111,7 @@ def get_prob_of_defection(payoff_matrix, nash_equilibrium_algorithm):
     greatest_prob_of_defection_in_equilibria = max(prob_of_defection_in_equilibria)
 
     get_prob_of_defect_output_dict = {
-        'nash equilibria': nash_equilibria,
+        'nash equilibria': np.array(nash_equilibria),
         'least prob of defect': least_prob_of_defection_in_equilibria,
         'greatest prob of defect': greatest_prob_of_defection_in_equilibria
     }
@@ -130,4 +130,43 @@ def array_to_string(numpy_array):
     return flattened_array_to_string
 
 
+######################################################
+def write_record(experiment_number, player_strategy_name, is_long_run_time, is_stochastic, memory_depth_of_strategy, prob_of_game_ending, payoff_matrix, num_of_repetitions, nash_equilibria, least_prob_of_defection, greatest_prob_of_defection, noise, could_be_degenerate):
 
+    """
+    A function which converts the results to a suitable format and writes them to a database, where:
+
+    'experiment_number' is a distinct index for each tournament executed;
+
+    'player_strategy_name' is a string containing the name of the strategy as given in the Axelrod library;
+
+    'is_long_run_time' is a boolean variable which states whether the strategy is considered to take a long time to execute;
+
+    'is_stochastic' is a boolean variable stating whether the strategy is stochastic or deterministic;
+
+    'memory_depth_of_strategy' is a numeric variable which implies how much of a tournament's history does the strategy recall;
+
+    'prob_of_game_ending' is a numeric variable between 0 and 1 which gives the probability of the tournament ending after any turn;
+    
+    'payoff_matrix' is the matrix containing the mean payoffs obtained from the tournament;
+    
+    'num_of_repetitions' is a numeric variable stating the number of times the tournament was repeated;
+    
+    'nash_equilibria' is a numpy array containing the nash equilibria obtained using the above 'payoff_matrix';
+    
+    'least_prob_of_defection' is a numeric variable between 0 and 1 stating the lowest probability of defection apppearing in the equilibria;
+    
+    'greatest_prob_of_defection' is a numeric variable between 0 and 1 stating the highest probability of defection which appeared in the nash equilibria;
+    
+    'noise' is a numeric variable between 0 and 1 indicating the amount of noise between players during the tournament; and 
+    
+    'could_be_degenerate' is a boolean variable which highlights whether, during the execution of the algorithms for calculating the Nash equilibria, a warning was produced indicating that the game could possibly be degenerate.
+    """
+
+    payoff_matrix_as_string = functions.array_to_string(payoff_matrix)
+    num_of_equilibria = len(nash_equilibria)
+    nash_equilibria_as_string = functions.array_to_string(nash_equilibria)
+
+    record = (experiment_number, str(player_strategy_name), is_long_run_time, is_stochastic, memory_depth_of_strategy, prob_of_game_ending, payoff_matrix_as_string, num_of_repetitions, num_of_equilibria, nash_equilibria_as_string, least_prob_of_defection, greatest_prob_of_defection, noise, could_be_degenerate)
+
+    connect_dbms_to_db.execute(read_into_sql, record)
