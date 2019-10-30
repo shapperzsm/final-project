@@ -4,23 +4,50 @@ import axelrod as axl
 import random
 import warnings
 import sqlalchemy as sa
-dbms = sa.create_engine('sqlite:///Experiment_Database.db')
-connect_dbms_to_db = dbms.connect()
+
+################################################################################
+def create_database(filepath):
+
+    """
+    A function which creates a database file, and an appropriate table, where the data collected from the
+    experiments can be stored:
+
+    'filepath' is a string containing the relative path to the place in where
+    the file should be stored. The database file will be titled 'main.db'.
+    """
+
+    database_management_sys = sa.create_engine('sqlite:///' + filepath + 'main.db')
+    connect_dbms_to_db = database_management_sys.connect()
 
 
+    create_table = """
+    CREATE TABLE folk_theorem_experiment (
+        experiment_number           INTEGER NOT NULL,
+        player_strategy_name        TEXT NOT NULL,
+        is_long_run_time            BOOLEAN NOT NULL,
+        is_stochastic               BOOLEAN NOT NULL,
+        memory_depth_of_strategy    TEXT NOT NULL,
+        prob_of_game_ending         REAL NOT NULL,
+        payoff_matrix               TEXT NOT NULL,
+        num_of_repetitions          INTEGER NOT NULL,
+        num_of_equilibria           INTEGER,
+        nash_equilibria             TEXT,
+        least_prob_of_defection     REAL,
+        greatest_prob_of_defection  REAL,
+        noise                       REAL NOT NULL,
+        could_be_degenerate         BOOLEAN NOT NULL,
+        
+        CONSTRAINT folk_theorem_experiment_pk PRIMARY KEY (experiment_number, player_strategy_name),
+        CONSTRAINT prob_of_game_ending_ck CHECK (prob_of_game_ending BETWEEN 0 AND 1),
+        CONSTRAINT least_prob_of_defection_ck CHECK (least_prob_of_defection BETWEEN 0 AND 1)
+        CONSTRAINT greatest_prob_of_defection_ck CHECK (greatest_prob_of_defection BETWEEN 0 AND 1)
+        CONSTRAINT noise_ck CHECK (noise BETWEEN 0 AND 1)
+    )
+    """
+    connect_dbms_to_db.execute(create_table)
+    
 
-
-read_into_sql = """
-    INSERT into folk_theorem_experiment 
-        (experiment_number, player_strategy_name, is_long_run_time, is_stochastic, memory_depth_of_strategy, prob_of_game_ending, payoff_matrix, num_of_repetitions, num_of_equilibria, nash_equilibria, least_prob_of_defection, greatest_prob_of_defection, noise, could_be_degenerate)
-    VALUES 
-        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-"""
-
-
-
-
-####################################################
+################################################################################
 def who_is_playing(num_of_opponents, seed, long_run_strategies=False):
     """
     A function to choose which strategies will be playing against the Defector, where:
@@ -61,7 +88,7 @@ def who_is_playing(num_of_opponents, seed, long_run_strategies=False):
 
     return list_of_players
 
-###################################################
+################################################################################
 def get_game(tournament_repeat, player_list, prob_of_game_ending, set_seed, noise):
 
     """
@@ -91,7 +118,7 @@ def get_game(tournament_repeat, player_list, prob_of_game_ending, set_seed, nois
     }
     return get_game_output_dict
 
-######################################################
+################################################################################
 def get_prob_of_defection(payoff_matrix, nash_equilibrium_algorithm):
 
     """
@@ -133,10 +160,18 @@ def get_prob_of_defection(payoff_matrix, nash_equilibrium_algorithm):
     else:
         perhaps_degenerate = "degenerate" in str(w[0].message)
 
-    prob_of_defection_in_equilibria = [sigma_1[-1] for sigma_1, _ in nash_equilibria]
 
-    least_prob_of_defection_in_equilibria = min(prob_of_defection_in_equilibria)
-    greatest_prob_of_defection_in_equilibria = max(prob_of_defection_in_equilibria)
+    if len(nash_equilibria) == 0:
+        nash_equilibria = None
+        prob_of_defection_in_equilibria = None
+        least_prob_of_defection_in_equilibria = None
+        greatest_prob_of_defection_in_equilibria = None
+
+    else:
+        prob_of_defection_in_equilibria = [sigma_1[-1] for sigma_1, _ in nash_equilibria]
+
+        least_prob_of_defection_in_equilibria = min(prob_of_defection_in_equilibria)
+        greatest_prob_of_defection_in_equilibria = max(prob_of_defection_in_equilibria)
 
     get_prob_of_defect_output_dict = {
         'nash equilibria': np.array(nash_equilibria),
@@ -145,9 +180,9 @@ def get_prob_of_defection(payoff_matrix, nash_equilibrium_algorithm):
         'could be degenerate': perhaps_degenerate
     }
 
-    return get_prob_of_defect_output_dict     
+    return get_prob_of_defect_output_dict 
 
-####################################################
+################################################################################
 def array_to_string(numpy_array):
 
     """
@@ -158,9 +193,11 @@ def array_to_string(numpy_array):
     flattened_array_to_string = str(flattened_array).strip('[]')
     return flattened_array_to_string
 
-
-######################################################
-def write_record(experiment_number, player_strategy_name, is_long_run_time, is_stochastic, memory_depth_of_strategy, prob_of_game_ending, payoff_matrix, num_of_repetitions, nash_equilibria, least_prob_of_defection, greatest_prob_of_defection, noise, could_be_degenerate):
+################################################################################
+def write_record(experiment_number, player_strategy_name, is_long_run_time,
+    is_stochastic, memory_depth_of_strategy, prob_of_game_ending, payoff_matrix,
+    num_of_repetitions, nash_equilibria, least_prob_of_defection,
+    greatest_prob_of_defection, noise, could_be_degenerate, database_filepath):
 
     """
     A function which converts the results to a suitable format and writes them to a database, where:
@@ -187,23 +224,42 @@ def write_record(experiment_number, player_strategy_name, is_long_run_time, is_s
     
     'greatest_prob_of_defection' is a numeric variable between 0 and 1 stating the highest probability of defection which appeared in the nash equilibria;
     
-    'noise' is a numeric variable between 0 and 1 indicating the amount of noise between players during the tournament; and 
+    'noise' is a numeric variable between 0 and 1 indicating the amount of noise between players during the tournament;
     
-    'could_be_degenerate' is a boolean variable which highlights whether, during the execution of the algorithms for calculating the Nash equilibria, a warning was produced indicating that the game could possibly be degenerate.
+    'could_be_degenerate' is a boolean variable which highlights whether, during the execution of the algorithms for calculating the Nash equilibria, a warning was produced indicating that the game could possibly be degenerate; and
+    
+    'database_filepath' is a string containing the relative path where the database (.db) file is based.
     """
 
+    database_management_sys = sa.create_engine('sqlite:///' + database_filepath
+    + 'main.db')
+    connect_dbms_to_db = database_management_sys.connect()
+
     payoff_matrix_as_string = array_to_string(payoff_matrix)
-    num_of_equilibria = len(nash_equilibria)
-    nash_equilibria_as_string = array_to_string(nash_equilibria)
+    
+    if nash_equilibria.all() != None:
+        num_of_equilibria = len(nash_equilibria)
+        nash_equilibria_as_string = array_to_string(nash_equilibria)
+    
+    else:
+        num_of_equilibria = None
+        nash_equilibria_as_string = None  
+
+    read_into_sql = """
+        INSERT into folk_theorem_experiment 
+            (experiment_number, player_strategy_name, is_long_run_time, is_stochastic, memory_depth_of_strategy, prob_of_game_ending, payoff_matrix, num_of_repetitions, num_of_equilibria, nash_equilibria, least_prob_of_defection, greatest_prob_of_defection, noise, could_be_degenerate)
+        VALUES 
+            (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    """
 
     record = (experiment_number, str(player_strategy_name), is_long_run_time, is_stochastic, memory_depth_of_strategy, prob_of_game_ending, payoff_matrix_as_string, num_of_repetitions, num_of_equilibria, nash_equilibria_as_string, least_prob_of_defection, greatest_prob_of_defection, noise, could_be_degenerate)
 
     connect_dbms_to_db.execute(read_into_sql, record)
 
-################################################
+################################################################################
 def run_experiment(max_num_of_opponents, tournament_repeats,
-    game_ending_probs, seed, equilibrium_algorithm, noise, num_of_opponents=1,
-    experiment_num = 1):
+    game_ending_probs, seed, noise, database_filepath, num_of_opponents=1,
+    experiment_num = 1, support_enumeration=True):
 
     """
     A function which runs the experiment and writes the results to a database, where:
@@ -216,13 +272,15 @@ def run_experiment(max_num_of_opponents, tournament_repeats,
 
     'seed' is a numeric variable which ensures reproducibility if the same value is used;
 
-    'equilibrium_algorithm' is a string indicating which of the three algorithms should be used to calculate the Nash Equilibria (can be any of ["Support Enumeration", "Vertex Enumeration", "Lemke Howson"]); 
-
     'noise' is a numeric variable between 0 and 1 which indicates how much stochasticity should be included in any particular choice of action for each player (taken from Axelrod);
 
-    'num_of_opponents' is a numeric variable stating the minimum number of players that will compete against the Defector; and
+    'database_filepath' is a string containing the relative path where the database file will be stored;
+
+    'num_of_opponents' is a numeric variable stating the minimum number of players that will compete against the Defector;
     
-    'experiment_num' is a numeric variable which states what number the experiments should start being enumerated at.
+    'experiment_num' is a numeric variable which states what number the experiments should start being enumerated at; and
+    
+    'support_enumeration' is a boolean variable where True (default) implies that the 'support enumeration algorithm' is used to find the Nash Equilibria, otherwise the 'vertex enumeration algorithm' is used.
     """
 
     while num_of_opponents <= max_num_of_opponents:
@@ -233,10 +291,15 @@ def run_experiment(max_num_of_opponents, tournament_repeats,
 
             tournament_run = get_game(tournament_repeat=tournament_repeats, player_list=players, prob_of_game_ending=probability, set_seed=seed, noise=noise)
 
-            defection_probs = get_prob_of_defection(payoff_matrix=tournament_run['payoff matrix obtained'], nash_equilibrium_algorithm=equilibrium_algorithm)
+
+            if support_enumeration == True:
+                defection_probs = get_prob_of_defection(payoff_matrix=tournament_run['payoff matrix obtained'], nash_equilibrium_algorithm="Support Enumeration")
+                
+            else:
+                defection_probs = get_prob_of_defection(payoff_matrix=tournament_run['payoff matrix obtained'], nash_equilibrium_algorithm="Vertex Enumeration")
 
             for player in players:
-                write_record(experiment_number=experiment_num, player_strategy_name=player, is_long_run_time=player.classifier['long_run_time'], is_stochastic=player.classifier['stochastic'], memory_depth_of_strategy=player.classifier['memory_depth'], prob_of_game_ending=tournament_run['probability of game ending'], payoff_matrix=tournament_run['payoff matrix obtained'], num_of_repetitions=tournament_run['number of tournament repeats'], nash_equilibria=defection_probs['nash equilibria'], least_prob_of_defection=defection_probs['least prob of defect'], greatest_prob_of_defection=defection_probs['greatest prob of defect'], noise=tournament_run['noise'], could_be_degenerate=defection_probs['could be degenerate'])
+                write_record(experiment_number=experiment_num, player_strategy_name=player, is_long_run_time=player.classifier['long_run_time'], is_stochastic=player.classifier['stochastic'], memory_depth_of_strategy=player.classifier['memory_depth'], prob_of_game_ending=tournament_run['probability of game ending'], payoff_matrix=tournament_run['payoff matrix obtained'], num_of_repetitions=tournament_run['number of tournament repeats'], nash_equilibria=defection_probs['nash equilibria'], least_prob_of_defection=defection_probs['least prob of defect'], greatest_prob_of_defection=defection_probs['greatest prob of defect'], noise=tournament_run['noise'], could_be_degenerate=defection_probs['could be degenerate'], database_filepath=database_filepath)
 
             experiment_num += 1
         num_of_opponents += 1
