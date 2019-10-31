@@ -258,7 +258,7 @@ def write_record(experiment_number, player_strategy_name, is_long_run_time,
 
 ################################################################################
 def run_experiment(max_num_of_opponents, tournament_repeats,
-    game_ending_probs, seed, noise, database_filepath, num_of_opponents=1,
+    game_ending_probs, seed, noise, database_filepath,
     experiment_num = 1, support_enumeration=True):
 
     """
@@ -282,24 +282,27 @@ def run_experiment(max_num_of_opponents, tournament_repeats,
     
     'support_enumeration' is a boolean variable where True (default) implies that the 'support enumeration algorithm' is used to find the Nash Equilibria, otherwise the 'vertex enumeration algorithm' is used.
     """
-
-    while num_of_opponents <= max_num_of_opponents:
+    unique_tournament_identifier = 0
+    for num_of_opponents in range(1, max_num_of_opponents + 1):
         
-        players = who_is_playing(num_of_opponents=num_of_opponents, seed=123, long_run_strategies=False)
+        axl.seed(num_of_opponents)
+        for player_sample_repetition in range(1, number_of_player_samples + 1):
+            players = who_is_playing(num_of_opponents=num_of_opponents, long_run_strategies=False)
 
-        for probability in game_ending_probs:
+            for noise in noise_probs:
+            for probability in game_ending_probs:
 
-            tournament_run = get_game(tournament_repeat=tournament_repeats, player_list=players, prob_of_game_ending=probability, set_seed=seed, noise=noise)
-
-
-            if support_enumeration == True:
-                defection_probs = get_prob_of_defection(payoff_matrix=tournament_run['payoff matrix obtained'], nash_equilibrium_algorithm="Support Enumeration")
                 
-            else:
-                defection_probs = get_prob_of_defection(payoff_matrix=tournament_run['payoff matrix obtained'], nash_equilibrium_algorithm="Vertex Enumeration")
+                tournament_run = get_game(tournament_repeat=tournament_repeats, player_list=players, prob_of_game_ending=probability, noise=noise)
 
-            for player in players:
-                write_record(experiment_number=experiment_num, player_strategy_name=player, is_long_run_time=player.classifier['long_run_time'], is_stochastic=player.classifier['stochastic'], memory_depth_of_strategy=player.classifier['memory_depth'], prob_of_game_ending=tournament_run['probability of game ending'], payoff_matrix=tournament_run['payoff matrix obtained'], num_of_repetitions=tournament_run['number of tournament repeats'], nash_equilibria=defection_probs['nash equilibria'], least_prob_of_defection=defection_probs['least prob of defect'], greatest_prob_of_defection=defection_probs['greatest prob of defect'], noise=tournament_run['noise'], could_be_degenerate=defection_probs['could be degenerate'], database_filepath=database_filepath)
 
-            experiment_num += 1
-        num_of_opponents += 1
+                if support_enumeration == True:
+                    defection_probs = get_prob_of_defection(payoff_matrix=tournament_run['payoff matrix obtained'], nash_equilibrium_algorithm="Support Enumeration")
+                    
+                else:
+                    defection_probs = get_prob_of_defection(payoff_matrix=tournament_run['payoff matrix obtained'], nash_equilibrium_algorithm="Vertex Enumeration")
+
+                for player in players:
+                    write_record(experiment_number=experiment_num, player_strategy_name=player, is_long_run_time=player.classifier['long_run_time'], is_stochastic=player.classifier['stochastic'], memory_depth_of_strategy=player.classifier['memory_depth'], prob_of_game_ending=tournament_run['probability of game ending'], payoff_matrix=tournament_run['payoff matrix obtained'], num_of_repetitions=tournament_run['number of tournament repeats'], nash_equilibria=defection_probs['nash equilibria'], least_prob_of_defection=defection_probs['least prob of defect'], greatest_prob_of_defection=defection_probs['greatest prob of defect'], noise=tournament_run['noise'], could_be_degenerate=defection_probs['could be degenerate'], database_filepath=database_filepath)
+
+                unique_tournament_identifier += 1
