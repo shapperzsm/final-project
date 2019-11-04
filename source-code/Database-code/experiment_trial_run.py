@@ -1,21 +1,11 @@
 import experiment_functions as expfun
 import numpy as np
 
-stochasticity = np.linspace(0, 1, 11)
-prob_of_game_end = np.linspace(0.001, 1-0.001, 5)
-experiment_number = 1
+noise_probabilities = np.linspace(0, 1, 11)
+game_ending_probabilities = np.linspace(0.001, 1-0.001, 5)
 
-#expfun.create_database("data/support_enumeration/")
-#for noise in stochasticity:
-
-    #expfun.run_experiment(max_num_of_opponents=4, tournament_repeats=10, game_ending_probs=prob_of_game_end, seed=123, noise=noise, database_filepath="data/support_enumeration/", num_of_opponents=1, experiment_num=experiment_number, support_enumeration=True)
-    
-   # experiment_number += 20
-
+expfun.create_database("data/support_enumeration/")
+expfun.run_experiment(max_num_of_opponents=4, number_of_player_samples=5, noise_probs=noise_probabilities, game_ending_probs=game_ending_probabilities, tournament_rep=10, database_filepath="data/support_enumeration/", support_enumeration=True)
 
 expfun.create_database("data/vertex_enumeration/")
-for noise in stochasticity:
-
-    expfun.run_experiment(max_num_of_opponents=4, tournament_repeats=10, game_ending_probs=prob_of_game_end, seed=123, noise=noise, database_filepath="data/vertex_enumeration/", num_of_opponents=1, experiment_num=experiment_number, support_enumeration=False)
-    
-    experiment_number += 20
+expfun.run_experiment(max_num_of_opponents=4, number_of_player_samples=5, noise_probs=noise_probabilities, game_ending_probs=game_ending_probabilities, tournament_rep=10, database_filepath="data/vertex_enumeration/", support_enumeration=False)
