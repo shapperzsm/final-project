@@ -84,14 +84,12 @@ def who_is_playing(num_of_opponents, long_run_strategies=False):
 
 
 ################################################################################
-def get_game(tournament_rep, num_of_processes, player_list, prob_of_game_ending, noise):
+def get_game(tournament_rep, player_list, prob_of_game_ending, noise):
 
     """
-    A function which runs a tournament of A Prisoner's Dilemma and returns a dictionary containing the following: 'payoff matrix obtained' (an output from the Axelrod tournament function), 'number of tournament repeats' (from 'tournamnet_rep'), 'probability of game ending' (from 'prob_of_game_ending) and 'noise' (from 'noise'), where:
+    A function which runs a tournament of A Prisoner's Dilemma and returns a dictionary containing the following: 'payoff matrix obtained' (an output from the Axelrod tournament function), 'number of tournament repeats' (from 'tournament_rep'), 'probability of game ending' (from 'prob_of_game_ending) and 'noise' (from 'noise'), where:
 
     'tournament_rep' is a numeric variable stating how many times the tournament should be executed;
-    
-    'num_of_processes' is a numeric variable stating how many processes to use when running the tournament in parallel;
 
     'player_list' is a list containing instances of specific strategy classes obtained from the Axelrod library;
 
@@ -101,7 +99,7 @@ def get_game(tournament_rep, num_of_processes, player_list, prob_of_game_ending,
     """
 
     tournament = axl.Tournament(player_list, prob_end=prob_of_game_ending, repetitions=tournament_rep, noise=noise)
-    tournament_results = tournament.play(progress_bar=False, processes=num_of_processes)
+    tournament_results = tournament.play(progress_bar=False)
 
     mean_payoff_matrix = np.array(tournament_results.payoff_matrix)
 
@@ -245,8 +243,7 @@ def write_record(experiment_number, player_strategy_name, is_long_run_time,
 
 ################################################################################
 def run_experiment(max_num_of_opponents, number_of_player_samples,
-    noise_probs, game_ending_probs, tournament_rep, num_of_processes,
-    database_filepath, support_enumeration=True):
+    noise_probs, game_ending_probs, tournament_rep, database_filepath, support_enumeration=True):
 
     """
     A function which runs the experiment and writes the results to a database, where:
@@ -260,8 +257,6 @@ def run_experiment(max_num_of_opponents, number_of_player_samples,
     'game_ending_probs' is a list containing numeric variables between 0 and 1 indicating the probability of a game ending on any particular turn;
 
     'tournament_rep' is a numeric variable stating the number of times each distinct tournament should be repeated (allows for the 'smoothing' of the mean payoffs obtained);
-    
-    'num_of_processes' is a numeric variable stating how many processes to use when running the tournament in parallel;
 
     'database_filepath' is a string containing the relative path where the database (main.db) file is based; and
 
@@ -277,7 +272,7 @@ def run_experiment(max_num_of_opponents, number_of_player_samples,
             for noise in noise_probs:
                 
                 for probability in game_ending_probs:
-                    tournament_run = get_game(tournament_rep=tournament_rep, num_of_processes=num_of_processes, player_list=players, prob_of_game_ending=probability, noise=noise)
+                    tournament_run = get_game(tournament_rep=tournament_rep, player_list=players, prob_of_game_ending=probability, noise=noise)
                     defection_probs = get_prob_of_defection(payoff_matrix=tournament_run['payoff matrix obtained'], support_enumeration=support_enumeration)
                     
                     for player in players:
