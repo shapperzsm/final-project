@@ -22,7 +22,7 @@ def create_database(filepath):
 
 
     create_table = """
-    CREATE TABLE folk_theorem_experiment (
+    CREATE TABLE IF NOT EXISTS folk_theorem_experiment (
         experiment_number           INTEGER NOT NULL,
         player_strategy_name        TEXT NOT NULL,
         is_long_run_time            BOOLEAN NOT NULL,
@@ -140,7 +140,7 @@ def get_prob_of_defection(payoff_matrix, support_enumeration=True):
         warning_message = None
 
     else:
-        warning_message = str(w)
+        warning_message = str(list(w))
 
 
     if (len(nash_equilibria) == 0) or ('-Inf' in nash_equilibria):
