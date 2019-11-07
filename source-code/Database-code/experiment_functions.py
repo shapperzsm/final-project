@@ -133,6 +133,7 @@ def get_prob_of_defection(payoff_matrix, support_enumeration=True):
             nash_equilibria = list(game.support_enumeration())
 
         else:
+            highlight_numpy_warning = np.seterr(all="warn")
             nash_equilibria = list(game.vertex_enumeration())
 
     
@@ -140,7 +141,7 @@ def get_prob_of_defection(payoff_matrix, support_enumeration=True):
         warning_message = None
 
     else:
-        warning_message = str(list(w))
+        warning_message = str([w[i].message for i in range(len(w))])
 
 
     if (len(nash_equilibria) == 0) or ('-Inf' in nash_equilibria):
@@ -159,7 +160,7 @@ def get_prob_of_defection(payoff_matrix, support_enumeration=True):
         'nash equilibria': np.array(nash_equilibria),
         'least prob of defect': least_prob_of_defection_in_equilibria,
         'greatest prob of defect': greatest_prob_of_defection_in_equilibria,
-        'warning message': warning_message
+        'warning message': str(warning_message)
     }
 
     return get_prob_of_defect_output_dict 
