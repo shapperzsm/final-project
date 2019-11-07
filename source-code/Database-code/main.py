@@ -2,11 +2,9 @@ from collections import namedtuple
 import numpy as np
 
 import sqlalchemy as sa
-dbms = sa.create_engine('sqlite:///source-code/Database-code/Experiment_Database.db')
+
+dbms = sa.create_engine("sqlite:///source-code/Database-code/Experiment_Database.db")
 connect_dbms_to_db = dbms.connect()
-
-
-
 
 
 def array_to_string(numpy_array):
@@ -16,10 +14,8 @@ def array_to_string(numpy_array):
     """
 
     flattened_array = numpy_array.flatten()
-    flattened_array_to_string = str(flattened_array).strip('[]')
+    flattened_array_to_string = str(flattened_array).strip("[]")
     return flattened_array_to_string
-
-
 
 
 def string_to_array(string_of_float, num_of_rows, num_of_cols):
@@ -35,10 +31,9 @@ def string_to_array(string_of_float, num_of_rows, num_of_cols):
     'num_of_cols' is an integer-valued variable stating the number of columns required for the array.
     """
 
-    string_to_array = np.array([float(i) for i in string_of_float.split(' ')])
+    string_to_array = np.array([float(i) for i in string_of_float.split(" ")])
     reshape_array = np.reshape(string_to_array, (num_of_rows, num_of_cols))
     return reshape_array
-
 
 
 read_into_sql = """
@@ -49,14 +44,27 @@ read_into_sql = """
 """
 
 
-Record = namedtuple('Record', 'experiment_number, player_strategy_name, long_run_time_strategy, stochastic_strategy, memory_depth_of_strategy, prob_of_game_ending, payoff_matrix, num_of_repetitions, nash_equilibria, least_prob_of_defection, greatest_prob_of_defection, amount_of_noise')
+Record = namedtuple(
+    "Record",
+    "experiment_number, player_strategy_name, long_run_time_strategy, stochastic_strategy, memory_depth_of_strategy, prob_of_game_ending, payoff_matrix, num_of_repetitions, nash_equilibria, least_prob_of_defection, greatest_prob_of_defection, amount_of_noise",
+)
 
 
+def Record(
+    exp_num,
+    player_strat_name,
+    long_run_strat,
+    stoch_strat,
+    strat_mem_depth,
+    game_end_prob,
+    payoff_mat,
+    num_of_rep,
+    nash_eq,
+    least_prob,
+    greatest_prob,
+    noise,
+):
 
-def Record(exp_num, player_strat_name, long_run_strat, stoch_strat,
-strat_mem_depth, game_end_prob, payoff_mat, num_of_rep, nash_eq, least_prob,
-greatest_prob, noise):
-    
     """
     A function which writes the information gained from one player in the experiment to a single record in an SQL database, where:
     
@@ -80,13 +88,13 @@ greatest_prob, noise):
     """
 
 
-#payoff_matrix = np.array([[3, 0], [5, 1]])
-#payoff_matrix_as_string = array_to_string(payoff_matrix)
+# payoff_matrix = np.array([[3, 0], [5, 1]])
+# payoff_matrix_as_string = array_to_string(payoff_matrix)
 
 equilibria = [[1, 0, 0, 1], [0.3, 0.7, 0.7, 0.3]]
-equilibria_as_string = str(str(equilibria).strip('[]').split('], [')).strip('[]')
+equilibria_as_string = str(str(equilibria).strip("[]").split("], [")).strip("[]")
 
-#record = result(1, 'Tit for Tat', False, False, 1, 0.4, payoff_matrix_as_string, 4, equilibria_as_string, 0, 0.944, 0)  
+# record = result(1, 'Tit for Tat', False, False, 1, 0.4, payoff_matrix_as_string, 4, equilibria_as_string, 0, 0.944, 0)
 
-#values = (record.experiment_number, record.player_strategy_name, #record.long_run_time_strategy, record.stochastic_strategy, #record.memory_depth_of_strategy, record.prob_of_game_ending, #record.payoff_matrix, record.num_of_repetitions, record.nash_equilibria, #record.least_prob_of_defection, record.greatest_prob_of_defection, #record.amount_of_noise)
-#connect_dbms_to_db.execute(read_into_sql, values)
+# values = (record.experiment_number, record.player_strategy_name, #record.long_run_time_strategy, record.stochastic_strategy, #record.memory_depth_of_strategy, record.prob_of_game_ending, #record.payoff_matrix, record.num_of_repetitions, record.nash_equilibria, #record.least_prob_of_defection, record.greatest_prob_of_defection, #record.amount_of_noise)
+# connect_dbms_to_db.execute(read_into_sql, values)

@@ -4,10 +4,9 @@ import axelrod as axl
 import random
 import warnings
 import sqlalchemy as sa
-dbms = sa.create_engine('sqlite:///Experiment_Database.db')
+
+dbms = sa.create_engine("sqlite:///Experiment_Database.db")
 connect_dbms_to_db = dbms.connect()
-
-
 
 
 read_into_sql = """
@@ -16,8 +15,6 @@ read_into_sql = """
     VALUES 
         (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
 """
-
-
 
 
 ####################################################
@@ -61,6 +58,7 @@ def who_is_playing(num_of_opponents, seed, long_run_strategies=False):
 
     return list_of_players
 
+
 ###################################################
 def get_game(tournament_repeat, player_list, prob_of_game_ending, set_seed, noise):
 
@@ -78,18 +76,24 @@ def get_game(tournament_repeat, player_list, prob_of_game_ending, set_seed, nois
     'noise' is a numeric variable between 0 and 1 which indicates how much noise should be included in the tournament.
     """
 
-    tournament = axl.Tournament(player_list, prob_end=prob_of_game_ending, repetitions=tournament_repeat, noise=noise)
+    tournament = axl.Tournament(
+        player_list,
+        prob_end=prob_of_game_ending,
+        repetitions=tournament_repeat,
+        noise=noise,
+    )
     tournament_results = tournament.play(progress_bar=False)
 
     mean_payoff_matrix = np.array(tournament_results.payoff_matrix)
 
     get_game_output_dict = {
-        'payoff matrix obtained': mean_payoff_matrix,       
-        'number of tournament repeats': tournament_repeat, 
-        'probability of game ending': prob_of_game_ending, 
-        'noise': noise
+        "payoff matrix obtained": mean_payoff_matrix,
+        "number of tournament repeats": tournament_repeat,
+        "probability of game ending": prob_of_game_ending,
+        "noise": noise,
     }
     return get_game_output_dict
+
 
 ######################################################
 def get_prob_of_defection(payoff_matrix, nash_equilibrium_algorithm):
@@ -106,27 +110,26 @@ def get_prob_of_defection(payoff_matrix, nash_equilibrium_algorithm):
 
     game = nash.Game(payoff_matrix, payoff_matrix.transpose())
 
-
     with warnings.catch_warnings(record=True) as w:
         warnings.simplefilter("always")
-    
+
         if nash_equilibrium_algorithm == "Support Enumeration":
             nash_equilibria = list(game.support_enumeration())
-            #print(nash_equilibria)
+            # print(nash_equilibria)
 
         elif nash_equilibrium_algorithm == "Vertex Enumeration":
             nash_equilibria = list(game.vertex_enumeration())
-            #print(nash_equilibria)
+            # print(nash_equilibria)
 
         elif nash_equilibrium_algorithm == "Lemke Howson":
             nash_equilibria = list(game.lemke_howson_enumeration())
-            #print(nash_equilibria)
+            # print(nash_equilibria)
 
         else:
             raise Exception(
                 "nash_equilibrium_algorithm should be one of ['Support Enumeration', 'Vertex Enumeration', 'Lemke Howson']"
             )
-    
+
     if len(w) == 0:
         perhaps_degenerate = False
 
@@ -139,13 +142,14 @@ def get_prob_of_defection(payoff_matrix, nash_equilibrium_algorithm):
     greatest_prob_of_defection_in_equilibria = max(prob_of_defection_in_equilibria)
 
     get_prob_of_defect_output_dict = {
-        'nash equilibria': np.array(nash_equilibria),
-        'least prob of defect': least_prob_of_defection_in_equilibria,
-        'greatest prob of defect': greatest_prob_of_defection_in_equilibria,
-        'could be degenerate': perhaps_degenerate
+        "nash equilibria": np.array(nash_equilibria),
+        "least prob of defect": least_prob_of_defection_in_equilibria,
+        "greatest prob of defect": greatest_prob_of_defection_in_equilibria,
+        "could be degenerate": perhaps_degenerate,
     }
 
-    return get_prob_of_defect_output_dict     
+    return get_prob_of_defect_output_dict
+
 
 ####################################################
 def array_to_string(numpy_array):
@@ -155,12 +159,26 @@ def array_to_string(numpy_array):
     """
 
     flattened_array = numpy_array.flatten()
-    flattened_array_to_string = str(flattened_array).strip('[]')
+    flattened_array_to_string = str(flattened_array).strip("[]")
     return flattened_array_to_string
 
 
 ######################################################
-def write_record(experiment_number, player_strategy_name, is_long_run_time, is_stochastic, memory_depth_of_strategy, prob_of_game_ending, payoff_matrix, num_of_repetitions, nash_equilibria, least_prob_of_defection, greatest_prob_of_defection, noise, could_be_degenerate):
+def write_record(
+    experiment_number,
+    player_strategy_name,
+    is_long_run_time,
+    is_stochastic,
+    memory_depth_of_strategy,
+    prob_of_game_ending,
+    payoff_matrix,
+    num_of_repetitions,
+    nash_equilibria,
+    least_prob_of_defection,
+    greatest_prob_of_defection,
+    noise,
+    could_be_degenerate,
+):
 
     """
     A function which converts the results to a suitable format and writes them to a database, where:
@@ -196,14 +214,37 @@ def write_record(experiment_number, player_strategy_name, is_long_run_time, is_s
     num_of_equilibria = len(nash_equilibria)
     nash_equilibria_as_string = array_to_string(nash_equilibria)
 
-    record = (experiment_number, str(player_strategy_name), is_long_run_time, is_stochastic, memory_depth_of_strategy, prob_of_game_ending, payoff_matrix_as_string, num_of_repetitions, num_of_equilibria, nash_equilibria_as_string, least_prob_of_defection, greatest_prob_of_defection, noise, could_be_degenerate)
+    record = (
+        experiment_number,
+        str(player_strategy_name),
+        is_long_run_time,
+        is_stochastic,
+        memory_depth_of_strategy,
+        prob_of_game_ending,
+        payoff_matrix_as_string,
+        num_of_repetitions,
+        num_of_equilibria,
+        nash_equilibria_as_string,
+        least_prob_of_defection,
+        greatest_prob_of_defection,
+        noise,
+        could_be_degenerate,
+    )
 
     connect_dbms_to_db.execute(read_into_sql, record)
 
+
 ################################################
-def run_experiment(max_num_of_opponents, tournament_repeats,
-    game_ending_probs, seed, equilibrium_algorithm, noise, num_of_opponents=1,
-    experiment_num = 1):
+def run_experiment(
+    max_num_of_opponents,
+    tournament_repeats,
+    game_ending_probs,
+    seed,
+    equilibrium_algorithm,
+    noise,
+    num_of_opponents=1,
+    experiment_num=1,
+):
 
     """
     A function which runs the experiment and writes the results to a database, where:
@@ -226,17 +267,44 @@ def run_experiment(max_num_of_opponents, tournament_repeats,
     """
 
     while num_of_opponents <= max_num_of_opponents:
-        
-        players = who_is_playing(num_of_opponents=num_of_opponents, seed=123, long_run_strategies=False)
+
+        players = who_is_playing(
+            num_of_opponents=num_of_opponents, seed=123, long_run_strategies=False
+        )
 
         for probability in game_ending_probs:
 
-            tournament_run = get_game(tournament_repeat=tournament_repeats, player_list=players, prob_of_game_ending=probability, set_seed=seed, noise=noise)
+            tournament_run = get_game(
+                tournament_repeat=tournament_repeats,
+                player_list=players,
+                prob_of_game_ending=probability,
+                set_seed=seed,
+                noise=noise,
+            )
 
-            defection_probs = get_prob_of_defection(payoff_matrix=tournament_run['payoff matrix obtained'], nash_equilibrium_algorithm=equilibrium_algorithm)
+            defection_probs = get_prob_of_defection(
+                payoff_matrix=tournament_run["payoff matrix obtained"],
+                nash_equilibrium_algorithm=equilibrium_algorithm,
+            )
 
             for player in players:
-                write_record(experiment_number=experiment_num, player_strategy_name=player, is_long_run_time=player.classifier['long_run_time'], is_stochastic=player.classifier['stochastic'], memory_depth_of_strategy=player.classifier['memory_depth'], prob_of_game_ending=tournament_run['probability of game ending'], payoff_matrix=tournament_run['payoff matrix obtained'], num_of_repetitions=tournament_run['number of tournament repeats'], nash_equilibria=defection_probs['nash equilibria'], least_prob_of_defection=defection_probs['least prob of defect'], greatest_prob_of_defection=defection_probs['greatest prob of defect'], noise=tournament_run['noise'], could_be_degenerate=defection_probs['could be degenerate'])
+                write_record(
+                    experiment_number=experiment_num,
+                    player_strategy_name=player,
+                    is_long_run_time=player.classifier["long_run_time"],
+                    is_stochastic=player.classifier["stochastic"],
+                    memory_depth_of_strategy=player.classifier["memory_depth"],
+                    prob_of_game_ending=tournament_run["probability of game ending"],
+                    payoff_matrix=tournament_run["payoff matrix obtained"],
+                    num_of_repetitions=tournament_run["number of tournament repeats"],
+                    nash_equilibria=defection_probs["nash equilibria"],
+                    least_prob_of_defection=defection_probs["least prob of defect"],
+                    greatest_prob_of_defection=defection_probs[
+                        "greatest prob of defect"
+                    ],
+                    noise=tournament_run["noise"],
+                    could_be_degenerate=defection_probs["could be degenerate"],
+                )
 
             experiment_num += 1
         num_of_opponents += 1

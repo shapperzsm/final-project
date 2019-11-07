@@ -1,5 +1,6 @@
 import sqlalchemy as sa
 
+
 def create_database(filepath):
 
     """
@@ -10,9 +11,8 @@ def create_database(filepath):
     the file should be stored. The database file will be titled 'main.db'.
     """
 
-    database_management_sys = sa.create_engine('sqlite:///' + filepath + 'main.db')
+    database_management_sys = sa.create_engine("sqlite:///" + filepath + "main.db")
     connect_dbms_to_db = database_management_sys.connect()
-
 
     create_table = """
     CREATE TABLE folk_theorem_experiment (
@@ -39,4 +39,4 @@ def create_database(filepath):
     )
     """
     connect_dbms_to_db.execute(create_table)
-    return(database_management_sys.connect())
+    return database_management_sys.connect()

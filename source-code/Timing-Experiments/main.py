@@ -6,13 +6,11 @@ import time
 import json
 
 
-
 algorithm_to_time_dict = {
     "Support Enumeration": [],
     "Vertex Enumeration": [],
-    "Lemke Howson": []
+    "Lemke Howson": [],
 }
-
 
 
 def who_is_playing(num_of_opponents, long_run_strategies=False):
@@ -51,8 +49,6 @@ def who_is_playing(num_of_opponents, long_run_strategies=False):
     list_of_players.append(axl.Defector())
 
     return list_of_players
-
-
 
 
 def probabilities_of_defection(
@@ -106,20 +102,20 @@ def probabilities_of_defection(
 
         if nash_equilibrium_algorithm == "Support Enumeration":
             nash_equilibria = list(game.support_enumeration())
-            #print(nash_equilibria)
+            # print(nash_equilibria)
 
         elif nash_equilibrium_algorithm == "Vertex Enumeration":
             nash_equilibria = list(game.vertex_enumeration())
-            #print(nash_equilibria)
+            # print(nash_equilibria)
 
         elif nash_equilibrium_algorithm == "Lemke Howson":
             nash_equilibria = list(game.lemke_howson_enumeration())
-            #print(nash_equilibria)
+            # print(nash_equilibria)
 
         else:
             raise Exception(
                 "nash_equilibrium_algorithm should be one of ['Support Enumeration', 'Vertex Enumeration', 'Lemke Howson']"
-                )
+            )
 
         prob_of_defection_in_equilibria = [
             sigma_1[-1] for sigma_1, _ in nash_equilibria
@@ -133,12 +129,20 @@ def probabilities_of_defection(
             max(prob_of_defection_in_equilibria)
         )
 
-    return least_prob_of_defection_in_equilibria, greatest_prob_of_defection_in_equilibria
+    return (
+        least_prob_of_defection_in_equilibria,
+        greatest_prob_of_defection_in_equilibria,
+    )
 
 
-
-
-def same_strategies_repeat(same_strategies_rep, players, number_of_repeats, game_end_probs, algorithm, execution_time):
+def same_strategies_repeat(
+    same_strategies_rep,
+    players,
+    number_of_repeats,
+    game_end_probs,
+    algorithm,
+    execution_time,
+):
     """
     A function which records the execution time of A Prisoner's Dilemma tournament for the same strategies a certain number of times, where:
 
@@ -159,21 +163,33 @@ def same_strategies_repeat(same_strategies_rep, players, number_of_repeats, game
 
     for same_opponents_repeat in range(same_strategies_rep):
 
-        #print(same_opponents_repeat)
-        #print(players)
+        # print(same_opponents_repeat)
+        # print(players)
 
         initial_time = time.perf_counter()
-        probabilities_of_defection(tournament_repeat=number_of_repeats, player_list=players, probs_of_game_ending=game_end_probs, nash_equilibrium_algorithm=str(algorithm), set_seed=123)
+        probabilities_of_defection(
+            tournament_repeat=number_of_repeats,
+            player_list=players,
+            probs_of_game_ending=game_end_probs,
+            nash_equilibrium_algorithm=str(algorithm),
+            set_seed=123,
+        )
         final_time = time.perf_counter()
         execution_time.append(final_time - initial_time)
-            
-        #print(execution_time)
+
+        # print(execution_time)
     return execution_time
- 
 
 
-
-def same_num_of_players_rep(same_player_rep, number_of_opponents, same_strategies_rep, number_of_repeats, game_end_probs, algorithm, average_running_time_for_same_players=[]):
+def same_num_of_players_rep(
+    same_player_rep,
+    number_of_opponents,
+    same_strategies_rep,
+    number_of_repeats,
+    game_end_probs,
+    algorithm,
+    average_running_time_for_same_players=[],
+):
 
     """
     A function which executes the 'same_strategies_repeat' function a certain number of times and from this calculates the average running time for each different set of strategies of the same size, where:
@@ -196,28 +212,45 @@ def same_num_of_players_rep(same_player_rep, number_of_opponents, same_strategie
     """
 
     for same_number_of_players_repeat in range(same_player_rep):
-        
-        #print(same_number_of_players_repeat)
+
+        # print(same_number_of_players_repeat)
 
         players = who_is_playing(num_of_opponents=number_of_opponents)
-        
-        #print(players)
-        
-        
-        same_strategy_time = same_strategies_repeat(same_strategies_rep=same_strategies_rep, players=players, number_of_repeats=number_of_repeats, game_end_probs=game_end_probs, algorithm=algorithm, execution_time=[])
+
+        # print(players)
+
+        same_strategy_time = same_strategies_repeat(
+            same_strategies_rep=same_strategies_rep,
+            players=players,
+            number_of_repeats=number_of_repeats,
+            game_end_probs=game_end_probs,
+            algorithm=algorithm,
+            execution_time=[],
+        )
 
         print("Finished inner for loop!")
 
-        mean_execution_time_for_same_players = sum(same_strategy_time) / len(same_strategy_time)
-        average_running_time_for_same_players.append(mean_execution_time_for_same_players)
+        mean_execution_time_for_same_players = sum(same_strategy_time) / len(
+            same_strategy_time
+        )
+        average_running_time_for_same_players.append(
+            mean_execution_time_for_same_players
+        )
 
-        #print(average_running_time_for_same_players)
+        # print(average_running_time_for_same_players)
     return average_running_time_for_same_players
 
 
-
-
-def run_tournament_over_diff_group_sizes(max_num_of_opponents, same_player_rep, number_of_opponents, same_strategies_rep, number_of_repeats, game_end_probs, algorithm, average_running_time=[]):
+def run_tournament_over_diff_group_sizes(
+    max_num_of_opponents,
+    same_player_rep,
+    number_of_opponents,
+    same_strategies_rep,
+    number_of_repeats,
+    game_end_probs,
+    algorithm,
+    average_running_time=[],
+):
 
     """
     A function which executes the Prisoner's Dilemma tournament for differing numbers of opponents against axl.Defector, where:
@@ -247,18 +280,27 @@ def run_tournament_over_diff_group_sizes(max_num_of_opponents, same_player_rep, 
     """
 
     while number_of_opponents <= max_num_of_opponents:
-    
-        #print(number_of_opponents)
 
-        
-        average_time_same_num = same_num_of_players_rep(same_player_rep=same_player_rep, number_of_opponents=number_of_opponents, same_strategies_rep=same_strategies_rep, number_of_repeats=number_of_repeats, game_end_probs=game_end_probs, algorithm=algorithm, average_running_time_for_same_players=[])
-        
+        # print(number_of_opponents)
+
+        average_time_same_num = same_num_of_players_rep(
+            same_player_rep=same_player_rep,
+            number_of_opponents=number_of_opponents,
+            same_strategies_rep=same_strategies_rep,
+            number_of_repeats=number_of_repeats,
+            game_end_probs=game_end_probs,
+            algorithm=algorithm,
+            average_running_time_for_same_players=[],
+        )
+
         print("Finished outer for loop!")
 
-        mean_execution_time_for_same_num = sum(average_time_same_num) / len(average_time_same_num)
+        mean_execution_time_for_same_num = sum(average_time_same_num) / len(
+            average_time_same_num
+        )
         average_running_time.append(mean_execution_time_for_same_num)
 
-        #print(average_running_time)
+        # print(average_running_time)
 
         json_file = open("timings-dict1.json", "w")
         algorithm_to_time_dict[algorithm].append(mean_execution_time_for_same_num)
@@ -270,9 +312,15 @@ def run_tournament_over_diff_group_sizes(max_num_of_opponents, same_player_rep, 
     return average_running_time
 
 
-
-
-def repeating_for_all_algorithm(max_num_of_opponents, same_player_rep, same_strategies_rep, number_of_repeats, game_ending_probs, alg_dict=algorithm_to_time_dict, number_of_opponents=1):
+def repeating_for_all_algorithm(
+    max_num_of_opponents,
+    same_player_rep,
+    same_strategies_rep,
+    number_of_repeats,
+    game_ending_probs,
+    alg_dict=algorithm_to_time_dict,
+    number_of_opponents=1,
+):
 
     """
     A function which runs the repeated timing experiments for all three
@@ -299,24 +347,39 @@ def repeating_for_all_algorithm(max_num_of_opponents, same_player_rep, same_stra
 
     for algorithm in alg_dict:
         print(algorithm)
-        run_tournament_over_diff_group_sizes(max_num_of_opponents=max_num_of_opponents, same_player_rep=same_player_rep, number_of_opponents=number_of_opponents, same_strategies_rep=same_strategies_rep, number_of_repeats=number_of_repeats, game_end_probs=game_ending_probs, algorithm=algorithm)
+        run_tournament_over_diff_group_sizes(
+            max_num_of_opponents=max_num_of_opponents,
+            same_player_rep=same_player_rep,
+            number_of_opponents=number_of_opponents,
+            same_strategies_rep=same_strategies_rep,
+            number_of_repeats=number_of_repeats,
+            game_end_probs=game_ending_probs,
+            algorithm=algorithm,
+        )
         print("Finished while loop!")
     return algorithm_to_time_dict
 
 
-#ending_probabilities = np.linspace(0.001, 1-0.001, 50)
-ending_probabilities = np.linspace(0.001, 1-0.001, 10)
+# ending_probabilities = np.linspace(0.001, 1-0.001, 50)
+ending_probabilities = np.linspace(0.001, 1 - 0.001, 10)
 
 print("I have started...")
 
-#repeating_for_all_algorithm(max_num_of_opponents=11, same_player_rep=10,
-#same_strategies_rep=5, number_of_repeats=50,
-#game_ending_probs=ending_probabilities)
+# repeating_for_all_algorithm(max_num_of_opponents=11, same_player_rep=10,
+# same_strategies_rep=5, number_of_repeats=50,
+# game_ending_probs=ending_probabilities)
 
-#repeating_for_all_algorithm(max_num_of_opponents=11, same_player_rep=10, same_strategies_rep=5, number_of_repeats=50, game_ending_probs=ending_probabilities, alg_dict=["Lemke Howson", "Vertex Enumeration"])
+# repeating_for_all_algorithm(max_num_of_opponents=11, same_player_rep=10, same_strategies_rep=5, number_of_repeats=50, game_ending_probs=ending_probabilities, alg_dict=["Lemke Howson", "Vertex Enumeration"])
 
-#repeating_for_all_algorithm(max_num_of_opponents=11, same_player_rep=5,same_strategies_rep=2, number_of_repeats=10,game_ending_probs=ending_probabilities)
+# repeating_for_all_algorithm(max_num_of_opponents=11, same_player_rep=5,same_strategies_rep=2, number_of_repeats=10,game_ending_probs=ending_probabilities)
 
-repeating_for_all_algorithm(max_num_of_opponents=9, same_player_rep=5, same_strategies_rep=2, number_of_repeats=10, game_ending_probs=ending_probabilities, alg_dict=["Lemke Howson", "Vertex Enumeration"])
+repeating_for_all_algorithm(
+    max_num_of_opponents=9,
+    same_player_rep=5,
+    same_strategies_rep=2,
+    number_of_repeats=10,
+    game_ending_probs=ending_probabilities,
+    alg_dict=["Lemke Howson", "Vertex Enumeration"],
+)
 
 print("I have finished!")
