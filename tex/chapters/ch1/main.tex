@@ -119,7 +119,7 @@ all finite games. These notions are central to the study of game
 theory \cite{maschler_solan_zamir_2013} and hence, in this section, Nash's
 concepts will be defined and proved in detail.
 
-Firstly, before the definition of a Nash equilibrium, the concept of a
+Firstly, before the definition of a Nash equilibrium, the idea of a
 \textit{best response} is introduced:
 For a game $G=(N, (S_{i})_{i \in N}, (u_{i})_{i \in N})$, the strategy, $s_{i}$,
 of the $i$th player is considered a \textit{best response} to the strategy
@@ -137,4 +137,52 @@ In other words, $s^{*}$ is a Nash equilibrium if and only if no player has any
 reason to deviate from their current strategy $s_{i}^{*}$.
 
 Recall that, in Section \ref{GamesIntro}, for any player in A Prisoner's
-Dilemma, defection dominated cooperation.
+Dilemma, defection dominated cooperation. This leads to the following
+observation:
+\begin{center}
+    \textbf{The strategy pair (Defect, Defect), is the unique Nash equilibrium for A Prisoner's Dilemma, with a payoff value of 1 for each player.} \cite{maschler_solan_zamir_2013}
+\end{center}
+This can be visualised as followed:
+Assume the row player uses the following mixed strategy, $\sigma_{r} = (x, 1-x)$
+and, similarly, assume the column player has the strategy, $\sigma_{c} = (y,
+1-y)$. The payoff obtained for the row and column player, respectively, is then:
+\newline
+\begin{math}
+    A\sigma_{c}^T = \begin{pmatrix}
+        3 & 0 \\
+        5 & 1
+    \end{pmatrix} \begin{pmatrix}
+        y \\
+        1-y
+    \end{pmatrix} = \begin{pmatrix}
+        3y \\
+        4y + 1
+    \end{pmatrix},
+
+    \sigma_{r}B = \begin{pmatrix}
+        3 & 5 \\
+        0 & 1        
+    \end{pmatrix} \begin{pmatrix}
+        x & 1-x
+    \end{pmatrix} = \begin{pmatrix}
+        3x & 4x + 1
+    \end{pmatrix}
+\end{math}
+
+Plotting these gives the following:
+
+\begin{figure}[h]
+    \centering
+        \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+            \includegraphics[width=\linewidth]{pd-row-payoff.pdf}
+        \end{subfigure}
+    \hfill
+        \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+            \includegraphics[width=\linewidth]{pd-col-payoff.pdf}
+        \end{subfigure}
+    ~
+    \caption{Graphs to show the row and column players' payoffs against a mixed strategy.}
+    \label{MixedStrstegiesPD}
+    \end{figure}
