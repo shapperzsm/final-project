@@ -4,7 +4,7 @@ import axelrod as axl
 import random
 import warnings
 import sqlalchemy as sa
-import os 
+import os
 
 ################################################################################
 def create_directory():
@@ -13,13 +13,14 @@ def create_directory():
     already exist [with many thanks to https://djangocentral.com/check-if-a-directory-exists-if-not-create-it/].
     """
 
-    existing_folder = os.path.isdir('data')
+    existing_folder = os.path.isdir("data")
     if not existing_folder:
-        os.makedirs('data/se')
-        os.makedirs('data/ve')
+        os.makedirs("data/se")
+        os.makedirs("data/ve")
         print("Necessary folders created.")
     else:
         print("Necessary folders already exist.")
+
 
 ################################################################################
 def create_database(filepath):
@@ -199,7 +200,8 @@ def array_to_string(numpy_array):
 
 ################################################################################
 def write_record(
-    experiment_number, number_of_players, 
+    experiment_number,
+    number_of_players,
     player_strategy_name,
     is_long_run_time,
     is_stochastic,
@@ -272,7 +274,8 @@ def write_record(
     """
 
     record = (
-        experiment_number, number_of_players, 
+        experiment_number,
+        number_of_players,
         str(player_strategy_name),
         is_long_run_time,
         is_stochastic,
@@ -345,11 +348,14 @@ def run_experiment(
 
                         for player in players:
                             write_record(
-                                experiment_number=unique_tournament_identifier, number_of_players=len(players),
+                                experiment_number=unique_tournament_identifier,
+                                number_of_players=len(players),
                                 player_strategy_name=player,
                                 is_long_run_time=player.classifier["long_run_time"],
                                 is_stochastic=player.classifier["stochastic"],
-                                memory_depth_of_strategy=player.classifier["memory_depth"],
+                                memory_depth_of_strategy=player.classifier[
+                                    "memory_depth"
+                                ],
                                 prob_of_game_ending=tournament_run[
                                     "probability of game ending"
                                 ],
@@ -362,7 +368,7 @@ def run_experiment(
                                     "least prob of defect"
                                 ],
                                 greatest_prob_of_defection=defection_probs[
-                                "greatest prob of defect"
+                                    "greatest prob of defect"
                                 ],
                                 noise=tournament_run["noise"],
                                 warning_message=defection_probs["warning message"],
