@@ -11,5 +11,5 @@ main.toc
 tex/references/main.bib.bak
 main.bcf
 main.run.xml
-src/database-code/__pycache__/
 src/database-code/data/
+src/database-code/__pycache__/
