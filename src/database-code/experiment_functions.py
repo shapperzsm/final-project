@@ -4,7 +4,22 @@ import axelrod as axl
 import random
 import warnings
 import sqlalchemy as sa
+import os 
 
+################################################################################
+def create_directory():
+    """
+    A function which creates the necessary folder structure if it does not
+    already exist [with many thanks to https://djangocentral.com/check-if-a-directory-exists-if-not-create-it/].
+    """
+
+    existing_folder = os.path.isdir('data')
+    if not existing_folder:
+        os.makedirs('data/se')
+        os.makedirs('data/ve')
+        print("Necessary folders created.")
+    else:
+        print("Necessary folders already exist.")
 
 ################################################################################
 def create_database(filepath):
@@ -23,6 +38,7 @@ def create_database(filepath):
     create_table = """
     CREATE TABLE IF NOT EXISTS folk_theorem_experiment (
         experiment_number           INTEGER NOT NULL,
+        number_of_players           INTEGER NOT NULL,
         player_strategy_name        TEXT NOT NULL,
         is_long_run_time            BOOLEAN NOT NULL,
         is_stochastic               BOOLEAN NOT NULL,
@@ -183,7 +199,7 @@ def array_to_string(numpy_array):
 
 ################################################################################
 def write_record(
-    experiment_number,
+    experiment_number, number_of_players, 
     player_strategy_name,
     is_long_run_time,
     is_stochastic,
@@ -203,6 +219,8 @@ def write_record(
     A function which converts the results to a suitable format and writes them to a database, where:
 
     'experiment_number' is a distinct index for each tournament executed;
+
+    'number_of_players' is a numeric variable stating how many strategies took part in the tournament;
 
     'player_strategy_name' is a string containing the name of the strategy as given in the Axelrod library;
 
@@ -248,13 +266,13 @@ def write_record(
 
     read_into_sql = """
         INSERT into folk_theorem_experiment 
-            (experiment_number, player_strategy_name, is_long_run_time, is_stochastic, memory_depth_of_strategy, prob_of_game_ending, payoff_matrix, num_of_repetitions, num_of_equilibria, nash_equilibria, least_prob_of_defection, greatest_prob_of_defection, noise, warning_message)
+            (experiment_number, number_of_players, player_strategy_name, is_long_run_time, is_stochastic, memory_depth_of_strategy, prob_of_game_ending, payoff_matrix, num_of_repetitions, num_of_equilibria, nash_equilibria, least_prob_of_defection, greatest_prob_of_defection, noise, warning_message)
         VALUES 
-            (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     """
 
     record = (
-        experiment_number,
+        experiment_number, number_of_players, 
         str(player_strategy_name),
         is_long_run_time,
         is_stochastic,
@@ -303,52 +321,53 @@ def run_experiment(
      """
     unique_tournament_identifier = 0
     axl.seed(unique_tournament_identifier)
-    for num_of_opponents in range(1, max_num_of_opponents + 1):
+    while True:
+        for num_of_opponents in range(1, max_num_of_opponents + 1):
 
-        for player_sample_repetition in range(1, number_of_player_samples + 1):
-            players = who_is_playing(
-                num_of_opponents=num_of_opponents, long_run_strategies=False
-            )
+            for player_sample_repetition in range(1, number_of_player_samples + 1):
+                players = who_is_playing(
+                    num_of_opponents=num_of_opponents, long_run_strategies=False
+                )
 
-            for noise in noise_probs:
+                for noise in noise_probs:
 
-                for probability in game_ending_probs:
-                    tournament_run = get_game(
-                        tournament_rep=tournament_rep,
-                        player_list=players,
-                        prob_of_game_ending=probability,
-                        noise=noise,
-                    )
-                    defection_probs = get_prob_of_defection(
-                        payoff_matrix=tournament_run["payoff matrix obtained"],
-                        support_enumeration=support_enumeration,
-                    )
-
-                    for player in players:
-                        write_record(
-                            experiment_number=unique_tournament_identifier,
-                            player_strategy_name=player,
-                            is_long_run_time=player.classifier["long_run_time"],
-                            is_stochastic=player.classifier["stochastic"],
-                            memory_depth_of_strategy=player.classifier["memory_depth"],
-                            prob_of_game_ending=tournament_run[
-                                "probability of game ending"
-                            ],
+                    for probability in game_ending_probs:
+                        tournament_run = get_game(
+                            tournament_rep=tournament_rep,
+                            player_list=players,
+                            prob_of_game_ending=probability,
+                            noise=noise,
+                        )
+                        defection_probs = get_prob_of_defection(
                             payoff_matrix=tournament_run["payoff matrix obtained"],
-                            num_of_repetitions=tournament_run[
-                                "number of tournament repeats"
-                            ],
-                            nash_equilibria=defection_probs["nash equilibria"],
-                            least_prob_of_defection=defection_probs[
-                                "least prob of defect"
-                            ],
-                            greatest_prob_of_defection=defection_probs[
-                                "greatest prob of defect"
-                            ],
-                            noise=tournament_run["noise"],
-                            warning_message=defection_probs["warning message"],
-                            database_filepath=database_filepath,
+                            support_enumeration=support_enumeration,
                         )
 
-                    unique_tournament_identifier += 1
-                    axl.seed(unique_tournament_identifier)
+                        for player in players:
+                            write_record(
+                                experiment_number=unique_tournament_identifier, number_of_players=len(players),
+                                player_strategy_name=player,
+                                is_long_run_time=player.classifier["long_run_time"],
+                                is_stochastic=player.classifier["stochastic"],
+                                memory_depth_of_strategy=player.classifier["memory_depth"],
+                                prob_of_game_ending=tournament_run[
+                                    "probability of game ending"
+                                ],
+                                payoff_matrix=tournament_run["payoff matrix obtained"],
+                                num_of_repetitions=tournament_run[
+                                    "number of tournament repeats"
+                                ],
+                                nash_equilibria=defection_probs["nash equilibria"],
+                                least_prob_of_defection=defection_probs[
+                                    "least prob of defect"
+                                ],
+                                greatest_prob_of_defection=defection_probs[
+                                "greatest prob of defect"
+                                ],
+                                noise=tournament_run["noise"],
+                                warning_message=defection_probs["warning message"],
+                                database_filepath=database_filepath,
+                            )
+
+                        unique_tournament_identifier += 1
+                        axl.seed(unique_tournament_identifier)
