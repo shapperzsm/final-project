@@ -40,6 +40,7 @@ def create_database(filepath):
     CREATE TABLE IF NOT EXISTS folk_theorem_experiment (
         experiment_number           INTEGER NOT NULL,
         number_of_players           INTEGER NOT NULL,
+        tournament_player_set       INTEGER NOT NULL,
         player_strategy_name        TEXT NOT NULL,
         is_long_run_time            BOOLEAN NOT NULL,
         is_stochastic               BOOLEAN NOT NULL,
@@ -202,6 +203,7 @@ def array_to_string(numpy_array):
 def write_record(
     experiment_number,
     number_of_players,
+    tournament_player_set,
     player_strategy_name,
     is_long_run_time,
     is_stochastic,
@@ -223,6 +225,8 @@ def write_record(
     'experiment_number' is a distinct index for each tournament executed;
 
     'number_of_players' is a numeric variable stating how many strategies took part in the tournament;
+    
+    'tournament_player_set' is a numeric variable which gives a distinct index to each different set of players who play in the tournaments;
 
     'player_strategy_name' is a string containing the name of the strategy as given in the Axelrod library;
 
@@ -268,14 +272,15 @@ def write_record(
 
     read_into_sql = """
         INSERT into folk_theorem_experiment 
-            (experiment_number, number_of_players, player_strategy_name, is_long_run_time, is_stochastic, memory_depth_of_strategy, prob_of_game_ending, payoff_matrix, num_of_repetitions, num_of_equilibria, nash_equilibria, least_prob_of_defection, greatest_prob_of_defection, noise, warning_message)
+            (experiment_number, number_of_players, tournament_player_set, player_strategy_name, is_long_run_time, is_stochastic, memory_depth_of_strategy, prob_of_game_ending, payoff_matrix, num_of_repetitions, num_of_equilibria, nash_equilibria, least_prob_of_defection, greatest_prob_of_defection, noise, warning_message)
         VALUES 
-            (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     """
 
     record = (
         experiment_number,
         number_of_players,
+        tournament_player_set,
         str(player_strategy_name),
         is_long_run_time,
         is_stochastic,
@@ -324,9 +329,10 @@ def run_experiment(
      """
     unique_tournament_identifier = 0
     axl.seed(unique_tournament_identifier)
+    tournament_player_set = 0
     while True:
         for num_of_opponents in range(1, max_num_of_opponents + 1):
-
+            
             for player_sample_repetition in range(1, number_of_player_samples + 1):
                 players = who_is_playing(
                     num_of_opponents=num_of_opponents, long_run_strategies=False
@@ -350,6 +356,7 @@ def run_experiment(
                             write_record(
                                 experiment_number=unique_tournament_identifier,
                                 number_of_players=len(players),
+                                tournament_player_set=tournament_player_set,
                                 player_strategy_name=player,
                                 is_long_run_time=player.classifier["long_run_time"],
                                 is_stochastic=player.classifier["stochastic"],
@@ -377,3 +384,4 @@ def run_experiment(
 
                         unique_tournament_identifier += 1
                         axl.seed(unique_tournament_identifier)
+                tournament_player_set += 1    
