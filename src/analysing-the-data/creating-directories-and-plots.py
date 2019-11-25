@@ -11,6 +11,7 @@ connect_dbms_to_db = database_management_sys.connect()
 sql_no_degenerate = """
     SELECT * FROM folk_theorem_experiment
     WHERE warning_message = 'None'
+    AND tournament_player_set = '1'
 """
 
 supp_en_data = pd.read_sql(sql_no_degenerate, connect_dbms_to_db)
