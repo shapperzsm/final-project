@@ -5,6 +5,8 @@ import os
 import matplotlib.pyplot as plt
 plt.rcParams.update({'figure.max_open_warning': 0})
 
+import random
+
 
 database_management_sys = sa.create_engine('sqlite:///../../../../Desktop/rerun-data-no-long-run/se/main.db')
 connect_dbms_to_db = database_management_sys.connect()
@@ -25,7 +27,7 @@ player_set_collection = """
 """
 
 #for num_of_sets in range(maximum_player_set):
-for num_of_sets in [0, 24, 53, 70, 94]:
+for num_of_sets in [random.randint(0, maximum_player_set) for index in range(10)]:
      collect_relevant_data = connect_dbms_to_db.execute(player_set_collection, num_of_sets)
      num_of_set_data = pd.DataFrame(collect_relevant_data.fetchall(), columns=table_headings)
 
