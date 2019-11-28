@@ -36,17 +36,15 @@ for num_of_sets in [random.randint(0, maximum_player_set) for index in range(10)
      for noise in list(num_of_set_data["noise"].drop_duplicates()):
 
           p = Path("../../images/folk_thm/single_game/" + str(num_of_players) + "/" + str(num_of_sets) + "/" + str(noise) + "/")
-          if p.exists() == False:
-               p.mkdir(parents=True)
-               print(str(p) + " was created.")
-          else:
-               print(str(p) + " already exists.")
+         
+          p.mkdir(parents=True, exist_ok=True)
+
 
           markdown_path = p / "README.md"
           strategy_table = pd.DataFrame(num_of_set_data[["player_strategy_name", "is_long_run_time", "is_stochastic", "memory_depth_of_strategy"]].iloc[list(range(num_of_players))])                   
-          README = open(str(markdown_path), "w")
-          README.write("# Single Game Plot \n" + "Player Strategy Data:\n"+ str(strategy_table) + "\n ## Noise = " + str(noise))
-          README.close()
+          with open(str(markdown_path), "w") as README:
+               README.write("# Single Game Plot \n" + "Player Strategy Data:\n"+ str(strategy_table) + "\n ## Noise = " + str(noise))
+     
           
           specific_noise_data = num_of_set_data[num_of_set_data["noise"] == noise]
           if specific_noise_data["warning_message"].all() == "None":
