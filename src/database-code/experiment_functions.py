@@ -332,7 +332,7 @@ def run_experiment(
     tournament_player_set = 0
     while True:
         for num_of_opponents in range(1, max_num_of_opponents + 1):
-            
+
             for player_sample_repetition in range(1, number_of_player_samples + 1):
                 players = who_is_playing(
                     num_of_opponents=num_of_opponents, long_run_strategies=False
@@ -384,4 +384,4 @@ def run_experiment(
 
                         unique_tournament_identifier += 1
                         axl.seed(unique_tournament_identifier)
-                tournament_player_set += 1    
+                tournament_player_set += 1
