@@ -77,66 +77,26 @@ for num_of_sets in [random.randint(0, maximum_player_set) for index in range(10)
             )
 
         specific_noise_data = num_of_set_data[num_of_set_data["noise"] == noise]
-        if specific_noise_data["warning_message"].all() == "None":
-            plot_path = p / "main.pdf"
-            graph = plt.figure()
-            axes = graph.add_subplot(1, 1, 1)
-            axes.set_xlabel("$p =$ the probability of the game ending")
-            axes.set_ylabel("probability of defection in equilibria")
-            axes.plot(
-                specific_noise_data["prob_of_game_ending"],
-                specific_noise_data["least_prob_of_defection"],
-                "r",
-                label="least prob of defection",
-            )
-            axes.plot(
-                specific_noise_data["prob_of_game_ending"],
-                specific_noise_data["greatest_prob_of_defection"],
-                "y--",
-                label="greatest prob of defection",
-            )
-            axes.legend()
-            graph.savefig(str(plot_path))
-            plt.close()
-        else:
-            plot_path = p / "main.pdf"
-            graph = plt.figure()
-            axes = graph.add_subplot(1, 1, 1)
-            axes.set_xlabel("$p =$ the probability of the game ending")
-            axes.set_ylabel("probability of defection in equilibria")
+        
+        plot_path = p / "main.pdf"
+        graph = plt.figure()
+        axes = graph.add_subplot(1, 1, 1)
+        axes.set_xlabel("$p =$ the probability of the game ending")
+        axes.set_ylabel("probability of defection in equilibria")
+        
+        if specific_noise_data["warning_message"] == "None":
+            x_values = [specific_noise_data["prob_of_game_ending"],specific_noise_data["prob_of_game_ending"]]
+            y_data = [specific_noise_data["least_prob_of_defection"],specific_noise_data["greatest_prob_of_defection"]]
+            colours = ["r", "y"]
+            linestyles = ["-", "--"]
+            label_list = ["least prob of defection", "greatest prob of defection"]
+        else:    
             degenerate_data = specific_noise_data[
                 specific_noise_data["warning_message"] != "None"
             ]
             non_degen_data = specific_noise_data[
                 specific_noise_data["warning_message"] == "None"
             ]
-            colours = ["r", "y", "b", "g"]
-            linestyles = ["-", "--", "-", "--"]
-            data_list = [
-                non_degen_data["least_prob_of_defection"],
-                non_degen_data["greatest_prob_of_defection"],
-                degenerate_data["least_prob_of_defection"],
-                degenerate_data["greatest_prob_of_defection"],
-            ]
-            label_list = [
-                "least prob of defection",
-                "greatest prob of defection",
-                "least prob of defection (could be degenerate)",
-                "greatest prob of defection (could be degenerate)",
-            ]
-            game_ending_probabilities = [
-                non_degen_data["prob_of_game_ending"],
-                non_degen_data["prob_of_game_ending"],
-                degenerate_data["prob_of_game_ending"],
-                degenerate_data["prob_of_game_ending"],
-            ]
-            for xvalues, data, linestyle, colour, label in zip(
-                game_ending_probabilities, data_list, linestyles, colours, label_list
-            ):
-                axes.plot(xvalues, data, linestyle=linestyle, color=colour, label=label)
-            axes.legend()
-            graph.savefig(str(plot_path))
-            plt.close()
 
             degenerate_experiment_num = degenerate_data["experiment_number"]
             degenerate_game_ending_prob = degenerate_data["prob_of_game_ending"]
@@ -149,11 +109,39 @@ for num_of_sets in [random.randint(0, maximum_player_set) for index in range(10)
                 ],
                 axis=1,
             ).drop_duplicates()
+
             degen_markdown_path = p / "degenerate.md"
-            degenerate_info = open(str(degen_markdown_path), "w")
-            degenerate_info.write(
-                "# Potentially degenerate games were used in this plot.\n"
-                + "## Details of specific games which could be degenerate.\n"
-                + str(degenerate_details)
-            )
-            degenerate_info.close()
+            with open(str(degen_markdown_path), "w") as degenerate_info:
+                degenerate_info.write(
+                    "# Potentially degenerate games were used in this plot.\n"
+                    + "## Details of specific games which could be degenerate.\n"
+                    + str(degenerate_details)
+                )
+
+            x_values = [
+                non_degen_data["prob_of_game_ending"],
+                non_degen_data["prob_of_game_ending"],
+                degenerate_data["prob_of_game_ending"],
+                degenerate_data["prob_of_game_ending"],
+            ]
+            y_data = [
+                non_degen_data["least_prob_of_defection"],
+                non_degen_data["greatest_prob_of_defection"],
+                degenerate_data["least_prob_of_defection"],
+                degenerate_data["greatest_prob_of_defection"],
+            ]
+            colours = ["r", "y", "b", "g"]
+            linestyles = ["-", "--", "-", "--"]
+            label_list = [
+                "least prob of defection",
+                "greatest prob of defection",
+                "least prob of defection (could be degenerate)",
+                "greatest prob of defection (could be degenerate)",
+            ]
+
+
+        for xvalue, data, colour, linestyle, label in zip(x_values, y_data,colours, linestyles, label_list):
+            plt.plot(xvalue, data, color=colour, linestyle=linestyle, label=label)
+        axes.legend()
+        graph.savefig(str(plot_path))
+        plt.close()
