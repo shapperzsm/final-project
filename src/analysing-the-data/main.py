@@ -77,20 +77,26 @@ for num_of_sets in [random.randint(0, maximum_player_set) for index in range(10)
             )
 
         specific_noise_data = num_of_set_data[num_of_set_data["noise"] == noise]
-        
+
         plot_path = p / "main.pdf"
         graph = plt.figure()
         axes = graph.add_subplot(1, 1, 1)
         axes.set_xlabel("$p =$ the probability of the game ending")
         axes.set_ylabel("probability of defection in equilibria")
-        
+
         if specific_noise_data["warning_message"].all() == "None":
-            x_values = [specific_noise_data["prob_of_game_ending"],specific_noise_data["prob_of_game_ending"]]
-            y_data = [specific_noise_data["least_prob_of_defection"],specific_noise_data["greatest_prob_of_defection"]]
+            x_values = [
+                specific_noise_data["prob_of_game_ending"],
+                specific_noise_data["prob_of_game_ending"],
+            ]
+            y_data = [
+                specific_noise_data["least_prob_of_defection"],
+                specific_noise_data["greatest_prob_of_defection"],
+            ]
             colours = ["r", "y"]
             linestyles = ["-", "--"]
             label_list = ["least prob of defection", "greatest prob of defection"]
-        else:    
+        else:
             degenerate_data = specific_noise_data[
                 specific_noise_data["warning_message"] != "None"
             ]
@@ -139,8 +145,9 @@ for num_of_sets in [random.randint(0, maximum_player_set) for index in range(10)
                 "greatest prob of defection (could be degenerate)",
             ]
 
-
-        for xvalue, data, colour, linestyle, label in zip(x_values, y_data,colours, linestyles, label_list):
+        for xvalue, data, colour, linestyle, label in zip(
+            x_values, y_data, colours, linestyles, label_list
+        ):
             axes.plot(xvalue, data, color=colour, linestyle=linestyle, label=label)
         axes.legend()
         graph.savefig(str(plot_path))
