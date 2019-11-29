@@ -50,7 +50,7 @@ for num_of_sets in [random.randint(0, maximum_player_set) for index in range(10)
             + "/"
             + str(num_of_sets)
             + "/"
-            + str(noise)
+            + str(round(noise, 1))
             + "/"
         )
 
@@ -84,7 +84,7 @@ for num_of_sets in [random.randint(0, maximum_player_set) for index in range(10)
         axes.set_xlabel("$p =$ the probability of the game ending")
         axes.set_ylabel("probability of defection in equilibria")
         
-        if specific_noise_data["warning_message"] == "None":
+        if specific_noise_data["warning_message"].all() == "None":
             x_values = [specific_noise_data["prob_of_game_ending"],specific_noise_data["prob_of_game_ending"]]
             y_data = [specific_noise_data["least_prob_of_defection"],specific_noise_data["greatest_prob_of_defection"]]
             colours = ["r", "y"]
@@ -141,7 +141,7 @@ for num_of_sets in [random.randint(0, maximum_player_set) for index in range(10)
 
 
         for xvalue, data, colour, linestyle, label in zip(x_values, y_data,colours, linestyles, label_list):
-            plt.plot(xvalue, data, color=colour, linestyle=linestyle, label=label)
+            axes.plot(xvalue, data, color=colour, linestyle=linestyle, label=label)
         axes.legend()
         graph.savefig(str(plot_path))
         plt.close()
