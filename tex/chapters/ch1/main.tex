@@ -49,13 +49,9 @@ Table~\ref{tab:PD_outcomes}).
 \end{tabular}
 Each coordinate \((a, b)\) in the table represents the utility values obtained
 for each player, where  \(a\) is the utility value obtained by the row player
-and \(b\) is the utility gained by the column player. More formally, the game
-can be represented as the following matrix.
-
-
-
-
-which has the following normal form representation:
+and \(b\) is the utility gained by the column player. These utility values are
+as given in \cite{axelrod1980effective} and are used throughout this project.
+More formally, the game can be represented as the following matrix:
 
 \kbordermatrix{
     \mbox{ } & coop & defect\\ 
@@ -63,26 +59,41 @@ which has the following normal form representation:
     defect & (5, 0) & (1, 1)
 }\label{PDMatrix}
 
-where each cell contains the ordered pair (row player's payoff, column player's
-payoff). The payoff values are as given in \cite{axelrod1980effective} and are
-used throughout this project.
+which is known as a \emph{normal form} representation of the game. The following
+definition is adapted from~\cite{maschler_solan_zamir_2013}.
 
 In general a \textit{normal form} or \textit{strategic form} game is defined by
-an ordered triple $G = (N, (S_i)_{i \in N}, (u_i)_{i \in N})$, where:
+an ordered triple \(G = (N, (S_i)_{i \in N}, (u_i)_{i \in N})\), where:
 \begin{itemize}
-    \item $N = \{1, 2,..., n\}$ is a finite set of players;
-    \item $S = S_1 \times S_2, \times ... \times S_n$ is the set of strategies
-    for all players in which each vector $(S_i)_{i \in N}$ is the set of
+    \item \(N = \{1, 2,..., n\}\) is a finite set of players;
+    \item \(S = S_1 \times S_2, \times ... \times S_n\) is the set of strategies
+    for all players in which each vector \((S_i)_{i \in N}\) is the set of
     strategies for player i \footnote{Since the game of A Prisoner's Dilemma has
-    a finite strategy set for each player $S_i = \{ \text{cooperate},
-    \text{defect}\} (i \in N)$, in this project only finite strategy spaces are
+    a finite strategy set for each player \(S_i = \{ \text{cooperate},
+    \text{defect}\} (i \in N)\), in this project only finite strategy spaces are
     considered.}; and
-    \item $u_i : S \to \mathbb{R}$ is a payoff function which associates each
-    strategy vector, $\textbf{s} = (s_i)_{i \in N}$, with a utility
-    \footnote{'Utility' is referred to as a player's 'payoff' throughout this
-    report.} $u_i(i \in N)$.
+    \item \(u_i : S \to \mathbb{R}\) is a payoff function which associates each
+    strategy vector, \(\textbf{s} = (s_i)_{i \in N}\), with a utility
+    \footnote{'Utility' is referred to as a player's `payoff' throughout the
+    remainder of this report.} \(u_i(i \in N)\).
 \end{itemize}
-\cite{maschler_solan_zamir_2013}
+
+Yet another way of representing this game is as a pair of matrices, \(A, B\),
+defined as follows:
+\[
+    A = 
+    \begin{pmatrix}
+       3 & 0\\
+       5 & 1\\ 
+    \end{pmatrix}
+    \text{ and } B = A^{T}
+    \begin{pmatrix}
+        3 & 5\\
+        0 & 1\\
+    \end{pmatrix}
+\]
+This way of defining games allow for the use of calculating payoffs for each
+player (see Section~\ref{sec:NE_for_Normal_Form_Games}).
 
 Before continuing the discussion into the key notions of game theory, it needs
 to be highlighted that there is an important assumption, which is central to
@@ -94,77 +105,76 @@ This, more formally, is an infinite list of statements which claim:
         \item All players know that the other players know that they are rational; etc.    
     \end{itemize}
 Assuming Common Knowledge of Rationality allows for the prediction of rational
-behaviour through a processes entitled \textit{rationalisation} \cite{Knight2019}
-(see section 4.5 in \cite{maschler_solan_zamir_2013} for an alternative
+behaviour through a processes entitled \textit{rationalisation}~\cite{Knight2019}
+(see section 4.5 in~\cite{maschler_solan_zamir_2013} for an alternative
 explanation of this assumption). 
 
 
-A strategy for player $i$, $s_{i}$, is \textit{strictly dominated} if there
-exists another strategy for player $i$, say $\bar{s_{i}}$, such that for all
-strategy vectors $s_{-i} \in S_{-i}$ of the other players, 
-$$
+A strategy for player \(i\), \(s_{i}\), is \textit{strictly dominated} if there
+exists another strategy for player \(i\), say \(\bar{s_{i}}\), such that for all
+strategy vectors \(s_{-i} \in S_{-i}\) of the other players, 
+\[
     u_{i}(s_{i}, s_{-i}) < u_{i}(\bar{s_{i}}, s_{i}).
-$$
-In this case we say that $s_{i}$ is \textit{strictly dominated} by
-$\bar{s_{i}}$. Here, $s_{-i} = \{s_{1}, s_{2}, ..., s_{i-1}, s_{i+1}, ...,
-s_{n}\}$, i.e. the $i$th player's strategy has been omitted. The set, $S_{-i}$,
+\]
+In this case we say that \(s_{i}\) is \textit{strictly dominated} by
+\(\bar{s_{i}}\). Here, \(s_{-i} = \{s_{1}, s_{2}, ..., s_{i-1}, s_{i+1}, ...,
+s_{n}\}\), i.e. the \(i\)th player's strategy has been omitted. The set, \(S_{-i}\),
 is defined similarly. Looking at the row player's matrix of a Prisoner's Dilemma
 \ref{PDMatrix} (the first entries in the ordered tuples), it is clear that
 cooperation is a strictly dominated strategy. Due to the symmetricity of the
-game, this is also true for the column player. \cite{maschler_solan_zamir_2013}
+game, this is also true for the column player.~\cite{maschler_solan_zamir_2013}
 
 
 
-So far, only the pure strategies, $S_{i}=\{\text{coop}, \text{defect}\}$, have
-been discussed, thus the notion of a probability distribution over $S_{i}$ is
-now introduced, giving the so-called \textit{mixed strategies}:
-Let $G=(N, (S_{i})_{i \in N}, (u_{i})_{i \in N})$ be a game (with each $S_{i}$
-finite), then a \textit{mixed strategy} for player $i$ is a probability
-distribution over their strategy set $S_{i}$. Define:
-$$
+So far, only the pure strategies, \(S_{i}=\{\text{coop}, \text{defect}\}\), have
+been discussed, thus the notion of a probability distribution over \(S_{i}\) is
+now introduced, giving the so-called \textit{mixed strategies} as defined in~\cite{maschler_solan_zamir_2013}:
+Let \(G=(N, (S_{i})_{i \in N}, (u_{i})_{i \in N})\) be a game (with each \(S_{i}\)
+finite), then a \textit{mixed strategy} for player \(i\) is a probability
+distribution over their strategy set \(S_{i}\). Define:
+\[
 \Sigma_{i} := \{\sigma_{i} : S_{i} \to [0, 1] : \sum_{s_{i} \in S_{i}}{\sigma_{i}(s_{i})} = 1\}   
-$$
-to be the set of mixed strategies for player $i$. Hence, observe that the pure
-strategies are specific cases of mixed strategies, with $\sigma_{i} = (1, 0)$
-for cooperation and $\sigma_{i} = (0, 1)$ for defection, in the example of a
-Prisoner's Dilemma. \cite{maschler_solan_zamir_2013}
+\]
+to be the set of mixed strategies for player \(i\). Hence, observe that the pure
+strategies are specific cases of mixed strategies, with \(\sigma_{i} = (1, 0)\)
+for cooperation and \(\sigma_{i} = (0, 1)\) for defection, in the example of a
+Prisoner's Dilemma. 
 
-\section{Nash Equilibrium for Normal Form Games}
+\section{Nash Equilibrium for Normal Form Games}\label{sec:NE_for_Normal_Form_Games}
 As mentioned above, mathematician, John Nash, introduced the concept of an
 equilibrium point and proved the existence of mixed strategy Nash Equilibria in
 all finite games. These notions are central to the study of game
-theory \cite{maschler_solan_zamir_2013} and hence, in this section, Nash's
+theory~\cite{maschler_solan_zamir_2013} and hence, in this section, Nash's
 concepts will be defined and proved in detail.
 
-Firstly, before the definition of a Nash equilibrium, the idea of a
-\textit{best response} is introduced:
-For a game $G=(N, (S_{i})_{i \in N}, (u_{i})_{i \in N})$, the strategy, $s_{i}$,
-of the $i$th player is considered a \textit{best response} to the strategy
-vector $s_{-i}$ if $u_{i}(s_{i}, s_{-i}) = \max_{t_{i} \in S_{i}}u_{i}(t_{i},
-s_{-i})$. \cite{maschler_solan_zamir_2013}
+Firstly, before the definition of a Nash equilibrium, the idea, as given in~
+\cite{maschler_solan_zamir_2013} of a \textit{best response} is introduced:
+For a game \(G=(N, (S_{i})_{i \in N}, (u_{i})_{i \in N})\), the strategy,
+\(s_{i}\), of the \(i\)th player is considered a \textit{best response} to the
+strategy vector \(s_{-i}\) if \(u_{i}(s_{i}, s_{-i}) = \max_{t_{i} \in
+S_{i}}u_{i}(t_{i}, s_{-i})\).
 
 This leads onto the main definition of the section:
-\begin{definition}
-    Given a game $G=(N, (S_{i})_{i \in N}, (u_{i})_{i \in N})$, the vector of
-    strategies $s^{*} = (s_{1}^{*}, s_{2}^{*}, ..., s_{n}^{*})$ is a
-    \textit{Nash equilibrium} if, for all players $i \in N$, $s_{i}^{*}$ is a
-    best response to $s_{i}^{*} \in N$. \cite{maschler_solan_zamir_2013}
+\begin{definition}\label{def:NE}
+    Given a game \(G=(N, (S_{i})_{i \in N}, (u_{i})_{i \in N})\), the vector of
+    strategies \(s^{*} = (s_{1}^{*}, s_{2}^{*}, \ldots, s_{n}^{*})\) is a
+    \textit{Nash equilibrium} if, for all players \(i \in N\), \(s_{i}^{*}\) is a best response to \(s_{i}^{*} \in N\).~\cite{maschler_solan_zamir_2013}
 \end{definition}
-In other words, $s^{*}$ is a Nash equilibrium if and only if no player has any
-reason to deviate from their current strategy $s_{i}^{*}$.
+In other words, \(s^{*}\) is a Nash equilibrium if and only if no player has any
+reason to deviate from their current strategy \(s_{i}^{*}\).
 
-Recall that, in Section \ref{GamesIntro}, for any player in A Prisoner's
-Dilemma, defection dominated cooperation. This leads to the following
+Recall that, in Section~\ref{sec:An_Intro_to_Games}, for any player in A
+Prisoner's Dilemma, defection dominated cooperation. This leads to the following
 observation:
 \begin{center}
-    \textbf{The strategy pair (Defect, Defect), is the unique Nash equilibrium for A Prisoner's Dilemma, with a payoff value of 1 for each player.} \cite{maschler_solan_zamir_2013}
+    \textbf{The strategy pair (Defect, Defect), is the unique Nash equilibrium for A Prisoner's Dilemma, with a payoff value of 1 for each player.}~s\cite{maschler_solan_zamir_2013}
 \end{center}
 This can be visualised as followed:
-Assume the row player uses the following mixed strategy, $\sigma_{r} = (x, 1-x)$
-and, similarly, assume the column player has the strategy, $\sigma_{c} = (y,
-1-y)$. The payoff obtained for the row and column player, respectively, is then:
-\newline
-\begin{math}
+Assume the row player uses the following mixed strategy, \(\sigma_{r} = (x,
+1-x)\), i.e. the probability of cooperating is \(x\) and the probability of
+defecting is \(1-x\). Similarly, assume the column player has 
+the strategy, \(\sigma_{c} = (y, 1-y)\). The payoff obtained for the row and column player, respectively, is then:
+\[
     A\sigma_{c}^T = \begin{pmatrix}
         3 & 0 \\
         5 & 1
@@ -184,10 +194,9 @@ and, similarly, assume the column player has the strategy, $\sigma_{c} = (y,
     \end{pmatrix} = \begin{pmatrix}
         3x & 4x + 1
     \end{pmatrix}
-\end{math}
+\]
 
 Plotting these gives the following:
-
 \begin{figure}[h]
     \centering
         \begin{subfigure}[t]{0.45\textwidth}
@@ -198,8 +207,43 @@ Plotting these gives the following:
         \begin{subfigure}[t]{0.45\textwidth}
         \centering
             \includegraphics[width=\linewidth]{pd-col-payoff.pdf}
-        \end{subfigure}
-    ~
-    \caption{Graphs to show the row and column players' payoffs against a mixed strategy.}
-    \label{MixedStrstegiesPD}
+        \end{subfigure}~\caption{Graphs to show the row and column players' payoffs against a mixed strategy.}
+    \label{fig:mixed_strategy_PD}
     \end{figure}
+From Figure~\ref{fig:mixed_strategy_PD} it is clear that, regardless of the
+strategy played by the opponent, defection is indeed the only rational move for
+one to play. Thus, both players have no incentive to deviate if and only if both
+play the strategy \(\sigma=(0, 1)\), i.e. defection for every single game of A
+Prisoner's Dilemma.
+
+On the other hand, consider, for example, a game with no dominated
+strategies~\footnote{The game highlighted here is another standard used in game
+theory entitled \emph{Matching Pennies}. Moreover, it is what is defined as a
+\emph{zero-sum} game. Interested readers are encouraged to read Example 4.21
+of~\cite{Webb2007} for an introduction to the game and Section 4.12
+in~\cite{maschler_solan_zamir_2013} for an explanation of zero-sum games.}:
+\[
+    A =
+    \begin{pmatrix}
+        1 & -1\\
+        -1 & 1\\
+    \end{pmatrix}
+
+    B =
+    \begin{pmatrix}
+        -1 & 1\\
+        1 & -1\\
+    \end{pmatrix}
+\]
+Are Nash Equilibria guaranteed to exist? This result is given in the next
+theorem, taken from~\cite{nash1951non}, Nash's second paper on equilibria in games.
+
+\begin{theorem}\label{thm:Nash}
+    Every finite game has an equilibrium point.
+\end{theorem}
+
+The proof of Theorem~\label{thm:Nash} includes the use of \emph{Brouwer's fixed
+point theorem} and thus, a short sub-section regarding this result is given
+before providing a formal proof.
+
+\subsection{Brouwer's Fixed Point Theorem}\label{subsec:Brouwer_thm}
