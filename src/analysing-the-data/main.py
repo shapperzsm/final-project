@@ -10,7 +10,7 @@ import random
 
 
 database_management_sys = sa.create_engine(
-    "sqlite:///../../../../Desktop/rerun-data-no-long-run/se/main.db"
+    "sqlite:///../database-code/data/se/main.db"
 )
 connect_dbms_to_db = database_management_sys.connect()
 
