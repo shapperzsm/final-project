@@ -1,30 +1,26 @@
-\chapter{Introduction}
+\chapter{Introduction}\label{ch:Introduction}
 
 Game Theory is the study of interactive decision making and developing
-strategies through mathematics \cite{Dictionary2013}. It analyses and gives
+strategies through mathematics~\cite{Dictionary2013}. It analyses and gives
 methods for predicting the choices made by players (those making a decision),
-whilst also suggesting ways to improve their 'outcome'
-\cite{maschler_solan_zamir_2013}. Here, the abstract notion of utility is what
-the players wish to maximise (see Chapter 2 in \cite{maschler_solan_zamir_2013}
-for a detailed discussion on the topic of utility theory or Section 1.3
-\cite{Webb2007} for a more introductory explanation). One of the earliest
+whilst also suggesting ways to improve their `outcome'~\cite{maschler_solan_zamir_2013}. Here, the abstract notion of utility is what
+the players wish to maximise (see Chapter 2 in~\cite{maschler_solan_zamir_2013}
+for a detailed discussion on the topic of utility theory or Section 1.3~\cite{Webb2007} for a more introductory explanation). One of the earliest
 pioneers of game theory is mathematician, John von Neumann who, along with
 economist Oskar Morgenstern, published \textit{The Theory of Games and Economic
-Behaviour} in 1944 \cite{maschler_solan_zamir_2013}. This book discusses the
-theory, developed in 1928 and 1940-41, by von Neumann, regarding "games of
-strategy" and its applications within the subject of economics
-\cite{von2007theory}. Following this, several advancements have been made in the
+Behaviour} in 1944~\cite{maschler_solan_zamir_2013}. This book discusses the
+theory, developed in 1928 and 1940-41, by von Neumann, regarding ``games of
+strategy" and its applications within the subject of economics~\cite{von2007theory}. Following this, several advancements have been made in the
 area, including, most notably, John Nash's papers on the consequently named Nash
-Equilibria in 1950/51 \cite{nash1950equilibrium, nash1951non}. Due to the
-"context-free mathematical toolbox" \cite{maschler_solan_zamir_2013} nature of
-this subject, it has been applied to many areas, from networks
-(\cite{liang2012game} and \cite{1593279}) to biology (\cite{chen2009robust} and
-\cite{adeoye2012application}). In this project, the main focus is on a
-particular class of theorems, within game theory, known as "Folk Theorems" with
+Equilibria in 1950/51~\cite{nash1950equilibrium, nash1951non}. Due to the
+"context-free mathematical toolbox"~\cite{maschler_solan_zamir_2013} nature of
+this subject, it has been applied to many areas, from
+networks~\cite{liang2012game, 1593279} to biology~\cite{chen2009robust, adeoye2012application}. In this project, the main focus is on a
+particular class of theorems, within game theory, known as ``Folk Theorems" with
 application to the game of A Prisoner's Dilemma. These will be defined and
 discussed in the subsequent sections.
 
-\section{An Introduction to Games}\label{GamesIntro}
+\section{An Introduction to Games}\label{sec:An_Intro_to_Games}
 Consider the following scenario:
 
 \begin{center}
@@ -34,10 +30,31 @@ Consider the following scenario:
     short sentence whereas if they both defect then a medium sentence awaits.
     However, in the situation of one cooperation and one defection, the prisoner
     who cooperated has the consequence of a long term sentence, whilst the other
-    is given a deal. \cite{Knight2017}
+    is given a deal.~\cite{Knight2017}
 \end{center}
 
-This is one of the standard games in game theory known as A Prisoner's Dilemma
+This is one of the standard games in game theory known as A Prisoner's Dilemma.
+It has four distinct outcomes, for the given two player version, which can be represented as a table (see
+Table~\ref{tab:PD_outcomes}).
+\begin{tabular}{|c|}\label{tab:PD_outcomes}
+    \hline
+      &  & column player & \\
+    \hline 
+      &  & cooperate & defect\\
+    \hline
+    row player & cooperate & (3, 3) & (0, 5)\\
+    \hline 
+      &  & defect & (5, 0) & (1, 1)\\
+    \hline
+\end{tabular}
+Each coordinate \((a, b)\) in the table represents the utility values obtained
+for each player, where  \(a\) is the utility value obtained by the row player
+and \(b\) is the utility gained by the column player. More formally, the game
+can be represented as the following matrix.
+
+
+
+
 which has the following normal form representation:
 
 \kbordermatrix{
