@@ -7,7 +7,7 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 plt.rcParams.update({"figure.max_open_warning": 0})
 
-import random
+
 
 
 database_management_sys = sa.create_engine(
@@ -32,8 +32,8 @@ player_set_collection = """
     WHERE tournament_player_set = ?
 """
 
-# for num_of_sets in range(maximum_player_set):
-for num_of_sets in [random.randint(0, maximum_player_set) for index in range(10)]:
+for num_of_sets in range(maximum_player_set):
+
     collect_relevant_data = connect_dbms_to_db.execute(
         player_set_collection, num_of_sets
     )
