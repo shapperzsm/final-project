@@ -2,9 +2,7 @@ from pathlib import *
 import sqlalchemy as sa
 import pandas as pd
 import os
-import matplotlib
-matplotlib.use('agg')
-import pyplot as plt
+import matplotlib.pyplot as plt
 plt.rcParams.update({"figure.max_open_warning": 0})
 
 
