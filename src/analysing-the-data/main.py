@@ -3,14 +3,11 @@ import sqlalchemy as sa
 import pandas as pd
 import os
 import matplotlib.pyplot as plt
+
 plt.rcParams.update({"figure.max_open_warning": 0})
 
 
-
-
-database_management_sys = sa.create_engine(
-    "sqlite:///../database-code/data/se/main.db"
-)
+database_management_sys = sa.create_engine("sqlite:///../database-code/data/se/main.db")
 connect_dbms_to_db = database_management_sys.connect()
 
 table_headings = pd.read_sql(

@@ -1,9 +1,7 @@
 import sqlalchemy as sa
 import pandas as pd
 
-database_management_sys = sa.create_engine(
-    "sqlite:///../database-code/data/se/main.db"
-)
+database_management_sys = sa.create_engine("sqlite:///../database-code/data/se/main.db")
 connect_dbms_to_db = database_management_sys.connect()
 
 max_tournament_player_set = """
