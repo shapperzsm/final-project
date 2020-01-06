@@ -140,7 +140,24 @@ strategies are specific cases of mixed strategies, with \(\sigma_{i} = (1, 0)\)
 for cooperation and \(\sigma_{i} = (0, 1)\) for defection, in the example of a
 Prisoner's Dilemma.
 
-% include the idea of a mixed extension and simplex 
+This leads onto the following definition of a \emph{mixed extension} of a game,
+taken from~\cite{maschler_solan_zamir_2013}:
+Let \(G\) be a finite normal form game as above, with \(S = S_{1} \times
+S_{2} \times \cdots \times S_{N}\) defining the pure strategy vector set and
+each pure strategy set, \(S_{i}\) being non-empty and finite. Then the
+\textit{mixed extension} of \(G\) is denoted by
+\[
+    \Gamma = (N, (\Sigma_{i})_{i \in N}, (U_{i})_{i \in N}),
+\]
+and is the game in which, \(\Sigma_{i}\) is the \(i\)th player's strategy set
+and \(U_{i} : \Sigma \to \mathbb{R}\) is the corresponding payoff function,
+where each \(\sigma = (\sigma_{1}, \sigma_{2}, \ldots, \sigma_{N}) \in \Sigma =
+\Sigma_{1} \times \Sigma_{2} \times \cdots \times \Sigma_{N}\) is mapped to the
+payoff
+\[
+    U_{i} = \mathbb{E}_{\sigma}(u_{i}(\sigma)) = \sum_{(s_{1}, s_{2}, \ldots, s_{N}) \in S}{u_{i}(s_{1}, s_{2}, \ldots, s_{N})\sigma_{1}(s_{1})\sigma_{2}(s_{2})\cdots\sigma_{N}(s_{n})}
+\]
+for all players \(i \in N\).
 
 \section{Nash Equilibrium for Normal Form Games}\label{sec:NE_for_Normal_Form_Games}
 As mentioned above, mathematician, John Nash, introduced the concept of an
@@ -149,8 +166,7 @@ all finite games. These notions are central to the study of game
 theory~\cite{maschler_solan_zamir_2013} and hence, in this section, Nash's
 concepts will be defined and proved in detail.
 
-Firstly, before the definition of a Nash equilibrium, the idea, as given in~
-\cite{maschler_solan_zamir_2013} of a \textit{best response} is introduced:
+Firstly, before the definition of a Nash equilibrium, the idea, as given in~\cite{maschler_solan_zamir_2013} of a \textit{best response} is introduced:
 For a game \(G=(N, (S_{i})_{i \in N}, (u_{i})_{i \in N})\), the strategy,
 \(s_{i}\), of the \(i\)th player is considered a \textit{best response} to the
 strategy vector \(s_{-i}\) if \(u_{i}(s_{i}, s_{-i}) = \max_{t_{i} \in
@@ -244,24 +260,94 @@ theorem, taken from~\cite{nash1951non}, Nash's second paper on equilibria in gam
     Every finite game has an equilibrium point.
 \end{theorem}
 
-The proof of Theorem~\label{thm:Nash} includes the use of \emph{Brouwer's fixed
-point theorem} and thus, a short sub-section regarding this result is given
-before providing a formal proof.
+The proof of Theorem~\label{thm:Nash} includes the use of a\emph{fixed point
+theorem} and thus, a short sub-section regarding one such result is given, for
+completeness, before providing a formal proof of~\ref{thm:Nash}.
 
 \subsection{Brouwer's Fixed Point Theorem}\label{subsec:Brouwer_thm}
-In this section, the presentation of Brouwer's Fixed Point Theorem is as given in~\cite{maschler_solan_zamir_2013}
+Brouwer's Fixed Point Theorem is a result from the theory of topology. Named
+after the Dutch mathematician, L.E.J. Brouwer, it was proven in
+1912~\cite{Carlson2016}. However, before stating this notion, a few conditions
+regarding the properties of sets are recalled. 
+
+The following three definitions appear as in~\cite{Weisstein, Barile, Weissteina} respectively:
+\begin{definition}
+    A set \(X \subseteq \mathbb{R}^{d}\) is called \textit{convex} if it
+    contains all line segments connecting any two points \(\textbf{x}_{1},
+    \textbf{x}_{2} \in X\).
+\end{definition}
+
+\begin{definition}
+    An \textit{open cover} of a set \(S \subset X\), a topological space, is a
+    collection of open sets \(A_{1}, A_{2}, \ldots \subset X\) such that
+    \(A_{1} \cup A_{2} \cup \ldots \supset S\), that is, the union of the open
+    sets contain S.
+\end{definition}
+
+\begin{definition}
+    A subset \(S \subseteq X\), a topological space, is called \textit{compact}
+    if, for each open cover of \(S\), there is a finite sub-cover of S.
+\end{definition}
+
+The presentation of Brouwer's Fixed Point Theorem is now given as in~\cite{maschler_solan_zamir_2013}
 \begin{theorem}\label{thm:Brouwer}
     Let \(X \subseteq \mathbb{R}^{n}\) be a non-empty convex and compact
-    set~\footnote{For an explanation of convexity and compactness of sets, the
-    reader is referred to FIND A REFERENCE BOOK!!},
-    then each continuous function \(f : X \to X\) has a fixed point.  
+    set, then each continuous function \(f : X \to X\) has a fixed point.  
 \end{theorem}
 In other words if \(X\) and \(f\) satisfy the conditions given above then there
 exists a point \(x \in X\) such that \(f(x) = x\). 
 
-\begin{proof}
-    Since \(X\) is compact, there exists a simplex 
-\end{proof}
-% then prove Nash's Thm
+Since this project is regarding game theory, rather than topology, the proof to
+the above theorem is omitted. However, the interested reader is referred
+to~\cite{} for an in-depth consideration into the theory of topology.
 
-% move onto repeated games 
+\subsection{Proof of Nash's Theorem (Theorem~\ref{thm:Nash})}\label{subsec:Nash_Proof}
+The proof provided here is adapted from the original, as presented
+in~\cite{nash1951non}.
+
+\begin{proof}
+    NEED TO DO!!!!!!
+\end{proof}
+
+\section{Repeated Games}\label{sec:Repeated_Games}
+The folk theorems studied in this project are a consequence of games which are
+repeated several times (not just once). Thus, before discussing the main ideas,
+the theory of both finitely- and infinitely- repeated games is presented.
+
+However, firstly, a couple of alterations to the terminology used in
+previous sections is redefined for conciseness and to be consistent with the literature~\cite{}.
+
+What was known as a `game' will become known as a \emph{stage game} to highlight
+the fact that a one-off game is being considered. Also, what was defined
+previously as a `strategy' will now be referred to as an \emph{action} to
+differentiate it from a strategy of a repeated game (see
+Section~\ref{subsec:Finite_Repeated_Games}).
+
+\subsection{Finite Repeated Games}\label{subsec:Finite_Repeated_Games}
+According to~\cite{Knight2017a}, a \textit{\(T\)-stage repeated game}, \(T <
+\infty\) is when the stage game, \(G\), is played \(T\) times, over discrete
+time intervals. Each \(i\)th player has a strategy based on previous `rounds' of
+the game and the payoff of a repeated game is calculated as the total sum of the
+stage game payoffs.
+
+Prior to giving the notion of a strategy in a repeated game, the idea of 
+\emph{history}, within the context of repeated games, is provided.
+The \textit{history}, \(H(t)\) of a repeated game is the knowledge of previous
+actions of all players up until the \(t\)th stage game, assumed to be known by
+player \(i\) for all \(i \in 1, \ldots, N\). Note that, when \(t=0\), \(H(0) =
+\underbrace{(\emptyset, \emptyset, \ldots, \emptyset)}_{N \text{times}}\), since
+no stage games have yet been played.
+
+As given in~\cite{}, a \textit{strategy} of a \(T\)-stage repeated game is
+defined to be a mapping from the complete history so far to an action of the
+stage game, that is 
+\[
+    \tau_{i} : \cup_{t = 0}^{T-1}{H{t}} \to a_{i}. 
+\]
+Here, \(H(t)\) is the history of play as defined above and a_{i} is the \(i\)th
+player's action of the stage game. 
+
+Consider, for example, the repeated game in which the stage game of a Prisoner's
+Dilemma is played each time. This is known as the \emph{Iterated Prisoner's
+Dilemma} (IPD) and has been a popular topic of research for many years see
+Chapter~\ref{ch:Literature_Search}.
