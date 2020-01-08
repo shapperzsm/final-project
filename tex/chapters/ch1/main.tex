@@ -307,6 +307,10 @@ in~\cite{nash1951non}.
 
 \begin{proof}
     NEED TO DO!!!!!!
+
+    Let \(G=(N, (S_{i})_{i \in N}, (u_{i})_{i \in N})\) be a finite game with
+    mixed extension \(\Gamma=(N, (\Sigma_{i})_{i \in N}, (U_{i})_{i \in N})\). 
+    
 \end{proof}
 
 \section{Repeated Games}\label{sec:Repeated_Games}
@@ -338,16 +342,95 @@ player \(i\) for all \(i \in 1, \ldots, N\). Note that, when \(t=0\), \(H(0) =
 \underbrace{(\emptyset, \emptyset, \ldots, \emptyset)}_{N \text{times}}\), since
 no stage games have yet been played.
 
-As given in~\cite{}, a \textit{strategy} of a \(T\)-stage repeated game is
-defined to be a mapping from the complete history so far to an action of the
-stage game, that is 
+As given in~\cite{\Knight2019a}, a \textit{strategy} of a \(T\)-stage repeated
+game is defined to be a mapping from the complete history so far to an action of
+the stage game, that is 
 \[
     \tau_{i} : \cup_{t = 0}^{T-1}{H{t}} \to a_{i}. 
 \]
 Here, \(H(t)\) is the history of play as defined above and a_{i} is the \(i\)th
 player's action of the stage game. 
 
-Consider, for example, the repeated game in which the stage game of a Prisoner's
-Dilemma is played each time. This is known as the \emph{Iterated Prisoner's
+Consider, for example, the environment in which the stage game of a Prisoner's
+Dilemma is repeated each time. This is known as the \emph{Iterated Prisoner's
 Dilemma} (IPD) and has been a popular topic of research for many years see
-Chapter~\ref{ch:Literature_Search}.
+Chapter~\ref{ch:Literature_Search}. Note that the ojective here is to maximise
+your payoff. The player: 
+\begin{center}
+    \textit{No matter what my opponents play, I will always defect},
+\end{center}
+commonly known as the `Defector' has the following strategy mapping:
+\[
+    \tau_{i} : \cup_{t = 0}^{T-1}{H{t}} \to a_{i},
+\]
+where \(a_{i}=D\) for all time periods \(\tau \ge 0\). Other common IPD
+strategies include: 
+\begin{center}
+    Cooperator - \textit{No matter what my opponents play, I will always
+    cooperate};
+    Random - \textit{I will either cooperate or defect with a probability of
+    50\%}; and
+    \newline Tit For Tat - \textit{I will start by cooperating but then will duplicate the most recent decision of my opponent.}
+\end{center}
+
+Figure~\ref{fig:2-stage_payoff_plot} shows the possible payoffs obtained in a 2-stage repeated IPD with
+two players:
+
+\begin{figure}\label{fig:2-stage_payoff_plot}
+    \begin{tikzpicture}
+        \draw (0, 0) -- (10, 0);
+        \draw (0, 0) -- (0, 10);
+        \filldraw [blue] (2, 2) circle (2pt);
+        \filldraw [blue] (0, 10) circle (2pt);
+        \filldraw [blue] (10, 0) circle (2pt);
+        \filldraw [blue] (6, 6) circle (2pt);
+        \filldraw [blue] (3, 8) circle (2pt);
+        \filldraw [blue] (8, 3) circle (2pt);
+        \filldraw [blue] (1, 6) circle (2pt);
+        \filldraw [blue] (6, 1) circle (2pt);
+        \filldraw [blue] (4, 4) circle (2pt);
+    \end{tikzpicture} 
+    \caption{A plot to show the possible payoffs of the game between two players in which A Prisoner's Dilemma is repeated twice.}
+\end{figure}
+
+
+Now, what about Theorem~\ref{thm:Nash}? Are there any Nash equilibria in
+repeated games? The next result, adapted from~\cite{Knight2019a} guarantees 
+this existence.
+\begin{theorem}
+    Consider a \(T\)-stage repeated game with \(G=(N, (S_{i})_{i \in N},
+    (u_{i})_{i \in N})\) as the stage game, \(0 < T < \infty\). Define by
+    \(\bm\sigma^{*} =(\sigma_{1}^{*}, \sigma_{2}^{*}, \ldots, \sigma_{N}^{*})\),
+    a stage Nash equilibrium of \(G\). Then the sequence in which
+    \(\bm\sigma^{*}\) is continuously played is a Nash equilibrium of the
+    \(T\)-stage repeated game.
+\end{theorem} 
+
+\begin{proof}
+    Since \(\bm\sigma^{*}\) is a stage Nash equilibrium, it is, in particular,
+    a Nash equilibrium of the \(T\)th stage game. Thus, no player has any reason
+    to deviate here. But then \(\bm\sigma^{*}\) was also played at the
+    \((T-1)\)th stage also, meaning there is still no reason to deviate.
+    Therefore, continuing via backwards induction gives the required result.
+\end{proof}
+
+Hence, for the \(T\)-stage IPD, every player executing the Defector strategy
+yields a Nash equilibrium. However, do there exist equilibria for which
+selecting the action `cooperate' is more beneficial?
+
+In preparation to answer this, the next
+Subsection~\ref{subsec:Infinite_Repeated_Games} discusses the case when \(T \to
+\infty\) and the results linked to \emph{infinitely repeated games}.
+
+\subsection{Infinite Repeated Games}\label{subsec:Infinite_Repeated_Games}
+Now, in order to be able to discuss the payoffs of strategies in infinite games;
+the notion of a \emph{discounted payoff} is introduced.
+
+According to 
+
+
+\section{Folk Theorem}\label{sec:Folk_Thm}
+
+
+
+\section{Aims of the Projects}\label{sec:Aims_of_the_Project}
