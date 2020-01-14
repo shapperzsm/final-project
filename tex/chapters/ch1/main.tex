@@ -155,9 +155,9 @@ where each \(\sigma = (\sigma_{1}, \sigma_{2}, \ldots, \sigma_{N}) \in \Sigma =
 \Sigma_{1} \times \Sigma_{2} \times \cdots \times \Sigma_{N}\) is mapped to the
 payoff
 \begin{equation}
-
+\[
     U_{i} = \mathbb{E}_{\sigma}(u_{i}(\sigma)) = \sum_{(s_{1}, s_{2}, \ldots, s_{N}) \in S}{u_{i}(s_{1}, s_{2}, \ldots, s_{N})\sigma_{1}(s_{1})\sigma_{2}(s_{2})\cdots\sigma_{N}(s_{n})}
-  
+\]  
 \end{equation}\label{eqn:mixed_payoff_function}
 for all players \(i \in N\).
 
@@ -331,14 +331,18 @@ is obtained.
     to use their mixed strategy.
     Now, define function \(f: \Sigma \to [0, \infty)\) such that 
     \begin{equation}
-        f_{i,t}(\sigma) := \max{0, U_{i,t}(\sigma)-U_{i}(\sigma)} 
+    \[
+        f_{i,t}(\sigma) := \max{(0, U_{i,t}(\sigma)-U_{i}(\sigma))}
+    \]
     \end{equation}
     and also let 
     \begin{equation}
-        \sigma_{i}^{\prime} := \frac{\sigma_{i} + \sum_{t}{f_{i,t}(\sigma)s_{i}^{t}}}{1 + \sum_{t}{f_{i,t}(\sigma)}
+    \[ 
+        \sigma_{i}^{\prime} := \frac{ \sigma_{i}+\sum_{t}{f_{i,t}(\sigma)s_{i}^{t}} }{ 1+\sum_{t}{f_{i,t}(\sigma)} }
+    \]
     \end{equation}
-    be a modification of each \(sigma_{i} \in \sigma\), with \(sigma^{\prime} =
-    (\sigma_{1}^{\prime}, \sigma_{2}^{\prime}, \ldots, \sigma_{N}^{\prime})\). 
+    be a modification of each \(\sigma_{i} \in \sigma\), with \(\sigma^{\prime}
+    = (\sigma_{1}^{\prime}, \sigma_{2}^{\prime}, \ldots, \sigma_{N}^{\prime})\).
     In words, this modification increases the proportion of the pure strategy
     \(t\) used in \(\sigma_{i}\) if the payoff gained by the \(i\)th player is
     larger when they replace their mixed strategy by \(t\). Else, it remains the
@@ -358,10 +362,10 @@ is obtained.
     \(B \subseteq \mathbb{R}^{m}\) are convex compact sets then the set \(A
     \times B\) is a convex compact subset of \(\mathbb{R}^{n+m}\)}, as
     highlighted in~\cite{maschler_solan_zamir_2013} gives the convexity and
-    compactness of the set \(|Sigma\), the cross product of all \(\Sigma_{i}\)s.
+    compactness of the set \(\Sigma\), the cross product of all \(\Sigma_{i}\)s.
     
     The continuity of the function \(f\) depends upon the continuity of the
-    payoff functions \(U_{i}\). As given in~\cite{maschler_solan_zamir_2013,
+    payoff functions \(U_{i}\). As given in~\cite{maschler_solan_zamir_2013},
     this is shown by first proving that the \(U_{i}\) are multilinear functions
     in the variables \((\sigma_{i})_{i \in N}\) and then applying the fact that
     any multilinear function over \(\Sigma\) is a continuous
@@ -376,14 +380,14 @@ is obtained.
     Suppose \(\sigma\) is such that \(T(\sigma) = \sigma\). Then, the proportion
     of \(s_{i}^{t}\) used in the mixed strategy \(\sigma_{i}\) must not be
     altered by \(T\). Therefore, in \(\sigma_{i}^{\prime}\), the sum
-    \sum_{t}{f_{i,t}(\sigma)}, in the denominator, must equal zero. Otherwise,
-    the total sum of the denominator will be greater than one, decreasing the
-    proportion of \(s_{i}^{t}\). This implies that for all pure strategies
-    \(q\), \(f_{i,q}(\sigma)=0\). That is, player \(i\) can not improve their
-    payoff by adopting any of the pure strategies. Note, this is true for all
-    \(i\) and \(q\) by definition of \(T(\sigma) = \sigma\) and thus no player
-    is able to improve their payoff. By definition~\ref{def:NE}, this is exactly
-    the conditions of a Nash equilibrium.
+    \(\sum_{t}{f_{i,t}(\sigma)}\), in the denominator, must equal zero.
+    Otherwise, the total sum of the denominator will be greater than one,
+    decreasing the proportion of \(s_{i}^{t}\). This implies that for all pure
+    strategies \(q\), \(f_{i,q}(\sigma)=0\). That is, player \(i\) can not
+    improve their payoff by adopting any of the pure strategies. Note, this is
+    true for all \(i\) and \(q\) by definition of \(T(\sigma) = \sigma\) and
+    thus no player is able to improve their payoff. By definition~\ref{def:NE},
+    this is exactly the conditions of a Nash equilibrium.
 
     Now assume \(\sigma\) is a Nash equilibrium. Then, by definition, it must be
     that \(f_{i,q}(\sigma)=0\) for all pure strategies \(q\) for all players,
