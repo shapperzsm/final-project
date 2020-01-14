@@ -129,9 +129,9 @@ game, this is also true for the column player.~\cite{maschler_solan_zamir_2013}
 So far, only the pure strategies, \(S_{i}=\{\text{coop}, \text{defect}\}\), have
 been discussed, thus the notion of a probability distribution over \(S_{i}\) is
 now introduced, giving the so-called \textit{mixed strategies} as defined in~\cite{maschler_solan_zamir_2013}:
-Let \(G=(N, (S_{i})_{i \in N}, (u_{i})_{i \in N})\) be a game (with each \(S_{i}\)
-finite), then a \textit{mixed strategy} for player \(i\) is a probability
-distribution over their strategy set \(S_{i}\). Define:
+Let \(G=(N, (S_{i})_{i \in N}, (u_{i})_{i \in N})\) be a game (with each 
+\(S_{i}\) finite), then a \textit{mixed strategy} for player \(i\) is a
+probability distribution over their strategy set \(S_{i}\). Define:
 \[
 \Sigma_{i} := \{\sigma_{i} : S_{i} \to [0, 1] : \sum_{s_{i} \in S_{i}}{\sigma_{i}(s_{i})} = 1\}   
 \]
@@ -154,9 +154,11 @@ and \(U_{i} : \Sigma \to \mathbb{R}\) is the corresponding payoff function,
 where each \(\sigma = (\sigma_{1}, \sigma_{2}, \ldots, \sigma_{N}) \in \Sigma =
 \Sigma_{1} \times \Sigma_{2} \times \cdots \times \Sigma_{N}\) is mapped to the
 payoff
-\[
+\begin{equation}
+
     U_{i} = \mathbb{E}_{\sigma}(u_{i}(\sigma)) = \sum_{(s_{1}, s_{2}, \ldots, s_{N}) \in S}{u_{i}(s_{1}, s_{2}, \ldots, s_{N})\sigma_{1}(s_{1})\sigma_{2}(s_{2})\cdots\sigma_{N}(s_{n})}
-\]
+  
+\end{equation}\label{eqn:mixed_payoff_function}
 for all players \(i \in N\).
 
 \section{Nash Equilibrium for Normal Form Games}\label{sec:NE_for_Normal_Form_Games}
@@ -302,15 +304,95 @@ the above theorem is omitted. However, the interested reader is referred
 to~\cite{} for an in-depth consideration into the theory of topology.
 
 \subsection{Proof of Nash's Theorem (Theorem~\ref{thm:Nash})}\label{subsec:Nash_Proof}
-The proof provided here is adapted from the original, as presented
-in~\cite{nash1951non}.
+The proof provided here is adapted from the original, by Nash, as presented
+in~\cite{nash1951non} (with extra notes adapted 
+from~\cite{maschler_solan_zamir_2013}). According
+to~\cite{maschler_solan_zamir_2013}, the general idea here is to define a
+function, which satisfies the conditions required for Theorem~\ref{thm:Brouwer},
+using the payoff functions on the set of mixed strategies. Then by identifying
+each equilibrium point with a fixed point of the function, the required result 
+is obtained.
 
 \begin{proof}
-    NEED TO DO!!!!!!
-
+    Firstly, a brief restatement of the notation needed is provided for clarity.
     Let \(G=(N, (S_{i})_{i \in N}, (u_{i})_{i \in N})\) be a finite game with
-    mixed extension \(\Gamma=(N, (\Sigma_{i})_{i \in N}, (U_{i})_{i \in N})\). 
+    mixed extension \(\Gamma=(N, (\Sigma_{i})_{i \in N}, (U_{i})_{i \in N})\).
+    Here, \(N\) denotes the number of players; \(S = S_{1} \times S_{2} \times
+    \ldots \times S_{N}\) is the set of pure strategies for all players, with
+    \((S_i)_{i \in N}\) the pure strategy set for player i; \(\Sigma\) is
+    defined similarly but relating to mixed strategies; and \(U_{i}: \Sigma \to
+    \) are the payoff functions as given in
+    equation~\ref{eqn:mixed_payoff_function}. Recall that \(\s_{-i}\) is used to
+    denote the strategy choice of all players \emph{except} the \(i\)th player.
     
+    Let \(\sigma = (\sigma_{1}, \sigma_{2}, \ldots, \sigma_{N})\) be a tuple of
+    mixed strategies and \(U_{i,t}(\sigma)\) be the \(i\)th player's payoff if
+    they changed to their \(t\)th pure strategy and all other players continue
+    to use their mixed strategy.
+    Now, define function \(f: \Sigma \to [0, \infty)\) such that 
+    \begin{equation}
+        f_{i,t}(\sigma) := \max{0, U_{i,t}(\sigma)-U_{i}(\sigma)} 
+    \end{equation}
+    and also let 
+    \begin{equation}
+        \sigma_{i}^{\prime} := \frac{\sigma_{i} + \sum_{t}{f_{i,t}(\sigma)s_{i}^{t}}}{1 + \sum_{t}{f_{i,t}(\sigma)}
+    \end{equation}
+    be a modification of each \(sigma_{i} \in \sigma\), with \(sigma^{\prime} =
+    (\sigma_{1}^{\prime}, \sigma_{2}^{\prime}, \ldots, \sigma_{N}^{\prime})\). 
+    In words, this modification increases the proportion of the pure strategy
+    \(t\) used in \(\sigma_{i}\) if the payoff gained by the \(i\)th player is
+    larger when they replace their mixed strategy by \(t\). Else, it remains the
+    same if doing this decreases their payoff as \(f_{i,t}(\sigma)=0\) in this
+    case. Note, the denominator ensures that the ending vector is still a
+    probability distribution by standardising.
+
+    The aim is to apply theorem~\ref{thm:Brouwer} to the mapping \(T: \sigma \to
+    |sigma^{\prime}\) and show that it's fixed points correspond to Nash
+    equilibria. Thus, firstly compactness and convexity of the set \(\sigma\) is
+    shown along with continuity of the function \(f\). 
+    
+    Observe that each \(\sigma_{i}\) can be represented by a point in a simplex
+    in a real vector space with the vertices given by the pure strategies,
+    \(s_{i}^{t}\). Therefore, it follows that the set \(\Sigma_{i}\) is convex
+    and compact. Using the result, \textit{If \(A \subseteq \mathbb{R}^{n}\) and
+    \(B \subseteq \mathbb{R}^{m}\) are convex compact sets then the set \(A
+    \times B\) is a convex compact subset of \(\mathbb{R}^{n+m}\)}, as
+    highlighted in~\cite{maschler_solan_zamir_2013} gives the convexity and
+    compactness of the set \(|Sigma\), the cross product of all \(\Sigma_{i}\)s.
+    
+    The continuity of the function \(f\) depends upon the continuity of the
+    payoff functions \(U_{i}\). As given in~\cite{maschler_solan_zamir_2013,
+    this is shown by first proving that the \(U_{i}\) are multilinear functions
+    in the variables \((\sigma_{i})_{i \in N}\) and then applying the fact that
+    any multilinear function over \(\Sigma\) is a continuous
+    function.~\footnote{For a detailed consideration of the continuity of the
+    payoff functions, please see~\cite{maschler_solan_zamir_2013}, pages
+    148-149.} The result then follows.
+
+    Hence, by theorem~\ref{thm:Brouwer}, the mapping \(T\) must have at least
+    one fixed point. The proof is concluded by showing that any fixed points of
+    \(T\) are Nash equilibria. 
+
+    Suppose \(\sigma\) is such that \(T(\sigma) = \sigma\). Then, the proportion
+    of \(s_{i}^{t}\) used in the mixed strategy \(\sigma_{i}\) must not be
+    altered by \(T\). Therefore, in \(\sigma_{i}^{\prime}\), the sum
+    \sum_{t}{f_{i,t}(\sigma)}, in the denominator, must equal zero. Otherwise,
+    the total sum of the denominator will be greater than one, decreasing the
+    proportion of \(s_{i}^{t}\). This implies that for all pure strategies
+    \(q\), \(f_{i,q}(\sigma)=0\). That is, player \(i\) can not improve their
+    payoff by adopting any of the pure strategies. Note, this is true for all
+    \(i\) and \(q\) by definition of \(T(\sigma) = \sigma\) and thus no player
+    is able to improve their payoff. By definition~\ref{def:NE}, this is exactly
+    the conditions of a Nash equilibrium.
+
+    Now assume \(\sigma\) is a Nash equilibrium. Then, by definition, it must be
+    that \(f_{i,q}(\sigma)=0\) for all pure strategies \(q\) for all players,
+    \(i \in N\). Note, if \(f_{i,q}(\sigma) \ne 0\), then the
+    \(i\)th player would benefit from changing their strategy to the pure
+    strategy \(q\), which violates the condition for a Nash equilibrium. From
+    this it follows that \(T(\sigma) = \sigma\), that is, \(\sigma\) is a fixed
+    point of \(T\). This concludes the proof.
+
 \end{proof}
 
 \section{Repeated Games}\label{sec:Repeated_Games}
@@ -318,13 +400,12 @@ The folk theorems studied in this project are a consequence of games which are
 repeated several times (not just once). Thus, before discussing the main ideas,
 the theory of both finitely- and infinitely- repeated games is presented.
 
-However, firstly, a couple of alterations to the terminology used in
-previous sections is redefined for conciseness and to be consistent with the literature~\cite{}.
-
-What was known as a `game' will become known as a \emph{stage game} to highlight
-the fact that a one-off game is being considered. Also, what was defined
-previously as a `strategy' will now be referred to as an \emph{action} to
-differentiate it from a strategy of a repeated game (see
+Firstly, a couple of alterations to the terminology used in
+previous sections is redefined for conciseness and to be consistent with the
+literature~\cite{}. What was known as a `game' will become known as a
+\emph{stage game} to highlight the fact that a one-off game is being considered.
+Also, what was defined previously as a `strategy' will now be referred to as an
+\emph{action} to differentiate it from a strategy of a repeated game (see
 Section~\ref{subsec:Finite_Repeated_Games}).
 
 \subsection{Finite Repeated Games}\label{subsec:Finite_Repeated_Games}
@@ -420,7 +501,7 @@ selecting the action `cooperate' is more beneficial?
 
 In preparation to answer this, the next
 Subsection~\ref{subsec:Infinite_Repeated_Games} discusses the case when \(T \to
-\infty\) and the results linked to \emph{infinitely repeated games}.
+\infty\) and results linked to \emph{infinitely repeated games}.
 
 \subsection{Infinite Repeated Games}\label{subsec:Infinite_Repeated_Games}
 Now, in order to be able to discuss the payoffs of strategies in infinite games;
