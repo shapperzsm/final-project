@@ -3,19 +3,23 @@
 Game Theory is the study of interactive decision making and developing
 strategies through mathematics~\cite{Dictionary2013}. It analyses and gives
 methods for predicting the choices made by players (those making a decision),
-whilst also suggesting ways to improve their `outcome'~\cite{maschler_solan_zamir_2013}. Here, the abstract notion of utility is what
+whilst also suggesting ways to improve their `outcome'
+~\cite{maschler_solan_zamir_2013}. Here, the abstract notion of utility is what
 the players wish to maximise (see Chapter 2 in~\cite{maschler_solan_zamir_2013}
-for a detailed discussion on the topic of utility theory or Section 1.3~\cite{Webb2007} for a more introductory explanation). One of the earliest
+for a detailed discussion on the topic of utility theory or Section 1.3
+~\cite{Webb2007} for a more introductory explanation). One of the earliest
 pioneers of game theory is mathematician, John von Neumann who, along with
 economist Oskar Morgenstern, published \textit{The Theory of Games and Economic
 Behaviour} in 1944~\cite{maschler_solan_zamir_2013}. This book discusses the
 theory, developed in 1928 and 1940-41, by von Neumann, regarding ``games of
-strategy" and its applications within the subject of economics~\cite{von2007theory}. Following this, several advancements have been made in the
-area, including, most notably, John Nash's papers on the consequently named Nash
-Equilibria in 1950/51~\cite{nash1950equilibrium, nash1951non}. Due to the
+strategy" and its applications within the subject of economics
+~\cite{von2007theory}. Following this, several advancements have been made in
+the area, including, most notably, John Nash's papers on the consequently named
+Nash Equilibria in 1950/51~\cite{nash1950equilibrium, nash1951non}. Due to the
 ``context-free mathematical toolbox"~\cite{maschler_solan_zamir_2013} nature of
 this subject, it has been applied to many areas, from
-networks~\cite{liang2012game, 1593279} to biology~\cite{chen2009robust, adeoye2012application}. In this project, the main focus is on a
+networks~\cite{liang2012game, 1593279} to biology~\cite{chen2009robust, 
+adeoye2012application}. In this project, the main focus is on a
 particular class of theorems, within game theory, known as ``Folk Theorems" with
 application to the game of A Prisoner's Dilemma. These will be defined and
 discussed in the subsequent sections.
@@ -34,8 +38,8 @@ Consider the following scenario:
 \end{center}
 
 This is one of the standard games in game theory known as A Prisoner's Dilemma.
-It has four distinct outcomes, for the given two player version, which can be represented as a table (see
-Table~\ref{tab:PD_outcomes}).
+It has four distinct outcomes, for the given two player version, which can be
+represented as a table (see Table~\ref{tab:PD_outcomes}).
 \begin{tabular}{|c|}\label{tab:PD_outcomes}
     \hline
       &  & column player & \\
@@ -102,10 +106,12 @@ This, more formally, is an infinite list of statements which claim:
     \begin{itemize}
         \item The players are rational;
         \item All players know that the other players are rational;
-        \item All players know that the other players know that they are rational; etc.    
+        \item All players know that the other players know that they are 
+        rational; etc.    
     \end{itemize}
 Assuming Common Knowledge of Rationality allows for the prediction of rational
-behaviour through a processes entitled \textit{rationalisation}~\cite{Knight2019}
+behaviour through a processes entitled \textit{rationalisation}
+~\cite{Knight2019}
 (see section 4.5 in~\cite{maschler_solan_zamir_2013} for an alternative
 explanation of this assumption). 
 
@@ -117,12 +123,13 @@ strategy vectors \(s_{-i} \in S_{-i}\) of the other players,
     u_{i}(s_{i}, s_{-i}) < u_{i}(\bar{s_{i}}, s_{i}).
 \]
 In this case we say that \(s_{i}\) is \textit{strictly dominated} by
-\(\bar{s_{i}}\). Here, \(s_{-i} = \{s_{1}, s_{2}, ..., s_{i-1}, s_{i+1}, ...,
-s_{n}\}\), i.e. the \(i\)th player's strategy has been omitted. The set, \(S_{-i}\),
-is defined similarly. Looking at the row player's matrix of a Prisoner's Dilemma
-\ref{PDMatrix} (the first entries in the ordered tuples), it is clear that
-cooperation is a strictly dominated strategy. Due to the symmetricity of the
-game, this is also true for the column player.~\cite{maschler_solan_zamir_2013}
+\(\bar{s_{i}}\). Here, \(s_{-i} = \{s_{1}, s_{2}, \ldots, s_{i-1}, s_{i+1},
+\ldots, s_{n}\}\), i.e. the \(i\)th player's strategy has been omitted. The set,
+\(S_{-i}\), is defined similarly. Looking at the row player's matrix of a
+Prisoner's Dilemma \ref{PDMatrix} (the first entries in the ordered tuples), it
+is clear that cooperation is a strictly dominated strategy. Due to the
+symmetricity of the game, this is also true for the column
+player.~\cite{maschler_solan_zamir_2013}
 
 
 
@@ -133,7 +140,8 @@ Let \(G=(N, (S_{i})_{i \in N}, (u_{i})_{i \in N})\) be a game (with each
 \(S_{i}\) finite), then a \textit{mixed strategy} for player \(i\) is a
 probability distribution over their strategy set \(S_{i}\). Define:
 \[
-\Sigma_{i} := \{\sigma_{i} : S_{i} \to [0, 1] : \sum_{s_{i} \in S_{i}}{\sigma_{i}(s_{i})} = 1\}   
+\Sigma_{i} := \{\sigma_{i} : S_{i} \to [0, 1] : \sum_{s_{i} \in S_{i}}{\sigma_
+{i}(s_{i})} = 1\}   
 \]
 to be the set of mixed strategies for player \(i\). Hence, observe that the pure
 strategies are specific cases of mixed strategies, with \(\sigma_{i} = (1, 0)\)
@@ -156,7 +164,9 @@ where each \(\sigma = (\sigma_{1}, \sigma_{2}, \ldots, \sigma_{N}) \in \Sigma =
 payoff
 \begin{equation}
 \[
-    U_{i} = \mathbb{E}_{\sigma}(u_{i}(\sigma)) = \sum_{(s_{1}, s_{2}, \ldots, s_{N}) \in S}{u_{i}(s_{1}, s_{2}, \ldots, s_{N})\sigma_{1}(s_{1})\sigma_{2}(s_{2})\cdots\sigma_{N}(s_{n})}
+    U_{i} = \mathbb{E}_{\sigma}(u_{i}(\sigma)) = \sum_{(s_{1}, s_{2}, \ldots, s_
+    {N}) \in S}{u_{i}(s_{1}, s_{2}, \ldots, s_{N})\sigma_{1}(s_{1})\sigma_{2}(s_
+    {2})\cdots\sigma_{N}(s_{n})}
 \]  
 \end{equation}\label{eqn:mixed_payoff_function}
 for all players \(i \in N\).
@@ -168,7 +178,8 @@ all finite games. These notions are central to the study of game
 theory~\cite{maschler_solan_zamir_2013} and hence, in this section, Nash's
 concepts will be defined and proved in detail.
 
-Firstly, before the definition of a Nash equilibrium, the idea, as given in~\cite{maschler_solan_zamir_2013} of a \textit{best response} is introduced:
+Firstly, before the definition of a Nash equilibrium, the idea, as given 
+in~\cite{maschler_solan_zamir_2013} of a \textit{best response} is introduced:
 For a game \(G=(N, (S_{i})_{i \in N}, (u_{i})_{i \in N})\), the strategy,
 \(s_{i}\), of the \(i\)th player is considered a \textit{best response} to the
 strategy vector \(s_{-i}\) if \(u_{i}(s_{i}, s_{-i}) = \max_{t_{i} \in
@@ -178,7 +189,8 @@ This leads onto the main definition of the section:
 \begin{definition}\label{def:NE}
     Given a game \(G=(N, (S_{i})_{i \in N}, (u_{i})_{i \in N})\), the vector of
     strategies \(s^{*} = (s_{1}^{*}, s_{2}^{*}, \ldots, s_{n}^{*})\) is a
-    \textit{Nash equilibrium} if, for all players \(i \in N\), \(s_{i}^{*}\) is a best response to \(s_{i}^{*} \in N\).~\cite{maschler_solan_zamir_2013}
+    \textit{Nash equilibrium} if, for all players \(i \in N\), \(s_{i}^{*}\) is 
+    a best response to \(s_{i}^{*} \in N\).~\cite{maschler_solan_zamir_2013}
 \end{definition}
 In other words, \(s^{*}\) is a Nash equilibrium if and only if no player has any
 reason to deviate from their current strategy \(s_{i}^{*}\).
@@ -187,7 +199,9 @@ Recall that, in Section~\ref{sec:An_Intro_to_Games}, for any player in A
 Prisoner's Dilemma, defection dominated cooperation. This leads to the following
 observation:
 \begin{center}
-    \textbf{The strategy pair (Defect, Defect), is the unique Nash equilibrium for A Prisoner's Dilemma, with a payoff value of 1 for each player.}~s\cite{maschler_solan_zamir_2013}
+    \textbf{The strategy pair (Defect, Defect), is the unique Nash equilibrium 
+    for A Prisoner's Dilemma, with a payoff value of 1 for each player.}
+    ~\cite{maschler_solan_zamir_2013}
 \end{center}
 This can be visualised as followed:
 Assume the row player uses the following mixed strategy, \(\sigma_{r} = (x,
@@ -227,7 +241,9 @@ Plotting these gives the following:
         \begin{subfigure}[t]{0.45\textwidth}
         \centering
             \includegraphics[width=\linewidth]{pd-col-payoff.pdf}
-        \end{subfigure}~\caption{Graphs to show the row and column players' payoffs against a mixed strategy.}
+        \end{subfigure}
+        ~\caption{Graphs to show the row and column players' payoffs against a 
+        mixed strategy.}
     \label{fig:mixed_strategy_PD}
     \end{figure}
 From Figure~\ref{fig:mixed_strategy_PD} it is clear that, regardless of the
@@ -256,7 +272,8 @@ in~\cite{maschler_solan_zamir_2013} for an explanation of zero-sum games.}:
     \end{pmatrix}
 \]
 Are Nash Equilibria guaranteed to exist? This result is given in the next
-theorem, taken from~\cite{nash1951non}, Nash's second paper on equilibria in games.
+theorem, taken from~\cite{nash1951non}, Nash's second paper on equilibria in 
+games.
 
 \begin{theorem}\label{thm:Nash}
     Every finite game has an equilibrium point.
@@ -272,7 +289,8 @@ after the Dutch mathematician, L.E.J. Brouwer, it was proven in
 1912~\cite{Carlson2016}. However, before stating this notion, a few conditions
 regarding the properties of sets are recalled. 
 
-The following three definitions appear as in~\cite{Weisstein, Barile, Weissteina} respectively:
+The following three definitions appear as 
+in~\cite{Weisstein, Barile, Weissteina} respectively:
 \begin{definition}
     A set \(X \subseteq \mathbb{R}^{d}\) is called \textit{convex} if it
     contains all line segments connecting any two points \(\textbf{x}_{1},
@@ -291,7 +309,8 @@ The following three definitions appear as in~\cite{Weisstein, Barile, Weissteina
     if, for each open cover of \(S\), there is a finite sub-cover of S.
 \end{definition}
 
-The presentation of Brouwer's Fixed Point Theorem is now given as in~\cite{maschler_solan_zamir_2013}
+The presentation of Brouwer's Fixed Point Theorem is now given as 
+in~\cite{maschler_solan_zamir_2013}
 \begin{theorem}\label{thm:Brouwer}
     Let \(X \subseteq \mathbb{R}^{n}\) be a non-empty convex and compact
     set, then each continuous function \(f : X \to X\) has a fixed point.  
@@ -455,16 +474,21 @@ strategies include:
     cooperate};
     Random - \textit{I will either cooperate or defect with a probability of
     50\%}; and
-    \newline Tit For Tat - \textit{I will start by cooperating but then will duplicate the most recent decision of my opponent.}
+    \newline Tit For Tat - \textit{I will start by cooperating but then will 
+    duplicate the most recent decision of my opponent.}
 \end{center}
 
-Figure~\ref{fig:2-stage_payoff_plot} shows the possible payoffs obtained in a 2-stage repeated IPD with
-two players:
+Figure~\ref{fig:2-stage_payoff_plot} shows the possible payoffs obtained in a 
+2-stage repeated IPD with two players:
 
 \begin{figure}\label{fig:2-stage_payoff_plot}
     \begin{tikzpicture}
-        \draw (0, 0) -- (10, 0);
-        \draw (0, 0) -- (0, 10);
+        \draw (0, 0) -- (11, 0);
+        \draw (0, 0) -- (0, 11);
+        \foreach \x in {0,1,2,3,4,5,6,7,8,9,10,11}
+            \draw (\x cm,1pt) -- (\x cm,-1pt) node[anchor=north] {$\x$};
+        \foreach \y in {0,1,2,3,4,5,6,7,8,9,10,11}
+            \draw (1pt,\y cm) -- (-1pt,\y cm) node[anchor=east] {$\y$};
         \filldraw [blue] (2, 2) circle (2pt);
         \filldraw [blue] (0, 10) circle (2pt);
         \filldraw [blue] (10, 0) circle (2pt);
@@ -480,9 +504,10 @@ two players:
 
 
 Now, what about Theorem~\ref{thm:Nash}? Are there any Nash equilibria in
-repeated games? The next result, adapted from~\cite{Knight2019a} guarantees 
-this existence.
-\begin{theorem}
+repeated games? In fact, it can be proven that there exist many equilibria
+in repeated games~\cite{friedman1971non}. The next result, adapted
+from~\cite{Knight2019a} guarantees at least one Nash equilibria.
+\begin{theorem}\label{thm:seq_of_stage_NE}
     Consider a \(T\)-stage repeated game with \(G=(N, (S_{i})_{i \in N},
     (u_{i})_{i \in N})\) as the stage game, \(0 < T < \infty\). Define by
     \(\bm\sigma^{*} =(\sigma_{1}^{*}, \sigma_{2}^{*}, \ldots, \sigma_{N}^{*})\),
@@ -508,14 +533,257 @@ Subsection~\ref{subsec:Infinite_Repeated_Games} discusses the case when \(T \to
 \infty\) and results linked to \emph{infinitely repeated games}.
 
 \subsection{Infinite Repeated Games}\label{subsec:Infinite_Repeated_Games}
+The Folk Theorem discussed in Section~\ref{sec:Folk_Thm} considers a stronger
+notion of equilibria known as \textit{subgame perfect equilibria}. In order to
+fully understand this notion, a new representation of games is introduced.
+
+\subsubsection{Extensive Form Games}\label{subsubsec:Extensive_Form_Games}
+According to \cite{maschler_solan_zamir_2013}, an \textit{extensive form game}
+is given by the ordered vector
+\(\Gamma = (N, V, E, x_{0}, (V_{i})_{i \in N}, O, u)\)
+where \(N\) is a finite set of players; \((V, E, x_{0})\) is a \textit{game
+tree}~\footnote{The triple \((V, E, x_{0})\) is defined as a \textit{tree} if
+the set of vertices, \(V\), and the set of edges, \(E\), create a
+\textit{directed graph} (that is, each element in \(E\) is an ordered tuple) and
+x_{0} represents the root, or starting node, of the graph.}; \((V_{i})_{i \in
+N}\) is a partition of the set \(V \setminus L\), where \(L\) is the set of all
+leaves, or terminal points, of the game tree; \(O\) is the set of outcomes for
+the game; and \(u\) is a function which maps each leaf in \(L\) to an outcome 
+in \(O\).
+
+This leads on to the following definition, adapted from~\cite{Webb2007}:
+\newline
+A player's \textit{information set} is a subset of the nodes in a game tree
+where:
+\begin{itemize}
+    \item Only the player concerned is deciding;
+    \item This player is not aware of which node has been reached except that it
+    is definitely one of the elements found in this set.
+\end{itemize} 
+
+In Figure~\ref{fig:PD_game_tree}, the extensive form representation of the
+game A Prisoner's Dilemma is provided. Here, only two players are considered and
+any information sets are represented by a dashed line. Note, any normal form
+game can be represented as an extensive form game. 
+
+\begin{figure}\label{fig:PD_game_tree}
+    \begin{tikzpicture}
+        \tikzstyle{red hollow node}[circle, draw=red, inner sep=2]
+        \tikzstyle{blue hollow node} [circle, draw=blue, inner sep=2]
+        \tikzstyle{black hollow node} [circle, draw=black, inner sep=2]
+        \node(0)[red hollow node]{player 1}
+            [grow=east]
+            child{node(1)[blue hollow node]{player 2} 
+                child{node[black hollow node, label=right:{$(3,3)$}]{} edge from parent[blue]{co-op}}
+                child{node[black hollow node, label=right:{$(0,5)$}]{} edge from parent[blue]{defect}}
+                edge from parent[red]{co-op}
+            }
+            child{node(2)[blue hollow node]{player 2} 
+                child{node[black hollow node, label=right:{$(5, 0)$}]{} edge from parent[blue]{co-op}}
+                child{node[black hollow node, label=right:{$(1, 1)$}]{} edge from parent[blue]{defect}}
+                edge from parent[red]{defect}
+            };
+        \draw[dashed] (0, 1) to (0, 2);
+    \end{tikzpicture}
+    \caption{The extensive form representation of A Prisoner's Dilemma.}
+\end{figure}
+
+According to~\cite{Webb2007}, a \textit{subgame} is a sub-graph of the game tree
+such that:
+\begin{itemize}
+    \item The sub-graph begins at a decision node, say \(x_{i}\);
+    \item This node, \(x_{i}\), is the only element contained in its information set;
+    \item The sub-graph contains all of the decision nodes which follow \(x_{i}\).
+\end{itemize}
+
+This leads to the following definition of \emph{subgame perfect equilibria},
+adapted from~\cite{Webb2007}.
+\begin{definition}
+    A \textit{subgame perfect equilibrium} is a Nash equilibrium which satisfies
+    the condition that the strategies played define a Nash equilibrium in every
+    subgame.
+\end{definition}
+Hence the strategy defined in Theorem~\ref{thm:seq_of_stage_NE} is a subgame
+perfect equilibrium. A few final definitions are now highlighted before
+introducing the Folk Theorem.
+
+\subsubsection{Final Definitions Needed}\label{subsubsec:Final_Defs_Needed}
 Now, in order to be able to discuss the payoffs of strategies in infinite games;
-the notion of a \emph{discounted payoff} is introduced.
+the notion of a \emph{discounted payoff} is introduced. This is defined
+in~\cite{Knight2017b} as:
+\[
+    V_{i}(\sigma) = \sum_{t=1}^{\infty}{\delta^{t-1}U_{i}(\sigma)},
+\]
+where the discount factor, \(\delta\), can be thought of as the probability that
+the game continues. That is, the probability that another stage game will be
+played. Using this, the \textit{average payoffs}, per stage game, can be defined by:
+\[
+    \frac{1}{\bar{T}}V_{i}(\sigma) = (1-\delta)V_{i}(\sigma),
+\]
+where \(\bar{T} = \frac{1}{1-\delta}\) is the average length of a game
+~\cite{Knight2017b}.
 
-According to 
+Finally, Figure~\ref{fig:Feasible_Payoff_Plot} shows those payoffs which are
+individually rational for a two player version of A Prisoner's Dilemma. In
+general, an \textit{individually rational payoff} is an average payoff which
+exceeds the payoffs obtained in the stage Nash equilibria for all
+players~\cite{Knight2017b}. Note, often the Nash equilibrium payoffs are not the
+optimal payoff which players could achieve.
 
+\begin{figure}\label{fig:Feasible_Payoff_Plot}
+    \begin{tikzpicture}
+        \draw[->] (0,0) -- (5,0) node[anchor=north west] {player 1};
+        \draw[->] (0,0) -- (0,5) node[anchor=south east] {player 2};
+        \foreach \x in {0,1,2,3,4,5}
+            \draw (\x cm,1pt) -- (\x cm,-1pt) node[anchor=north] {$\x$};
+        \foreach \y in {0,1,2,3,4}
+            \draw (1pt,\y cm) -- (-1pt,\y cm) node[anchor=east] {$\y$};
+        \filldraw [blue] (1, 1) circle (2pt);
+        \filldraw [blue] (0, 5) circle (2pt);
+        \filldraw [blue] (5, 0) circle (2pt);
+        \filldraw [blue] (3, 3) circle (2pt);
+        \draw[black, dashed] (1,1) -- (0,5) -- (3,3) -- (5,0) cycle;
+        \draw[red, thick] (1, 1) -- (1, 13/3);
+        \draw[red, thick] (1, 1) -- (13/3, 1);
+        \draw[red, dashed, ->] (2.5, 0.5) -- (2, 2) node[anchor=north]{individually rational payoffs};
+    \end{tikzpicture}
+    \caption{A plot highlighting the possible individually rational payoffs for the game of A Prisoner's Dilemma.}
+\end{figure}
+
+In the next section (Section~\ref{sec:Folk_Thm}), the main theorem of this
+project will be stated and proved.
 
 \section{Folk Theorem}\label{sec:Folk_Thm}
+According to~\cite{Webb2007}, the class of theorems known as Folk Theorems are
+so-called because the result was well-known before a formal proof was provided.
+In general, these theorems state that players can achieve a better payoff than
+the Nash equilibrium (if the Nash equilibrium payoff is not optimal) when the
+stage game is repeated many times and the probability of the game continuing is 
+large enough. 
+
+It is believed that Friedman, 1971 (~\cite{friedman1971non}) was one of the
+first to publish a formal proof to the widely accepted Folk Theorem~\cite{}.
+Thus, the presentation of the statement and proof given here is adapted
+from~\cite{friedman1971non} as well as from~\cite{Webb2007}.
+
+Before stating the theorem, the list of assumptions which
+Friedman~\cite{friedman1971non} requires the infinite repeated game to satisfy is given.
+\begin{enumerate}
+    \item The mixed strategy sets, \(\Sigma_{i}\) are compact and convex for all
+    \(i\in N\). 
+    \item The payoff functions, \(U_{i}: \Sigma \to \mathbb{R}\), are continuous
+    and bounded for all \(i\in N\).
+    \item The \(U_{i}(\sigma)\)s are quasi-concave~\footnote{According
+    to~\cite{Stover}, a real-valued function \(f\), defined on a convex subset
+    \(C \subset \mathbb{R}^n\), is \textit{quasi-concave} if for all \(\alpha
+    \in \mathbb{R}\), the set \(\{x \in C : f(x) \ge a\}\) is convex.} functions
+    of \(sigma_{i}\) for all \(i\in N\).
+    \item If  \(U_{i}^{\prime} \le U_{i}^{\prime\prime}\), for all \(i\in N\)
+    and \(U_{i}^{\prime}, U_{i}^{\prime\prime} \in H\), then, for all
+    \(U_{i}^{\prime} \le U \le U_{i}^{\prime\prime}\), \(U \in H\). Here, \(H\)
+    is defined to be the set of feasible payoffs, \(\{U(\sigma) : \sigma \in
+    \Sigma\}\), where \(U(\sigma) = (U_{1}(\sigma), U_{2}(\sigma), \ldots,
+    U_{N}(\sigma))\).
+    \item  \(H^{*}\) is concave, where \(H^{*} \subset H\) denotes the set of
+    all Pareto optimal payoffs.~\footnote{Friedman defines a \textit{Pareto
+    optimal payoff} as a point in the payoff space \(U_(\sigma^{*})\) which
+    satisfies the conditions: \(\sigma^{*} \in \Sigma\) and \(U_{i}(\sigma^{*})
+    > U_{i}(\sigma)\) for all \(i \in N\)}.
+    \item All stage games are identical in the infinitely repeated game.
+    \item The discount parameter, \(\delta\), is equal in all time periods.
+    \item The stage game has a unique Nash equilibrium.
+    \item The Nash equilibrium is not Pareto optimal. 
+\end{enumerate}
+Note, Friedman~\cite{friedman1971non} later goes on to prove that assumptions
+six to nine can be removed with only a small effect on the result. However,
+since the only game being studied in this project is the IPD (which satisfies
+all the above assumptions), this generalisation will be omitted. Thus, only the
+proof of the original theorem will be provided.
+
+\begin{theorem}\label{thm:Folk}
+    If the above assumptions are all satisfied for the given infinite repeated
+    game, then there exists a strategy, \(\sigma^{*}\) which satisfies the
+    following two conditions:
+    \begin{itemize}
+        \item \(\sigma^{*}\) is an element of the set of strategy vectors which
+        obtain Pareto optimal payoffs; and
+        \item \( \frac{U_{i}(\sigma_{-i}^{*},t_{i})-U_{i}(\sigma^{ne})}
+        {U_{i}(\sigma^{*})-U_{i}(\sigma^{ne})} = 
+        \frac{U_{j}(\sigma_{-j}^{*},t_{j})-U_{j}(\sigma^{ne})}
+        {U_{j}(\sigma^{*})-U_{j}(\sigma^{ne})}\)
+    \end{itemize}
+    where \(\sigma^{ne}\) is the strategy consisting of repeated play of the
+    stage Nash equilibrium, \(t_{i}\) is a strategy for player \(i\) which
+    maximises a single stage game payoff against \(\sigma_{-i}^{*}\) and \(i, j
+    \in \{1, 2, \ldots, N\}\).
+    In addition, if the inequality:
+    \[
+        \frac{1-\delta_{i}}{\delta_{i}} < \frac{U_{i}(\sigma^{*})-U_{i}(\sigma^{ne})}{\phi_{i}(\sigma_{-i}^{*})-U_{i}(\sigma^{ne})}
+    \]
+    holds for all \(i \in \{1, 2, \ldots, N\}\), then \(\sigma^{*}\) is a Nash
+    equilibrium. Here, \(\delta_{i}\) is the discount factor and function \(\phi\)
+\end{theorem}
+
+\begin{proof}
+    Firstly, the existence of such a strategy, \(\sigma^{*}\) needs to be
+    proved. This is done as follows.
 
 
+\end{proof}
 
-\section{Aims of the Projects}\label{sec:Aims_of_the_Project}
+\section{Aims of the Project}\label{sec:Aims_of_the_Project}
+This project stemmed from an initial idea used in Game Theory Coursework
+written by the author. In this coursework, regarding Nash equilibria and
+repeated games, the two graphs, as presented in Figure~\ref{fig:CW_plots}, were
+obtained.
+
+\begin{figure}[h]
+    \centering
+        \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{CW-graph-1.pdf}
+        \caption{A plot of the least probabilities of defection when playing against the strategies: Cooperator, TitForTat and Random. Here, the p-threshold is approximately 0.25.}\label{fig:CW_graph_1}
+        \end{subfigure}
+    \hfill
+        \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{CW-graph-2.pdf}
+        \caption{A plot of the least probabilities of defection when playing against the strategies: Winner21, AntiTitForTat and OmegaTFT. Here, the p-threshold is around 0.5.}\label{fig:CW_graph_2}
+        \end{subfigure}
+        ~\caption{Original plots obtained which inspired the creation of this project.}\label{fig:CW_plots}
+    \end{figure}
+
+These two graphs were obtained using a similar method to this project and so
+please see Chapter~\ref{ch:Methods_Init_Investigations} for the details. The
+plots show the least probability of defection obtained in the Nash equilibria of
+the game. The game matrices were defined by repeating an IPD tournament 100
+times for the Defector strategy, and three other opponents, with 100 distinct
+probabilities of the game ending.
+
+From Figure~\ref{fig:CW_plots}, it can be seen that there appears to be a `clear
+probability' of the game ending at which the least probability of defection
+jumps from zero to one. (Throughout the rest of this project, this `clear
+probability', \(p\), will be referred to as the \emph{p-threshold} of a game.)
+However, what was most intriguing was that the two different games obtained had
+a different p-threshold (approximately 0.25 for Figure~\ref{fig:CW_graph_1} but
+for Figure~\ref{fig:CW_graph_2} the threshold appears at around 0.5). This
+inspired the idea to investigate whether there are any specific characteristics
+of an IPD tournament that affect the value of this threshold. That is, does the
+number or the stochasticity of players, for example, cause the probability of a
+game ending for which the least probability of defection jumps to increase or
+decrease?
+
+Therefore, the aims of this project are as follows:
+\begin{enumerate}
+\item To look thoroughly into the recent (and past) literature of
+research already produced in the areas of Folk Theorems and the IPD;
+\item To execute a large experiment involving many tournaments of the
+IPD with different types / numbers of players to obtain graphs similar
+to those in Figure~\ref{fig:CW_plots};
+\item To perform analyses on where the p-thresholds seem to lie and
+whether it is affected by the different environments of the tournaments
+(that is, differing number of players, stochasticity within the
+tournament itself and the players, etc.); and
+\item To explore other `Folk-like' Theorems and perform similar
+experiments and analyses.  
+\end{enumerate}
