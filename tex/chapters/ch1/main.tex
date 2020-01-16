@@ -40,15 +40,21 @@ Consider the following scenario:
 This is one of the standard games in game theory known as A Prisoner's Dilemma.
 It has four distinct outcomes, for the given two player version, which can be
 represented as a table (see Table~\ref{tab:PD_outcomes}).
-\begin{tabular}{ |c|c|c|c| }\label{tab:PD_outcomes}
-    \toprule
-    & \multicolumn{3}{ |c| }{Column Player} \\
-    midrule 
-    \multirow{3}{*}{Row Player} & & coop & defect \\
-    & coop & (3, 3) & (0, 5) \\
-    & defect & (5, 0) & (1, 1) \\
-    \bottomrule
+\begin{table}
+\begin{tabular}{ cc|c|c|c| }\label{tab:PD_outcomes}
+    \cline{3-4}
+     & & \multicolumn{2}{ c| }{Column Player} \\
+    \cline{3-4}
+     & & coop & defect \\
+    \multicolumn{1}{ |c }{\multirow{2}{*}{Row Player}} &
+    \multicolumn{1}{ |c| }{coop} & (3, 3) & (0, 5) \\
+    \cline{2-4}
+    \multicolumn{1}{ |c }{} & 
+    \multicolumn{1}{ |c| }{defect} & (5, 0) & (1, 1) \\
+    \cline{1-4}
 \end{tabular}
+\caption{Outcomes & payoffs for the game of A Prisoner's Dilemma.}\label{tab:PD_outcomes}
+\end{table}
 Each coordinate \((a, b)\) in the table represents the utility values obtained
 for each player, where \(a\) is the utility value obtained by the row player
 and \(b\) is the utility gained by the column player. These utility values are
@@ -87,7 +93,7 @@ defined as follows:
        3 & 0\\
        5 & 1\\ 
     \end{pmatrix}
-    \text{ and } B = A^{T}
+    \text{ and } B = A^{T} =
     \begin{pmatrix}
         3 & 5\\
         0 & 1\\
@@ -120,8 +126,9 @@ strategy vectors \(s_{-i} \in S_{-i}\) of the other players,
     u_{i}(s_{i}, s_{-i}) < u_{i}(\bar{s_{i}}, s_{i}).
 \]
 In this case we say that \(s_{i}\) is \textit{strictly dominated} by
-\(\bar{s_{i}}\). Here, \(s_{-i} = \{s_{1}, s_{2}, \ldots, s_{i-1}, s_{i+1},
-\ldots, s_{n}\} \), i.e. \ the \(i\)th player's strategy has been omitted. The
+\(\bar{s_{i}}\). Here, 
+\(s_{-i} = \{s_{1}, s_{2}, \ldots, s_{i-1}, s_{i+1}, \ldots, s_{n}\} \), i.e. \
+the \(i\)th player's strategy has been omitted. The 
 set, \(S_{-i}\), is defined similarly. Looking at the row player's matrix of a
 Prisoner's Dilemma~\ref{PDMatrix} (the first entries in the ordered tuples), it
 is clear that cooperation is a strictly dominated strategy. Due to the
@@ -215,13 +222,14 @@ the strategy, \(\sigma_{c} = (y, 1-y)\). The payoff obtained for the row and col
         3y \\
         4y + 1
     \end{pmatrix},
-
+\]
+\[
     \sigma_{r}B = \begin{pmatrix}
+        x & 1-x
+    \end{pmatrix} \begin{pmatrix}
         3 & 5 \\
         0 & 1        
-    \end{pmatrix} \begin{pmatrix}
-        x & 1-x
-    \end{pmatrix} = \begin{pmatrix}
+    \end{pmatrix}  = \begin{pmatrix}
         3x & 4x + 1
     \end{pmatrix}
 \]
@@ -257,9 +265,7 @@ in~\cite{maschler_solan_zamir_2013} for an explanation of zero-sum games.}:
     \begin{pmatrix}
         1 & -1\\
         -1 & 1\\
-    \end{pmatrix}
-
-    B =
+    \end{pmatrix}, \ B =
     \begin{pmatrix}
         -1 & 1\\
         1 & -1\\
@@ -273,7 +279,7 @@ games.
     Every finite game has an equilibrium point.
 \end{theorem}
 
-The proof of Theorem~\label{thm:Nash} includes the use of a\emph{fixed point
+The proof of Theorem~\label{thm:Nash} includes the use of a \emph{fixed point
 theorem} and thus, a short sub-section regarding one such result is given, for
 completeness, before providing a formal proof of~\ref{thm:Nash}.
 
@@ -334,7 +340,7 @@ is obtained.
     \ldots \times S_{N}\) is the set of pure strategies for all players, with
     \((S_i)_{i \in N}\) the pure strategy set for player i; \(\Sigma \) is
     defined similarly but relating to mixed strategies; and \(U_{i}: \Sigma \to
-    \) are the payoff functions as given in
+    \mathbb{R}\) are the payoff functions as given in
     equation~\ref{eqn:mixed_payoff_function}. Recall that \(\s_{-i}\) is used to
     denote the strategy choice of all players \emph{except} the \(i\)th player.
     
@@ -364,7 +370,7 @@ is obtained.
     probability distribution by standardising.
 
     The aim is to apply Theorem~\ref{thm:Brouwer} to the mapping \(T: \sigma \to
-    |sigma^{\prime}\) and show that it's fixed points correspond to Nash
+    \sigma^{\prime}\) and show that it's fixed points correspond to Nash
     equilibria. Thus, firstly compactness and convexity of the set \(\sigma \)
     is shown along with continuity of the function \(f\). 
     
@@ -441,14 +447,14 @@ player \(i\) for all \(i \in 1, \ldots, N\). Note that, when \(t=0\), \(H(0) =
 \underbrace{(\emptyset, \emptyset, \ldots, \emptyset)}_{N \text{times}}\), since
 no stage games have yet been played.
 
-As given in~\cite{\Knight2019a}, a \textit{strategy} of a \(T\)-stage repeated
+As given in~\cite{Knight2019a}, a \textit{strategy} of a \(T\)-stage repeated
 game is defined to be a mapping from the complete history so far to an action of
 the stage game, that is 
 \[
     \tau_{i} : \cup_{t = 0}^{T-1}{H{t}} \to a_{i}. 
 \]
-Here, \(H(t)\) is the history of play as defined above and a_{i} is the \(i\)th
-player's action of the stage game. 
+Here, \(H(t)\) is the history of play as defined above and \(a_{i}\) is the
+\(i\)th player's action of the stage game. 
 
 Consider, for example, the environment in which the stage game of a Prisoner's
 Dilemma is repeated each time. This is known as the \emph{Iterated Prisoner's
@@ -476,7 +482,7 @@ strategies include:
 Figure~\ref{fig:2-stage_payoff_plot} shows the possible payoffs obtained in a 
 2-stage repeated IPD with two players:
 
-\begin{figure}\label{fig:2-stage_payoff_plot}
+\begin{figure}
     \begin{tikzpicture}
         \draw (0, 0) -- (11, 0);
         \draw (0, 0) -- (0, 11);
@@ -494,7 +500,7 @@ Figure~\ref{fig:2-stage_payoff_plot} shows the possible payoffs obtained in a
         \filldraw [blue] (6, 1) circle (2pt);
         \filldraw [blue] (4, 4) circle (2pt);
     \end{tikzpicture} 
-    \caption{A plot to show the possible payoffs of the game between two players in which A Prisoner's Dilemma is repeated twice.}
+    \caption{A plot to show the possible payoffs of the game between two players in which A Prisoner's Dilemma is repeated twice.}\label{fig:2-stage_payoff_plot}
 \end{figure}
 
 
@@ -561,26 +567,22 @@ game A Prisoner's Dilemma is provided. Here, only two players are considered and
 any information sets are represented by a dashed line. Note, any normal form
 game can be represented as an extensive form game. 
 
-\begin{figure}\label{fig:PD_game_tree}
+\begin{figure}
     \begin{tikzpicture}
         \tikzstyle{red hollow node}[circle, draw=red, inner sep=2]
         \tikzstyle{blue hollow node} [circle, draw=blue, inner sep=2]
         \tikzstyle{black hollow node} [circle, draw=black, inner sep=2]
-        \node(0)[red hollow node]{player 1}
-            [grow=east]
-            child{node(1)[blue hollow node]{player 2} 
-                child{node[black hollow node, label=right:{$(3,3)$}]{} edge from parent[blue]{co-op}}
-                child{node[black hollow node, label=right:{$(0,5)$}]{} edge from parent[blue]{defect}}
-                edge from parent[red]{co-op}
-            }
-            child{node(2)[blue hollow node]{player 2} 
-                child{node[black hollow node, label=right:{$(5, 0)$}]{} edge from parent[blue]{co-op}}
-                child{node[black hollow node, label=right:{$(1, 1)$}]{} edge from parent[blue]{defect}}
-                edge from parent[red]{defect}
-            };
+        \node(0)[red hollow node]{player 1};
+            \child{\node(1)[blue hollow node]{player 2} edge from parent[red]{co-op}};
+                \child{\node[black hollow node, label=right:{$(3,3)$}]{} edge from parent[blue]{co-op}};
+                \child{\node[black hollow node, label=right:{$(0,5)$}]{} edge from parent[blue]{defect}};
+                
+            \child{\node(2)[blue hollow node]{player 2}edge from parent[red]{defect}};
+                \child{\node[black hollow node, label=right:{$(5, 0)$}]{} edge from parent[blue]{co-op}};
+                \child{\node[black hollow node, label=right:{$(1, 1)$}]{} edge from parent[blue]{defect}};
         \draw[dashed] (0, 1) to (0, 2);
     \end{tikzpicture}
-    \caption{The extensive form representation of A Prisoner's Dilemma.}
+    \caption{The extensive form representation of A Prisoner's Dilemma.}\label{fig:PD_game_tree}
 \end{figure}
 
 According to~\cite{Webb2007}, a \textit{subgame} is a sub-graph of the game tree
@@ -625,24 +627,24 @@ exceeds the payoffs obtained in the stage Nash equilibria for all
 players~\cite{Knight2017b}. Note, often the Nash equilibrium payoffs are not the
 optimal payoff which players could achieve.
 
-\begin{figure}\label{fig:Feasible_Payoff_Plot}
-    \begin{tikzpicture}
+\begin{figure}
+    \begin{tikzpicture}[scale=3]
         \draw[->] (0,0) -- (5,0) node[anchor=north west] {player 1};
         \draw[->] (0,0) -- (0,5) node[anchor=south east] {player 2};
-        \foreach \x in {0,1,2,3,4,5}
-            \draw (\x cm,1pt) -- (\x cm,-1pt) node[anchor=north] {$\x$};
-        \foreach \y in {0,1,2,3,4}
-            \draw (1pt,\y cm) -- (-1pt,\y cm) node[anchor=east] {$\y$};
+        \foreach \x/\xtext in {0,1,2,3,4,5}
+            \draw (\x cm,1pt) -- (\x cm,-1pt) node[anchor=north] {$\xtext$};
+        \foreach \y/\ytext in {0,1,2,3,4}
+            \draw (1pt,\y cm) -- (-1pt,\y cm) node[anchor=east] {$\ytext$};
         \filldraw [blue] (1, 1) circle (2pt);
         \filldraw [blue] (0, 5) circle (2pt);
         \filldraw [blue] (5, 0) circle (2pt);
         \filldraw [blue] (3, 3) circle (2pt);
-        \draw[black, dashed] (1,1) -- (0,5) -- (3,3) -- (5,0) cycle;
+        \draw[black, dashed] (1,1) -- (0,5) -- (3,3) -- (5,0) -- (1,1);
         \draw[red, thick] (1, 1) -- (1, 13/3);
         \draw[red, thick] (1, 1) -- (13/3, 1);
         \draw[red, dashed, ->] (2.5, 0.5) -- (2, 2) node[anchor=north]{individually rational payoffs};
     \end{tikzpicture}
-    \caption{A plot highlighting the possible individually rational payoffs for the game of A Prisoner's Dilemma.}
+    \caption{A plot highlighting the possible individually rational payoffs for the game of A Prisoner's Dilemma.}\label{fig:Feasible_Payoff_Plot}
 \end{figure}
 
 In the next section (Section~\ref{sec:Folk_Thm}), the main theorem of this
@@ -793,8 +795,9 @@ obtained.
         \centering
         \includegraphics[width=\linewidth]{CW-graph-2.pdf}
         \caption{A plot of the least probabilities of defection when playing against the strategies: Winner21, AntiTitForTat and OmegaTFT. Here, the p-threshold is around 0.5.}\label{fig:CW_graph_2}
-        \end{subfigure}~\caption{Original plots obtained which inspired the creation of this project.}\label{fig:CW_plots}
-    \end{figure}
+        \end{subfigure}
+        \caption{Original plots obtained which inspired the creation of this project.}\label{fig:CW_plots}
+\end{figure}
 
 These two graphs were obtained using a similar method to this project and so
 please see Chapter~\ref{ch:Methods_Init_Investigations} for the details. The
