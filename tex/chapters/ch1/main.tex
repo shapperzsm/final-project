@@ -12,15 +12,15 @@ pioneers of game theory is mathematician, John von Neumann who, along with
 economist Oskar Morgenstern, published \textit{The Theory of Games and Economic
 Behaviour} in 1944~\cite{maschler_solan_zamir_2013}. This book discusses the
 theory, developed in 1928 and 1940-41, by von Neumann, regarding ``games of
-strategy" and its applications within the subject of economics
+strategy'' and its applications within the subject of economics
 ~\cite{von2007theory}. Following this, several advancements have been made in
 the area, including, most notably, John Nash's papers on the consequently named
 Nash Equilibria in 1950/51~\cite{nash1950equilibrium, nash1951non}. Due to the
-``context-free mathematical toolbox"~\cite{maschler_solan_zamir_2013} nature of
+``context-free mathematical toolbox''~\cite{maschler_solan_zamir_2013} nature of
 this subject, it has been applied to many areas, from
 networks~\cite{liang2012game, 1593279} to biology~\cite{chen2009robust, 
 adeoye2012application}. In this project, the main focus is on a
-particular class of theorems, within game theory, known as ``Folk Theorems" with
+particular class of theorems, within game theory, known as ``Folk Theorems'' with
 application to the game of A Prisoner's Dilemma. These will be defined and
 discussed in the subsequent sections.
 
@@ -40,21 +40,19 @@ Consider the following scenario:
 This is one of the standard games in game theory known as A Prisoner's Dilemma.
 It has four distinct outcomes, for the given two player version, which can be
 represented as a table (see Table~\ref{tab:PD_outcomes}).
-\begin{tabular}{|c|}\label{tab:PD_outcomes}
-    \hline
-      &  & column player & \\
-    \hline 
-      &  & cooperate & defect\\
-    \hline
-    row player & cooperate & (3, 3) & (0, 5)\\
-    \hline 
-      &  & defect & (5, 0) & (1, 1)\\
-    \hline
+\begin{tabular}{ |c|c|c|c| }\label{tab:PD_outcomes}
+    \toprule
+    & \multicolumn{3}{ |c| }{Column Player} \\
+    midrule 
+    \multirow{3}{*}{Row Player} & & coop & defect \\
+    & coop & (3, 3) & (0, 5) \\
+    & defect & (5, 0) & (1, 1) \\
+    \bottomrule
 \end{tabular}
 Each coordinate \((a, b)\) in the table represents the utility values obtained
-for each player, where  \(a\) is the utility value obtained by the row player
+for each player, where \(a\) is the utility value obtained by the row player
 and \(b\) is the utility gained by the column player. These utility values are
-as given in \cite{axelrod1980effective} and are used throughout this project.
+as given in~\cite{axelrod1980effective} and are used throughout this project.
 More formally, the game can be represented as the following matrix:
 
 \kbordermatrix{
@@ -69,16 +67,15 @@ definition is adapted from~\cite{maschler_solan_zamir_2013}.
 In general a \textit{normal form} or \textit{strategic form} game is defined by
 an ordered triple \(G = (N, (S_i)_{i \in N}, (u_i)_{i \in N})\), where:
 \begin{itemize}
-    \item \(N = \{1, 2,..., n\}\) is a finite set of players;
-    \item \(S = S_1 \times S_2, \times ... \times S_n\) is the set of strategies
-    for all players in which each vector \((S_i)_{i \in N}\) is the set of
-    strategies for player i \footnote{Since the game of A Prisoner's Dilemma has
-    a finite strategy set for each player \(S_i = \{ \text{cooperate},
-    \text{defect}\} (i \in N)\), in this project only finite strategy spaces are
-    considered.}; and
+    \item \(N = \{1, 2,\ldots, n\} \) is a finite set of players;
+    \item \(S = S_1 \times S_2, \times \cdots \times S_n\) is the set of
+    strategies for all players in which each vector \((S_i)_{i \in N}\) is the
+    set of strategies for player i~\footnote{Since the game of A Prisoner's
+    Dilemma has a finite strategy set for each player \(S_i = \{
+    \text{cooperate}, \text{defect}\} (i \in N)\), in this project only finite
+    strategy spaces are considered.}; and
     \item \(u_i : S \to \mathbb{R}\) is a payoff function which associates each
-    strategy vector, \(\textbf{s} = (s_i)_{i \in N}\), with a utility
-    \footnote{'Utility' is referred to as a player's `payoff' throughout the
+    strategy vector, \(\textbf{s} = (s_i)_{i \in N}\), with a utility~\footnote{'Utility' is referred to as a player's `payoff' throughout the
     remainder of this report.} \(u_i(i \in N)\).
 \end{itemize}
 
@@ -124,16 +121,16 @@ strategy vectors \(s_{-i} \in S_{-i}\) of the other players,
 \]
 In this case we say that \(s_{i}\) is \textit{strictly dominated} by
 \(\bar{s_{i}}\). Here, \(s_{-i} = \{s_{1}, s_{2}, \ldots, s_{i-1}, s_{i+1},
-\ldots, s_{n}\}\), i.e. the \(i\)th player's strategy has been omitted. The set,
-\(S_{-i}\), is defined similarly. Looking at the row player's matrix of a
-Prisoner's Dilemma \ref{PDMatrix} (the first entries in the ordered tuples), it
+\ldots, s_{n}\} \), i.e. \ the \(i\)th player's strategy has been omitted. The
+set, \(S_{-i}\), is defined similarly. Looking at the row player's matrix of a
+Prisoner's Dilemma~\ref{PDMatrix} (the first entries in the ordered tuples), it
 is clear that cooperation is a strictly dominated strategy. Due to the
 symmetricity of the game, this is also true for the column
 player.~\cite{maschler_solan_zamir_2013}
 
 
 
-So far, only the pure strategies, \(S_{i}=\{\text{coop}, \text{defect}\}\), have
+So far, only the pure strategies, \(S_{i}=\{\text{coop}, \text{defect}\} \), have
 been discussed, thus the notion of a probability distribution over \(S_{i}\) is
 now introduced, giving the so-called \textit{mixed strategies} as defined in~\cite{maschler_solan_zamir_2013}:
 Let \(G=(N, (S_{i})_{i \in N}, (u_{i})_{i \in N})\) be a game (with each 
@@ -200,12 +197,11 @@ Prisoner's Dilemma, defection dominated cooperation. This leads to the following
 observation:
 \begin{center}
     \textbf{The strategy pair (Defect, Defect), is the unique Nash equilibrium 
-    for A Prisoner's Dilemma, with a payoff value of 1 for each player.}
-    ~\cite{maschler_solan_zamir_2013}
+    for A Prisoner's Dilemma, with a payoff value of 1 for each player.}~\cite{maschler_solan_zamir_2013}
 \end{center}
 This can be visualised as followed:
 Assume the row player uses the following mixed strategy, \(\sigma_{r} = (x,
-1-x)\), i.e. the probability of cooperating is \(x\) and the probability of
+1-x)\), i.e. \ the probability of cooperating is \(x\) and the probability of
 defecting is \(1-x\). Similarly, assume the column player has 
 the strategy, \(\sigma_{c} = (y, 1-y)\). The payoff obtained for the row and column player, respectively, is then:
 \[
@@ -241,15 +237,13 @@ Plotting these gives the following:
         \begin{subfigure}[t]{0.45\textwidth}
         \centering
             \includegraphics[width=\linewidth]{pd-col-payoff.pdf}
-        \end{subfigure}
-        ~\caption{Graphs to show the row and column players' payoffs against a 
-        mixed strategy.}
-    \label{fig:mixed_strategy_PD}
+        \end{subfigure}~\caption{Graphs to show the row and column players' payoffs against a 
+        mixed strategy.}\label{fig:mixed_strategy_PD}
     \end{figure}
 From Figure~\ref{fig:mixed_strategy_PD} it is clear that, regardless of the
 strategy played by the opponent, defection is indeed the only rational move for
 one to play. Thus, both players have no incentive to deviate if and only if both
-play the strategy \(\sigma=(0, 1)\), i.e. defection for every single game of A
+play the strategy \(\sigma=(0, 1)\), i.e. \ defection for every single game of A
 Prisoner's Dilemma.
 
 On the other hand, consider, for example, a game with no dominated
@@ -338,7 +332,7 @@ is obtained.
     mixed extension \(\Gamma=(N, (\Sigma_{i})_{i \in N}, (U_{i})_{i \in N})\).
     Here, \(N\) denotes the number of players; \(S = S_{1} \times S_{2} \times
     \ldots \times S_{N}\) is the set of pure strategies for all players, with
-    \((S_i)_{i \in N}\) the pure strategy set for player i; \(\Sigma\) is
+    \((S_i)_{i \in N}\) the pure strategy set for player i; \(\Sigma \) is
     defined similarly but relating to mixed strategies; and \(U_{i}: \Sigma \to
     \) are the payoff functions as given in
     equation~\ref{eqn:mixed_payoff_function}. Recall that \(\s_{-i}\) is used to
@@ -360,7 +354,7 @@ is obtained.
         \sigma_{i}^{\prime} := \frac{ \sigma_{i}+\sum_{t}{f_{i,t}(\sigma)s_{i}^{t}} }{ 1+\sum_{t}{f_{i,t}(\sigma)} }
     \]
     \end{equation}
-    be a modification of each \(\sigma_{i} \in \sigma\), with \(\sigma^{\prime}
+    be a modification of each \(\sigma_{i} \in \sigma \), with \(\sigma^{\prime}
     = (\sigma_{1}^{\prime}, \sigma_{2}^{\prime}, \ldots, \sigma_{N}^{\prime})\).
     In words, this modification increases the proportion of the pure strategy
     \(t\) used in \(\sigma_{i}\) if the payoff gained by the \(i\)th player is
@@ -369,10 +363,10 @@ is obtained.
     case. Note, the denominator ensures that the ending vector is still a
     probability distribution by standardising.
 
-    The aim is to apply theorem~\ref{thm:Brouwer} to the mapping \(T: \sigma \to
+    The aim is to apply Theorem~\ref{thm:Brouwer} to the mapping \(T: \sigma \to
     |sigma^{\prime}\) and show that it's fixed points correspond to Nash
-    equilibria. Thus, firstly compactness and convexity of the set \(\sigma\) is
-    shown along with continuity of the function \(f\). 
+    equilibria. Thus, firstly compactness and convexity of the set \(\sigma \)
+    is shown along with continuity of the function \(f\). 
     
     Observe that each \(\sigma_{i}\) can be represented by a point in a simplex
     in a real vector space with the vertices given by the pure strategies,
@@ -381,40 +375,41 @@ is obtained.
     \(B \subseteq \mathbb{R}^{m}\) are convex compact sets then the set \(A
     \times B\) is a convex compact subset of \(\mathbb{R}^{n+m}\)}, as
     highlighted in~\cite{maschler_solan_zamir_2013} gives the convexity and
-    compactness of the set \(\Sigma\), the cross product of all \(\Sigma_{i}\)s.
+    compactness of the set \(\Sigma \), the cross product of all
+    \(\Sigma_{i}\)s. 
     
     The continuity of the function \(f\) depends upon the continuity of the
     payoff functions \(U_{i}\). As given in~\cite{maschler_solan_zamir_2013},
     this is shown by first proving that the \(U_{i}\) are multilinear functions
     in the variables \((\sigma_{i})_{i \in N}\) and then applying the fact that
-    any multilinear function over \(\Sigma\) is a continuous
+    any multilinear function over \(\Sigma \) is a continuous
     function.~\footnote{For a detailed consideration of the continuity of the
     payoff functions, please see~\cite{maschler_solan_zamir_2013}, pages
     148-149.} The result then follows.
 
-    Hence, by theorem~\ref{thm:Brouwer}, the mapping \(T\) must have at least
+    Hence, by Theorem~\ref{thm:Brouwer}, the mapping \(T\) must have at least
     one fixed point. The proof is concluded by showing that any fixed points of
     \(T\) are Nash equilibria. 
 
-    Suppose \(\sigma\) is such that \(T(\sigma) = \sigma\). Then, the proportion
-    of \(s_{i}^{t}\) used in the mixed strategy \(\sigma_{i}\) must not be
-    altered by \(T\). Therefore, in \(\sigma_{i}^{\prime}\), the sum
+    Suppose \(\sigma \) is such that \(T(\sigma) = \sigma \). Then, the
+    proportion of \(s_{i}^{t}\) used in the mixed strategy \(\sigma_{i}\) must
+    not be altered by \(T\). Therefore, in \(\sigma_{i}^{\prime}\), the sum
     \(\sum_{t}{f_{i,t}(\sigma)}\), in the denominator, must equal zero.
     Otherwise, the total sum of the denominator will be greater than one,
     decreasing the proportion of \(s_{i}^{t}\). This implies that for all pure
     strategies \(q\), \(f_{i,q}(\sigma)=0\). That is, player \(i\) can not
     improve their payoff by adopting any of the pure strategies. Note, this is
-    true for all \(i\) and \(q\) by definition of \(T(\sigma) = \sigma\) and
+    true for all \(i\) and \(q\) by definition of \(T(\sigma) = \sigma \) and
     thus no player is able to improve their payoff. By definition~\ref{def:NE},
     this is exactly the conditions of a Nash equilibrium.
 
-    Now assume \(\sigma\) is a Nash equilibrium. Then, by definition, it must be
-    that \(f_{i,q}(\sigma)=0\) for all pure strategies \(q\) for all players,
+    Now assume \(\sigma \) is a Nash equilibrium. Then, by definition, it must
+    be that \(f_{i,q}(\sigma)=0\) for all pure strategies \(q\) for all players,
     \(i \in N\). Note, if \(f_{i,q}(\sigma) \ne 0\), then the
     \(i\)th player would benefit from changing their strategy to the pure
     strategy \(q\), which violates the condition for a Nash equilibrium. From
-    this it follows that \(T(\sigma) = \sigma\), that is, \(\sigma\) is a fixed
-    point of \(T\). This concludes the proof.
+    this it follows that \(T(\sigma) = \sigma \), that is, \(\sigma \) is a
+    fixed point of \(T\). This concludes the proof.
 
 \end{proof}
 
@@ -509,7 +504,7 @@ in repeated games~\cite{friedman1971non}. The next result, adapted
 from~\cite{Knight2019a} guarantees at least one Nash equilibria.
 \begin{theorem}\label{thm:seq_of_stage_NE}
     Consider a \(T\)-stage repeated game with \(G=(N, (S_{i})_{i \in N},
-    (u_{i})_{i \in N})\) as the stage game, \(0 < T < \infty\). Define by
+    (u_{i})_{i \in N})\) as the stage game, \(0 < T < \infty \). Define by
     \(\bm\sigma^{*} =(\sigma_{1}^{*}, \sigma_{2}^{*}, \ldots, \sigma_{N}^{*})\),
     a stage Nash equilibrium of \(G\). Then the sequence in which
     \(\bm\sigma^{*}\) is continuously played is a Nash equilibrium of the
@@ -530,7 +525,7 @@ selecting the action `cooperate' is more beneficial?
 
 In preparation to answer this, the next
 Subsection~\ref{subsec:Infinite_Repeated_Games} discusses the case when \(T \to
-\infty\) and results linked to \emph{infinitely repeated games}.
+\infty \) and results linked to \emph{infinitely repeated games}.
 
 \subsection{Infinite Repeated Games}\label{subsec:Infinite_Repeated_Games}
 The Folk Theorem discussed in Section~\ref{sec:Folk_Thm} considers a stronger
@@ -538,7 +533,7 @@ notion of equilibria known as \textit{subgame perfect equilibria}. In order to
 fully understand this notion, a new representation of games is introduced.
 
 \subsubsection{Extensive Form Games}\label{subsubsec:Extensive_Form_Games}
-According to \cite{maschler_solan_zamir_2013}, an \textit{extensive form game}
+According to~\cite{maschler_solan_zamir_2013}, an \textit{extensive form game}
 is given by the ordered vector
 \(\Gamma = (N, V, E, x_{0}, (V_{i})_{i \in N}, O, u)\)
 where \(N\) is a finite set of players; \((V, E, x_{0})\) is a \textit{game
@@ -614,9 +609,9 @@ in~\cite{Knight2017b} as:
 \[
     V_{i}(\sigma) = \sum_{t=1}^{\infty}{\delta^{t-1}U_{i}(\sigma)},
 \]
-where the discount factor, \(\delta\), can be thought of as the probability that
-the game continues. That is, the probability that another stage game will be
-played. Using this, the \textit{average payoffs}, per stage game, can be defined by:
+where the discount factor, \(\delta \), can be thought of as the probability
+that the game continues. That is, the probability that another stage game will
+be played. Using this, the \textit{average payoffs}, per stage game, can be defined by:
 \[
     \frac{1}{\bar{T}}V_{i}(\sigma) = (1-\delta)V_{i}(\sigma),
 \]
@@ -676,21 +671,21 @@ Friedman~\cite{friedman1971non} requires the infinite repeated game to satisfy i
     \item The \(U_{i}(\sigma)\)s are quasi-concave~\footnote{According
     to~\cite{Stover}, a real-valued function \(f\), defined on a convex subset
     \(C \subset \mathbb{R}^n\), is \textit{quasi-concave} if for all \(\alpha
-    \in \mathbb{R}\), the set \(\{x \in C : f(x) \ge a\}\) is convex.} functions
-    of \(sigma_{i}\) for all \(i\in N\).
+    \in \mathbb{R}\), the set \( \{ x \in C : f(x) \ge a \} \) is convex.}
+    functions of \(sigma_{i}\) for all \(i\in N\).
     \item If  \(U_{i}^{\prime} \le U_{i}^{\prime\prime}\), for all \(i\in N\)
     and \(U_{i}^{\prime}, U_{i}^{\prime\prime} \in H\), then, for all
     \(U_{i}^{\prime} \le U \le U_{i}^{\prime\prime}\), \(U \in H\). Here, \(H\)
-    is defined to be the set of feasible payoffs, \(\{U(\sigma) : \sigma \in
-    \Sigma\}\), where \(U(\sigma) = (U_{1}(\sigma), U_{2}(\sigma), \ldots,
+    is defined to be the set of feasible payoffs, \( \{ U(\sigma) : \sigma \in
+    \Sigma \} \), where \(U(\sigma) = (U_{1}(\sigma), U_{2}(\sigma), \ldots,
     U_{N}(\sigma))\).
     \item  \(H^{*}\) is concave, where \(H^{*} \subset H\) denotes the set of
     all Pareto optimal payoffs.~\footnote{Friedman defines a \textit{Pareto
     optimal payoff} as a point in the payoff space \(U_(\sigma^{*})\) which
-    satisfies the conditions: \(\sigma^{*} \in \Sigma\) and \(U_{i}(\sigma^{*})
+    satisfies the conditions: \(\sigma^{*} \in \Sigma \) and \(U_{i}(\sigma^{*})
     > U_{i}(\sigma)\) for all \(i \in N\)}.
     \item All stage games are identical in the infinitely repeated game.
-    \item The discount parameter, \(\delta\), is equal in all time periods.
+    \item The discount parameter, \(\delta \), is equal in all time periods.
     \item The stage game has a unique Nash equilibrium.
     \item The Nash equilibrium is not Pareto optimal. 
 \end{enumerate}
@@ -704,13 +699,13 @@ proof of the original theorem will be provided.
     If the above assumptions are all satisfied for the given infinite repeated
     game, then for any individually rational payoff \(V_{i}\) (greater than the
     payoff yielded by the stage Nash equilibrium \(\sigma^{ne}\)), there exists
-    a discount parameter \(\delta^{*}\) such that for all \(\delta\), \(0 <
-    \delta^{*} < \delta < 1\) there is a subgame perfect Nash equilibria with
-    payoffs equal to \(V_{i}\).
+    a discount parameter \(\delta^{*}\) such that for all \(\delta_{i}\), \(0 <
+    \delta^{*} < \delta_{i} < 1\) there is a subgame perfect Nash equilibria
+    with payoffs equal to \(V_{i}\).
 \end{theorem}
 
 \begin{proof}
-    Consider the set  Consider the set of all actions which yield greater payoffs than the Nash
+    Consider the set of all actions which yield greater payoffs than the Nash
     equilibrium, denoted by:
     \[
         B = \{\sigma : \sigma \in \Sigma, U_{i}(\sigma) > U_{i}(\sigma^{ne}), i = 1, 2, \ldots, N\}
@@ -725,21 +720,59 @@ proof of the original theorem will be provided.
         \end{cases}
     \]
     \end{equation}\label{eqn:trigger_strategy}
-that is, the \(i\)th player will choose \(\sigma_{i}^{\prime}\) unless any other
-player does not play \( \sigma_{j}^{\prime}\), in which case they continue by
-playing their Nash equilibrium action, \(\sigma_{i}^{ne}\). Now, by definition,
-the strategy in~\ref{eqn:trigger_strategy} is an equilibrium of the repeated
-game if 
-\[
-    \sum_{\tau=0}^{\infty}{\delta_{i}^{\tau}U_{i}(\sigma_{i}^{\prime})} > U_{i}(\sigma_{-i}^{\prime}) + \sum_{\tau=1}^{\infty}{\delta_{i}^{\tau}U_{i}(\sigma^{ne})}, \ \ i=1, 2, \ldots, N,
-\]
-which can be rearranged to 
-\[
-    \frac{\delta_{i}}{1-\delta_{i}}[U_{i}(\sigma^{\prime}) - U_{i}(\sigma^{ne})] > U_{i}(\sigma_{-i}^{\prime}, t_{i}) - U_{i}(\sigma{\prime}), \ \ i=1, 2, \ldots, N,
-\]
-where \(U_{i}(\sigma_{-i}^{\prime}, t_{i}) = \max_{\sigma_{i} \in
-\Sigma_{i}}{U_{i}(\sigma_{-i}^{\prime}, \sigma_{i})}\), \(t_{i} \in
-\Sigma_{i}\).
+    where \(\sigma_{i}^{\prime} \in B\). In words, the \(i\)th player will choose \(\sigma_{i}^{\prime}\) unless any
+    other player does not play \( \sigma_{j}^{\prime}\), in which case they
+    continue by playing their Nash equilibrium action, \(\sigma_{i}^{ne}\). Now,
+    by definition, the strategy in~\ref{eqn:trigger_strategy} is an equilibrium
+    of the repeated game if 
+    \[
+        \sum_{\tau=0}^{\infty}{\delta_{i}^{\tau}U_{i}(\sigma_{i}^{\prime})} > U_{i}(\sigma_{-i}^{\prime}, t_{i}) + \sum_{\tau=1}^{\infty}{\delta_{i}^{\tau}U_{i}(\sigma^{ne})}, \ \ i=1, 2, \ldots, N,
+    \]
+    which can be rearranged to 
+    \[
+        \frac{\delta_{i}}{1-\delta_{i}}[U_{i}(\sigma^{\prime}) - U_{i}(\sigma^{ne})] > U_{i}(\sigma_{-i}^{\prime}, t_{i}) - U_{i}(\sigma{\prime}), \ \ i=1, 2, \ldots, N,
+    \]
+    where \(U_{i}(\sigma_{-i}^{\prime}, t_{i}) = \max_{\sigma_{i} \in
+    \Sigma_{i}}{U_{i}(\sigma_{-i}^{\prime}, \sigma_{i})}\), \(t_{i} \in
+    \Sigma_{i}\).
+
+    To check if this strategy is indeed a best response to all others players,
+    who are executing the same strategy in~\ref{eqn:trigger_strategy}, for the
+    \(i\)th player consider their alternatives. They have two options: either
+    the \(i\)th player executes the strategy in question, or they play the
+    strategy in which \(\sigma_{i1} = t_{i}\) and then \(\sigma_{i\tau} =
+    \sigma^{ne}\) will be the best response as every other player will convert
+    to \(\sigma_{j\tau} = \sigma^{ne}\), for all \(\tau > 1\). Note that any
+    other strategy is weakly dominated by one of these two, since playing
+    \(t_{i}\) in any other stage \(\tau \ne 1\) will yield less gains as these
+    stages have increased discounting.
+
+    Now, if the discounted loss from playing the Nash equilibria,
+    \begin{equation}
+        \[
+            \frac{\delta_{i}}{1-\delta_{i}}[U_{i}(\sigma^{\prime}) -
+            U_{i}(\sigma^{ne})],
+        \]
+    \end{equation}\label{eqn:discounted_loss}
+     is greater than the gain achieved by playing
+    \(t_{i}\) against \(\sigma_{-i}^{\prime}\), then the rational
+    strategy choice for player \(i\), assuming all other players are
+    executing~\ref{eqn:trigger_strategy}, is to play~\ref{eqn:trigger_strategy}.
+    
+    Observe, as the discount parameter, \(\delta\), tends to one from
+    below, the discounted loss in~\ref{eqn:discounted_loss} tends to infinity.
+    However, the gain obtained from playing \(t_{i}\), that is,
+    \(U_{i}(\sigma_{-i}^{\prime}, t_{i}) - U_{i}(\sigma{\prime})\) is finite.
+    Thus, for all \(\sigma_{i}^{\prime} \in B\) there exists a \(\delta^{*} \in
+    (0, 1)\) such that for all \(\delta_{i} > \delta^{*}\), the
+    strategy~\ref{eqn:trigger_strategy} is optimal against the same strategy for
+    all players \(j \ne i\). Therefore, if the conditions are true for all
+    players \(i = 1,2,\ldots,N\), the strategy \((\bar{\sigma}_{1},
+    \bar{\sigma}_{2}, \ldots, \bar{\sigma}_{N})\), where  \(\bar{\sigma}_{i}\)
+    denotes~\ref{eqn:trigger_strategy}, yields a Nash equilibrium.
+
+    Finally, by construction, the strategy~\ref{eqn:trigger_strategy} is indeed
+    a subgame perfect equilibrium. 
 \end{proof}
 
 \section{Aims of the Project}\label{sec:Aims_of_the_Project}
@@ -760,8 +793,7 @@ obtained.
         \centering
         \includegraphics[width=\linewidth]{CW-graph-2.pdf}
         \caption{A plot of the least probabilities of defection when playing against the strategies: Winner21, AntiTitForTat and OmegaTFT. Here, the p-threshold is around 0.5.}\label{fig:CW_graph_2}
-        \end{subfigure}
-        ~\caption{Original plots obtained which inspired the creation of this project.}\label{fig:CW_plots}
+        \end{subfigure}~\caption{Original plots obtained which inspired the creation of this project.}\label{fig:CW_plots}
     \end{figure}
 
 These two graphs were obtained using a similar method to this project and so
