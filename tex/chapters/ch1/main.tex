@@ -664,12 +664,12 @@ large enough.
 It is believed that Friedman, 1971 (~\cite{friedman1971non}) was one of the
 first to publish a formal proof to the widely accepted Folk Theorem~\cite{}.
 Thus, the presentation of the statement and proof given here is adapted
-from~\cite{friedman1971non} as well as from~\cite{Webb2007}.
+from~\cite{friedman1971non} as well as from~\cite{Knight2017b}.
 
 Before stating the theorem, the list of assumptions which
 Friedman~\cite{friedman1971non} requires the infinite repeated game to satisfy is given.
 \begin{enumerate}
-    \item The mixed strategy sets, \(\Sigma_{i}\) are compact and convex for all
+    \item The mixed action sets, \(\Sigma_{i}\) are compact and convex for all
     \(i\in N\). 
     \item The payoff functions, \(U_{i}: \Sigma \to \mathbb{R}\), are continuous
     and bounded for all \(i\in N\).
@@ -702,33 +702,44 @@ proof of the original theorem will be provided.
 
 \begin{theorem}\label{thm:Folk}
     If the above assumptions are all satisfied for the given infinite repeated
-    game, then there exists a strategy, \(\sigma^{*}\) which satisfies the
-    following two conditions:
-    \begin{itemize}
-        \item \(\sigma^{*}\) is an element of the set of strategy vectors which
-        obtain Pareto optimal payoffs; and
-        \item \( \frac{U_{i}(\sigma_{-i}^{*},t_{i})-U_{i}(\sigma^{ne})}
-        {U_{i}(\sigma^{*})-U_{i}(\sigma^{ne})} = 
-        \frac{U_{j}(\sigma_{-j}^{*},t_{j})-U_{j}(\sigma^{ne})}
-        {U_{j}(\sigma^{*})-U_{j}(\sigma^{ne})}\)
-    \end{itemize}
-    where \(\sigma^{ne}\) is the strategy consisting of repeated play of the
-    stage Nash equilibrium, \(t_{i}\) is a strategy for player \(i\) which
-    maximises a single stage game payoff against \(\sigma_{-i}^{*}\) and \(i, j
-    \in \{1, 2, \ldots, N\}\).
-    In addition, if the inequality:
-    \[
-        \frac{1-\delta_{i}}{\delta_{i}} < \frac{U_{i}(\sigma^{*})-U_{i}(\sigma^{ne})}{\phi_{i}(\sigma_{-i}^{*})-U_{i}(\sigma^{ne})}
-    \]
-    holds for all \(i \in \{1, 2, \ldots, N\}\), then \(\sigma^{*}\) is a Nash
-    equilibrium. Here, \(\delta_{i}\) is the discount factor and function \(\phi\)
+    game, then for any individually rational payoff \(V_{i}\) (greater than the
+    payoff yielded by the stage Nash equilibrium \(\sigma^{ne}\)), there exists
+    a discount parameter \(\delta^{*}\) such that for all \(\delta\), \(0 <
+    \delta^{*} < \delta < 1\) there is a subgame perfect Nash equilibria with
+    payoffs equal to \(V_{i}\).
 \end{theorem}
 
 \begin{proof}
-    Firstly, the existence of such a strategy, \(\sigma^{*}\) needs to be
-    proved. This is done as follows.
-
-
+    Consider the set  Consider the set of all actions which yield greater payoffs than the Nash
+    equilibrium, denoted by:
+    \[
+        B = \{\sigma : \sigma \in \Sigma, U_{i}(\sigma) > U_{i}(\sigma^{ne}), i = 1, 2, \ldots, N\}
+    \]
+    and define the following trigger strategy:
+    \begin{equation}
+    \[
+        \sigma_{i1} = \sigma_{i}^{\prime}, \newline
+        \sigma_{it} = \begin{cases}
+            \sigma_{i}^{\prime}, & \quad \text{if } \sigma_{j\tau}=\sigma_{j}^{\prime} \ j \ne i, \tau=1, 2, \ldots, t-1, t=2, 3, \ldots \\
+            \sigma_{i}^{ne}, & \quad \text{otherwise},
+        \end{cases}
+    \]
+    \end{equation}\label{eqn:trigger_strategy}
+that is, the \(i\)th player will choose \(\sigma_{i}^{\prime}\) unless any other
+player does not play \( \sigma_{j}^{\prime}\), in which case they continue by
+playing their Nash equilibrium action, \(\sigma_{i}^{ne}\). Now, by definition,
+the strategy in~\ref{eqn:trigger_strategy} is an equilibrium of the repeated
+game if 
+\[
+    \sum_{\tau=0}^{\infty}{\delta_{i}^{\tau}U_{i}(\sigma_{i}^{\prime})} > U_{i}(\sigma_{-i}^{\prime}) + \sum_{\tau=1}^{\infty}{\delta_{i}^{\tau}U_{i}(\sigma^{ne})}, \ \ i=1, 2, \ldots, N,
+\]
+which can be rearranged to 
+\[
+    \frac{\delta_{i}}{1-\delta_{i}}[U_{i}(\sigma^{\prime}) - U_{i}(\sigma^{ne})] > U_{i}(\sigma_{-i}^{\prime}, t_{i}) - U_{i}(\sigma{\prime}), \ \ i=1, 2, \ldots, N,
+\]
+where \(U_{i}(\sigma_{-i}^{\prime}, t_{i}) = \max_{\sigma_{i} \in
+\Sigma_{i}}{U_{i}(\sigma_{-i}^{\prime}, \sigma_{i})}\), \(t_{i} \in
+\Sigma_{i}\).
 \end{proof}
 
 \section{Aims of the Project}\label{sec:Aims_of_the_Project}
