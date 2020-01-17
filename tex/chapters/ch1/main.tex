@@ -20,8 +20,8 @@ Nash Equilibria in 1950/51~\cite{nash1950equilibrium, nash1951non}. Due to the
 this subject, it has been applied to many areas, from
 networks~\cite{liang2012game, 1593279} to biology~\cite{chen2009robust, 
 adeoye2012application}. In this project, the main focus is on a
-particular class of theorems, within game theory, known as ``Folk Theorems'' with
-application to the game of A Prisoner's Dilemma. These will be defined and
+particular class of theorems, within game theory, known as ``Folk Theorems''
+with application to the game of A Prisoner's Dilemma. These will be defined and
 discussed in the subsequent sections.
 
 \section{An Introduction to Games}\label{sec:An_Intro_to_Games}
@@ -53,7 +53,7 @@ represented as a table (see Table~\ref{tab:PD_outcomes}).
     \multicolumn{1}{ |c| }{defect} & (5, 0) & (1, 1) \\
     \cline{1-4}
 \end{tabular}
-\caption{Outcomes & payoffs for the game of A Prisoner's Dilemma.}\label{tab:PD_outcomes}
+\caption{Outcomes \& payoffs for the game of A Prisoner's Dilemma.}\label{tab:PD_outcomes}
 \end{table}
 Each coordinate \((a, b)\) in the table represents the utility values obtained
 for each player, where \(a\) is the utility value obtained by the row player
@@ -167,11 +167,9 @@ where each \(\sigma = (\sigma_{1}, \sigma_{2}, \ldots, \sigma_{N}) \in \Sigma =
 \Sigma_{1} \times \Sigma_{2} \times \cdots \times \Sigma_{N}\) is mapped to the
 payoff
 \begin{equation}
-\[
     U_{i} = \mathbb{E}_{\sigma}(u_{i}(\sigma)) = \sum_{(s_{1}, s_{2}, \ldots, s_
     {N}) \in S}{u_{i}(s_{1}, s_{2}, \ldots, s_{N})\sigma_{1}(s_{1})\sigma_{2}(s_
-    {2})\cdots\sigma_{N}(s_{n})}
-\]  
+    {2})\cdots\sigma_{N}(s_{n})} 
 \end{equation}\label{eqn:mixed_payoff_function}
 for all players \(i \in N\).
 
@@ -239,12 +237,12 @@ Plotting these gives the following:
     \centering
         \begin{subfigure}[t]{0.45\textwidth}
         \centering
-            \includegraphics[width=\linewidth]{pd-row-payoff.pdf}
+            \includegraphics[width=\linewidth]{{pd-row-payoff}}
         \end{subfigure}
     \hfill
         \begin{subfigure}[t]{0.45\textwidth}
         \centering
-            \includegraphics[width=\linewidth]{pd-col-payoff.pdf}
+            \includegraphics[width=\linewidth]{{pd-col-payoff}}
         \end{subfigure}~\caption{Graphs to show the row and column players' payoffs against a 
         mixed strategy.}\label{fig:mixed_strategy_PD}
     \end{figure}
@@ -341,8 +339,9 @@ is obtained.
     \((S_i)_{i \in N}\) the pure strategy set for player i; \(\Sigma \) is
     defined similarly but relating to mixed strategies; and \(U_{i}: \Sigma \to
     \mathbb{R}\) are the payoff functions as given in
-    equation~\ref{eqn:mixed_payoff_function}. Recall that \(\s_{-i}\) is used to
-    denote the strategy choice of all players \emph{except} the \(i\)th player.
+    equation~\ref{eqn:mixed_payoff_function}. Recall that \(\sigma_{-i}\) is
+    used to denote the strategy choice of all players \emph{except} the \(i\)th
+    player.
     
     Let \(\sigma = (\sigma_{1}, \sigma_{2}, \ldots, \sigma_{N})\) be a tuple of
     mixed strategies and \(U_{i,t}(\sigma)\) be the \(i\)th player's payoff if
@@ -350,15 +349,11 @@ is obtained.
     to use their mixed strategy.
     Now, define function \(f: \Sigma \to [0, \infty)\) such that 
     \begin{equation}
-    \[
-        f_{i,t}(\sigma) := \max{(0, U_{i,t}(\sigma)-U_{i}(\sigma))}
-    \]
+        f_{i,t}(\sigma) = \max{(0, U_{i,t}(\sigma)-U_{i}(\sigma))}
     \end{equation}
     and also let 
     \begin{equation}
-    \[ 
-        \sigma_{i}^{\prime} := \frac{ \sigma_{i}+\sum_{t}{f_{i,t}(\sigma)s_{i}^{t}} }{ 1+\sum_{t}{f_{i,t}(\sigma)} }
-    \]
+        \sigma_{i}^{\prime} = \frac{ \sigma_{i}+\sum_{t}{f_{i,t}(\sigma)s_{i}^{t}} }{ 1+\sum_{t}{f_{i,t}(\sigma)} }
     \end{equation}
     be a modification of each \(\sigma_{i} \in \sigma \), with \(\sigma^{\prime}
     = (\sigma_{1}^{\prime}, \sigma_{2}^{\prime}, \ldots, \sigma_{N}^{\prime})\).
@@ -483,7 +478,7 @@ Figure~\ref{fig:2-stage_payoff_plot} shows the possible payoffs obtained in a
 2-stage repeated IPD with two players:
 
 \begin{figure}
-    \begin{tikzpicture}
+    \begin{tikzpicture}[scale=0.5]
         \draw (0, 0) -- (11, 0);
         \draw (0, 0) -- (0, 11);
         \foreach \x in {0,1,2,3,4,5,6,7,8,9,10,11}
@@ -511,16 +506,16 @@ from~\cite{Knight2019a} guarantees at least one Nash equilibria.
 \begin{theorem}\label{thm:seq_of_stage_NE}
     Consider a \(T\)-stage repeated game with \(G=(N, (S_{i})_{i \in N},
     (u_{i})_{i \in N})\) as the stage game, \(0 < T < \infty \). Define by
-    \(\bm\sigma^{*} =(\sigma_{1}^{*}, \sigma_{2}^{*}, \ldots, \sigma_{N}^{*})\),
+    \(\bm{\sigma}^{*} =(\sigma_{1}^{*}, \sigma_{2}^{*}, \ldots, \sigma_{N}^{*})\),
     a stage Nash equilibrium of \(G\). Then the sequence in which
-    \(\bm\sigma^{*}\) is continuously played is a Nash equilibrium of the
+    \(\bm{\sigma}^{*}\) is continuously played is a Nash equilibrium of the
     \(T\)-stage repeated game.
 \end{theorem} 
 
 \begin{proof}
-    Since \(\bm\sigma^{*}\) is a stage Nash equilibrium, it is, in particular,
+    Since \( \bm{\sigma}^{*} \) is a stage Nash equilibrium, it is, in particular,
     a Nash equilibrium of the \(T\)th stage game. Thus, no player has any reason
-    to deviate here. But then \(\bm\sigma^{*}\) was also played at the
+    to deviate here. But then \( \bm{\sigma}^{*} \) was also played at the
     \((T-1)\)th stage also, meaning there is still no reason to deviate.
     Therefore, continuing via backwards induction gives the required result.
 \end{proof}
@@ -568,20 +563,19 @@ any information sets are represented by a dashed line. Note, any normal form
 game can be represented as an extensive form game. 
 
 \begin{figure}
-    \begin{tikzpicture}
-        \tikzstyle{red hollow node}[circle, draw=red, inner sep=2]
-        \tikzstyle{blue hollow node} [circle, draw=blue, inner sep=2]
-        \tikzstyle{black hollow node} [circle, draw=black, inner sep=2]
-        \node(0)[red hollow node]{player 1};
-            \child{\node(1)[blue hollow node]{player 2} edge from parent[red]{co-op}};
-                \child{\node[black hollow node, label=right:{$(3,3)$}]{} edge from parent[blue]{co-op}};
-                \child{\node[black hollow node, label=right:{$(0,5)$}]{} edge from parent[blue]{defect}};
-                
-            \child{\node(2)[blue hollow node]{player 2}edge from parent[red]{defect}};
-                \child{\node[black hollow node, label=right:{$(5, 0)$}]{} edge from parent[blue]{co-op}};
-                \child{\node[black hollow node, label=right:{$(1, 1)$}]{} edge from parent[blue]{defect}};
-        \draw[dashed] (0, 1) to (0, 2);
-    \end{tikzpicture}
+    \begin{istgame}[scale=0.5]
+    \setistgrowdirection'{east}
+    \istroot(0){Player 1}
+        \istb{coop}[a]
+        \istb{defect}[b]
+    \istroot(1)(0-1)
+        \istb{coop}[a]{(3, 3)}
+        \istb{defect}[b]{(0, 5)}
+    \istroot(2)(0-2)
+        \istb{coop}[a]{(5, 0)}
+        \istb{defect}[b]{1, 1}
+    \xtInfoset(1)(2){Player 2}     
+    \end{istgame}
     \caption{The extensive form representation of A Prisoner's Dilemma.}\label{fig:PD_game_tree}
 \end{figure}
 
@@ -628,7 +622,7 @@ players~\cite{Knight2017b}. Note, often the Nash equilibrium payoffs are not the
 optimal payoff which players could achieve.
 
 \begin{figure}
-    \begin{tikzpicture}[scale=3]
+    \begin{tikzpicture}[scale=0.5]
         \draw[->] (0,0) -- (5,0) node[anchor=north west] {player 1};
         \draw[->] (0,0) -- (0,5) node[anchor=south east] {player 2};
         \foreach \x/\xtext in {0,1,2,3,4,5}
@@ -714,13 +708,11 @@ proof of the original theorem will be provided.
     \]
     and define the following trigger strategy:
     \begin{equation}
-    \[
         \sigma_{i1} = \sigma_{i}^{\prime}, \newline
         \sigma_{it} = \begin{cases}
             \sigma_{i}^{\prime}, & \quad \text{if } \sigma_{j\tau}=\sigma_{j}^{\prime} \ j \ne i, \tau=1, 2, \ldots, t-1, t=2, 3, \ldots \\
             \sigma_{i}^{ne}, & \quad \text{otherwise},
         \end{cases}
-    \]
     \end{equation}\label{eqn:trigger_strategy}
     where \(\sigma_{i}^{\prime} \in B\). In words, the \(i\)th player will choose \(\sigma_{i}^{\prime}\) unless any
     other player does not play \( \sigma_{j}^{\prime}\), in which case they
@@ -751,17 +743,15 @@ proof of the original theorem will be provided.
 
     Now, if the discounted loss from playing the Nash equilibria,
     \begin{equation}
-        \[
-            \frac{\delta_{i}}{1-\delta_{i}}[U_{i}(\sigma^{\prime}) -
-            U_{i}(\sigma^{ne})],
-        \]
+        \frac{\delta_{i}}{1-\delta_{i}}[U_{i}(\sigma^{\prime}) -
+        U_{i}(\sigma^{ne})],
     \end{equation}\label{eqn:discounted_loss}
-     is greater than the gain achieved by playing
+    is greater than the gain achieved by playing
     \(t_{i}\) against \(\sigma_{-i}^{\prime}\), then the rational
     strategy choice for player \(i\), assuming all other players are
     executing~\ref{eqn:trigger_strategy}, is to play~\ref{eqn:trigger_strategy}.
     
-    Observe, as the discount parameter, \(\delta\), tends to one from
+    Observe, as the discount parameter, \(\delta \), tends to one from
     below, the discounted loss in~\ref{eqn:discounted_loss} tends to infinity.
     However, the gain obtained from playing \(t_{i}\), that is,
     \(U_{i}(\sigma_{-i}^{\prime}, t_{i}) - U_{i}(\sigma{\prime})\) is finite.
@@ -794,7 +784,7 @@ obtained.
         \begin{subfigure}[t]{0.45\textwidth}
         \centering
         \includegraphics[width=\linewidth]{CW-graph-2.pdf}
-        \caption{A plot of the least probabilities of defection when playing against the strategies: Winner21, AntiTitForTat and OmegaTFT. Here, the p-threshold is around 0.5.}\label{fig:CW_graph_2}
+        \caption{A plot of the least probabilities of defection when playing against the strategies: Winner21, AntiTitForTat and OmegaTFT.\@ Here, the p-threshold is around 0.5.}\label{fig:CW_graph_2}
         \end{subfigure}
         \caption{Original plots obtained which inspired the creation of this project.}\label{fig:CW_plots}
 \end{figure}
@@ -822,7 +812,7 @@ decrease?
 Therefore, the aims of this project are as follows:
 \begin{enumerate}
 \item To look thoroughly into the recent (and past) literature of
-research already produced in the areas of Folk Theorems and the IPD;
+research already produced in the areas of Folk Theorems and the IPD;\@
 \item To execute a large experiment involving many tournaments of the
 IPD with different types / numbers of players to obtain graphs similar
 to those in Figure~\ref{fig:CW_plots};
