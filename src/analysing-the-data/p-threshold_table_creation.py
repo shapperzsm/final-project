@@ -61,12 +61,19 @@ for each_set in range(maximum_player_set):
 
         specific_noise_data = each_set_data[each_set_data["noise"] == noise]
 
-        zero_prob = specific_noise_data[
-            specific_noise_data["least_prob_of_defection"] == 0
-        ]
-        non_zero_prob = specific_noise_data[
-            specific_noise_data["least_prob_of_defection"] != 0
-        ]
+        if len(specific_noise_data["least_prob_of_defection"]) == len(specific_noise_data[specific_noise_data["least_prob_of_defection"] == specific_noise_data["least_prob_of_defection"][0]]):
+            min_threshold = min(specific_noise_data["prob_of_game_ending"])
+            mean_threshold = min_threshold
+            median_threshold = min_threshold
+            max_threshold = min_threshold
+
+        else:
+            zero_prob = specific_noise_data[
+                specific_noise_data["least_prob_of_defection"] == 0
+            ]
+            non_zero_prob = specific_noise_data[
+                specific_noise_data["least_prob_of_defection"] != 0
+            ]
 
         if len(zero_prob) == 0:
             max_threshold = min(specific_noise_data["prob_of_game_ending"])
