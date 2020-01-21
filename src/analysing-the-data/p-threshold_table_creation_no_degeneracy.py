@@ -63,7 +63,12 @@ for each_set in range(maximum_player_set):
         specific_noise_data = each_set_data[each_set_data["noise"] == noise]
         specific_noise_data.index = range(len(specific_noise_data))
 
-        if len(specific_noise_data["least_prob_of_defection"]) == len(specific_noise_data[specific_noise_data["least_prob_of_defection"] == specific_noise_data["least_prob_of_defection"][0]]):
+        if len(specific_noise_data["least_prob_of_defection"]) == len(
+            specific_noise_data[
+                specific_noise_data["least_prob_of_defection"]
+                == specific_noise_data["least_prob_of_defection"][0]
+            ]
+        ):
             if specific_noise_data["least_prob_of_defection"][0] == 1:
                 min_threshold = min(specific_noise_data["prob_of_game_ending"])
                 mean_threshold = min_threshold
@@ -74,7 +79,6 @@ for each_set in range(maximum_player_set):
                 mean_threshold = min_threshold
                 median_threshold = min_threshold
                 max_threshold = min_threshold
-            
 
         else:
             zero_prob = specific_noise_data[
@@ -85,7 +89,11 @@ for each_set in range(maximum_player_set):
             ]
 
             if len(zero_prob) == 0:
-                max_threshold = max(specific_noise_data[specific_noise_data["least_prob_of_defection"] != 1]["prob_of_game_ending"])
+                max_threshold = max(
+                    specific_noise_data[
+                        specific_noise_data["least_prob_of_defection"] != 1
+                    ]["prob_of_game_ending"]
+                )
             else:
                 max_threshold = max(zero_prob["prob_of_game_ending"])
 
@@ -123,7 +131,7 @@ for each_set in range(maximum_player_set):
                         "prob_of_game_ending"
                     ].mean()
                     median_threshold = threshold_between_not_zero[
-                     "prob_of_game_ending"
+                        "prob_of_game_ending"
                     ].median()
 
         with open(str(threshold_file), "a") as thresh_file:
