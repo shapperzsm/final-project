@@ -93,19 +93,28 @@ Figure~\ref{fig:stochastic_chart}.
     \caption{A plot to show the ratio of stochastic to deterministic strategies randomly chosen throughout the experiment.}\label{fig:stochastic_chart}
 \end{figure}
 
-It is clear that there is an overarching bias towards deterministic strategies
+It is clear that there is a clear bias towards deterministic strategies
 in this experiment. However, this is to be expected as running the following
 code:
-
 \begin{minted}[frame = lines, framesep = 2mm, fontsize = \scriptsize, bgcolor = Cornsilk]{python}
     len(axl.filtered_strategies(filterset={"stochastic": True})), 
     len(axl.filtered_strategies(filterset={"stochastic": False}))
 
     (86, 156)
 \end{minted}
+it can be seen that over half the strategies coded into the Axelrod library are
+classed as deterministic. Looking at Figure~\ref{fig:stochastic_chart} again,
+observe, the majority of deterministic strategies were executed either once or
+three times. On the other hand, a large proportion of the stochastic strategies
+were played twice.
+
+Further, the number of Nash equilibria obtained for each game was analysed and
+their distributions with respect to the number of opponents of the
+\textit{Defector} plotted. Executing the \textit{value counts} method on the
+`num_of_equilibria' column gave the following conclusions: 
 
 \section{Analysis of the p-Threshold}\label{sec:Analysis_of_the_p-Threshold}
-
+Firstly, two csv files were obtained from the 
 \subsection{Effects of the Number of Players}\label{subsec:Effects_of_the_number_of_Players}
 
 \subsection{Effects of Stochastic Players}\label{subsec:Effects_of_Stochastic_Players}
