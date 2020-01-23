@@ -8,42 +8,54 @@ Here, the environmental effects, on the outcome of the game, discussed include:
 number and characteristics of opponents; noise; and degeneracy. Then a
 large-scale multivariate analysis is executed before considering the reliability
 of the collected data. Note, as of writing, the database currently has 
-\input{../../../src/database-code/data/se/20_01_2020/entries-in-database.txt}
+\input{src/database-code/data/se/20_01_2020/entries-in-database.txt}
 entries (rows) and a total number of 
-\input{../../../src/database-code/data/se/20_01_2020/number-of-tournaments}
+\input{src/database-code/data/se/20_01_2020/number-of-tournaments.txt}
 tournament sets. 
 
 \section{Initial Analysis}\label{sec:Initial_Analysis}
 In this section, all the data (including those games which could be degenerate)
-are considered. Taking a brief look at the graphs produced for each game, it can
-be seen that the main `shapes' obtained are as seen in
+are considered. Taking a brief look at the graphs produced for each set of
+tournaments, it can be seen that the main `shapes' obtained are as seen in
 Figure~\ref{fig:example_graphs}.
 
 \begin{figure}
     \centering
-    \begin{subfigure}[0.3\textwidth]
+    \begin{subfigure}[0.45\textwidth]
         \centering
         \includegraphics[width=\textwidth]{folk_thm/single_game/2/0/0.0/main.pdf}
-        \caption{An example of a graph with a clear p-threshold point of approximately 0.28. In this game there is no degeneracy and the opponent strategy playing in the tournament was \textit{Inverse}, without noise.}
-    \end{subfigure}\label{subfig:clear_thresh_plot}
-    \begin{subfigure}[0.3\textwidth]
+        \caption{An example of a graph with a clear p-threshold point of approximately 0.28. In this game there is no degeneracy and the opponent strategy playing in the tournament was \textit{Inverse}, without noise.}\label{subfig:clear_thresh_plot}
+    \end{subfigure}
+    \begin{subfigure}[0.45\textwidth]
         \centering
         \includegraphics[width=\textwidth]{folk_thm/single_game/6/110/0.0/main.pdf}
-        \caption{An example of a graph where the p-threshold is not as clear. Perhaps this is due to a small amount of noise and hence not enough repetitions and / or stochasticity of the players. In this case the threshold seems to lie in the range [0.1, 0.3]. There is no degeneracy in this game and opponent strategies in the tournament were: \textit{Feld: 1.0, 0.5, 200}; \textit{Cooperator};  \textit{EvolvedLookerUp2_2_2}; \textit{Tullock: 11}; and \textit{ZD-GEN-2: 0.125, 0.5, 3}. Again, this tournament was run with no added noise.}
-    \end{subfigure}\label{subfig:unclear_thresh_plot}
-    \begin{subfigure}[0.3\textwidth]
+        \caption{An example of a graph where the p-threshold is not as clear. Perhaps this is due to a small amount of noise and hence not enough repetitions and / or stochasticity of the players. In this case the threshold seems to lie in the range [0.1, 0.3]. There is no degeneracy in this game and opponent strategies in the tournament were: \textit{Feld: 1.0, 0.5, 200}; \textit{Cooperator};  \textit{EvolvedLookerUp2_2_2}; \textit{Tullock: 11}; and \textit{ZD-GEN-2: 0.125, 0.5, 3}. Again, this tournament was run with no added noise.}\label{subfig:unclear_thresh_plot}
+    \end{subfigure}
+    \newline
+    \begin{subfigure}[0.45\textwidth]
         \centering
         \includegraphics[width=\textwidth]{folk_thm/single_game/5/77/0.0/main.pdf}
-        \caption{An example of a graph where the p-threshold is not clear at all due to some (or all) of the games, which were played by the particular tournament set, being degenerate. In this case, the strategies playing in the tournament were: \textit{Random: 0.5}; \textit{Grumpy: Nice, 10, -10}; \textit{Fortress3}; and \textit{Negation}. This tournament had no added noise.}
-    \end{subfigure}\label{subfig:degenerate_plot}
+        \caption{An example of a graph where the p-threshold is not clear at all due to some (or all) of the games, which were played by the particular tournament set, being degenerate. In this case, the opponent strategies playing in the tournament were: \textit{Random: 0.5}; \textit{Grumpy: Nice, 10, -10}; \textit{Fortress3}; and \textit{Negation}. This tournament had no added noise.}\label{subfig:degenerate_plot}
+    \end{subfigure}
+    \begin{subfigure}[0.45\textwidth]
+        \centering
+        \includegraphics[width=\textwidth]{folk_thm/single_game/4/60/0.0/main.pdf}
+        \caption{An example of a graph where the least probability of defection
+        was constant throughout the varying ending probabilities. In this
+        particular tournament there was no ending probability in which
+        cooperation was beneficial; with the least probability of defection
+        equalling the greatest probability of defection at one. Here, the
+        opponents were: \textit{AntiCycler}; \textit{\$e\$}; and
+        \textit{Stalker: (D,)}.}\label{subfig:constant_plot}
+    \end{subfigure}
     \caption{Example graphs obtained from the experiment.}\label{fig:example_graphs}
 \end{figure}
 
 This will be discussed further in the next section as follows:
-Figure~\ref{subfig:clear_thresh_plot}, and general properties of the
-p-threshold, will be described in Section~\ref{sec:Analysis_of_the_p-Threshold};
-the stochasticity and accuracy visible in
-Figure~\ref{subfig:unclear_thresh_plot} will be analysed in
+Figures~\ref{subfig:clear_thresh_plot} and~\ref{subfig:constant_plot}, and
+general properties of the p-threshold, will be described in
+Section~\ref{sec:Analysis_of_the_p-Threshold}; the stochasticity and accuracy
+visible in Figure~\ref{subfig:unclear_thresh_plot} will be analysed in
 Sections~\ref{subfig:Effects_of_Stochastic_Players}
 and~\ref{subsec:Accuracy_of_Thresholds}, respectively; and finally
 Figure~\ref{subfig:degenerate_plot}, and degeneracy overall, will be considered
@@ -110,11 +122,102 @@ were played twice.
 
 Further, the number of Nash equilibria obtained for each game was analysed and
 their distributions with respect to the number of opponents of the
-\textit{Defector} plotted. Executing the \textit{value counts} method on the
-`num_of_equilibria' column gave the following conclusions: 
+\textit{Defector} plotted. Executing the \textit{value_counts()} method on the
+`num_of_equilibria' column gave the conclusion that the majority of games
+(131773) yielded one Nash equilibria with 28793 games obtaining 3 equilibria.
+Also, the maximum number of equilibria yielded, 39, was for one game, which,
+doing a search on the database, was found to be a six player game with
+noise=0.1. The opponents of the \textit{Defector} were: \textit{Inverse
+Punisher}; \textit{Prober}; \textit{PSO Gambler 2_2_2 Noise 05};
+\textit{Handshake}; and \textit{More Tideman and Chieruzzi}.
+
+Figure~\ref{fig:NE_violinplot} shows the distributions of the number of Nash
+equilibria as per the number of players. As can be seen from the plot, the
+variance in the number of equilibria increases with the number of players, apart
+from when there were 6 players (5 opponents of the defector), where the spread
+is maximum. This could be due to the 39 equilibria gained for one game as
+discussed in the paragraph above. Looking now at the mean of the distributions,
+observe that these are also slightly increasing as the number of players
+increase. 
+
+\begin{figure}      
+    \centering
+    \includegraphics[width=\textwidth]{folk_thm/initial_analysis/player_num_of_equilibria_violinplot.pdf}
+    \caption{A violinplot showing the distribution of the number of equilibria obtained for varying number of players.}\label{fig:NE_violinplot}
+\end{figure}
+
+
 
 \section{Analysis of the p-Threshold}\label{sec:Analysis_of_the_p-Threshold}
-Firstly, two csv files were obtained from the 
+In order to analyse the \(p\)-thresholds of the tournaments, two csv files were
+created containing the minimum, mean, median and maximum probabilities for each
+set of tournaments. This was in order to gain as much information as possible
+from tournaments which gave graphs as shown in Figure~\ref{fig:less_clear}. That
+is, tournaments in which the number of repetitions was not sufficient to omit
+the `noise' which can affect the results.
+
+\begin{figure}
+    \centering
+    \begin{subfigure}[0.3\textwidth]
+        \centering
+        \includegraphics[width=\textwidth]{folk_thm/single_game/8/157/0.0/main.pdf}
+        \caption{This was an eight player tournament with no added noise. The opponent strategies were: \textit{Tester}; \textit{Gradual Killer: (D, D, D, D, D, C, C)}; \textit{Win-Shift Lose-Stay: D}; \textit{Evolved FSM 16}; \textit{Limited Retaliate: 0.1, 20}; \textit{ZD-GEN-2: 0.125, 0.5, 3}; and \textit{Joss: 0.9}.}
+    \end{subfigure}
+    \begin{subfigure}[0.3\textwidth]
+        \centering
+        \includegraphics[width=\textwidth]{folk_thm/single_game/5/80/0.0/main.pdf}
+        \caption{This was a five player tournament with no added noise. The opponent strategies were: \textit{WmAdams}; \textit{Joss: 0.9}; \textit{Yamachi}; and \textit{Stochastic WSLS: 0.05}.}
+    \end{subfigure}
+    \begin{subfigure}[0.3\textwidth]
+        \centering
+        \includegraphics[width=\textwidth]{folk_thm/single_game/2/24/0.0/main.pdf}
+        \caption{This was a two player tournament with no added noise. The \textit{Defector}'s opponent was \textit{Fortress3}.}
+    \end{subfigure}
+    \caption{Examples of plots where the \(p\)-threshold isn't as clear.}\label{fig:less_clear}
+\end{figure}
+
+The first csv file created ignored whether a game could be degenerate and, by a
+small alteration, the second file contained only the non-degenerate games. This
+was in order to help identify whether degeneracy has any effect on the
+\(p\)-threshold. Within these files, other than the varying thresholds, the
+information about the number of players, tournament strategy set and level of
+noise was retained.
+
+Firstly, an exploration into the overall \(p\)-thresholds is given.
+
+\begin{figure}
+    \centering
+    \begin{subfigure}[0.45\textwidth]
+        \centering
+        \includegraphics[width=\textwidth]{folk_thm/main_analysis/min_p_thresh.pdf}
+        \caption{A plot to show the minimum \(p\)-thresholds.}
+    \end{subfigure}\label{subfig:min_p_thresh}
+
+    \begin{subfigure}[0.45\textwidth]
+        \centering
+        \includegraphics[width=\textwidth]{folk_thm/main_analysis/max_p_thresh.pdf}
+        \caption{A plot to show the maximum \(p\)-thresholds.}
+    \end{subfigure}\label{subfig:max_p_thresh}
+    \caption{Plots to show the \(p\)-thresholds for all 1749 sets of tournaments.}\label{fig:min_max_p_thresh}
+\end{figure}
+
+
+\begin{figure}
+    \centering
+    \begin{subfigure}[0.45\textwidth]
+        \centering
+        \includegraphics[width=\textwidth]{folk_thm/main_analysis/mean_p_thresh.pdf}
+        \caption{A plot to show the mean \(p\)-thresholds.}
+    \end{subfigure}\label{subfig:mean_p_thresh}
+
+    \begin{subfigure}[0.45\textwidth]
+        \centering
+        \includegraphics[width=\textwidth]{folk_thm/main_analysis/median_p_thresh.pdf}
+        \caption{A plot to show the median \(p\)-thresholds.}
+    \end{subfigure}\label{subfig:median_p_thresh}
+    \caption{Plots to show the \(p\)-thresholds for all 1749 sets of tournaments.}\label{fig:mean_maedian_p_thresh}
+\end{figure}
+
 \subsection{Effects of the Number of Players}\label{subsec:Effects_of_the_number_of_Players}
 
 \subsection{Effects of Stochastic Players}\label{subsec:Effects_of_Stochastic_Players}
