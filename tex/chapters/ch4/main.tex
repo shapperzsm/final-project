@@ -20,24 +20,27 @@ tournaments, it can be seen that the main `shapes' obtained are as seen in
 Figure~\ref{fig:example_graphs}.
 
 \begin{figure}
-    \centering
-    \begin{subfigure}[0.45\textwidth]
+    \begin{subfigure}{.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{folk_thm/single_game/2/0/0.0/main.pdf}
         \caption{An example of a graph with a clear p-threshold point of approximately 0.28. In this game there is no degeneracy and the opponent strategy playing in the tournament was \textit{Inverse}, without noise.}\label{subfig:clear_thresh_plot}
     \end{subfigure}
-    \begin{subfigure}[0.45\textwidth]
+    \begin{subfigure}{.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{folk_thm/single_game/6/110/0.0/main.pdf}
-        \caption{An example of a graph where the p-threshold is not as clear. Perhaps this is due to a small amount of noise and hence not enough repetitions and / or stochasticity of the players. In this case the threshold seems to lie in the range [0.1, 0.3]. There is no degeneracy in this game and opponent strategies in the tournament were: \textit{Feld: 1.0, 0.5, 200}; \textit{Cooperator};  \textit{EvolvedLookerUp2_2_2}; \textit{Tullock: 11}; and \textit{ZD-GEN-2: 0.125, 0.5, 3}. Again, this tournament was run with no added noise.}\label{subfig:unclear_thresh_plot}
+        \caption{An example of a graph where the p-threshold is not as clear. Perhaps this is due to a small amount of noise and hence not enough repetitions or stochasticity of the players. In this case the threshold seems to lie in the range [0.1, 0.3]. There is no degeneracy in this game and opponent strategies in the tournament were: \textit{Feld: 1.0, 0.5, 200}; \textit{Cooperator};  \textit{EvolvedLookerUp2 _ 2 _ 2 }; \textit{Tullock: 11}; and \textit{ZD-GEN-2: 0.125, 0.5, 3}. Again, this tournament was run with no added noise.}\label{subfig:unclear_thresh_plot}
     \end{subfigure}
+
+
     \newline
-    \begin{subfigure}[0.45\textwidth]
+
+
+    \begin{subfigure}{.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{folk_thm/single_game/5/77/0.0/main.pdf}
         \caption{An example of a graph where the p-threshold is not clear at all due to some (or all) of the games, which were played by the particular tournament set, being degenerate. In this case, the opponent strategies playing in the tournament were: \textit{Random: 0.5}; \textit{Grumpy: Nice, 10, -10}; \textit{Fortress3}; and \textit{Negation}. This tournament had no added noise.}\label{subfig:degenerate_plot}
     \end{subfigure}
-    \begin{subfigure}[0.45\textwidth]
+    \begin{subfigure}{.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{folk_thm/single_game/4/60/0.0/main.pdf}
         \caption{An example of a graph where the least probability of defection
@@ -68,7 +71,7 @@ in Section~\ref{subsec:Effects_of_Degeneracy}.
     \caption{A table of the summary statistics produced from the data of the experiment.}\label{fig:summary_stats}
 \end{figure}
 
-The summary statistics gained from running the \textit{describe()} method of a
+The summary statistics gained from running the \textit{describe} method of a
 pandas database is given in Figure~\ref{fig:summary_stats}. From this, it can be
 seen that the number of opponents the \textit{Defector} played against ranged
 from one to seven, with an average of four opponents. Also, as expected, the
@@ -87,12 +90,12 @@ above this, the greatest probability has a mean of 0.460.
 
 Next, further descriptive statistics are calculated for the strategies. This is
 to obtain a more in-depth view on the types of strategies randomly chosen to
-play and their characteristics. Executing \textit{value_counts()} method on the
+play and their characteristics. Executing \textit{value_counts} method on the
 column of strategy names, it is observed that the player which appeared the most
 times (9 times) is \textit{ZD-GEN-2: 0.125, 0.5, 3}; followed closely by
 \textit{Tideman and Chieruzzi} with 7 sets of tournaments. On the other hand 38
 out of the 200 strategies playing in this experiment appeared only once.
-Running the \textit{value_counts()} method again, but this time on the memory
+Running the \textit{value_counts} method again, but this time on the memory
 depths of the strategies found the majority of strategies to have an infinite
 memory depth. On the other hand, strategies having no memory or a depth equal to
 one were significant. Considering the stochasticity of players alongside how
@@ -108,7 +111,8 @@ Figure~\ref{fig:stochastic_chart}.
 It is clear that there is a clear bias towards deterministic strategies
 in this experiment. However, this is to be expected as running the following
 code:
-\begin{minted}[frame = lines, framesep = 2mm, fontsize = \scriptsize, bgcolor = Cornsilk]{python}
+\begin{minted}{frame=lines, framesep=2mm, fontsize=\scriptsize, bgcolor=Cornsilk}{python}
+    
     len(axl.filtered_strategies(filterset={"stochastic": True})), 
     len(axl.filtered_strategies(filterset={"stochastic": False}))
 
@@ -122,13 +126,13 @@ were played twice.
 
 Further, the number of Nash equilibria obtained for each game was analysed and
 their distributions with respect to the number of opponents of the
-\textit{Defector} plotted. Executing the \textit{value_counts()} method on the
+\textit{Defector} plotted. Executing the \textit{value_counts} method on the
 `num_of_equilibria' column gave the conclusion that the majority of games
 (131773) yielded one Nash equilibria with 28793 games obtaining 3 equilibria.
 Also, the maximum number of equilibria yielded, 39, was for one game, which,
 doing a search on the database, was found to be a six player game with
 noise=0.1. The opponents of the \textit{Defector} were: \textit{Inverse
-Punisher}; \textit{Prober}; \textit{PSO Gambler 2_2_2 Noise 05};
+Punisher}; \textit{Prober}; \textit{PSO Gambler 2 _ 2 _ 2 Noise 05};
 \textit{Handshake}; and \textit{More Tideman and Chieruzzi}.
 
 Figure~\ref{fig:NE_violinplot} shows the distributions of the number of Nash
@@ -157,18 +161,17 @@ is, tournaments in which the number of repetitions was not sufficient to omit
 the `noise' which can affect the results.
 
 \begin{figure}
-    \centering
-    \begin{subfigure}[0.3\textwidth]
+    \begin{subfigure}{.3\textwidth}
         \centering
         \includegraphics[width=\textwidth]{folk_thm/single_game/8/157/0.0/main.pdf}
         \caption{This was an eight player tournament with no added noise. The opponent strategies were: \textit{Tester}; \textit{Gradual Killer: (D, D, D, D, D, C, C)}; \textit{Win-Shift Lose-Stay: D}; \textit{Evolved FSM 16}; \textit{Limited Retaliate: 0.1, 20}; \textit{ZD-GEN-2: 0.125, 0.5, 3}; and \textit{Joss: 0.9}.}
     \end{subfigure}
-    \begin{subfigure}[0.3\textwidth]
+    \begin{subfigure}{.3\textwidth}
         \centering
         \includegraphics[width=\textwidth]{folk_thm/single_game/5/80/0.0/main.pdf}
-        \caption{This was a five player tournament with no added noise. The opponent strategies were: \textit{WmAdams}; \textit{Joss: 0.9}; \textit{Yamachi}; and \textit{Stochastic WSLS: 0.05}.}
+        \caption{This was a five player tournament with no added noise. The opponent strategies were: \textit{WmAdams}; \textit{Joss: 0.9}; \textit{Yamachi}; and \textit{Stochastic WSLS:\@ 0.05}.}
     \end{subfigure}
-    \begin{subfigure}[0.3\textwidth]
+    \begin{subfigure}{.3\textwidth}
         \centering
         \includegraphics[width=\textwidth]{folk_thm/single_game/2/24/0.0/main.pdf}
         \caption{This was a two player tournament with no added noise. The \textit{Defector}'s opponent was \textit{Fortress3}.}
@@ -186,60 +189,215 @@ noise was retained.
 Firstly, an exploration into the overall \(p\)-thresholds is given.
 
 \begin{figure}
-    \centering
-    \begin{subfigure}[0.45\textwidth]
+    \begin{subfigure}{.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{folk_thm/main_analysis/min_p_thresh.pdf}
-        \caption{A plot to show the minimum \(p\)-thresholds.}
-    \end{subfigure}\label{subfig:min_p_thresh}
-
-    \begin{subfigure}[0.45\textwidth]
+        \caption{A plot to show the minimum \(p\)-thresholds.}\label{subfig:min_p_thresh}
+    \end{subfigure}
+    \begin{subfigure}{.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{folk_thm/main_analysis/max_p_thresh.pdf}
-        \caption{A plot to show the maximum \(p\)-thresholds.}
-    \end{subfigure}\label{subfig:max_p_thresh}
+        \caption{A plot to show the maximum \(p\)-thresholds.}\label{subfig:max_p_thresh}
+    \end{subfigure}
     \caption{Plots to show the \(p\)-thresholds for all 1749 sets of tournaments.}\label{fig:min_max_p_thresh}
 \end{figure}
 
 
 \begin{figure}
-    \centering
-    \begin{subfigure}[0.45\textwidth]
+    \begin{subfigure}{.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{folk_thm/main_analysis/mean_p_thresh.pdf}
-        \caption{A plot to show the mean \(p\)-thresholds.}
-    \end{subfigure}\label{subfig:mean_p_thresh}
-
-    \begin{subfigure}[0.45\textwidth]
+        \caption{A plot to show the mean \(p\)-thresholds.}\label{subfig:mean_p_thresh}
+    \end{subfigure}
+    \begin{subfigure}{.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{folk_thm/main_analysis/median_p_thresh.pdf}
-        \caption{A plot to show the median \(p\)-thresholds.}
-    \end{subfigure}\label{subfig:median_p_thresh}
-    \caption{Plots to show the \(p\)-thresholds for all 1749 sets of tournaments.}\label{fig:mean_maedian_p_thresh}
+        \caption{A plot to show the median \(p\)-thresholds.}\label{subfig:median_p_thresh}
+    \end{subfigure}
+    \caption{Plots to show the \(p\)-thresholds for all 1749 sets of tournaments.}\label{fig:mean_median_p_thresh}
 \end{figure}
+
 
 
 
 \begin{figure}
-    \centering
-    \begin{subfigure}[0.45\textwidth]
+    \begin{subfigure}{.45\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{folk_thm/main_analysis/mean_p_thresh.pdf}
-        \caption{A plot to show the mean \(p\)-thresholds.}
-    \end{subfigure}\label{subfig:mean_p_thresh}
-
-    \begin{subfigure}[0.45\textwidth]
+        \includegraphics[width=\textwidth]{folk_thm/main_analysis/non_degenerate_min_p_thresh.pdf}
+        \caption{A plot to show the minimum \(p\)-thresholds.}\label{subfig:non_degen_min_p_thresh}
+    \end{subfigure}
+    \begin{subfigure}{.45\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{folk_thm/main_analysis/median_p_thresh.pdf}
-        \caption{A plot to show the median \(p\)-thresholds.}
-    \end{subfigure}\label{subfig:median_p_thresh}
-    \caption{Plots to show the \(p\)-thresholds for all 1749 sets of tournaments.}\label{fig:mean_maedian_p_thresh}
+        \includegraphics[width=\textwidth]{folk_thm/main_analysis/non_degenerate_max_p_thresh.pdf}
+        \caption{A plot to show the maximum \(p\)-thresholds.}\label{subfig:non_degen_max_p_thresh}
+    \end{subfigure}
+    \caption{Plots to show the \(p\)-thresholds for all tournaments which led to non-degenerate games.}\label{fig:non_degen_min_max_p_thresh}
 \end{figure}
+
+
+\begin{figure}
+    \begin{subfigure}{.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{folk_thm/main_analysis/non_degenerate_mean_p_thresh.pdf}
+        \caption{A plot to show the mean \(p\)-thresholds.}\label{subfig:non_degen_mean_p_thresh}
+    \end{subfigure}
+    \begin{subfigure}{.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{folk_thm/main_analysis/non_degenerate_median_p_thresh.pdf}
+        \caption{A plot to show the median \(p\)-thresholds.}\label{subfig:non_degen_median_p_thresh}
+    \end{subfigure}
+    \caption{Plots to show the \(p\)-thresholds for all tournaments which led to non-degenerate games.}\label{fig:non_degen_mean_median_p_thresh}
+\end{figure}
+
+
+
+
 \subsection{Effects of the Number of Players}\label{subsec:Effects_of_the_number_of_Players}
+
+
+\begin{figure}
+    \begin{subfigure}{.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{folk_thm/main_analysis/2player_mean_p_thresh.pdf}
+        \caption{A plot to show the mean \(p\)-thresholds for all two player tournaments.}\label{subfig:2player_mean_p_thresh}
+    \end{subfigure}
+    \begin{subfigure}{.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{folk_thm/main_analysis/3player_mean_p_thresh.pdf}
+        \caption{A plot to show the mean \(p\)-thresholds for all three player tournaments.}\label{subfig:3player_mean_p_thresh}
+    \end{subfigure}
+    
+
+    \newline
+
+
+    \begin{subfigure}{.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{folk_thm/main_analysis/4player_mean_p_thresh.pdf}
+        \caption{A plot to show the mean \(p\)-thresholds for all four player tournaments.}\label{subfig:4player_mean_p_thresh}
+    \end{subfigure}
+    \begin{subfigure}{.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{folk_thm/main_analysis/5player_mean_p_thresh.pdf}
+        \caption{A plot to show the mean \(p\)-thresholds for all five player tournaments.}\label{subfig:5player_mean_p_thresh}
+    \end{subfigure}
+    \begin{subfigure}{.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{folk_thm/main_analysis/6player_mean_p_thresh.pdf}
+        \caption{A plot to show the mean \(p\)-thresholds for all six player tournaments.}\label{subfig:6player_mean_p_thresh}
+    \end{subfigure}
+
+
+    \newline
+
+
+    \begin{subfigure}{.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{folk_thm/main_analysis/7player_mean_p_thresh.pdf}
+        \caption{A plot to show the mean \(p\)-thresholds for all seven player tournaments.}\label{subfig:7player_mean_p_thresh}
+    \end{subfigure}
+    \begin{subfigure}{.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{folk_thm/main_analysis/8player_mean_p_thresh.pdf}
+        \caption{A plot to show the mean \(p\)-thresholds for all eight player tournaments.}\label{subfig:8player_mean_p_thresh}
+    \end{subfigure}
+    \caption{Plots to show the mean \(p\)-threshold for varying numbers of opponents of the \textit{Defector}.}\label{fig:player_mean_p_thresh}
+\end{figure}
+
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{folk_thm/main_analysis/player_mean_thresh_violinplot.pdf}
+    \caption{A violinplot showing the distribution of mean \(p\)-thresholds for each number of opponents.}\label{fig:player_mean_thresh_violinplot}
+\end{figure}
+
 
 \subsection{Effects of Stochastic Players}\label{subsec:Effects_of_Stochastic_Players}
 
+
+
+
+
+
 \subsection{Effects of Noise}\label{subsec:Effects_of_Noise}
+
+
+\begin{figure}
+    \begin{subfigure}{.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{folk_thm/main_analysis/0.0noise_mean_p_thresh.pdf}
+        \caption{A plot to show the mean \(p\)-thresholds for all tournaments with no added noise.}\label{subfig:0.0noise_mean_p_thresh}
+    \end{subfigure}
+    \begin{subfigure}{.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{folk_thm/main_analysis/0.1noise_mean_p_thresh.pdf}
+        \caption{A plot to show the mean \(p\)-thresholds for all tournaments with noise = 0.1.}\label{subfig:0.1noise_mean_p_thresh}
+    \end{subfigure}
+    
+
+    \newline
+
+
+    \begin{subfigure}{.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{folk_thm/main_analysis/0.2noise_mean_p_thresh.pdf}
+        \caption{A plot to show the mean \(p\)-thresholds for all tournaments with noise = 0.2.}\label{subfig:0.2noise_mean_p_thresh}
+    \end{subfigure}
+    \begin{subfigure}{.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{folk_thm/main_analysis/0.3noise_mean_p_thresh.pdf}
+        \caption{A plot to show the mean \(p\)-thresholds for all tournaments with noise = 0.3.}\label{subfig:0.3noise_mean_p_thresh}
+    \end{subfigure}
+    \begin{subfigure}{.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{folk_thm/main_analysis/0.4noise_mean_p_thresh.pdf}
+        \caption{A plot to show the mean \(p\)-thresholds for all tournaments with noise = 0.4.}\label{subfig:0.4noise_mean_p_thresh}
+    \end{subfigure}
+
+
+    \newline
+
+
+    \begin{subfigure}{.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{folk_thm/main_analysis/0.5noise_mean_p_thresh.pdf}
+        \caption{A plot to show the mean \(p\)-thresholds for all tournaments with noise = 0.5.}\label{subfig:0.5noise_mean_p_thresh}
+    \end{subfigure}
+    \begin{subfigure}{.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{folk_thm/main_analysis/0.6noise_mean_p_thresh.pdf}
+        \caption{A plot to show the mean \(p\)-thresholds for all tournaments with noise = 0.6.}\label{subfig:0.6noise_mean_p_thresh}
+    \end{subfigure}
+    \begin{subfigure}{.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{folk_thm/main_analysis/0.7noise_mean_p_thresh.pdf}
+        \caption{A plot to show the mean \(p\)-thresholds for all tournaments with noise = 0.7.}\label{subfig:0.7noise_mean_p_thresh}
+    \end{subfigure}
+    \begin{subfigure}{.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{folk_thm/main_analysis/0.8noise_mean_p_thresh.pdf}
+        \caption{A plot to show the mean \(p\)-thresholds for all tournaments with noise = 0.8.}\label{subfig:0.8noise_mean_p_thresh}
+    \end{subfigure}
+    \begin{subfigure}{.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{folk_thm/main_analysis/0.9noise_mean_p_thresh.pdf}
+        \caption{A plot to show the mean \(p\)-thresholds for all tournaments with noise = 0.9.}\label{subfig:0.9noise_mean_p_thresh}
+    \end{subfigure}
+    \begin{subfigure}{.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{folk_thm/main_analysis/1.0noise_mean_p_thresh.pdf}
+        \caption{A plot to show the mean \(p\)-thresholds for all tournaments with noise = 1.0.}\label{subfig:1.0noise_mean_p_thresh}
+    \end{subfigure}
+    \caption{Plots to show the mean \(p\)-threshold for varying levels of noise.}\label{fig:noise_mean_p_thresh}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{folk_thm/main_analysis/noise_mean_thresh_violinplot.pdf}
+    \caption{A violinplot showing the distribution of mean \(p\)-thresholds for each level of noise.}\label{fig:noise_mean_thresh_violinplot}
+\end{figure}
+
+
 
 \subsection{Effects of Degeneracy}\label{subsec:Effects_of_Degeneracy}
 
