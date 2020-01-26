@@ -3,9 +3,9 @@ In this chapter, an analysis of the data collected via the methods described in
 the previous chapter (Chapter~\ref{ch:Methods}) is given. Firstly, a brief
 initial overview is provided, where descriptive statistics of the equilibria
 obtained and the overall characteristics of the strategies used is discussed.
-Following this, a critical analysis of the p-thresholds obtained is carried out.
-Here, the environmental effects, on the outcome of the game, discussed include:
-number and characteristics of opponents; noise; and degeneracy. Then a
+Following this, a critical analysis of the \(p\)-thresholds obtained is carried
+out. Here, the environmental effects, on the outcome of the game, discussed
+include: number and characteristics of opponents; noise; and degeneracy. Then a
 large-scale multivariate analysis is executed before considering the reliability
 of the collected data. Note, as of writing, the database currently has 
 \input{src/database-code/data/se/20_01_2020/entries-in-database.txt}
@@ -28,7 +28,7 @@ Figure~\ref{fig:example_graphs}.
     \begin{subfigure}{.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{folk_thm/single_game/6/110/0.0/main.pdf}
-        \caption{An example of a graph where the p-threshold is not as clear. Perhaps this is due to a small amount of noise and hence not enough repetitions or stochasticity of the players. In this case the threshold seems to lie in the range [0.1, 0.3]. There is no degeneracy in this game and opponent strategies in the tournament were: \textit{Feld: 1.0, 0.5, 200}; \textit{Cooperator};  \textit{EvolvedLookerUp2 _ 2 _ 2 }; \textit{Tullock: 11}; and \textit{ZD-GEN-2: 0.125, 0.5, 3}. Again, this tournament was run with no added noise.}\label{subfig:unclear_thresh_plot}
+        \caption{An example of a graph where the p-threshold is not as clear. Perhaps this is due to a small amount of noise and hence not enough repetitions or stochasticity of the players. In this case the threshold seems to lie in the range [0.1, 0.3]. There is no degeneracy in this game and opponent strategies in the tournament were: \textit{Feld: 1.0, 0.5, 200}; \textit{Cooperator};  \textit{EvolvedLookerUp2\_2\_2}; \textit{Tullock: 11}; and \textit{ZD-GEN-2: 0.125, 0.5, 3}. Again, this tournament was run with no added noise.}\label{subfig:unclear_thresh_plot}
     \end{subfigure}
 
 
@@ -98,8 +98,8 @@ out of the 200 strategies playing in this experiment appeared only once.
 Running the \textit{value_counts} method again, but this time on the memory
 depths of the strategies found the majority of strategies to have an infinite
 memory depth. On the other hand, strategies having no memory or a depth equal to
-one were significant. Considering the stochasticity of players alongside how
-many appearances each strategy made yielded the following chart in
+one were also significant. Considering the stochasticity of players alongside
+how many appearances each strategy made yielded the following chart in
 Figure~\ref{fig:stochastic_chart}.
 
 \begin{figure}
@@ -132,7 +132,7 @@ their distributions with respect to the number of opponents of the
 Also, the maximum number of equilibria yielded, 39, was for one game, which,
 doing a search on the database, was found to be a six player game with
 noise=0.1. The opponents of the \textit{Defector} were: \textit{Inverse
-Punisher}; \textit{Prober}; \textit{PSO Gambler 2 _ 2 _ 2 Noise 05};
+Punisher}; \textit{Prober}; \textit{PSO Gambler 2\_2\_2 Noise 05};
 \textit{Handshake}; and \textit{More Tideman and Chieruzzi}.
 
 Figure~\ref{fig:NE_violinplot} shows the distributions of the number of Nash
@@ -154,7 +154,7 @@ increase.
 
 \section{Analysis of the p-Threshold}\label{sec:Analysis_of_the_p-Threshold}
 In order to analyse the \(p\)-thresholds of the tournaments, two csv files were
-created containing the minimum, mean, median and maximum probabilities for each
+created~\footnote{Please see Appendix~\ref{} for the code used to obtain these files.} containing the minimum, mean, median and maximum probabilities for each
 set of tournaments. This was in order to gain as much information as possible
 from tournaments which gave graphs as shown in Figure~\ref{fig:less_clear}. That
 is, tournaments in which the number of repetitions was not sufficient to omit
@@ -217,7 +217,25 @@ Firstly, an exploration into the overall \(p\)-thresholds is given.
     \caption{Plots to show the \(p\)-thresholds for all 1749 sets of tournaments.}\label{fig:mean_median_p_thresh}
 \end{figure}
 
-
+From Figures~\ref{fig:mean_median_p_thresh} and~\ref{fig:min_max_p_thresh},
+observe that all have a significant amount of thresholds at 0.001 and 0.999,
+giving distinct lines at these points. This implies that, for a certain number
+of tournaments, it is either more beneficial to always defect (when the
+threshold is 0.001) or best to never defect (indicated by the threshold at
+0.001). On the other hand, the \(p\)-thresholds seem to
+be quite erratic, with the range of these thresholds depending on which
+statistic is chosen. Specifically, for the minimum and maximum \(p\)-threshold
+the majority of thresholds lie between 0 and 0.4 whereas, for the mean and
+median, a significant amount of the thresholds lie between 0 and 0.6. Comparing
+Figures~\ref{fig:mean_median_p_thresh} and~\ref{fig:min_max_p_thresh} to
+Figures~\ref{fig:non_degen_min_max_p_thresh}
+and~\ref{fig:non_degen_mean_median_p_thresh}, the corresponding \(p\)-thresholds
+for only the non-degenerate games, it can be seen that the plots are
+approximately the same. Degeneracy only seems to affect the higher tournament
+player sets, that is, those which have a greater number of players. However,
+this could be due to only a small amount of the tournaments leading to
+degenerate games. Effects of degeneracy will be investigated in further detail
+in Section~\ref{subsec:Effects_of_Degeneracy}.
 
 
 \begin{figure}
@@ -249,11 +267,14 @@ Firstly, an exploration into the overall \(p\)-thresholds is given.
     \caption{Plots to show the \(p\)-thresholds for all tournaments which led to non-degenerate games.}\label{fig:non_degen_mean_median_p_thresh}
 \end{figure}
 
-
+Now, the different characteristics of a tournament will be discussed in relation
+with its effect on the \(p\)-threshold.
 
 
 \subsection{Effects of the Number of Players}\label{subsec:Effects_of_the_number_of_Players}
-
+In this section, the \(p\)-thresholds will be analysed with respect to the
+number of opponents the \textit{Defector} played against. Note, in this section,
+only the mean \(p\)-thresholds of games which are non-degenerate will be discussed. 
 
 \begin{figure}
     \begin{subfigure}{.45\textwidth}
@@ -299,10 +320,18 @@ Firstly, an exploration into the overall \(p\)-thresholds is given.
     \begin{subfigure}{.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{folk_thm/main_analysis/8player_mean_p_thresh.pdf}
-        \caption{A plot to show the mean \(p\)-thresholds for all eight player tournaments.}\label{subfig:8player_mean_p_thresh}
+        \caption{A plot to show the mean \(p\)-thresholds for all eight player tournaments. Note, at time of writing, the experiment was running for tournaments of size eight and thus there is less data available here.}\label{subfig:8player_mean_p_thresh}
     \end{subfigure}
     \caption{Plots to show the mean \(p\)-threshold for varying numbers of opponents of the \textit{Defector}.}\label{fig:player_mean_p_thresh}
 \end{figure}
+
+
+Firstly, in Figure~\ref{fig:player_mean_p_thresh}, again, a significant amount
+of the thresholds are equal to one and currently it is hypothesised that this is
+due to the amount of noise imposed on the tournament. This will be investigated
+in Section~\ref{subsec:Effects_of_Noise}. The majority of \(p\)-thresholds lie
+between 0 and 0.6. 
+
 
 
 \begin{figure}
