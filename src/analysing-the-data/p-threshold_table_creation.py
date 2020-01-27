@@ -3,6 +3,7 @@ import sqlalchemy as sa
 import pandas as pd
 import csv
 
+
 database_management_sys = sa.create_engine("sqlite:///../database-code/data/se/main.db")
 connect_dbms_to_db = database_management_sys.connect()
 data = pd.read_sql("folk_theorem_experiment", connect_dbms_to_db)
@@ -18,7 +19,7 @@ table_headings
 p = Path("../database-code/data/prob_end_threshold")
 p.mkdir(parents=True, exist_ok=True)
 
-threshold_file = p / "main.csv"
+threshold_file = p / "main-new.csv"
 with open(str(threshold_file), "w") as thresh_file:
     write_to_csv = csv.writer(thresh_file)
     write_to_csv.writerow(
@@ -68,43 +69,45 @@ for each_set in range(maximum_player_set):
                 == specific_noise_data["least_prob_of_defection"][0]
             ]
         ):
-            if specific_noise_data["least_prob_of_defection"][0] == 1:
-                min_threshold = min(specific_noise_data["prob_of_game_ending"])
-                mean_threshold = min_threshold
-                median_threshold = min_threshold
-                max_threshold = min_threshold
+            if specific_noise_data["least_prob_of_defection"][0] >= 0.5:
+                min_threshold = None
+                mean_threshold = None
+                median_threshold = None
+                max_threshold = None
             else:
-                min_threshold = max(specific_noise_data["prob_of_game_ending"])
-                mean_threshold = min_threshold
-                median_threshold = min_threshold
-                max_threshold = min_threshold
+                min_threshold = 1
+                mean_threshold = 1
+                median_threshold = 1
+                max_threshold = 1
 
         else:
-            zero_prob = specific_noise_data[
-                specific_noise_data["least_prob_of_defection"] == 0
+            coop_is_better = specific_noise_data[
+                specific_noise_data["least_prob_of_defection"] < 0.5
             ]
-            non_zero_prob = specific_noise_data[
-                specific_noise_data["least_prob_of_defection"] != 0
+            defect_is_better = specific_noise_data[
+                specific_noise_data["least_prob_of_defection"] >= 0.5
             ]
 
-            if len(zero_prob) == 0:
-                max_threshold = max(
-                    specific_noise_data[
-                        specific_noise_data["least_prob_of_defection"] != 1
-                    ]["prob_of_game_ending"]
-                )
+            if len(coop_is_better) == 0:
+                max_threshold = None
+                min_threshold = None
+            
+            elif len(defect_is_better) == 0:
+                max_threshold = 1
+                min_threshold = 1
+            
             else:
-                max_threshold = max(zero_prob["prob_of_game_ending"])
-
-            min_threshold_non_zero = min(non_zero_prob["prob_of_game_ending"])
-            if min_threshold_non_zero == min(
-                specific_noise_data["prob_of_game_ending"]
-            ):
-                min_threshold = min_threshold_non_zero
-            else:
+                potential_max_threshold = max(coop_is_better["prob_of_game_ending"])
+                if potential_max_threshold > max(defect_is_better["prob_of_game_ending"]):
+                    coop_is_better_less_than_defect = coop_is_better[coop_is_better["least_prob_of_defection"] < max(defect_is_better["least_prob_of_defection"])]
+                    max_threshold = max(coop_is_better_less_than_defect["prob_of_game_ending"])
+                else:
+                    max_threshold =  max(coop_is_better["prob_of_game_ending"])
+            
+                min_threshold_for_defection = min(defect_is_better  ["prob_of_game_ending"])
                 min_threshold = max(
-                    zero_prob[
-                        zero_prob["prob_of_game_ending"] < min_threshold_non_zero
+                    coop_is_better[
+                        coop_is_better["prob_of_game_ending"] <     min_threshold_for_defection
                     ]["prob_of_game_ending"]
                 )
 
