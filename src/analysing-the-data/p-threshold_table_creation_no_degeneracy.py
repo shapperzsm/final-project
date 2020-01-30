@@ -48,12 +48,19 @@ player_set_collection = """
 for each_set in range(maximum_player_set):
 
     collect_relevant_data = connect_dbms_to_db.execute(player_set_collection, each_set)
-    each_set_data = pd.DataFrame(collect_relevant_data.fetchall(), columns=table_headings)
+    each_set_data = pd.DataFrame(
+        collect_relevant_data.fetchall(), columns=table_headings
+    )
     num_of_players = each_set_data["number_of_players"][0]
     for noise in list(each_set_data["noise"].drop_duplicates()):
         specific_noise_data = each_set_data[each_set_data["noise"] == noise]
         specific_noise_data.index = range(len(specific_noise_data))
-        if len(specific_noise_data["least_prob_of_defection"]) == len(specific_noise_data[specific_noise_data["least_prob_of_defection"] == specific_noise_data["least_prob_of_defection"][0]]):
+        if len(specific_noise_data["least_prob_of_defection"]) == len(
+            specific_noise_data[
+                specific_noise_data["least_prob_of_defection"]
+                == specific_noise_data["least_prob_of_defection"][0]
+            ]
+        ):
             if specific_noise_data["least_prob_of_defection"][0] >= 0.5:
                 min_threshold = None
                 mean_threshold = None
@@ -66,8 +73,12 @@ for each_set in range(maximum_player_set):
                 max_threshold = 1
 
         else:
-            coop_is_better = specific_noise_data[specific_noise_data["least_prob_of_defection"] < 0.5]
-            defect_is_better = specific_noise_data[specific_noise_data["least_prob_of_defection"] >= 0.5]
+            coop_is_better = specific_noise_data[
+                specific_noise_data["least_prob_of_defection"] < 0.5
+            ]
+            defect_is_better = specific_noise_data[
+                specific_noise_data["least_prob_of_defection"] >= 0.5
+            ]
             if len(coop_is_better) == 0:
                 max_threshold = None
                 min_threshold = None
@@ -76,18 +87,35 @@ for each_set in range(maximum_player_set):
                 min_threshold = 1
             else:
                 potential_max_threshold = max(coop_is_better["prob_of_game_ending"])
-                if max(defect_is_better["prob_of_game_ending"]) <= potential_max_threshold:
-                    coop_is_better_less_than_defect = coop_is_better[coop_is_better["least_prob_of_defection"] < max(defect_is_better["least_prob_of_defection"])]
-                    max_threshold = max(coop_is_better_less_than_defect["prob_of_game_ending"])
+                if (
+                    max(defect_is_better["prob_of_game_ending"])
+                    <= potential_max_threshold
+                ):
+                    coop_is_better_less_than_defect = coop_is_better[
+                        coop_is_better["least_prob_of_defection"]
+                        < max(defect_is_better["least_prob_of_defection"])
+                    ]
+                    max_threshold = max(
+                        coop_is_better_less_than_defect["prob_of_game_ending"]
+                    )
                 else:
                     max_threshold = max(coop_is_better["prob_of_game_ending"])
-            
-                min_threshold_for_defection = min(defect_is_better["prob_of_game_ending"])
-                if min_threshold_for_defection == min(specific_noise_data["prob_of_game_ending"]):
+
+                min_threshold_for_defection = min(
+                    defect_is_better["prob_of_game_ending"]
+                )
+                if min_threshold_for_defection == min(
+                    specific_noise_data["prob_of_game_ending"]
+                ):
                     min_threshold = None
                     max_threshold = None
                 else:
-                    min_threshold = max(coop_is_better[coop_is_better["prob_of_game_ending"] < min_threshold_for_defection]["prob_of_game_ending"])
+                    min_threshold = max(
+                        coop_is_better[
+                            coop_is_better["prob_of_game_ending"]
+                            < min_threshold_for_defection
+                        ]["prob_of_game_ending"]
+                    )
 
             if min_threshold == max_threshold:
                 mean_threshold = min_threshold
@@ -102,4 +130,14 @@ for each_set in range(maximum_player_set):
 
         with open(str(threshold_file), "a") as thresh_file:
             write_to_csv = csv.writer(thresh_file)
-            write_to_csv.writerow((str(num_of_players), str(each_set), str(round(noise, 1)), str(min_threshold), str(mean_threshold), str(median_threshold), str(max_threshold)))
+            write_to_csv.writerow(
+                (
+                    str(num_of_players),
+                    str(each_set),
+                    str(round(noise, 1)),
+                    str(min_threshold),
+                    str(mean_threshold),
+                    str(median_threshold),
+                    str(max_threshold),
+                )
+            )
