@@ -154,11 +154,15 @@ increase.
 
 \section{Analysis of the p-Threshold}\label{sec:Analysis_of_the_p-Threshold}
 In order to analyse the \(p\)-thresholds of the tournaments, two csv files were
-created~\footnote{Please see Appendix~\ref{} for the code used to obtain these files.} containing the minimum, mean, median and maximum probabilities for each
-set of tournaments. This was in order to gain as much information as possible
-from tournaments which gave graphs as shown in Figure~\ref{fig:less_clear}. That
-is, tournaments in which the number of repetitions was not sufficient to omit
-the `noise' which can affect the results.
+created~\footnote{Please see Appendix~\ref{} for the code used to obtain these
+files. Also, those tournaments for which all the least probabilities of
+defection were greater than 0.5 were omitted - this indicated that regardless of
+the ending probability, it was more benefical to defect.} containing the
+minimum, mean, median and maximum probabilities for each set of tournaments.
+This was in order to gain as much information as possible from tournaments which
+gave graphs as shown in Figure~\ref{fig:less_clear}. That is, tournaments in
+which the number of repetitions was not sufficient to omit the `noise' which
+could affect the results.
 
 \begin{figure}
     \begin{subfigure}{.3\textwidth}
@@ -178,6 +182,12 @@ the `noise' which can affect the results.
     \end{subfigure}
     \caption{Examples of plots where the \(p\)-threshold isn't as clear.}\label{fig:less_clear}
 \end{figure}
+
+For clarity, here is a restatement of the definition of a
+\textit{\(p\)-threshold}: The maximum probability of the tournament ending for
+which cooperation is more beneficial than defection. That is the maximum
+probability of the tournament ending for which the probability of defecting is
+less than 0.5.
 
 The first csv file created ignored whether a game could be degenerate and, by a
 small alteration, the second file contained only the non-degenerate games. This
@@ -202,6 +212,22 @@ Firstly, an exploration into the overall \(p\)-thresholds is given.
     \caption{Plots to show the \(p\)-thresholds for all 1749 sets of tournaments.}\label{fig:min_max_p_thresh}
 \end{figure}
 
+Observe, Figure~\ref{subfig:min_p_thresh} shows a `split' in the data, with the
+majority of tournaments either having a threshold of less than 0.4 or a
+threshold equal to 1. This suggests that for a significant number of
+tournaments, it is more beneficial to cooperate if the probability of the
+tournament ending is sufficiently small enough (\(\le 3\)). Moreover, there is
+a certain number of tournaments in which cooperation is always preferential
+over defection. Similar inferences can be made from
+Figure~\ref{subfig:max_p_thresh}. On the other hand, looking at the plots in
+Figure~\ref{fig:mean_median_p_thresh}, notice that there now appears a
+significant number of thresholds falling within the range \([0.5, 0.6]\).
+Looking at the tournaments which satisfy the latter observation (see
+Figure~\ref{fig:p_mean_middle_plot}), it can be seen that the majority of these
+tournaments had a wide variance. That is, a minimum threshold close to zero and
+a maximum threshold close to one. Indeed, looking closer at the plots created
+for a few of these tournaments, Figure~\ref{fig:mean_middle_specific}, observe
+that there does not seem to be a clear \(p\)-threshold with many peaks. 
 
 \begin{figure}
     \begin{subfigure}{.45\textwidth}
@@ -217,25 +243,6 @@ Firstly, an exploration into the overall \(p\)-thresholds is given.
     \caption{Plots to show the \(p\)-thresholds for all 1749 sets of tournaments.}\label{fig:mean_median_p_thresh}
 \end{figure}
 
-From Figures~\ref{fig:mean_median_p_thresh} and~\ref{fig:min_max_p_thresh},
-observe that all have a significant amount of thresholds at 0.001 and 0.999,
-giving distinct lines at these points. This implies that, for a certain number
-of tournaments, it is either more beneficial to always defect (when the
-threshold is 0.001) or best to never defect (indicated by the threshold at
-0.001). On the other hand, the \(p\)-thresholds seem to
-be quite erratic, with the range of these thresholds depending on which
-statistic is chosen. Specifically, for the minimum and maximum \(p\)-threshold
-the majority of thresholds lie between 0 and 0.4 whereas, for the mean and
-median, a significant amount of the thresholds lie between 0 and 0.6. Comparing
-Figures~\ref{fig:mean_median_p_thresh} and~\ref{fig:min_max_p_thresh} to
-Figures~\ref{fig:non_degen_min_max_p_thresh}
-and~\ref{fig:non_degen_mean_median_p_thresh}, the corresponding \(p\)-thresholds
-for only the non-degenerate games, it can be seen that the plots are
-approximately the same. Degeneracy only seems to affect the higher tournament
-player sets, that is, those which have a greater number of players. However,
-this could be due to only a small amount of the tournaments leading to
-degenerate games. Effects of degeneracy will be investigated in further detail
-in Section~\ref{subsec:Effects_of_Degeneracy}.
 
 
 \begin{figure}
@@ -267,8 +274,7 @@ in Section~\ref{subsec:Effects_of_Degeneracy}.
     \caption{Plots to show the \(p\)-thresholds for all tournaments which led to non-degenerate games.}\label{fig:non_degen_mean_median_p_thresh}
 \end{figure}
 
-Now, the different characteristics of a tournament will be discussed in relation
-with its effect on the \(p\)-threshold.
+
 
 
 \subsection{Effects of the Number of Players}\label{subsec:Effects_of_the_number_of_Players}
