@@ -31,10 +31,6 @@ Figure~\ref{fig:example_graphs}.
         \caption{An example of a graph where the p-threshold is not as clear. Perhaps this is due to a small amount of noise and hence not enough repetitions or stochasticity of the players. In this case the threshold seems to lie in the range [0.1, 0.3]. There is no degeneracy in this game and opponent strategies in the tournament were: \textit{Feld: 1.0, 0.5, 200}; \textit{Cooperator};  \textit{EvolvedLookerUp2\_2\_2}; \textit{Tullock: 11}; and \textit{ZD-GEN-2: 0.125, 0.5, 3}. Again, this tournament was run with no added noise.}\label{subfig:unclear_thresh_plot}
     \end{subfigure}
 
-
-    \newline
-
-
     \begin{subfigure}{.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{folk_thm/single_game/5/77/0.0/main.pdf}
@@ -64,22 +60,22 @@ and~\ref{subsec:Accuracy_of_Thresholds}, respectively; and finally
 Figure~\ref{subfig:degenerate_plot}, and degeneracy overall, will be considered
 in Section~\ref{subsec:Effects_of_Degeneracy}.
 
-\begin{figure}
-    \centering
-    \includegraphics[width=\textwidth]{folk_thm/initial_analysis/summary_stats.html
-    }
-    \caption{A table of the summary statistics produced from the data of the experiment.}\label{fig:summary_stats}
-\end{figure}
+%\begin{figure}
+%    \centering
+%    \includegraphics[width=\textwidth]{folk_thm/initial_analysis/%summary_stats.html
+%    }
+%    \caption{A table of the summary statistics produced from the data of the %experiment.}\label{fig:summary_stats}
+%\end{figure}
 
 The summary statistics gained from running the \textit{describe} method of a
 pandas database is given in Figure~\ref{fig:summary_stats}. From this, it can be
 seen that the number of opponents the \textit{Defector} played against ranged
 from one to seven, with an average of four opponents. Also, as expected, the
 mean probability of the game ending encountered was 0.5. Observe that, overall,
-there were 175,399 distinct tournaments played (\textit{experiment_number}) with
-a total of 159 distinct sets of strategies (\textit{tournament_player_set}).
+there were \(175,399\) distinct tournaments played ( \textit{experiment\_number}
+) with a total of 159 distinct sets of strategies (\textit{tournament\_player\_set}). 
 Looking now at the statistics for Nash equilibria, it can be seen that a total
-of 823,823 equilibrium points were calculated in this experiment, with an
+of \(823,823\) equilibrium points were calculated in this experiment, with an
 average of \(1.914 \approx 2\) equilibria per game. However, observe, at least
 one game obtained 39 equilibria which will be explored into later on in this
 section. Considering the probabilities of defection within these equilibria,
@@ -90,12 +86,12 @@ above this, the greatest probability has a mean of 0.460.
 
 Next, further descriptive statistics are calculated for the strategies. This is
 to obtain a more in-depth view on the types of strategies randomly chosen to
-play and their characteristics. Executing \textit{value_counts} method on the
+play and their characteristics. Executing \textit{value\_counts} method on the
 column of strategy names, it is observed that the player which appeared the most
 times (9 times) is \textit{ZD-GEN-2: 0.125, 0.5, 3}; followed closely by
 \textit{Tideman and Chieruzzi} with 7 sets of tournaments. On the other hand 38
 out of the 200 strategies playing in this experiment appeared only once.
-Running the \textit{value_counts} method again, but this time on the memory
+Running the \textit{value\_counts} method again, but this time on the memory
 depths of the strategies found the majority of strategies to have an infinite
 memory depth. On the other hand, strategies having no memory or a depth equal to
 one were also significant. Considering the stochasticity of players alongside
@@ -111,7 +107,7 @@ Figure~\ref{fig:stochastic_chart}.
 It is clear that there is a clear bias towards deterministic strategies
 in this experiment. However, this is to be expected as running the following
 code:
-\begin{minted}{frame=lines, framesep=2mm, fontsize=\scriptsize, bgcolor=Cornsilk}{python}
+\begin{minted}[frame=lines, framesep=2mm, fontsize=\scriptsize, bgcolor=Cornsilk]{python}
     
     len(axl.filtered_strategies(filterset={"stochastic": True})), 
     len(axl.filtered_strategies(filterset={"stochastic": False}))
@@ -126,8 +122,8 @@ were played twice.
 
 Further, the number of Nash equilibria obtained for each game was analysed and
 their distributions with respect to the number of opponents of the
-\textit{Defector} plotted. Executing the \textit{value_counts} method on the
-`num_of_equilibria' column gave the conclusion that the majority of games
+\textit{Defector} plotted. Executing the \textit{value\_counts} method on the
+`num\_of\_equilibria' column gave the conclusion that the majority of games
 (131773) yielded one Nash equilibria with 28793 games obtaining 3 equilibria.
 Also, the maximum number of equilibria yielded, 39, was for one game, which,
 doing a search on the database, was found to be a six player game with
@@ -255,22 +251,20 @@ many peaks.
 \begin{figure}
     \begin{subfigure}{0.3\textwidth}
         \centering
-        \includegraphics[\textwidth]{folk_thm/single_game/6/105/0.2/main.pdf}
+        \includegraphics[width=\textwidth]{folk_thm/single_game/6/105/0.2/main.pdf}
         \caption{This plot was obtained from the tournament in which the five
         opponents of the \textit{Defector} were: \textit{RichardHufford};
         \textit{Soft Joss: 0.9}; \textit{Feld: 1.0, 0.5, 200};
         \textit{UsuallyDefects}; and \textit{Handshake}. The tournament also included an additional 0.2 of noise.}
     \end{subfigure}
-
     \begin{subfigure}{0.3\textwidth}
         \centering
-        \includegraphics[\textwidth]{folk_thm/single_game/3/35/0.1/main.pdf}
+        \includegraphics[width=\textwidth]{folk_thm/single_game/3/35/0.1/main.pdf}
         \caption{This plot represents the, 0.1 noise, tournament with the three players: \textit{Worse and Worse 2}; \textit{Raider}; and, \textit{Defector}.}
     \end{subfigure}
-
     \begin{subfigure}{0.3\textwidth}
         \centering
-        \includegraphics[\textwidth]{folk_thm/single_game/3/33/0.5/main.pdf}
+        \includegraphics[width=\textwidth]{folk_thm/single_game/3/33/0.5/main.pdf}
         \caption{This plot was produced from the tournament in which the \textit{Defector} was playing \textit{ZD-Extort-2: 0.1111111111111111, 0.5} and \textit{Adaptive Tit For Tat: 0.5}. There was the addition of 0.5 noise within the tournament.}
     \end{subfigure}
     \caption{Example plots of the tournaments where the mean \(p\)-threshold was within the range \([0.5, 0.6]\).}\label{fig:mean_middle_specific}
@@ -359,67 +353,59 @@ altered~\cite{glynatsi2020meta}. That is, an action of \textit{coop} changes to
 \begin{figure}
     \begin{subfigure}{.45\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{folk_thm/main_analysis/0.0noise_mean_p_thresh.pdf}
+        \includegraphics[width=\textwidth]{{folk_thm/main_analysis/0.0noise_mean_p_thresh}.pdf}
         \caption{A plot to show the mean \(p\)-thresholds for all tournaments with no added noise.}\label{subfig:0.0noise_mean_p_thresh}
     \end{subfigure}
     \begin{subfigure}{.45\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{folk_thm/main_analysis/0.1noise_mean_p_thresh.pdf}
+        \includegraphics[width=\textwidth]{{folk_thm/main_analysis/0.1noise_mean_p_thresh}.pdf}
         \caption{A plot to show the mean \(p\)-thresholds for all tournaments with noise = 0.1.}\label{subfig:0.1noise_mean_p_thresh}
     \end{subfigure}
-    
-
-    \newline
-
 
     \begin{subfigure}{.3\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{folk_thm/main_analysis/0.2noise_mean_p_thresh.pdf}
+        \includegraphics[width=\textwidth]{{folk_thm/main_analysis/0.2noise_mean_p_thresh}.pdf}
         \caption{A plot to show the mean \(p\)-thresholds for all tournaments with noise = 0.2.}\label{subfig:0.2noise_mean_p_thresh}
     \end{subfigure}
     \begin{subfigure}{.3\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{folk_thm/main_analysis/0.3noise_mean_p_thresh.pdf}
+        \includegraphics[width=\textwidth]{{folk_thm/main_analysis/0.3noise_mean_p_thresh}.pdf}
         \caption{A plot to show the mean \(p\)-thresholds for all tournaments with noise = 0.3.}\label{subfig:0.3noise_mean_p_thresh}
     \end{subfigure}
     \begin{subfigure}{.3\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{folk_thm/main_analysis/0.4noise_mean_p_thresh.pdf}
+        \includegraphics[width=\textwidth]{{folk_thm/main_analysis/0.4noise_mean_p_thresh}.pdf}
         \caption{A plot to show the mean \(p\)-thresholds for all tournaments with noise = 0.4.}\label{subfig:0.4noise_mean_p_thresh}
     \end{subfigure}
 
-
-    \newline
-
-
     \begin{subfigure}{.3\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{folk_thm/main_analysis/0.5noise_mean_p_thresh.pdf}
+        \includegraphics[width=\textwidth]{{folk_thm/main_analysis/0.5noise_mean_p_thresh}.pdf}
         \caption{A plot to show the mean \(p\)-thresholds for all tournaments with noise = 0.5.}\label{subfig:0.5noise_mean_p_thresh}
     \end{subfigure}
     \begin{subfigure}{.3\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{folk_thm/main_analysis/0.6noise_mean_p_thresh.pdf}
+        \includegraphics[width=\textwidth]{{folk_thm/main_analysis/0.6noise_mean_p_thresh}.pdf}
         \caption{A plot to show the mean \(p\)-thresholds for all tournaments with noise = 0.6.}\label{subfig:0.6noise_mean_p_thresh}
     \end{subfigure}
     \begin{subfigure}{.3\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{folk_thm/main_analysis/0.7noise_mean_p_thresh.pdf}
+        \includegraphics[width=\textwidth]{{folk_thm/main_analysis/0.7noise_mean_p_thresh}.pdf}
         \caption{A plot to show the mean \(p\)-thresholds for all tournaments with noise = 0.7.}\label{subfig:0.7noise_mean_p_thresh}
     \end{subfigure}
     \begin{subfigure}{.3\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{folk_thm/main_analysis/0.8noise_mean_p_thresh.pdf}
+        \includegraphics[width=\textwidth]{{folk_thm/main_analysis/0.8noise_mean_p_thresh}.pdf}
         \caption{A plot to show the mean \(p\)-thresholds for all tournaments with noise = 0.8.}\label{subfig:0.8noise_mean_p_thresh}
     \end{subfigure}
     \begin{subfigure}{.3\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{folk_thm/main_analysis/0.9noise_mean_p_thresh.pdf}
+        \includegraphics[width=\textwidth]{{folk_thm/main_analysis/0.9noise_mean_p_thresh}.pdf}
         \caption{A plot to show the mean \(p\)-thresholds for all tournaments with noise = 0.9.}\label{subfig:0.9noise_mean_p_thresh}
     \end{subfigure}
     \begin{subfigure}{.3\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{folk_thm/main_analysis/1.0noise_mean_p_thresh.pdf}
+        \includegraphics[width=\textwidth]{{folk_thm/main_analysis/1.0noise_mean_p_thresh}.pdf}
         \caption{A plot to show the mean \(p\)-thresholds for all tournaments with noise = 1.0.}\label{subfig:1.0noise_mean_p_thresh}
     \end{subfigure}
     \caption{Plots to show the mean \(p\)-threshold for varying levels of noise.}\label{fig:noise_mean_p_thresh}
@@ -427,14 +413,14 @@ altered~\cite{glynatsi2020meta}. That is, an action of \textit{coop} changes to
 
 
 Figure~\ref{fig:noise_mean_p_thresh} shows the mean \(p\)-thresholds for all
-non_degenerate tournaments with the addition of varying probabilities of noise.
+non-degenerate tournaments with the addition of varying probabilities of noise.
 Firstly, observe that for those tournaments with the addition of noise at least
 0.6
 (Figures~\ref{subfig:0.6noise_mean_p_thresh},~\ref{subfig:0.6noise_mean_p_thresh},~\ref{subfig:0.6noise_mean_p_thresh},~\ref{subfig:0.6noise_mean_p_thresh},~\ref{subfig:0.6noise_mean_p_thresh})
 the majority of thresholds are equal to one. This is due to the definition of
 the parameter noise in the tournaments as described above, That is, there is a
 greater chance that the \textit{Defector's} strategy will change to cooperation.
-Hence, only tournaments with noise\(\le 0.5\) will be considered.
+Hence, only tournaments with noise\(\le 0.5\) will be considered. 
 
 
 \begin{figure}
