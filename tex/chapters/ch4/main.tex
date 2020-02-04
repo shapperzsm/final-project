@@ -60,20 +60,14 @@ and~\ref{subsec:Accuracy_of_Thresholds}, respectively; and finally
 Figure~\ref{subfig:degenerate_plot}, and degeneracy overall, will be considered
 in Section~\ref{subsec:Effects_of_Degeneracy}.
 
-%\begin{figure}
-%    \centering
-%    \includegraphics[width=\textwidth]{folk_thm/initial_analysis/%summary_stats.html
-%    }
-%    \caption{A table of the summary statistics produced from the data of the %experiment.}\label{fig:summary_stats}
-%\end{figure}
+\input{images/folk_thm/initial_analysis/summary_stats.tex}
 
 The summary statistics gained from running the \textit{describe} method of a
-pandas database is given in Figure~\ref{fig:summary_stats}. From this, it can be
+pandas database is given in Figure~\ref{tab:summary_stats}. From this, it can be
 seen that the number of opponents the \textit{Defector} played against ranged
 from one to seven, with an average of four opponents. Also, as expected, the
 mean probability of the game ending encountered was 0.5. Observe that, overall,
-there were \(175,399\) distinct tournaments played ( \textit{experiment\_number}
-) with a total of 159 distinct sets of strategies (\textit{tournament\_player\_set}). 
+there were \(175,399\) distinct tournaments played (\textit{experiment\_number}) with a total of 159 distinct sets of strategies (\textit{tournament\_player\_set}). 
 Looking now at the statistics for Nash equilibria, it can be seen that a total
 of \(823,823\) equilibrium points were calculated in this experiment, with an
 average of \(1.914 \approx 2\) equilibria per game. However, observe, at least
