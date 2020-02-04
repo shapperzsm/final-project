@@ -350,6 +350,11 @@ stochastic players to identify any alterations in the results.
 
 \subsection{Effects of Noise}\label{subsec:Effects_of_Noise}
 
+Here, an analysis on the effects of noise on the \(p\)-threshold is provided.
+The addition of noise to a tournament indicates that, with a certain
+probability, the action of a particular strategy is
+altered~\cite{glynatsi2020meta}. That is, an action of \textit{coop} changes to
+\textit{defect} and vice versa.  
 
 \begin{figure}
     \begin{subfigure}{.45\textwidth}
@@ -419,6 +424,18 @@ stochastic players to identify any alterations in the results.
     \end{subfigure}
     \caption{Plots to show the mean \(p\)-threshold for varying levels of noise.}\label{fig:noise_mean_p_thresh}
 \end{figure}
+
+
+Figure~\ref{fig:noise_mean_p_thresh} shows the mean \(p\)-thresholds for all
+non_degenerate tournaments with the addition of varying probabilities of noise.
+Firstly, observe that for those tournaments with the addition of noise at least
+0.6
+(Figures~\ref{subfig:0.6noise_mean_p_thresh},~\ref{subfig:0.6noise_mean_p_thresh},~\ref{subfig:0.6noise_mean_p_thresh},~\ref{subfig:0.6noise_mean_p_thresh},~\ref{subfig:0.6noise_mean_p_thresh})
+the majority of thresholds are equal to one. This is due to the definition of
+the parameter noise in the tournaments as described above, That is, there is a
+greater chance that the \textit{Defector's} strategy will change to cooperation.
+Hence, only tournaments with noise\(\le 0.5\) will be considered.
+
 
 \begin{figure}
     \centering
