@@ -2,6 +2,7 @@ from pathlib import *
 import sqlalchemy as sa
 import pandas as pd
 import csv
+import numpy as np
 
 database_management_sys = sa.create_engine("sqlite:///../database-code/data/se/main.db")
 connect_dbms_to_db = database_management_sys.connect()
@@ -41,15 +42,17 @@ maximum_player_set
 player_set_collection = """
     SELECT * FROM folk_theorem_experiment
     WHERE tournament_player_set = ?
+    AND noise = ?
     AND player_strategy_name = 'Defector'
 """
 
 for each_set in range(maximum_player_set):
-
-    collect_relevant_data = connect_dbms_to_db.execute(player_set_collection, each_set)
-    each_set_data = pd.DataFrame(
+    for noise_level in np.linspace(0, 1, 11):
+        collect_relevant_data = connect_dbms_to_db.execute(player_set_collection,
+    each_set, noise_level)
+        each_set_data = pd.DataFrame(
         collect_relevant_data.fetchall(), columns=table_headings
-    )
+        )
     num_of_players = each_set_data["number_of_players"][0]
     for noise in list(each_set_data["noise"].drop_duplicates()):
         specific_noise_data = each_set_data[each_set_data["noise"] == noise]

@@ -308,6 +308,8 @@ def run_experiment(
     tournament_rep,
     database_filepath,
     support_enumeration=True,
+    unique_tournament_identifier = 0,
+    tournament_player_set = 0
 ):
 
     """
@@ -323,13 +325,15 @@ def run_experiment(
 
     'tournament_rep' is a numeric variable stating the number of times each distinct tournament should be repeated (allows for the 'smoothing' of the mean payoffs obtained);
 
-    'database_filepath' is a string containing the relative path where the database (main.db) file is based; and
+    'database_filepath' is a string containing the relative path where the database (main.db) file is based;
 
-    'support_enumeration' is a boolean variable stating whether the support enumeration algorithm (if evaluated true) or the vertex enumeration algorithm (if evaluated False) is used to calculate the Nash equilibria.
+    'support_enumeration' is a boolean variable stating whether the support enumeration algorithm (if evaluated true) or the vertex enumeration algorithm (if evaluated False) is used to calculate the Nash equilibria;
+    
+    'unique_tournament_identifier' is a numeric variable (default zero) which is the unique seed for a particular player set, at a particular noise level for a particular probability of the game ending; and
+    
+    'tournament_player_set' is a numeric variable identifying a particular set of players.
      """
-    unique_tournament_identifier = 0
     axl.seed(unique_tournament_identifier)
-    tournament_player_set = 0
     while True:
         for num_of_opponents in range(1, max_num_of_opponents + 1):
 

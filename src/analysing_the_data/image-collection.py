@@ -1,4 +1,4 @@
-from pathlib import *
+from pathlib import Path
 import sqlalchemy as sa
 import pandas as pd
 import matplotlib.pyplot as plt
