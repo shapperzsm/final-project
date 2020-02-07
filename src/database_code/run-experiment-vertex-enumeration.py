@@ -17,6 +17,6 @@ while True:
         tournament_rep=500,
         database_filepath="../database-code/data/ve/",
         support_enumeration=False,
-        unique_tournament_identifier=180803,
-        tournament_player_set=165
+        unique_tournament_identifier=183800,
+        tournament_player_set=168
     )
