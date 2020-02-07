@@ -14,7 +14,7 @@ table_headings = pd.read_sql(
 ).columns.tolist()
 
 
-p = Path("../database-code/data/prob_end_threshold")
+p = Path("../database_code/data/prob_end_threshold")
 p.mkdir(parents=True, exist_ok=True)
 
 threshold_file = p / "main.csv"
@@ -47,14 +47,14 @@ player_set_collection = """
 """
 
 for each_set in range(maximum_player_set):
-    for noise_level in np.linspace(0, 1, 11):
+    for noise_level in [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]:
         collect_relevant_data = connect_dbms_to_db.execute(player_set_collection,
     each_set, noise_level)
         each_set_data = pd.DataFrame(
         collect_relevant_data.fetchall(), columns=table_headings
         )
         
-        if noise_level in each_set_data["noise"]:
+        if noise_level in round(each_set_data["noise"], 1):
             num_of_players = each_set_data["number_of_players"].drop_duplicates()[0]
 
             indices_of_non_zero_defection_prob = each_set_data.index[each_set_data["least_prob_of_defection"] > 0]
