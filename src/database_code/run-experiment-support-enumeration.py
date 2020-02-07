@@ -1,7 +1,7 @@
 import experiment_functions as expfun
 import numpy as np
 
-noise_probabilities = np.linspace(0, 1, 11)
+noise_probabilities = np.linspace(0, 0.5, 6)
 game_ending_probabilities = np.linspace(0.001, 1 - 0.001, 100)
 
 #expfun.create_directory()
@@ -14,7 +14,7 @@ while True:
         noise_probs=noise_probabilities,
         game_ending_probs=game_ending_probabilities,
         tournament_rep=500,
-        database_filepath="data/se/",
+        database_filepath="../database-code/data/se/",
         support_enumeration=True,
         unique_tournament_identifier=175400,
         tournament_player_set=160
