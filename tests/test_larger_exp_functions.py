@@ -6,8 +6,10 @@ import sqlalchemy as sql
 import pytest
 
 
-
-@pytest.mark.parametrize("num_of_opponents, tournament_rep, prob_of_game_ending, noise", [(2, 100, 0.4, 0.0), (5, 100, 0.7, 0.3), (7, 100, 0.85, 0.0), (3, 100, 0.2, 0.6)])
+@pytest.mark.parametrize(
+    "num_of_opponents, tournament_rep, prob_of_game_ending, noise",
+    [(2, 100, 0.4, 0.0), (5, 100, 0.7, 0.3), (7, 100, 0.85, 0.0), (3, 100, 0.2, 0.6)],
+)
 def test_get_game(num_of_opponents, tournament_rep, prob_of_game_ending, noise):
     """
     checking the tournament is run correctly & the required output is as expected
@@ -22,10 +24,13 @@ def test_get_game(num_of_opponents, tournament_rep, prob_of_game_ending, noise):
     assert game["noise"] == noise
 
 
-
-
-@pytest.mark.parametrize("num_of_opponents, tournament_rep, prob_of_game_ending, noise", [(2, 100, 0.4, 0.0), (5, 100, 0.7, 0.3), (7, 100, 0.85, 0.0), (3, 100, 0.2, 0.6)])
-def test_get_prob_of_defection(num_of_opponents, tournament_rep, prob_of_game_ending, noise):
+@pytest.mark.parametrize(
+    "num_of_opponents, tournament_rep, prob_of_game_ending, noise",
+    [(2, 100, 0.4, 0.0), (5, 100, 0.7, 0.3), (7, 100, 0.85, 0.0), (3, 100, 0.2, 0.6)],
+)
+def test_get_prob_of_defection(
+    num_of_opponents, tournament_rep, prob_of_game_ending, noise
+):
     """
     checking the equilibria and probabilities of defection obtained using the function 'get_prob_of_defection'
     and separately via nashpy are equivalent.

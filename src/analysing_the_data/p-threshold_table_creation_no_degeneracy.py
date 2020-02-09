@@ -49,17 +49,20 @@ player_set_collection = """
 
 for each_set in range(maximum_player_set):
     for noise_level in np.linspace(0, 1, 11):
-        collect_relevant_data = connect_dbms_to_db.execute(player_set_collection,
-    each_set, noise_level)
-        each_set_data = pd.DataFrame(
-        collect_relevant_data.fetchall(), columns=table_headings
+        collect_relevant_data = connect_dbms_to_db.execute(
+            player_set_collection, each_set, noise_level
         )
-        
+        each_set_data = pd.DataFrame(
+            collect_relevant_data.fetchall(), columns=table_headings
+        )
+
         if noise_level in each_set_data["noise"]:
             num_of_players = each_set_data["number_of_players"].drop_duplicates()[0]
 
-            indices_of_non_zero_defection_prob = each_set_data.index[each_set_data["least_prob_of_defection"] > 0]
-        
+            indices_of_non_zero_defection_prob = each_set_data.index[
+                each_set_data["least_prob_of_defection"] > 0
+            ]
+
             if len(indices_of_non_zero_defection_prob) == 0:
                 min_threshold = np.nan
                 max_threshold = np.nan
@@ -71,12 +74,14 @@ for each_set in range(maximum_player_set):
                 max_threshold = min(each_set_data["prob_of_game_ending"])
                 mean_threshold = min(each_set_data["prob_of_game_ending"])
                 median_threshold = min(each_set_data["prob_of_game_ending"])
-        
+
             else:
                 jump_up_ending_probs = []
                 for index in indices_of_non_zero_defection_prob:
-                    if each_set_data.iloc[index - 1]["least_prob_of_defection"] ==0:
-                        jump_up_ending_probs.append(each_set_data.iloc[index]  ["prob_of_game_ending"])
+                    if each_set_data.iloc[index - 1]["least_prob_of_defection"] == 0:
+                        jump_up_ending_probs.append(
+                            each_set_data.iloc[index]["prob_of_game_ending"]
+                        )
                     else:
                         continue
                 min_threshold = min(jump_up_ending_probs)

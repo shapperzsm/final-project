@@ -16,7 +16,6 @@ def test_create_directory():
     assert os.path.isdir("data/ve")
 
 
-
 def test_create_database():
     """
     checks the database file is created.
@@ -24,7 +23,6 @@ def test_create_database():
     dbcode.create_database("data/se")
     database_management_sys = sql.create_engine("sqlite:///data/se/main.db")
     assert os.path.isfile("data/se/main.db")
-
 
 
 def test_who_is_playing():
@@ -40,8 +38,6 @@ def test_who_is_playing():
         assert axl.Defector() in players
         for player in players:
             assert player.classifier["long_run_time"] == False
-
-
 
 
 def test_array_to_string():

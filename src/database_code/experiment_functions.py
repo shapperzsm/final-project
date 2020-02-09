@@ -308,8 +308,8 @@ def run_experiment(
     tournament_rep,
     database_filepath,
     support_enumeration=True,
-    unique_tournament_identifier = 0,
-    tournament_player_set = 0
+    unique_tournament_identifier=0,
+    tournament_player_set=0,
 ):
 
     """

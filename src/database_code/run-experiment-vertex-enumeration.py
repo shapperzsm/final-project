@@ -5,9 +5,9 @@ import numpy as np
 noise_probabilities = np.linspace(0, 1, 11)
 game_ending_probabilities = np.linspace(0.001, 1 - 0.001, 100)
 
-#expfun.create_directory()
-#expfun.create_database("data/ve/")
-#print("Created table 'folk_theorem_experiment' in data/ve/main.db")
+# expfun.create_directory()
+# expfun.create_database("data/ve/")
+# print("Created table 'folk_theorem_experiment' in data/ve/main.db")
 while True:
     expfun.run_experiment(
         max_num_of_opponents=9,
@@ -18,5 +18,5 @@ while True:
         database_filepath="data/ve/",
         support_enumeration=False,
         unique_tournament_identifier=180803,
-        tournament_player_set=165
+        tournament_player_set=165,
     )
