@@ -8,9 +8,9 @@ out. Here, the environmental effects, on the outcome of the game, discussed
 include: number and characteristics of opponents; noise; and degeneracy. Then a
 large-scale multivariate analysis is executed before considering the reliability
 of the collected data. Note, as of writing, the database currently has 
-\input{src/database-code/data/se/20_01_2020/entries-in-database.txt}
+\input{src/database_code/data/se/20_01_2020/entries-in-database.txt}
 entries (rows) and a total number of 
-\input{src/database-code/data/se/20_01_2020/number-of-tournaments.txt}
+\input{src/database_code/data/se/20_01_2020/number-of-tournaments.txt}
 tournament sets. 
 
 \section{Initial Analysis}\label{sec:Initial_Analysis}
@@ -189,54 +189,57 @@ Firstly, an exploration into the overall \(p\)-thresholds is given.
 \begin{figure}
     \begin{subfigure}{.45\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{folk_thm/main_analysis/min_p_thresh.pdf}
+        \includegraphics[width=\textwidth]{folk_thm/main_analysis/min_p_threshold_hist.pdf}
         \caption{A plot to show the minimum \(p\)-thresholds.}\label{subfig:min_p_thresh}
     \end{subfigure}
     \begin{subfigure}{.45\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{folk_thm/main_analysis/max_p_thresh.pdf}
+        \includegraphics[width=\textwidth]{folk_thm/main_analysis/max_p_threshold_hist.pdf}
         \caption{A plot to show the maximum \(p\)-thresholds.}\label{subfig:max_p_thresh}
     \end{subfigure}
-    \caption{Plots to show the \(p\)-thresholds for all 1473 sets of tournaments.}\label{fig:min_max_p_thresh}
+    \caption{Plots to show the \(p\)-thresholds for all 1001 sets of tournaments.}\label{fig:min_max_p_thresh}
 \end{figure}
 
-Observe, Figure~\ref{subfig:min_p_thresh} shows a `split' in the data, with the
-majority of tournaments either having a threshold of less than 0.4 or a
-threshold equal to 1. This suggests that for a significant number of
-tournaments, it is more beneficial to cooperate if the probability of the
-tournament ending is sufficiently small enough (\(\le 3\)). Moreover, there is
-a certain number of tournaments in which cooperation is always preferential
-over defection. Similar inferences can be made from
-Figure~\ref{subfig:max_p_thresh}. On the other hand, looking at the plots in
-Figure~\ref{fig:mean_median_p_thresh}, notice that there now appears a
-significant number of thresholds falling within the range \([0.5, 0.6]\).
-Looking at the tournaments which satisfy the latter observation (see
-Figure~\ref{fig:p_mean_middle_plot}), it can be seen that all of these
-tournaments had a wide variance. That is, a minimum threshold close to zero and
-a maximum threshold close to one. Indeed, looking closer at the plots created
-for a few of these tournaments, Figure~\ref{fig:mean_middle_specific}, observe
-that there does not seem to be a clear \(p\)-threshold, with the plots having
-many peaks.  
+Observe, in Figure~\ref{subfig:min_p_thresh}, the majority of minimum thresholds
+were less than 0.4, with a clear modal value of 0. That is, in a significant
+proportion of the tournaments, there was no probability of the game ending for
+which the probability of defection was zero. Now considering
+Figure~\ref{subfig:max_p_thresh}, it can be seen that the modal value for the
+maximum threshold is 1.
+Also, in comparison with the minimum threshold, there is a larger spread in the
+density. Yet, there is still a peak around zero as with the minimum threshold
+data. Looking at the mean and median threshold data,
+Figure~\ref{fig:mean_median_p_thresh}, observe that the distributions obtained
+are similar with, again, a modal value of zero, indicating there is always a
+chance of defection irrespective of the game ending probability. However, in
+these histograms there is also a clear peak around a threshold of 0.5. This
+suggests that some of the tournaments may have several p-thresholds, perhaps due
+to stochasticity or degeneracy. Indeed, obtaining the minimum and maximum
+p-thresholds for those tournaments where the mean threshold was within the range
+\([0.5, 0.6]\), it can be seen that, from Figure~\ref{fig:p_mean_middle_plot}for a significant proportion, their minimum
+threshold was around zero and their maximum around one. Moreover, looking closer
+at three of the tournaments which satisfied the above, there is a clear
+stochasticity within the corresponding graphs, Figure~\ref{fig:p_mean_middle_specific}.
 
 \begin{figure}
     \begin{subfigure}{.45\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{folk_thm/main_analysis/mean_p_thresh.pdf}
+        \includegraphics[width=\textwidth]{folk_thm/main_analysis/mean_p_threshold_hist.pdf}
         \caption{A plot to show the mean \(p\)-thresholds.}\label{subfig:mean_p_thresh}
     \end{subfigure}
     \begin{subfigure}{.45\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{folk_thm/main_analysis/median_p_thresh.pdf}
+        \includegraphics[width=\textwidth]{folk_thm/main_analysis/median_p_threshold_hist.pdf}
         \caption{A plot to show the median \(p\)-thresholds.}\label{subfig:median_p_thresh}
     \end{subfigure}
-    \caption{Plots to show the \(p\)-thresholds for all 1473 sets of tournaments.}\label{fig:mean_median_p_thresh}
+    \caption{Plots to show the \(p\)-thresholds for all 1001 sets of tournaments.}\label{fig:mean_median_p_thresh}
 \end{figure}
 
 
 \begin{figure}
     \centering
     \includegraphics[width=\textwidth]{folk_thm/main_analysis/p_mean_middle_data_plot.pdf}
-    \caption{A plot to show the minimum and maximum \(p\)-thresholds for those tournaments which had an mean threshold within the range \([0.5, 0.6]\).}\label{fig:fig:p_mean_middle_plot}
+    \caption{A plot to show the minimum and maximum \(p\)-thresholds for those tournaments which had an mean threshold within the range \([0.5, 0.6]\).}\label{fig:p_mean_middle_plot}
 \end{figure}
 
 
@@ -262,16 +265,30 @@ many peaks.
     \caption{Example plots of the tournaments where the mean \(p\)-threshold was within the range \([0.5, 0.6]\).}\label{fig:mean_middle_specific}
 \end{figure}
 
+Before continuing onto the general overview of the thresholds for those
+tournaments which led to definite non-degenerate games, a brief point is made
+regarding those tournaments which, for all probabilities of the game ending, had
+no positive probability of defection. Indeed, out of the 1754 total tournaments
+753 of them had the above property of no threshold. That is, the plots obtained
+for these tournaments were (approximately) constant at zero for all
+probabilities of the game ending. Further investigation into these tournaments
+will be executed later. 
+
+Regarding degeneracy, out of all 1754 tournaments, 372 were highlighted as
+potentially leading to degenerate games. Furthermore, out of those tournaments
+which had a p-threshold, 253 of them were identified as possibly degenerate.
+These are omitted from the following plots in order to focus solely on
+non-degenerate games.
 
 \begin{figure}
     \begin{subfigure}{.45\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{folk_thm/main_analysis/non_degenerate_min_p_thresh.pdf}
+        \includegraphics[width=\textwidth]{folk_thm/main_analysis/non-degen_min_p_threshold_hist.pdf}
         \caption{A plot to show the minimum \(p\)-thresholds.}\label{subfig:non_degen_min_p_thresh}
     \end{subfigure}
     \begin{subfigure}{.45\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{folk_thm/main_analysis/non_degenerate_max_p_thresh.pdf}
+        \includegraphics[width=\textwidth]{folk_thm/main_analysis/non-degen_max_p_threshold_hist.pdf}
         \caption{A plot to show the maximum \(p\)-thresholds.}\label{subfig:non_degen_max_p_thresh}
     \end{subfigure}
     \caption{Plots to show the \(p\)-thresholds for all tournaments which led to non-degenerate games.}\label{fig:non_degen_min_max_p_thresh}
@@ -281,32 +298,32 @@ many peaks.
 \begin{figure}
     \begin{subfigure}{.45\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{folk_thm/main_analysis/non_degenerate_mean_p_thresh.pdf}
+        \includegraphics[width=\textwidth]{folk_thm/main_analysis/non-degen_mean_p_threshold_hist.pdf}
         \caption{A plot to show the mean \(p\)-thresholds.}\label{subfig:non_degen_mean_p_thresh}
     \end{subfigure}
     \begin{subfigure}{.45\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{folk_thm/main_analysis/non_degenerate_median_p_thresh.pdf}
+        \includegraphics[width=\textwidth]{folk_thm/main_analysis/non-degen_median_p_threshold_hist.pdf}
         \caption{A plot to show the median \(p\)-thresholds.}\label{subfig:non_degen_median_p_thresh}
     \end{subfigure}
     \caption{Plots to show the \(p\)-thresholds for all tournaments which led to non-degenerate games.}\label{fig:non_degen_mean_median_p_thresh}
 \end{figure}
 
-Consider now, the overall \(p\)-threshold for those tournaments which lead to a
-non-degenerate game. Comparing
-Figures~\ref{subfig:non_degen_min_p_thresh},~\ref{subfig:non_degen_max_p_thresh},~\ref{subfig:non_degen_mean_p_thresh}
-and~\ref{subfig:non_degen_median_p_thresh} with Figures~\ref{subfig:min_p_thresh},~\ref{subfig:max_p_thresh},~\ref{subfig:mean_p_thresh}
-and~\ref{subfig:median_p_thresh}, respectively, it can be seen that the majority
-of thresholds remain the same with only a very small number changing. This could
-be due to the number of games that were removed since obtaining the length of
-both csv files suggested that only four full tournaments were removed.
-The effects of degeneracy will be investigated in more depth in Section~\ref{subsec:Effects_of_Degeneracy}.
+Comparing Figures~\ref{subfig:non_degen_min_p_thresh},~\ref{subfig:non_degen_max_p_thresh},~\ref{subfig:non_degen_mean_p_thresh}
+and~\ref{subfig:non_degen_median_p_thresh} with 
+Figures~\ref{subfig:min_p_thresh},~\ref{subfig:max_p_thresh},~\ref{subfig:mean_p_thresh}
+and~\ref{subfig:median_p_thresh}, respectively, it can be seen that, in general,
+there is no significant change in the distributions of the thresholds. However,
+there is a more prominent peak in Figure~\ref{subfig:mean_p_thresh} around 0.3
+than in the corresponding non-degenerate plot of
+Figure~\ref{subfig:non_degen_mean_p_thresh}. The effects of degeneracy will be
+investigated in more depth in Section~\ref{subsec:Effects_of_Degeneracy}. 
 
 
 \subsection{Effects of the Number of Players}\label{subsec:Effects_of_the_number_of_Players}
 In this section, the \(p\)-thresholds will be analysed with respect to the
 number of opponents the \textit{Defector} played against. Note, in this section,
-only the mean \(p\)-thresholds of games which are non-degenerate will be discussed. 
+only non-degenerate tournaments will be considered.
 
 
 \begin{figure}
