@@ -328,25 +328,60 @@ only non-degenerate tournaments will be considered.
 
 \begin{figure}
     \centering
-    \includegraphics[width=\textwidth]{folk_thm/main_analysis/player_mean_thresh_violinplot.pdf}
-    \caption{A violinplot showing the distribution of mean \(p\)-thresholds for each number of opponents.}\label{fig:player_mean_thresh_violinplot}
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{folk_thm/main_analysis/min_p_threshold_player_violinplot.pdf}
+        \caption{Minimum p-threshold violinplot.}\label{subfig:min_thresh_player_violinplot}
+    \end{subfigure}
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{folk_thm/main_analysis/max_p_threshold_player_violinplot.pdf}
+        \caption{Maximum p-threshold violinplot.}\label{subfig:max_thresh_player_violinplot}
+    \end{subfigure}
+
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{folk_thm/main_analysis/mean_p_threshold_player_violinplot.pdf}
+        \caption{Mean p-threshold violinplot.}\label{subfig:mean_thresh_player_violinplot}        
+    \end{subfigure}
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{folk_thm/main_analysis/median_p_threshold_player_violinplot.pdf}
+        \caption{Median p-threshold violinplot.}\label{subfig:median_thresh_player_violinplot}
+    \end{subfigure}
+    \caption{Violinplots of the thresholds for each number of opponents.}\label{fig:player_mean_thresh_violinplot}
 \end{figure}
 
-From Figure~\ref{fig:player_mean_thresh_violinplot}, it can be seen that the
-distributions of the \(p\)-thresholds with respect to the number of players are
-approximately the same. The means of the data falls around 0.7 with the main
-mode for each number of players being close to 1. Observe, though, that for the
-larger group of players (6, 7, 8), the distributions become bimodal with the
-second mode around 0.5. This is most significant in the eight player tournaments
-however, note that, as of writing, the experiment was still running for eight
-player games and hence less data is available currently for this situation.
+From Figure~\ref{subfig:mean_thresh_player_violinplot}, it can be seen that the
+distributions of the minimum \(p\)-thresholds with respect to the number of
+players all have a modal value around 0. However, apart from the 7-player
+tournaments, the spread of the distributions decrease, along with the mean
+values. Considering the maximum thresholds,
+Figure~\ref{subfig:max_p_threshold_violinplot}, the distributions become bimodal
+with mode values of around 0 and 1. But, as the number of players increases the
+modal value at zero becomes less prominent with the 8-player tournament
+distribution not having a mode around 0. The variance of the distributions are
+similar and, apart from 4-player tournaments, the means increase with the number
+of players. Looking now to the mean and median violinplots,
+Figures~\ref{subfig:mean_thresh_player_violinplot}
+and~\ref{subfig:median_thresh_player_violinplot} respectively, there is no
+significant difference between the two plots other than the spread is a little
+larger in the median thresholds. Within the mean plot,
+Figure~\ref{subfig:mean_thresh_player_violinplot}, it can be seen that the
+distributions also start off bimodal, at 0 and approximately 0.5. But again, the
+modal value at zero becomes less distinct with the 8-player tournament
+distribution being unimodal. The modal value at around 0.5 is a consequence of
+the reason stated in the previous section. Moreover, observe that, apart from
+4-player tournaments, the variance of the distributions seem to decrease with
+the size of the player set whilst the means increase from a value of
+approximately 0.3 for 2-player tournaments to around 0.5 for 8-players.
 
 
 \subsection{Effects of Stochastic Players}\label{subsec:Effects_of_Stochastic_Players}
 
 In order to analyse the effect of stochastic strategies on the \(p\)-threshold,
-tournaments in which these strategies featured are repeated but omitting the
-stochastic players to identify any alterations in the results. 
+tournaments in which these strategies featured are repeated but any
+stochastic players are omitted to identify any alterations in the results. 
 
 
 
