@@ -5,9 +5,7 @@ initial overview is provided, where descriptive statistics of the equilibria
 obtained and the overall characteristics of the strategies used is discussed.
 Following this, a critical analysis of the \(p\)-thresholds obtained is carried
 out. Here, the environmental effects, on the outcome of the game, discussed
-include: number and characteristics of opponents; noise; and degeneracy. Then a
-large-scale multivariate analysis is executed before considering the reliability
-of the collected data. Note, as of writing, the database currently has 
+include: number of opponents and level of added noise. Note, as of writing, the database currently has 
 \input{src/database_code/data/se/20_01_2020/entries-in-database.txt}
 entries (rows) and a total number of 
 \input{src/database_code/data/se/20_01_2020/number-of-tournaments.txt}
@@ -23,42 +21,54 @@ Figure~\ref{fig:example_graphs}.
     \begin{subfigure}{.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{folk_thm/single_game/2/0/0.0/main.pdf}
-        \caption{An example of a graph with a clear p-threshold point of approximately 0.28. In this game there is no degeneracy and the opponent strategy playing in the tournament was \textit{Inverse}, without noise.}\label{subfig:clear_thresh_plot}
+        \caption{2-player tournament set with no added noise, one stochastic player and no degeneracy identified.}\label{subfig:clear_thresh_plot}
     \end{subfigure}
     \begin{subfigure}{.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{folk_thm/single_game/6/110/0.0/main.pdf}
-        \caption{An example of a graph where the p-threshold is not as clear. Perhaps this is due to a small amount of noise and hence not enough repetitions or stochasticity of the players. In this case the threshold seems to lie in the range [0.1, 0.3]. There is no degeneracy in this game and opponent strategies in the tournament were: \textit{Feld: 1.0, 0.5, 200}; \textit{Cooperator};  \textit{EvolvedLookerUp2\_2\_2}; \textit{Tullock: 11}; and \textit{ZD-GEN-2: 0.125, 0.5, 3}. Again, this tournament was run with no added noise.}\label{subfig:unclear_thresh_plot}
+        \caption{6-player tournament set with no added noise, three stochastic players and potential degeneracy was yielded from 10 of the tournaments.}\label{subfig:unclear_thresh_plot}
     \end{subfigure}
 
     \begin{subfigure}{.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{folk_thm/single_game/5/77/0.0/main.pdf}
-        \caption{An example of a graph where the p-threshold is not clear at all due to some (or all) of the games, which were played by the particular tournament set, being degenerate. In this case, the opponent strategies playing in the tournament were: \textit{Random: 0.5}; \textit{Grumpy: Nice, 10, -10}; \textit{Fortress3}; and \textit{Negation}. This tournament had no added noise.}\label{subfig:degenerate_plot}
+        \caption{5-player tournament set with no added noise, two stochastic players and five tournaments played yielded potentially degenerate games.}\label{subfig:degenerate_plot}
     \end{subfigure}
     \begin{subfigure}{.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{folk_thm/single_game/4/60/0.0/main.pdf}
-        \caption{An example of a graph where the least probability of defection
-        was constant throughout the varying ending probabilities. In this
-        particular tournament there was no ending probability in which
-        cooperation was beneficial; with the least probability of defection
-        equalling the greatest probability of defection at one. Here, the
-        opponents were: \textit{AntiCycler}; \textit{\$e\$}; and
-        \textit{Stalker: (D,)}.}\label{subfig:constant_plot}
+        \caption{4-player game with no added noise, one stochastic player and no degeneracy identified.}\label{subfig:constant_plot}
     \end{subfigure}
     \caption{Example graphs obtained from the experiment.}\label{fig:example_graphs}
 \end{figure}
 
-This will be discussed further in the next section as follows:
-Figures~\ref{subfig:clear_thresh_plot} and~\ref{subfig:constant_plot}, and
-general properties of the p-threshold, will be described in
-Section~\ref{sec:Analysis_of_the_p-Threshold}; the stochasticity and accuracy
-visible in Figure~\ref{subfig:unclear_thresh_plot} will be analysed in
-Sections~\ref{subfig:Effects_of_Stochastic_Players}
-and~\ref{subsec:Accuracy_of_Thresholds}, respectively; and finally
-Figure~\ref{subfig:degenerate_plot}, and degeneracy overall, will be considered
-in Section~\ref{subsec:Effects_of_Degeneracy}.
+In Figure~\ref{subfig:clear_thresh_plot}, a clear p-threshold of approximately
+0.28 is apparent, clearly visualising the Folk Theorem. In this tournament set
+the opponent was \textit{Inverse}, a stochastic player, indicating that perhaps
+the stochasticity of a player does not affect the accuracy of the threshold as
+first thought. In Figure~\ref{subfig:unclear_thresh_plot}, the precise value of
+the p-threshold is less clear, lying approximately in the range [0.1, 0.3]. This
+could be due to the potential degeneracy identified or just the element of
+randomness that appears within each tournament, possibly magnified by the number
+of stochastic players. The opponents within this set
+were: \textit{Feld: 1.0, 0.5, 200}; \textit{Cooperator};
+\textit{EvolvedLookerUp2\_2\_2}; \textit{Tullock: 11}; and \textit{ZD-GEN-2:
+0.125, 0.5, 3}. Figure~\ref{subfig:degenerate_plot} shows a potential problem
+with the visualisation of the Folk Theorem when degenerate games are involved.
+It becomes unclear as to what is happening in the graph,
+especially where the p-threshold lies. The opponents, in this case, were:
+\textit{Random: 0.5}; \textit{Grumpy: Nice, 10, -10}; \textit{Fortress3}; and
+\textit{Negation}. Finally, Figure~\ref{subfig:constant_plot} gives an example
+of a tournament set for which there was always a non-zero probability of
+defection, regardless of the game ending probability. In this case, the
+precision of game-ending probabilities chosen was not accurate enough to
+identify the p-threshold. It is implied that the tournament has to have a game
+ending probability of almost 0 (within the interval (0, 0.001) in order for a
+zero probability of defection to be rational. Here, the opponents of the
+\textit{Defector} were: \textit{AntiCycler}; \textit{\$e\$}; and
+\textit{Stalker: (D,)}. Similarly, it is observed that some graphs obtained
+were constant at 0, again indicating that the probability of 
+
 
 \input{images/folk_thm/initial_analysis/summary_stats.tex}
 %NEED TO SPLIT TABLE
