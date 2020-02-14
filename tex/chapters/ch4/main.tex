@@ -81,7 +81,7 @@ pandas database is given in Table~\ref{tab:summary_stats}. From this, it can be
 seen that the number of opponents the \textit{Defector} played against ranged
 from one to seven, with an average of four opponents. Also, as expected, the
 mean probability of the game ending encountered was 0.5. Observe that, overall,
-there were \(175,399\) distinct tournaments played (\textit{experiment\_number}) with a total of 159 distinct sets of strategies (\textit{tournament\_player\_set}). 
+there were \(175,399\) distinct tournaments played with a total of 159 distinct sets of strategies. 
 Looking now at the statistics for Nash equilibria, it can be seen that a total
 of \(823,823\) equilibrium points were calculated in this experiment, with an
 average of \(1.914 \approx 2\) equilibria per game. However, observe, at least
@@ -398,29 +398,95 @@ altered~\cite{glynatsi2020meta}. That is, an action of \textit{coop} changes to
 \begin{figure}
     \begin{subfigure}{0.45\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{folk_thm/main_analysis/noise_min_thresh_violinplot.pdf}
+        \includegraphics[width=\textwidth]{folk_thm/main_analysis/min_p_threshold_noise_violinplot.pdf}
         \caption{Minimum p-threshold violinplot.}\label{subfig:min_thresh_noise_violinplot}
     \end{subfigure}
     \begin{subfigure}{0.45\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{folk_thm/main_analysis/noise_max_thresh_violinplot.pdf}
+        \includegraphics[width=\textwidth]{folk_thm/main_analysis/max_p_threshold_noise_violinplot.pdf}
         \caption{Maximum p-threshold violinplot.}\label{subfig:max_thresh_noise_violinplot}
     \end{subfigure}
 
     \begin{subfigure}{0.45\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{folk_thm/main_analysis/noise_median_thresh_violinplot.pdf}
+        \includegraphics[width=\textwidth]{folk_thm/main_analysis/median_p_threshold_noise_violinplot.pdf}
         \caption{Median p-threshold violinplot.}\label{subfig:median_thresh_noise_violinplot}
     \end{subfigure}
     \begin{subfigure}{0.45\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{folk_thm/main_analysis/noise_mean_thresh_violinplot.pdf}
+        \includegraphics[width=\textwidth]{folk_thm/main_analysis/mean_p_threshold_noise_violinplot.pdf}
         \caption{Mean p-threshold violinplot.}\label{subfig:mean_thresh_noise_violinplot}
     \end{subfigure}
     \caption{Violinplots of the thresholds for each level of noise.}\label{fig:noise_p_thresh_violinplot}
 \end{figure}
 
-Figure~\ref{subfig:min_thresh_noise_violinplot}, shows.......
+Figure~\ref{subfig:min_thresh_noise_violinplot}, shows the distribution of the
+minimum p-thresholds for each level of additional noise added to the
+tournaments. Here, it can be noted that the distributions of noise levels at
+least 0.6 have a large variance, indicating that adding a too large noise
+probability is highly random and thus no conclusions can be drawn. On the
+other hand, considering the noise levels less than 0.6, observe that the mean
+p-thresholds decrease from around 0.25 to approximately 0 as the noise
+increases. These distributions are also clearly unimodal. Looking now at
+Figure~\ref{subfig:max_thresh_noise_violinplot}, it can be seen that the
+majority of distributions have a much larger spread here varying over the full
+spectrum of game-ending probabilities and similar observations can be made from
+Figures~\ref{subfig:median_thresh_noise_violinplot}
+and~\ref{subfig:mean_thresh_noise_violinplot}. 
+
+Figure~\ref{fig:single_set_vary_noise} shows an example of the same tournament set through a variety of
+differing noise levels. Indeed, here, it can clearly be seen that the amount of
+noise does effect the p-threshold. However, this is to be expected since, by
+definition, as the noise level increases, the \textit{Defector} will be observed
+as similar to the \textit{Cooperator} when there is no additional noise.
+
+\begin{figure}
+    \begin{subfigure}{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{folk_thm/single_game/6/103/0.0/main.pdf}
+        \caption{6-player game with no additional noise.}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{folk_thm/single_game/6/103/0.1/main.pdf}
+        \caption{6-player game with an additional noise level of 0.1.}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{folk_thm/single_game/6/103/0.2/main.pdf}
+        \caption{6-player game with noise level 0.2.}
+    \end{subfigure}
+
+    \begin{subfigure}{0.2\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{folk_thm/single_game/6/103/0.3/main.pdf}
+        \caption{6-player game with noise level 0.3.}
+    \end{subfigure}
+    \begin{subfigure}{0.2\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{folk_thm/single_game/6/103/0.4/main.pdf}
+        \caption{6-player game with an additional noise level of 0.4.}
+    \end{subfigure}
+    \begin{subfigure}{0.2\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{folk_thm/single_game/6/103/0.5/main.pdf}
+        \caption{6-player game with noise level 0.5.}
+    \end{subfigure}
+    \begin{subfigure}{0.2\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{folk_thm/single_game/6/103/0.6/main.pdf}
+        \caption{6-player game with an additional noise level of 0.6. Note, the remaining noise levels of 0.7, 0.8, 0.9 and 1.0 all yielded the same constant 0 graph as represented here.}
+    \end{subfigure}
+    \caption{Observation of one 6-player tournament set through the varying
+    levels of additional noise. There was one stochastic player and 13 out of
+    the 1100 tournaments played yielded potential degenerate games. The opponents here were: \textit{Getzler};
+    \textit{Punisher}; \textit{Forgiver}; \textit{GrudgerAlternator}; and \textit{GraaskampKatzen}.}\label{fig:single_set_vary_noise}
+\end{figure}
+
+Therefore, on the whole, there
+are not many significant conclusions that can be made here. This implies that
+the addition of noise to an already random tournament obscures any possible
+visions of the threshold, especially as the magnitude increases.
 
 
 \section{Conclusions and Further Work}\label{sec:Conclusions_and_Further_Work}
@@ -444,7 +510,9 @@ the variability of the p-threshold. However, on obtaining the distributions of
 the thresholds for tournament sets of size one
 to eight, it was implied that the number of players does not have a significant
 impact on the value of the threshold. Finally, the effect of additional noise on
-the p-threshold was analysed. Here, it was observed that...... 
+the p-threshold was analysed. Here, it was observed that, as expected, the level
+of additional noise did affect the p-threshold however there was no significant
+trends appearing out of the randomness.
 
 As stated above, this is only the very start of an analysis into the
 p-thresholds described by the `original' Folk Theorem and the effects of the
@@ -464,6 +532,18 @@ suggested that those tournament sets in which stochastic players were included
 could be removed and the tournaments rerun. This could help in revealing whether
 the stochasticity of the player has any effect on the threshold, as the author
 has hypothesised. 
+
+To check the reliability of the data collected, a second
+experiment is recommended using a different algorithm for calculating the Nash
+equilibria, for example vertex enumeration. This could be used in comparison
+with the data already collected to identify whether the algorithms are producing
+the same Nash equilibria or, more importantly, whether they identified the same
+games as being degenerate. Furthermore, it is suggested that this experiment be
+executed with a larger number of tournaments repeats (greater than 500) to
+observe whether this `smooths' the payoff matrices with greater success to
+enable for a clearer visualisation of the p-thresholds. Finally, some
+multivariate data analysis of the results, for example regression, could provide
+some more insights into this topic.
 
 Overall, this chapter has been successful in visualising the Folk Theorem using
 the data collection setup as explained in Chapter~\ref{} and using the plots
