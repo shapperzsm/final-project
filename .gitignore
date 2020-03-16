@@ -1,5 +1,5 @@
 source-code/.ipynb_checkpoints
-source-code/Timing-Experiments/__pycache__/
+source-code/timing-experiments/__pycache__
 main.aux
 main.bbl
 main.bib
@@ -9,3 +9,8 @@ main.log
 main.out
 main.toc
 tex/references/main.bib.bak
+main.bcf
+main.run.xml
+src/database-code/data
+src/database-code/__pycache__
+images
