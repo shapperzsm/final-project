@@ -9,3 +9,6 @@ main.log
 main.out
 main.toc
 tex/references/main.bib.bak
+main.bcf
+main.run.xml
+source-code/Database-code/__pycache__/
