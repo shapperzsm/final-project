@@ -3,11 +3,9 @@
 Game Theory is the study of interactive decision making and developing
 strategies through mathematics~\cite{Dictionary2013}. It analyses and gives
 methods for predicting the choices made by players (those making a decision),
-whilst also suggesting ways to improve their `outcome'
-~\cite{maschler_solan_zamir_2013}. Here, the abstract notion of utility is what
+whilst also suggesting ways to improve their `outcome'~\cite{maschler_solan_zamir_2013}. Here, the abstract notion of utility is what
 the players wish to maximise (see Chapter 2 in~\cite{maschler_solan_zamir_2013}
-for a detailed discussion on the topic of utility theory or Section 1.3
-~\cite{Webb2007} for a more introductory explanation). One of the earliest
+for a detailed discussion on the topic of utility theory or Section 1.3~\cite{Webb2007} for a more introductory explanation). One of the earliest
 pioneers of game theory is mathematician, John von Neumann who, along with
 economist Oskar Morgenstern, published \textit{The Theory of Games and Economic
 Behaviour} in 1944~\cite{maschler_solan_zamir_2013}. This book discusses the
@@ -34,27 +32,28 @@ Consider the following scenario:
     short sentence whereas if they both defect then a medium sentence awaits.
     However, in the situation of one cooperation and one defection, the prisoner
     who cooperated has the consequence of a long term sentence, whilst the other
-    is given a deal.~\cite{Knight2017}
+    is given a deal~\cite{Knight2017}.
 \end{center}
 
 This is one of the standard games in game theory known as A Prisoner's Dilemma.
 It has four distinct outcomes, for the given two player version, which can be
 represented as a table (see Table~\ref{tab:PD_outcomes}).
-\begin{table}
-\begin{tabular}{ cc|c|c|c| }\label{tab:PD_outcomes}
-    \cline{3-4}
-     & & \multicolumn{2}{ c| }{Column Player} \\
-    \cline{3-4}
-     & & coop & defect \\
-    \multicolumn{1}{ |c }{\multirow{2}{*}{Row Player}} &
-    \multicolumn{1}{ |c| }{coop} & (3, 3) & (0, 5) \\
-    \cline{2-4}
-    \multicolumn{1}{ |c }{} & 
-    \multicolumn{1}{ |c| }{defect} & (5, 0) & (1, 1) \\
-    \cline{1-4}
-\end{tabular}
-\caption{Outcomes \& payoffs for the game of A Prisoner's Dilemma.}\label{tab:PD_outcomes}
-\end{table}
+%\begin{table}
+%    \centering
+%    \begin{tabular}{ cc|c|c|c| }\label{tab:PD_outcomes}
+%        \cline{3-4}
+%         & & \multicolumn{2}{ c| }{Column Player} \\
+%        \cline{3-4}
+%         & & coop & defect \\
+%        \multicolumn{1}{ |c }{\multirow{2}{*}{Row Player}} &
+%        \multicolumn{1}{ |c| }{coop} & (3, 3) & (0, 5) \\
+%        \cline{2-4}
+%        \multicolumn{1}{ |c }{} & 
+%        \multicolumn{1}{ |c| }{defect} & (5, 0) & (1, 1) \\
+%        \cline{1-4}
+%    \end{tabular}
+%    \caption{Outcomes \& payoffs for the game of A Prisoner's Dilemma.}\label   %{tab:PD_outcomes}
+%\end{table}
 Each coordinate \((a, b)\) in the table represents the utility values obtained
 for each player, where \(a\) is the utility value obtained by the row player
 and \(b\) is the utility gained by the column player. These utility values are
@@ -113,7 +112,7 @@ This, more formally, is an infinite list of statements which claim:
         rational; etc.    
     \end{itemize}
 Assuming Common Knowledge of Rationality allows for the prediction of rational
-behaviour through a processes entitled \textit{rationalisation}
+behaviour through a process entitled \textit{rationalisation}
 ~\cite{Knight2019}
 (see section 4.5 in~\cite{maschler_solan_zamir_2013} for an alternative
 explanation of this assumption). 
@@ -506,7 +505,7 @@ from~\cite{Knight2019a} guarantees at least one Nash equilibria.
 \begin{theorem}\label{thm:seq_of_stage_NE}
     Consider a \(T\)-stage repeated game with \(G=(N, (S_{i})_{i \in N},
     (u_{i})_{i \in N})\) as the stage game, \(0 < T < \infty \). Define by
-    \(\bm{\sigma}^{*} =(\sigma_{1}^{*}, \sigma_{2}^{*}, \ldots, \sigma_{N}^{*})\),
+    \( \bm{\sigma}^{*} = (\sigma_{1}^{*}, \sigma_{2}^{*}, \ldots, \sigma_{N}^{*})\),
     a stage Nash equilibrium of \(G\). Then the sequence in which
     \(\bm{\sigma}^{*}\) is continuously played is a Nash equilibrium of the
     \(T\)-stage repeated game.
@@ -541,7 +540,7 @@ where \(N\) is a finite set of players; \((V, E, x_{0})\) is a \textit{game
 tree}~\footnote{The triple \((V, E, x_{0})\) is defined as a \textit{tree} if
 the set of vertices, \(V\), and the set of edges, \(E\), create a
 \textit{directed graph} (that is, each element in \(E\) is an ordered tuple) and
-x_{0} represents the root, or starting node, of the graph.}; \((V_{i})_{i \in
+\(x_{0}\) represents the root, or starting node, of the graph.}; \((V_{i})_{i \in
 N}\) is a partition of the set \(V \setminus L\), where \(L\) is the set of all
 leaves, or terminal points, of the game tree; \(O\) is the set of outcomes for
 the game; and \(u\) is a function which maps each leaf in \(L\) to an outcome 
@@ -562,22 +561,22 @@ game A Prisoner's Dilemma is provided. Here, only two players are considered and
 any information sets are represented by a dashed line. Note, any normal form
 game can be represented as an extensive form game. 
 
-\begin{figure}
-    \begin{istgame}[scale=0.5]
-    \setistgrowdirection'{east}
-    \istroot(0){Player 1}
-        \istb{coop}[a]
-        \istb{defect}[b]
-    \istroot(1)(0-1)
-        \istb{coop}[a]{(3, 3)}
-        \istb{defect}[b]{(0, 5)}
-    \istroot(2)(0-2)
-        \istb{coop}[a]{(5, 0)}
-        \istb{defect}[b]{1, 1}
-    \xtInfoset(1)(2){Player 2}     
-    \end{istgame}
-    \caption{The extensive form representation of A Prisoner's Dilemma.}\label{fig:PD_game_tree}
-\end{figure}
+%\begin{figure}
+%    \begin{istgame}[scale=0.5]
+%    \setistgrowdirection'{east}
+%    \istroot(0){Player 1}
+%        \istb{coop}[a]
+%        \istb{defect}[b]
+%    \istroot(1)(0-1)
+%        \istb{coop}[a]{(3, 3)}
+%        \istb{defect}[b]{(0, 5)}
+%    \istroot(2)(0-2)
+%        \istb{coop}[a]{(5, 0)}
+%        \istb{defect}[b]{1, 1}
+%    \xtInfoset(1)(2){Player 2}     
+%    \end{istgame}
+%    \caption{The extensive form representation of A Prisoner's Dilemma.}\label%{fig:PD_game_tree}
+%\end{figure}
 
 According to~\cite{Webb2007}, a \textit{subgame} is a sub-graph of the game tree
 such that:
@@ -773,21 +772,21 @@ written by the author. In this coursework, regarding Nash equilibria and
 repeated games, the two graphs, as presented in Figure~\ref{fig:CW_plots}, were
 obtained.
 
-\begin{figure}[h]
-    \centering
-        \begin{subfigure}[t]{0.45\textwidth}
-        \centering
-        \includegraphics[width=\linewidth]{CW-graph-1.pdf}
-        \caption{A plot of the least probabilities of defection when playing against the strategies: Cooperator, TitForTat and Random. Here, the p-threshold is approximately 0.25.}\label{fig:CW_graph_1}
-        \end{subfigure}
-    \hfill
-        \begin{subfigure}[t]{0.45\textwidth}
-        \centering
-        \includegraphics[width=\linewidth]{CW-graph-2.pdf}
-        \caption{A plot of the least probabilities of defection when playing against the strategies: Winner21, AntiTitForTat and OmegaTFT.\@ Here, the p-threshold is around 0.5.}\label{fig:CW_graph_2}
-        \end{subfigure}
-        \caption{Original plots obtained which inspired the creation of this project.}\label{fig:CW_plots}
-\end{figure}
+%\begin{figure}[h]
+%    \centering
+%        \begin{subfigure}[t]{0.45\textwidth}
+%        \centering
+%        \includegraphics[width=\linewidth]{CW-graph-1.pdf}
+%        \caption{A plot of the least probabilities of defection when playing %against the strategies: Cooperator, TitForTat and Random. Here, the %p-threshold is approximately 0.25.}\label{fig:CW_graph_1}
+%        \end{subfigure}
+%    \hfill
+%        \begin{subfigure}[t]{0.45\textwidth}
+%        \centering
+%        \includegraphics[width=\linewidth]{CW-graph-2.pdf}
+%        \caption{A plot of the least probabilities of defection when playing %against the strategies: Winner21, AntiTitForTat and OmegaTFT.\@ Here, %the p-threshold is around 0.5.}\label{fig:CW_graph_2}
+%        \end{subfigure}
+%        \caption{Original plots obtained which inspired the creation of this %project.}\label{fig:CW_plots}
+%\end{figure}
 
 These two graphs were obtained using a similar method to this project and so
 please see Chapter~\ref{ch:Methods_Init_Investigations} for the details. The
