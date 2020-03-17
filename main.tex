@@ -22,6 +22,10 @@
 	\renewcommand{\headrulewidth}{0pt}
 }
 
+\usepackage{tikz}
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{istgame}
 
 \usepackage{etoolbox}
 \patchcmd{\chapter}{\thispagestyle{plain}}{\thispagestyle{chapterstyle}}{}{}
@@ -41,11 +45,12 @@
 
 \usepackage{biblatex}
 
-\addbibresource{"tex/references/main.bib"}
+\addbibresource{{tex/references/main.bib}}
 
 \usepackage{subcaption}
 
 \usepackage{amsthm}
+\usepackage{bm}
 
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[section]
@@ -70,19 +75,15 @@
 \pagestyle{normal}
 
 \input{tex/chapters/ch1/main.tex}
-\input{tex/chapters/ch3/main.tex}
+%\input{tex/chapters/ch3/main.tex}
 
 
 
 \addcontentsline{toc}{chapter}{References}
 \printbibliography[title=References]
 
-\begin{appendices}
-	\input{tex/chapters/appendices/main.tex}
-\end{appendices}
-
+%\begin{appendices}
+	%\input{tex/chapters/appendices/main.tex}
+%\end{appendices}
 
 \end{document}
-
-
-
