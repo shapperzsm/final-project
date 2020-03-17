@@ -1,5 +1,3 @@
-source-code/.ipynb_checkpoints
-source-code/timing-experiments/__pycache__
 main.aux
 main.bbl
 main.bib
@@ -11,7 +9,9 @@ main.toc
 tex/references/main.bib.bak
 main.bcf
 main.run.xml
-data
-src/database-code/__pycache__
-images
+src/database_code/data
+images/folk_thm/single_game/
 _minted-main/
+.pytest_cache/
+.vscode/
+.coverage
