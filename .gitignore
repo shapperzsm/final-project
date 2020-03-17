@@ -11,6 +11,7 @@ main.toc
 tex/references/main.bib.bak
 main.bcf
 main.run.xml
-src/database-code/data
+data
 src/database-code/__pycache__
 images
+_minted-main/
