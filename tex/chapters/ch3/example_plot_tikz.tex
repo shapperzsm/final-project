@@ -1,0 +1,13 @@
+% Example plot
+\begin{tikzpicture}
+    \draw[->] (0,0) -- (5.5,0) node[right]{$p_{e}$};
+    \draw[->] (0,0) -- (0,5.5) node[above]{$min{\{p_{d}\}}$};
+    \draw[red, very thick] (0,0) -- (2,0);
+    \draw[red, very thick] (2,0) -- (2,5);
+    \draw[red, very thick] (2,5) -- (5, 5);
+    \draw[blue, dashed, very thick] (2,-0.5) -- (2,5.5);
+    \node[blue, right] at (2, 2) {$p$-threshold};
+    \node[below] at (0,0) {0};
+    \node[below] at (5,0) {1};
+    \node[left] at (0,5) {1};
+\end{tikzpicture}
