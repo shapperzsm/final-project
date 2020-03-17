@@ -2,7 +2,11 @@ import sqlalchemy as sa
 import pandas as pd
 
 database_management_sys = sa.create_engine(
-    "sqlite:///../database-code/data/se/main.db"
+
+   # "sqlite:///../database-code/data/se/main.db"
+
+   # "sqlite:///C:/Users/sophi/Desktop/rerun-data-no-long-run/se/main.db"
+
 )
 connect_dbms_to_db = database_management_sys.connect()
 
