@@ -1,0 +1,569 @@
+% Encoding: UTF-8
+
+@Misc{Dictionary2013,
+  author       = {Oxford English Dictionary},
+  title        = {game theory, n.},
+  year         = {2013},
+  howpublished = {Online},
+  note         = {Accessed: 08.10.2019},
+  month        = mar,
+  url          = {https://www.oed.com/view/Entry/319028?redirectedFrom=game+theory&},
+}
+
+@Article{nash1950equilibrium,
+  author    = {Nash, John F and others},
+  title     = {Equilibrium points in n-person games},
+  journal   = {Proceedings of the national academy of sciences},
+  year      = {1950},
+  volume    = {36},
+  number    = {1},
+  pages     = {48--49},
+  publisher = {USA},
+}
+
+@Article{axelrod1980effective,
+  author    = {Axelrod, Robert},
+  title     = {Effective choice in the prisoner's dilemma},
+  journal   = {Journal of conflict resolution},
+  year      = {1980},
+  volume    = {24},
+  number    = {1},
+  pages     = {3--25},
+  publisher = {Sage Publications Sage CA: Los Angeles, CA},
+}
+
+@Misc{Knight2019,
+  author       = {Vincent Knight},
+  title        = {Chapter 3 - Rationalisation},
+  year         = {2019},
+  howpublished = {Online},
+  note         = {Accessed on: 23/10/2019},
+  url          = {https://vknight.org/gt/chapters/03/},
+}
+
+@Book{NoamNisan2007,
+  author    = {Noam Nisan and Tim Roughgarden and Eva Tardos and Vijay V. Vazirani},
+  title     = {Algorithmic Game Theory},
+  year      = {2007},
+  foreword  = {Christos H. Papadimitriou},
+  publisher = {Cambridge University Press},
+  isbn      = {978-0-521-87282-9},
+}
+
+@Article{papadimitriou1994complexity,
+  author    = {Papadimitriou, Christos H},
+  title     = {On the complexity of the parity argument and other inefficient proofs of existence},
+  journal   = {Journal of Computer and system Sciences},
+  year      = {1994},
+  volume    = {48},
+  number    = {3},
+  pages     = {498--532},
+  publisher = {Citeseer},
+}
+
+@Article{Hirsch1989,
+  author    = {Michael D Hirsch and Christos H Papadimitriou and Stephen A Vavasis},
+  title     = {Exponential lower bounds for finding Brouwer fix points},
+  journal   = {Journal of Complexity},
+  year      = {1989},
+  volume    = {5},
+  number    = {4},
+  month     = {dec},
+  pages     = {379--416},
+  doi       = {10.1016/0885-064x(89)90017-4},
+  publisher = {Elsevier {BV}},
+}
+
+@Misc{Nashpy2019,
+  author = {{ {The Nashpy project developers} }},
+  title  = {Nashpy: v0.0.19},
+  year   = {2019},
+  month  = {June},
+  doi    = {10.5281/zenodo.3256475},
+  url    = {http://dx.doi.org/10.5281/zenodo.3256475},
+}
+
+@Article{Rampersaud2014,
+  author    = {Safraz Rampersaud and Lena Mashayekhy and Daniel Grosu},
+  title     = {Computing Nash Equilibria in Bimatrix Games: {GPU}-Based Parallel Support Enumeration},
+  journal   = {{IEEE} Transactions on Parallel and Distributed Systems},
+  year      = {2014},
+  volume    = {25},
+  number    = {12},
+  month     = {dec},
+  pages     = {3111--3123},
+  doi       = {10.1109/tpds.2014.2307887},
+  publisher = {Institute of Electrical and Electronics Engineers ({IEEE})},
+}
+
+@Misc{axelrodproject,
+  author = {The Axelrod project developers},
+  title  = {Axelrod: v4.7.0},
+  year   = {2016},
+  month  = apr,
+  doi    = {10.5281/zenodo.3517155},
+  url    = {http://dx.doi.org/10.5281/zenodo.3517155},
+}
+
+@InCollection{Codd2002,
+  author    = {E. F. Codd},
+  title     = {A Relational Model of Data for Large Shared Data Banks},
+  booktitle = {Software Pioneers},
+  year      = {2002},
+  publisher = {Springer Berlin Heidelberg},
+  pages     = {263--294},
+  doi       = {10.1007/978-3-642-59412-0_16},
+}
+
+@Online{Oracle2020,
+  author       = {Oracle},
+  title        = {What is a Relational Database},
+  year         = {2020},
+  url          = {https://www.oracle.com/uk/database/what-is-a-relational-database/},
+  note         = {[Accessed on 02/03/2020]},
+  organization = {Oracle},
+}
+
+@Article{Jatana2012,
+  author  = {Nishtha Jatana and Sahil Puri and Mehak Ahuja and Ishita Kathuria and Dishant Gosain},
+  title   = {A Survey and Comparison of Relational and Non-Relational Database},
+  journal = {International Journal of Engineering Research and Technology},
+  year    = {2012},
+  date    = {2020-08},
+  volume  = {01},
+  issue   = {06},
+  issn    = {2278-0181},
+}
+
+@Article{Nayak2013,
+  author  = {Ameya Nayak and Anil Poriya and Dikshay Poojary},
+  title   = {Type of NOSQL Databases and its Comparison with Relational Databases},
+  journal = {International Journal of Applied Information Systems},
+  year    = {2013},
+  date    = {2013-03},
+  volume  = {5},
+  number  = {4},
+  issn    = {2249-0868},
+}
+
+@Online{ostezer2019,
+  author       = {ostezer and Mark Drake},
+  title        = {SQLite vs MySQL vs PostgreSQL: A Comparison Of Relational Database Management Systems},
+  year         = {2019},
+  date         = {2019-03},
+  url          = {https://www.digitalocean.com/community/tutorials/sqlite-vs-mysql-vs-postgresql-a-comparison-of-relational-database-management-systems},
+  note         = {[Accessed on: 02/03/2020]},
+  organization = {Digital Ocean},
+}
+
+@InCollection{sqlalchemy,
+  author    = {Bayer, Michael},
+  title     = {SQLAlchemy},
+  booktitle = {The Architecture of Open Source Applications Volume II: Structure, Scale, and a Few More Fearless Hacks},
+  year      = {2012},
+  editor    = {Brown, Amy and Wilson, Greg},
+  publisher = {aosabook.org},
+  url       = {http://aosabook.org/en/sqlalchemy.html},
+  place     = {Mountain View},
+}
+
+@Article{Jimenez2017,
+  author    = {Rafael C. Jim{\'{e}}nez and Mateusz Kuzak and Monther Alhamdoosh and Michelle Barker and B{\'{e}}r{\'{e}}nice Batut and Mikael Borg and Salvador Capella-Gutierrez and Neil Chue Hong and Martin Cook and Manuel Corpas and Madison Flannery and Leyla Garcia and Josep Ll. Gelp{\'{\i}} and Simon Gladman and Carole Goble and Montserrat Gonz{\'{a}}lez Ferreiro and Alejandra Gonzalez-Beltran and Philippa C. Griffin and Björn Grüning and Jonas Hagberg and Petr Holub and Rob Hooft and Jon Ison and Daniel S. Katz and Brane Lesko{\v{s}}ek and Federico L{\'{o}}pez G{\'{o}}mez and Luis J. Oliveira and David Mellor and Rowland Mosbergen and Nicola Mulder and Yasset Perez-Riverol and Robert Pergl and Horst Pichler and Bernard Pope and Ferran Sanz and Maria V. Schneider and Victoria Stodden and Rados{\l}aw Suchecki and Radka Svobodov{\'{a}} Va{\v{r}}ekov{\'{a}} and Harry-Anton Talvik and Ilian Todorov and Andrew Treloar and Sonika Tyagi and Maarten van Gompel and Daniel Vaughan and Allegra Via and Xiaochuan Wang and Nathan S. Watson-Haigh and Steve Crouch},
+  title     = {Four simple recommendations to encourage best practices in research software},
+  journal   = {F1000Research},
+  year      = {2017},
+  volume    = {6},
+  month     = {jun},
+  pages     = {876},
+  doi       = {10.12688/f1000research.11407.1},
+  publisher = {F1000 Research Ltd},
+}
+
+@Online{Techopedia2011,
+  author       = {Techopedia},
+  title        = {Flat File},
+  year         = {2011},
+  date         = {2011-10-31},
+  url          = {https://www.techopedia.com/definition/25956/flat-file},
+  note         = {[Accessed 04/03/2020]},
+  organization = {Techopedia},
+}
+
+@Online{Thomas2018,
+  author       = {Thomas, Steve},
+  title        = {What are the advantages and disadvantages of using the flat file data model?},
+  year         = {2018},
+  date         = {2018-12},
+  url          = {https://www.quora.com/What-are-the-advantages-and-disadvantages-of-using-the-flat-file-data-model},
+  note         = {[Accessed on: 04/03/2020]},
+  organization = {Quora},
+}
+
+@Online{Burke2017,
+  author       = {Burke, Alex},
+  title        = {The Advantages of a Relational Database Over a Flat File},
+  year         = {2017},
+  date         = {2017-09-26},
+  url          = {https://bizfluent.com/list-7269497-advantages-database-over-flat-file.html},
+  note         = {[Accessed on: 04/03/2020]},
+  organization = {bizfluent},
+}
+
+@Online{Spacey2017,
+  author       = {John Spacey},
+  title        = {9 Types of Binary File},
+  year         = {2017},
+  date         = {2017-05-14},
+  url          = {https://simplicable.com/new/binary-file},
+  note         = {[Accessed on: 04/03/2020]},
+  organization = {Simplicable},
+}
+
+@Online{Azad,
+  author       = {Kalid Azad},
+  title        = {A little diddy about binary file formats.},
+  year         = {2005},
+  date         = {2005-04-16},
+  url          = {https://betterexplained.com/articles/a-little-diddy-about-binary-file-formats/},
+  note         = {[Accessed on:04/03/2020]},
+  organization = {Better Explained},
+}
+
+@Misc{piacentini2015db,
+  author = {Piacentini, Mauricio and Ravanini, Raquel and Miltner, Jens and Morgan, Pete and Peinthor, Ren{\'e} and Kleusberg, Martin and Clift, Justin and Haller, John T},
+  title  = {DB browser for SQLite},
+  year   = {2015},
+}
+
+@Article{Sandve2013,
+  author    = {Geir Kjetil Sandve and Anton Nekrutenko and James Taylor and Eivind Hovig},
+  title     = {Ten Simple Rules for Reproducible Computational Research},
+  journal   = {{PLoS} Computational Biology},
+  year      = {2013},
+  editor    = {Philip E. Bourne},
+  volume    = {9},
+  number    = {10},
+  month     = {oct},
+  pages     = {e1003285},
+  doi       = {10.1371/journal.pcbi.1003285},
+  publisher = {Public Library of Science ({PLoS})},
+}
+
+@Article{Wilson2014,
+  author    = {Greg Wilson and D. A. Aruliah and C. Titus Brown and Neil P. Chue Hong and Matt Davis and Richard T. Guy and Steven H. D. Haddock and Kathryn D. Huff and Ian M. Mitchell and Mark D. Plumbley and Ben Waugh and Ethan P. White and Paul Wilson},
+  title     = {Best Practices for Scientific Computing},
+  journal   = {{PLoS} Biology},
+  year      = {2014},
+  editor    = {Jonathan A. Eisen},
+  volume    = {12},
+  number    = {1},
+  month     = {jan},
+  pages     = {e1001745},
+  doi       = {10.1371/journal.pbio.1001745},
+  publisher = {Public Library of Science ({PLoS})},
+}
+
+@Online{Rossum2001,
+  author       = {Guido van Rossum and Barry Warsaw and Nick Coghlan},
+  title        = {PEP 8 -- Style Guide for Python Code},
+  year         = {2001},
+  date         = {2001-07-05},
+  url          = {https://www.python.org/dev/peps/pep-0008/},
+  organization = {Python},
+}
+
+@Misc{pytestx.y,
+  author = {Krekel, Holger and Oliveira, Bruno and Pfannschmidt, Ronny and Bruynooghe, Floris and Laugher, Brianna and Bruhin, Florian},
+  title  = {pytest x.y},
+  year   = {2004},
+  url    = {https://github.com/pytest-dev/pytest},
+}
+
+@Misc{Knight2019c,
+  author    = {Knight, Vince and Wilde, Henry and Glynatsi, Nikoleta},
+  title     = {Nikoleta-v3/blackbook: v0.0.2},
+  year      = {2019},
+  doi       = {10.5281/ZENODO.2553363},
+  publisher = {Zenodo},
+}
+
+@Misc{Langa2019,
+  author = {Lukasz Langa},
+  title  = {Black: v19.10b0},
+  year   = {2019},
+}
+
+@Online{SSH.COM2016,
+  author       = {SSH.COM},
+  title        = {SSH tunnel},
+  year         = {2016},
+  date         = {2016-10-11},
+  url          = {https://www.ssh.com/ssh/tunneling},
+  note         = {[Accessed on: 05/03/2020]},
+  organization = {SSH Communications Security, Inc.},
+}
+
+@Misc{Batchelder2020,
+  author    = {Ned Batchelder},
+  title     = {Coverage.py 5.0.3},
+  year      = {2020},
+  date      = {2020-01-12},
+  version   = {5.0.3},
+  url       = {https://github.com/nedbat/coveragepy},
+  journal   = {GitHub},
+  publisher = {GitHub repository},
+}
+
+@Misc{Marriott,
+  author    = {Nicholas Marriott},
+  title     = {tmux},
+  url       = {https://github.com/tmux/tmux},
+  journal   = {GitHub repository},
+  publisher = {GitHub},
+}
+
+@Article{Seidel1995,
+  author    = {Raimund Seidel},
+  title     = {The upper bound theorem for polytopes: an easy proof of its asymptotic version},
+  journal   = {Computational Geometry},
+  year      = {1995},
+  volume    = {5},
+  number    = {2},
+  month     = {sep},
+  pages     = {115--116},
+  doi       = {10.1016/0925-7721(95)00013-y},
+  publisher = {Elsevier {BV}},
+}
+
+@Article{Alon1985,
+  author    = {N. Alon and G. Kalai},
+  title     = {A Simple Proof of the Upper Bound Theorem},
+  journal   = {European Journal of Combinatorics},
+  year      = {1985},
+  volume    = {6},
+  number    = {3},
+  month     = {sep},
+  pages     = {211--214},
+  doi       = {10.1016/s0195-6698(85)80029-9},
+  publisher = {Elsevier {BV}},
+}
+
+@Book{Brondsted2012,
+  author        = {Brondsted, A.},
+  title         = {An Introduction to Convex Polytopes},
+  year          = {2012},
+  series        = {Graduate Texts in Mathematics},
+  publisher     = {Springer New York},
+  isbn          = {9781461211488},
+  url           = {https://books.google.co.uk/books?id=7PXxBwAAQBAJ},
+  __markedentry = {[sophi:6]},
+  lccn          = {82010585},
+}
+
+@Misc{Knight2019b,
+  author       = {Vincent Knight},
+  title        = {Chapter 5 - Support Enumeration},
+  year         = {2019},
+  howpublished = {Online},
+  note         = {[Accessed on: 16/03/2020]},
+  url          = {https://vknight.org/gt/chapters/05/},
+}
+
+@Misc{glynatsi2020meta,
+  author        = {Nikoleta E. Glynatsi and Vincent A. Knight},
+  title         = {A meta analysis of tournaments and an evaluation of performance in the Iterated Prisoner's Dilemma},
+  year          = {2020},
+  eprint        = {2001.05911},
+  archiveprefix = {arXiv},
+  primaryclass  = {cs.GT},
+}
+
+@Misc{Knight2019a,
+  author = {Vincent Knight},
+  title  = {Chapter 8 - Repeated Games},
+  year   = {2019},
+  note   = {[Accessed on: 08/01/2020]},
+  url    = {https://vknight.org/gt/chapters/08/},
+}
+
+@Misc{Chappelow2019,
+  editor       = {Jim Chappelow},
+  title        = {Oligopoly},
+  year         = {2019},
+  note         = {[Accessed on: 16/12/2019]},
+  organization = {Investopedia},
+  url          = {https://www.investopedia.com/terms/o/oligopoly.asp},
+}
+
+@Misc{Knight2017a,
+  author       = {Vincent Knight},
+  title        = {Chapter 9 - Finitely Repeated Games},
+  year         = {2017},
+  howpublished = {Online},
+  note         = {Accessed on 06/01/2020},
+  url          = {https://vknight.org/Year_3_game_theory_course/Content/Chapter_09_Finitely_Repeated_Games/},
+}
+
+@Misc{Knight2017,
+  author       = {Vincent Knight},
+  title        = {Chapter 2 - Normal Form Games},
+  year         = {2017},
+  howpublished = {Online},
+  note         = {[Accessed on: 13/10/2019]},
+  url          = {https://vknight.org/Year_3_game_theory_course/Content/Chapter_02-Normal_Form_Games/},
+}
+
+@Misc{Knight2017b,
+  author = {Vincent Knight},
+  title  = {Chapter 10 - Infinitely Repeated Games},
+  year   = {2017},
+  note   = {[Accessed on: 15/01/2020]},
+  url    = {https://vknight.org/Year_3_game_theory_course/Content/Chapter_10_Infinetely_Repeated_Games/},
+}
+
+@Online{Carlson2016,
+  author       = {Stephan C. Carlson},
+  title        = {Brouwer's fixed point theorem},
+  year         = {2016},
+  date         = {2016-09-13},
+  url          = {https://www.britannica.com/science/Brouwers-fixed-point-theorem},
+  note         = {[Accessed on: 06/01/2020]},
+  organization = {Encyclopaedia Britannica},
+  publisher    = {Encyclopaedia Britannica, Inc.},
+}
+
+@Article{li2015nash,
+  author    = {Li, Jiawei and Kendall, Graham},
+  title     = {On Nash Equilibrium and Evolutionarily Stable States That Are Not Characterised by the Folk Theorem},
+  journal   = {PloS one},
+  year      = {2015},
+  volume    = {10},
+  number    = {8},
+  pages     = {e0136032},
+  publisher = {Public Library of Science},
+}
+
+@Book{maschler_solan_zamir_2013,
+  author    = {Maschler, Michael and Solan, Eilon and Zamir, Shmuel},
+  title     = {Game Theory},
+  year      = {2013},
+  publisher = {Cambridge University Press},
+  doi       = {10.1017/CBO9780511794216},
+  place     = {Cambridge},
+}
+
+@Article{liang2012game,
+  author    = {Liang, Xiannuan and Xiao, Yang},
+  title     = {Game theory for network security},
+  journal   = {IEEE Communications Surveys \& Tutorials},
+  year      = {2012},
+  volume    = {15},
+  number    = {1},
+  pages     = {472--486},
+  publisher = {IEEE},
+}
+
+@Article{adeoye2012application,
+  author    = {Adeoye, IB and Yusuf, SA and Balogun, OS and Alabuja, F and others},
+  title     = {Application of game theory to horticultural crops in south-west Nigeria.},
+  journal   = {Journal of Agricultural and Biological Science},
+  year      = {2012},
+  volume    = {7},
+  number    = {5},
+  pages     = {372--375},
+  publisher = {Asian Research Publishing Network-ARPN},
+}
+
+@Article{chen2009robust,
+  author    = {Chen, Bor-Sen and Chang, Chia-Hung and Lee, Hsiao-Ching},
+  title     = {Robust synthetic biology design: stochastic game theory approach},
+  journal   = {Bioinformatics},
+  year      = {2009},
+  volume    = {25},
+  number    = {14},
+  pages     = {1822--1830},
+  publisher = {Oxford University Press},
+}
+
+@Book{Webb2007,
+  author    = {James N. Webb},
+  title     = {Game Theory: Decisions, Interaction and Evolution},
+  year      = {2007},
+  series    = {Springer Undergraduate Mathematics Series},
+  publisher = {Springer},
+  isbn      = {978-1-84628-423-6},
+}
+
+@Book{von2007theory,
+  author    = {Von Neumann, John and Morgenstern, Oskar and Kuhn, Harold William},
+  title     = {Theory of games and economic behavior (commemorative edition)},
+  year      = {2007},
+  publisher = {Princeton university press},
+}
+
+@Article{1593279,
+  author   = {V. {Srivastava} and J. {Neel} and A. B. {Mackenzie} and R. {Menon} and L. A. {Dasilva} and J. E. {Hicks} and J. H. {Reed} and R. P. {Gilles}},
+  title    = {Using game theory to analyze wireless ad hoc networks},
+  journal  = {IEEE Communications Surveys Tutorials},
+  year     = {2005},
+  volume   = {7},
+  number   = {4},
+  month    = {4},
+  pages    = {46-56},
+  doi      = {10.1109/COMST.2005.1593279},
+  keywords = {Game theory;Ad hoc networks;Nash equilibrium;Mobile ad hoc networks;Peer to peer computing;Costs;Mathematical analysis;Telecommunication traffic;Traffic control;Mathematical model},
+}
+
+@Article{friedman1971non,
+  author    = {Friedman, James W},
+  title     = {A non-cooperative equilibrium for supergames},
+  journal   = {The Review of Economic Studies},
+  year      = {1971},
+  volume    = {38},
+  number    = {1},
+  pages     = {1--12},
+  publisher = {JSTOR},
+}
+
+@Article{nash1951non,
+  author    = {Nash, John},
+  title     = {Non-cooperative games},
+  journal   = {Annals of mathematics},
+  year      = {1951},
+  pages     = {286--295},
+  publisher = {JSTOR},
+}
+
+@Online{Weisstein,
+  author       = {Weisstein, Eric W.},
+  title        = {Convex},
+  url          = {http://mathworld.wolfram.com/Convex.html},
+  note         = {[Accessed on: 06/01/2020]},
+  organization = {Wolfram MathWorld},
+}
+
+@Online{Weissteina,
+  author       = {Weisstein, Eric W.},
+  title        = {Compact Space},
+  url          = {http://mathworld.wolfram.com/CompactSpace.html},
+  note         = {[Accessed on: 06/01/2020]},
+  organization = {Wolfram Mathworld},
+}
+
+@Online{Stover,
+  author       = {Stover, Christopher},
+  title        = {Quasi-Concave Function},
+  url          = {http://mathworld.wolfram.com/Quasi-ConcaveFunction.html},
+  note         = {[Accessed on: 15/01/2020]},
+  organization = {Wolfram Mathworld},
+}
+
+@Online{Barile,
+  author       = {Barile, Margherita},
+  title        = {Open Cover},
+  url          = {http://mathworld.wolfram.com/OpenCover.html},
+  note         = {[Accessed on; 06/01/2020]},
+  organization = {Wolfram MathWorld},
+}
+
+@Comment{jabref-meta: databaseType:biblatex;}
