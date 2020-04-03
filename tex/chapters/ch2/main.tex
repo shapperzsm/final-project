@@ -1,56 +1,285 @@
 \chapter{Literature Review}
 
-% brief intro to chapter
 The folk theorems are a class of results which generally state that for repeated
 games, any feasible and individually rational payoff vector can be achieved as a
 subgame perfect equilibrium if the players are patient enough~\cite{Li2019}. The
 origin of these theorems is unknown however written proof and
-research involving these ideas first appeared in the 1970s~\cite{Friedman1971,
-Aumann1994, Rubinstein1979}. Since then, many generalisations and refinements of
+research involving these ideas first appeared in the
+1970s~\cite{Friedman1971, aumann1976long, Rubinstein1979}. Since then, many
+generalisations and refinements of
 the ideas have been explored, for differing games, including:
-discounted games~\cite{Li2019, Fudenberg1986, Friedman1971}, sequential
-games~\cite{} and stochastic games~\cite{}, to
+games with private monitoring~\cite{Matsushima2004, Hoerner2006, Peski2012}, sequential
+games~\cite{Gossner1996, Bhaskar1998, Wen2002} and games of complete
+information~\cite{Benoit_1985, Abreu1994, Bernergard2019}, to
 name a few. Due to the identification of further equilibria (as compared with
 the stage game), which are key in predicting future behaviour, these theorems
 have been commented on as `fundamental' in the theory of non-cooperative
-games~\cite{}. On the other hand, the majority of the strategies used in the
+games~\cite{Hoerner2006, }. On the other hand, the majority of the strategies used in the
 proofs assume the identification of individual deviators~\cite{Masso1989}, which may not
 be realistic in certain situations. Hence, an area of research on the so-called
-`anti-folk theorems' was introduced~\cite{Carmona2006, Masso1989, Peski2012}. Folk theorems appear to still be an
+`anti-folk theorems' was introduced~\cite{Masso1989, Yoon2001, Peski2012}. Folk theorems appear to still be an
 active area of research today~\cite{Ikeda2020, Parras2020, Wang2020} with many differing applications.
 Therefore, in this chapter, a review of the literature on this topic is provided
 with papers ranging from the `original' ideas in the 1970s to applications of
 the theorems in 2020. 
 
 
-\section{First Papers}
-Which papers are cited as early work regarding the folk theorem ideas appears to
-be disputed. However reading through the varying studies there are five papers
-which are generally referenced as being original key
-papers:~\cite{Friedman1971},~\cite{Aumann1994},~\cite{Fudenberg1986},~\cite{Benoit_1985}
-and~\cite{Rubinstein1979}. Thus, in this section, each of these papers are
-discussed in turn. 
+\section{First Papers}\label{sec:First_Papers}
+\cite{Friedman1971} is often cited as the earliest work on Folk-type
+theorems~\cite{Abreu1994, }. In \cite{Friedman1971}, infinitely repeated games with
+discounting are considered. In particular, focus is on a class of strategies,
+now known as \emph{grim trigger}, which are used to prove that, for any feasible
+and individually rational payoff vector, there exists a discount parameter such
+that a subgame perfect equilibrium with payoffs equal to that vector exist. This
+is first shown under the constraints (in addition to those made on the strategy
+and payoff spaces) identical stage games, constant discount parameter and unique
+Nash equilibrium that is not Pareto optimal. However, a more general result is
+then given which removes these restrictive conditions. \cite{Friedman1971} uses
+the application of oligopoly throughout in addition to introducing the notation
+of `temptation'. He motivates this through the explanation that `threat' is no
+longer ``credible'' since players are unable to communicate in non-cooperative
+games. On the other hand, `temptation' is said to be analogous to `threat'.
 
-In~\cite{Friedman1971}, the aim is to present a non-cooperative equilibrium
-concept as 
+In contrast to this,~\cite{aumann1976long} presents folk theorems for infinite
+games without discounting, assuming payoffs take a ``limiting average form''.
+This choice is justified by stating that, as the discount rate approaches zero,
+the limit of the discounted sum behaves similarly to the limiting average payoff
+form. However, trigger strategies are still required in the proof. For
+simplicity, two player games are assumed throughout. Two folk theorems are
+proven in this paper with the latter one discussing subgame perfect equilibria
+similar to~\cite{Friedman1971}, whilst the former is a more generic version of
+the theorem. \cite{aumann1976long} discuss that, though the generic version of
+the theorem does exist, the subgame perfect equilibrium points allow for more
+`believable' behaviour. They conclude by considering an example in which payoffs
+are discounted. A similar approach is taken in~\cite{Rubinstein1979}, with the
+statement of a folk theorem for infinite games with no discounting and the
+existence of subgame perfect equilibria. The only difference being the use of an
+``overtaking criterion'' evaluation relation instead of a ``limit of the mean
+criterion'' evaluation relation as in~\cite{aumann1976long}.
+
+
+\section{Games with Complete Information}\label{sec:Games_with_Complete_Information}
+\cite{Abreu1994, Bernergard2019} both study folk theorems of games assuming
+complete information. That is, all players have common knowledge of payoff
+functions, strategies etc. \cite{Abreu1994} focuses on the necessary and
+sufficient conditions required for a folk theorem proof. They state that
+feasibility and individual rationality of the payoff vector are necessary
+conditions and also approximately sufficient conditions for a payoff to be in
+the equilibrium. This is followed by a discussion on the full dimensionality
+constraint first introduced by \cite{Fudenberg1986} and often used in proving
+folk theorems. \cite{Abreu1994} highlight that the requirement of the convex
+hull, of the set of feasible payoffs, to be equal to the number of players is a
+sufficient condition. This is motivation for the main result of the paper; the
+introduction of a `non equivalent utilities' condition, which is proved to be
+sufficient and almost necessary for a folk theorem. The condition, as indicated
+here, is weaker than the aforementioned full dimensionality condition. It only
+requires ``no pair of players have equivalent utility functions''.
+
+Similarly,~\cite{Bernergard2019} proves a folk theorem for complete information
+games with subgame perfect equilibria however, instead of exponential
+discounting (as in~\cite{Abreu1994, Fudenberg1986}), he assumes discounting is
+present-biased. That is, the discount function implies a player is more willing
+to alter an event in the future than altering an event today. The folk theorem
+is proved in cases of where the player is time consistent (prefers to maximise
+their initial preferences) and time inconsistent (prefers to maximise current
+preferences) and the notion of `patience' is taken to be the sum of all discount
+factors. Also considering time consistent and inconsistent players~\cite{Li2019}
+discusses folk theorems with respect to time dependent discounting. In contrast
+to~\cite{Bernergard2019}, the long-term characterisation of `patience' is taken
+as discount factors at all stages uniformly converge to one. Motivation for the
+study of time dependent discounting is explained by empirical studies which seem
+to suggest that a player's time is unstationary, rather than the stationarity
+assumed in most discounted game models.
+
+
+\section{Games with (Imperfect) Private Monitoring}\label{sec:Games_with_(Imperfect)_Private_Monitoring}
+In the late 1990s attention turned to games with imperfect monitoring. That is,
+a player's actions can no longer be observed accurately, instead public or
+private signals are detected~\cite{Durlauf2016}. Games with (imperfect) public
+monitoring were the fist to be considered~\cite{Matsushima2004}. More recent
+studies in this area include~\cite{Kandori2006, Chassang2011}.
+\cite{Kandori2006} states that repeated games with public monitoring give a
+suitable model for studying long term relationships. They state intuition
+suggests that cooperation becomes easier to sustain as action observability
+improves. However,~\cite{Kandori2006} continues to show that this intuition is
+false, by considering a repeated public monitored game which satisfies ``the
+limit perfect public equilibrium payoff set can achieve full efficiency
+asymptotically as public information becomes less sensitive to hidden actions.''
+They give an example which violates the sufficient condition given in Fudenberg
+et al. (1994) [FIND THIS PAPER] yet a folk theorem can be obtained. This paper mainly focuses on
+the Prisoner's Dilemma but, similarly to~\cite{Abreu1994}, they state an example
+which satisfies the folk theorem without the full dimensionality condition. 
+
+\cite{Chassang2011} consider the notion of a robust equilibrium to incomplete
+information; that is, if the equilibrium yielded is near the original
+equilibrium for all perturbed games consisting of a small independent and
+identically distributed information shock. Conversely to \cite{Friedman1971},
+they discuss the implication of grim trigger strategies not being robust when
+the aim is to sustain cooperation. A folk theorem is proved in robust equilibria
+for games of public monitoring, however~\cite{Chassang2011} highlights that a
+much stronger condition is needed in comparison to Fudenberg et al. (1994) [FIND
+THIS PAPER] full
+dimensionality requirement.
+
+As of 2004, repeated games with private monitoring was a relatively new area of
+study~\cite{Matsushima2004}. In this paper, conditional independence of signals
+is assumed in order to show a folk theorem for the IPD. Applications to
+duopolies are then described. Another study to consider a folk theorem for the
+IPD is~\cite{Ely2002}. Using a similar definition of robustness
+to~\cite{Chassang2011},~\cite{Ely2002} proves that for a discounted Prisoner's
+Dilemma with private monitoring technologies,a folk theorem with robust
+equilibrium strategies can be obtained. In particular, they consider
+almost-perfect private monitoring and a limit folk theorem (for sequential
+equilibria) follows. In a similar paper,~\cite{Ely2005} introduce the idea of
+``belief free'' equilibrium strategies; a property which implies the belief of
+an opponent's history is not required when obtaining a best response. They use
+these strategies in proving a folk theorem for the two-player Prisoner's Dilemma
+however, for general games, the set of belief free payoffs is not large enough
+to provide a folk theorem. Moreover,~\cite{Ely2005} highlight that for a larger
+number of players the calculation of the payoff set becomes significantly
+harder.
+
+In contrast to this,~\cite{Horner2006} discusses a folk theorem using strategies
+that, although are not belief free, still make beliefs ``irrelevant'' at the
+start of each T-block of stage games. Their result is much more generic
+than~\cite{Ely2005} since it applies to N-player finite games, under the
+assumption of full dimensionality with private but almost-perfect monitoring.
+The T-block strategies mentioned above are modified in~\cite{Yamamoto2009,
+Yamamoto2012} such that they ``can support any vector in the belief free
+equilibrium payoff set''. This modification results in belief free equilibrium
+strategies. \cite{Yamamoto2009, Yamamoto2012} generalise the results from the
+two-player Prisoner's Dilemma in~\cite{Ely2005} to the corresponding N-player game.
+
+
+\section{Games with Communication}\label{sec:Games_with_Communication} 
+Academics introduced games with communication to deal with the complications
+faced with imperfect monitoring. For example, games with public monitoring can
+obtain a folk theorem under weaker assumptions than those given in Fudenberg et
+al. (1994) [FIND THIS PAPER] if communication is introduced~\cite{Kandori2003}.
+In this paper, communication is a message taken from the set of possible actions
+which the players give simultaneously after choosing an action and observing a
+signal. \cite{Kandori2003} prove a folk theorem for symmetric games with four or
+more players without the assumption of the number of signals relevant to the
+number of actions.
+
+Regarding private monitoring, ~\cite{Obara2009} claims repeated games are ``very
+difficult to analyse without communication''. Thus examples of papers, proving
+folk theorems for these games with communication, include~\cite{Fudenberg2008,
+Obara2009, Li2010}. \cite{Fudenberg2008} proves a `Nash threats' folk theorem,
+similar to~\cite{Friedman1971}, in the case of almost public information games
+without independent signals for two players. In this paper, communication is
+defined in the form of announcements where each set of announcements is the same
+for all players. They justify the decision to only consider two player games by
+highlighting that, although the results can be generalised, in certain cases it
+can be seen as advantageous to have additional players. Similarly,
+\cite{Obara2009} proves a Nash threats folk theorem for private monitoring games
+with communication. He increases the number of environments where the folk
+theorem is applicable through developing further the idea of ``delayed
+communication'', as given in Compte [FIND THIS PAPER]. This paper, in addition,
+uses the assumptions of correlated private signals and each player's deviation
+from strategy is statistically identifiable from the other players' signals.
+\cite{Li2010} also considers a model of private monitoring and communication
+within games. He has the aim of increasing the number of applicable
+environments for Kandori and Matsushima (1998) [FIND THIS PAPER] frequent
+communication folk theorem. The paper states that Kandori and Matsushima (1998)
+[FIND THIS PAPER] assumed only private signals were publicised in this theorem
+but if other information was useful and communication was free and legal then
+players would also want to share their actions. This motivates the reasoning of
+the paper. However, assumptions of both full dimensionality, and the number of
+actions and signals, are still required. 
+
+Another paper which considers communication is~\cite{Block2016}, regarding self
+referential games with codes of conduct. These codes are descriptions of how the
+players and opponents should play. An application to computer algorithms is
+provided. Two folk theorems are proved: one assuming common knowledge of the
+codes of conduct, and the other where only certain players observe certain
+codes. The latter is the main result of the paper and is motivated by the fact
+that, often, individuals have good knowledge of those closest to them but not
+the whole community. \cite{Block2016} obtain the sufficient condition that, with
+public communication, if every player is observed by another two opponents, then
+a folk theorem is yielded.
+
+
+\section{Finite Horizon Games}\label{sec:Finite_Horizon_Games}
+Another area of interest is the existence of folk theorem-type results for games
+of finite repetition. \cite{Benoit_1985} explores the case of finitely-repeated
+games of complete information and the associate subgame perfect equilibria. They
+state that, despite the existence of games, when repeated finitely, ``produce no
+non cooperative equilibrium outcomes'' besides those of the single game, there
+may be subgame perfect equilibria of finite-repeated games when the
+corresponding single game has multiple equilibria. Indeed, using their ``three
+phase punishment'', \cite{Benoit_1985} prove that ``any rational and feasible
+payoff vector can be obtained in the limit'', assuming the feasible payoff
+region has dimension equal to the number of players and each player has two Nash
+equilibrium payoff values. In a similar manner, \cite{ANGELOVA2011} considers an
+alternative version of the Prisoner's Dilemma in which an additional strategy is
+included. This gives a second pure-strategy equilibrium and a folk theorem
+result for a finitely repeated version of this game. 
+
+Although not strictly a finite game, \cite{Fujiwara-Greve2018} study a repeated
+game in which players may ``strategically terminate'' it. In particular, this
+involves the incorporation of a voting-step at the start of each repetition
+where a certain number of players decide whether to keep interacting. This is
+motivated by the increasing possibilities of ending business partnerships, due
+to more technology and knowledge. They prove a general folk theorem for any
+stage game (with the additional voting) which is satisfied ``for all majority
+rules except the unanimous ending''. Indeed, for the unanimous ending rule, they
+show that the theorem may not hold but sufficient conditions are
+provided for when it is satisfied.
+
+\section{Stochastic and Sequential Games}\label{sec:Stochastic_and_Sequential_Games}
+% Anderlini2008  (dynastic)
+% Bhaskar1998   (overlapping generation)
+% Dutta1995   (stochastic)
+% Gossner1996 (overlapping generation)
+% Herings2015 (bargaining)
+% Wen2002  (sequential)
+
+\section{Anti-Folk Theorems}\label{sec:Anti-Folk_Theorems}
+% Masso1989
+% Peski2012
+% Yoon2001
+
+\section{Evolutionary Stability}\label{sec:Evolutionary_Stability}
+% Heller2017 (instability of belief-free)
+% Li2015 (ESS not characterised by ft)
+% Lakari2015 (Inertial Folk Theorem)
+
+\section{Recent Applications}\label{sec:Recent_Applications}
+In recent years, studies have been applying results of the folk theorem in
+various areas for creating algorithms, for example. This section briefly
+discusses a few of these.
+
+\cite{Chowdhary2017} uses the folk theorem in the creation of a model which aims
+to suppress the effects of distributed denial of service attacks. They claim
+that all networks suffer from attacks to infrastructure and services. Thus, they
+use the programmability of software defined network environments to perform a
+game theoretic analysis. \cite{Chowdhary2017} create an algorithm for reward and
+punishment based on the Nash folk theorem. Similarly,~\cite{Wang2020} make use
+of the cooperative equilibrium solution from~\cite{Friedman1971}s folk theorem
+to create an algorithm suggested to optimise a multi-period production planning
+based real-time scheduling method for a job shop. Moreover,~\cite{Wang2018} uses
+the result of the folk theorem in the IPD to study the cooperation rates of
+varying agent strategies in a multi-agent system.
+
+Another application of the folk theorem is an algorithm used to obtain
+equilibria of a discounted repeated game~\cite{Parras2020}. \cite{Parras2020}
+introduce a new algorithm, entitled ``Communicate & Agree'', which can find
+equilibria in incomplete information, but perfect monitoring, games. Using the
+folk theorem in the algorithm enables the payoffs obtained to be potentially
+higher than those achieved by repeating the Nash equilibria of the single game.
+However,~\cite{Parras2020} go on to highlight that the algorithm is not
+guaranteed to always find equilibria. They say it is dependent on: the discount
+factor, sampling density and whether it is a zero-sum game or not.
+Finally,~\cite{Ikeda2020} discuss the potential of using game theoretic ideas in
+quantum optimal transport. In particular, they define the Quantum Prisoner's
+Dilemma and explore the possibility of a quantum folk theorem in relation to the
+corresponding repeated game.
+
+
+\section{Conclusion}\label{sec:Conclusion}
 
 
 
-% topics along the lines of:
 
-% - stochastic games
-% - finite ending games
-% - discounted games
-% - games with communication
-% - public / private information games
-% - recent research
-% - applications of folk theorems
-% - anti-folk theorems
-% - 
-% - 
-% - 
-% - 
-% - 
-% - 
 
-% short summary of findings
