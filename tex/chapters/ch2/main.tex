@@ -14,7 +14,7 @@ information~\cite{Benoit_1985, Abreu1994, Bernergard2019}, to
 name a few. Due to the identification of further equilibria (as compared with
 the stage game), which are key in predicting future behaviour, these theorems
 have been commented on as `fundamental' in the theory of non-cooperative
-games~\cite{Hoerner2006, }. On the other hand, the majority of the strategies used in the
+games~\cite{Hoerner2006, Li2015}. On the other hand, the majority of the strategies used in the
 proofs assume the identification of individual deviators~\cite{Masso1989}, which may not
 be realistic in certain situations. Hence, an area of research on the so-called
 `anti-folk theorems' was introduced~\cite{Masso1989, Yoon2001, Peski2012}. Folk theorems appear to still be an
@@ -123,11 +123,11 @@ dimensionality requirement.
 
 As of 2004, repeated games with private monitoring was a relatively new area of
 study~\cite{Matsushima2004}. In this paper, conditional independence of signals
-is assumed in order to show a folk theorem for the IPD. Applications to
+is assumed in order to show a folk theorem for the IPD\@. Applications to
 duopolies are then described. Another study to consider a folk theorem for the
 IPD is~\cite{Ely2002}. Using a similar definition of robustness
 to~\cite{Chassang2011},~\cite{Ely2002} proves that for a discounted Prisoner's
-Dilemma with private monitoring technologies,a folk theorem with robust
+Dilemma with private monitoring technologies, a folk theorem with robust
 equilibrium strategies can be obtained. In particular, they consider
 almost-perfect private monitoring and a limit folk theorem (for sequential
 equilibria) follows. In a similar paper,~\cite{Ely2005} introduce the idea of
@@ -139,7 +139,7 @@ to provide a folk theorem. Moreover,~\cite{Ely2005} highlight that for a larger
 number of players the calculation of the payoff set becomes significantly
 harder.
 
-In contrast to this,~\cite{Horner2006} discusses a folk theorem using strategies
+In contrast to this,~\cite{Hoerner2006} discusses a folk theorem using strategies
 that, although are not belief free, still make beliefs ``irrelevant'' at the
 start of each T-block of stage games. Their result is much more generic
 than~\cite{Ely2005} since it applies to N-player finite games, under the
@@ -227,23 +227,107 @@ rules except the unanimous ending''. Indeed, for the unanimous ending rule, they
 show that the theorem may not hold but sufficient conditions are
 provided for when it is satisfied.
 
+
 \section{Stochastic and Sequential Games}\label{sec:Stochastic_and_Sequential_Games}
-% Anderlini2008  (dynastic)
-% Bhaskar1998   (overlapping generation)
-% Dutta1995   (stochastic)
-% Gossner1996 (overlapping generation)
-% Herings2015 (bargaining)
-% Wen2002  (sequential)
+Other game types to have associated folk theorem results include
+stochastic~\cite{Dutta1995} and overlapping generation~\cite{Bhaskar1998,
+Gossner1996}.
+
+\cite{Dutta1995} explains that, often, the standard assumption of ``a completely
+unchanging environment'', within the theory of repeated games, is not reliable
+in applications. This reasoning is the motivation for studying the more generic
+stochastic games. These games may not have a pre-decided stage game, instead a
+`state variable' is used to represent its environment which alters according to
+``initial conditions, player's actions, and the transition law''. The paper
+discusses equilibrium payoffs in the case of very patient players without the
+need for the Markovian property. Specifically, perfect monitoring is assumed
+along with asymptotic state independence and either of payoff asymmetry or full
+dimensionality.~\cite{Dutta1995} proves two folk theorems: one with unobservable
+mixed strategies (in which case, fully dimensionality is required) and also,
+similar to~\cite{Abreu1994}, one with the slightly weaker condition of payoff
+asymmetry (here, mixed strategies have to be observed).
+
+Both\cite{Bhaskar1998, Gossner1996} provide insight into folk theorems
+associated with overlapping generation games. These are similar to the repeated
+normal form games except that the set of players are considered to be finite.
+That is, each player is involved in a certain number of stage games before they
+are replaced by another, identical player. \cite{Gossner1996} proves a variety
+of folk theorems both with and without discounting and / or observable mixed
+strategies. He shows that the full dimensionality assumption is not required in
+these games since players are assumed to not end simultaneously. On the other
+hand,~\cite{Bhaskar1998}, although does provide a folk theorem, his main result
+is an anti-folk theorem, see~\ref{sec:Anti-Folk_Theorems}. He studies games with
+imperfect public monitoring and states that, in such overlapping generational
+games, cooperation becomes impossible in contrast to repeated games.
+\cite{Bhaskar1998} constructs a mixed strategy equilibrium folk theorem however
+he goes on to show that these strategies are unstable to perturbations,
+resulting in an anti-folk theorem.
+
+A similar study by~\cite{Anderlini2008} looks at dynastic repeated games. These
+differ from the overlapping generation games in two aspects: perfect observation
+of the past is assumed, and the payoffs obtain no dynastic component. Under the
+assumptions of full dimensionality and the existence of a payoff vector which
+strictly Pareto dominates the stage game equilibrium,~\cite{Anderlini2008}
+proves a folk theorem for private communication games with greater than three
+players in sequential equilibria.
+
+Considering now sequential games, in which players do not choose their action
+simultaneously,~\cite{Wen2002} introduces a concept of effective minimax values
+before proving a corresponding folk theorem. In his model, players pick actions
+in groups and thus the effective minimax value is defined to be the lowest
+equilibrium payoff a player will receive even if none of their opponents have
+equivalent utilities. \cite{Wen2002} claims his folk theorem can be applied to
+other game models as it is a ``uniform characterisation''.
+
 
 \section{Anti-Folk Theorems}\label{sec:Anti-Folk_Theorems}
-% Masso1989
-% Peski2012
-% Yoon2001
+A common theme in the proofs of folk theorems is the use of strategies which
+``identify and punish'' deviators~\cite{Masso1989}. However, as soon as the game
+contains incomplete / imperfect information, deviators cannot necessarily be
+identified. This yields a much smaller equilibrium set and these results are
+termed ``Anti-Folk Theorems''. This description of anti-folk theorems is adapted
+from~\cite{Masso1989}, who state the original term was given in Kaneko (1982)
+and Dubey \& Kaneko (1984) [FIND PAPERS]. \cite{Masso1989} prove an anti-folk
+theorem using the ``long-run average criterion'' in contrast to the discounted criterion.
+
+Considering similar models to~\cite{Bhaskar1998, Gossner1996},~\cite{Yoon2001}
+obtain an anti-folk theorem for a limited observability overlapping generations
+model. They show that cooperation cannot be sustained when new players can only
+observe recent history. This is in contrast to the folk theorems obtained under
+the assumption of common knowledge of all past actions. Though their results are
+restrictive in certain cases, they justify the work by stating it is suitable
+for modelling ``high turnover'' rates.
+
+Another game model where an anti-folk theorem has resulted is a repeated game
+with private monitoring~\cite{Peski2012}. In this paper, the following three
+assumptions are made: infinite and connected private monitoring (that is,
+infinitely many connected signals); finite past; and independent and identically
+distributed shocks affect the payoffs. Under these assumptions~\cite{Peski2012}
+shows the violation of the folk theorem. That is, the equilibria of the repeated
+game consist only of the equilibria of the single game.
+
 
 \section{Evolutionary Stability}\label{sec:Evolutionary_Stability}
-% Heller2017 (instability of belief-free)
-% Li2015 (ESS not characterised by ft)
-% Lakari2015 (Inertial Folk Theorem)
+Recently, there has been research into the results of the folk theorem with
+respect to the evolutionary game theoretic paradigm. Indeed,~\cite{Li2015} state
+that the folk theorem is often used to characterise evolutionary stable
+strategies since exact solutions using theoretical results from evolutionary
+game theory are hard to obtain. However, they show the assumption that the folk
+theorem yields all Nash equilibria to be misleading. This is achieved by
+defining ``type-k equilibria'' which are a refinement of the Nash equilibria.
+\cite{Li2015} go on to prove that the set of type-k equilibria is contained
+within the set of repeated game Nash equilibria using ``reactive strategies''.
+
+In contrast to~\cite{Yamamoto2009,
+Yamamoto2012, Ely2005} who discuss folk theorems using belief-free
+strategies,~\cite{Heller2017} discusses the instability in an evolutionary
+sense. He shows that the belief-free equilibria are not robust to small
+perturbations in games with private monitoring and, in certain cases, this is
+extreme. Similar to~\cite{Li2015}, he states that Nash equilibria are used to
+predict evolutionary behaviour since they are thought of as stable. However, he
+goes on to show that only the choice of repeated stage game Nash equilibria
+satisfy evolutionary stability.  
+
 
 \section{Recent Applications}\label{sec:Recent_Applications}
 In recent years, studies have been applying results of the folk theorem in
@@ -264,7 +348,7 @@ varying agent strategies in a multi-agent system.
 
 Another application of the folk theorem is an algorithm used to obtain
 equilibria of a discounted repeated game~\cite{Parras2020}. \cite{Parras2020}
-introduce a new algorithm, entitled ``Communicate & Agree'', which can find
+introduce a new algorithm, entitled ``Communicate \& Agree'', which can find
 equilibria in incomplete information, but perfect monitoring, games. Using the
 folk theorem in the algorithm enables the payoffs obtained to be potentially
 higher than those achieved by repeating the Nash equilibria of the single game.
@@ -278,8 +362,10 @@ corresponding repeated game.
 
 
 \section{Conclusion}\label{sec:Conclusion}
-
-
-
-
-
+In this section, an overview into research regarding the folk theorem has been
+provided. The research history of the folk theorem spans from the 1970s until
+now, with many different models being considered. Examples include: games with
+complete information, games with imperfect private monitoring and finite-horizon
+games. However, there has also been studies into situations where the folk
+theorem does not hold, or the equilibrium strategies used in proving the
+theorems are unstable and / or not robust. 
