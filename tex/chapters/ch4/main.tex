@@ -18,23 +18,23 @@ tournaments, it can be seen that the main `shapes' obtained are as seen in
 Figure~\ref{fig:example_graphs}.
 
 \begin{figure}
-    \begin{subfigure}{.45\textwidth}
+    \begin{subfigure}{0.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{folk_thm/single_game/2/0/0.0/main.pdf}
         \caption{2-player tournament set with no added noise, one stochastic player and no degeneracy identified.}\label{subfig:clear_thresh_plot}
     \end{subfigure}
-    \begin{subfigure}{.45\textwidth}
+    \begin{subfigure}{0.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{folk_thm/single_game/6/110/0.0/main.pdf}
         \caption{6-player tournament set with no added noise, three stochastic players and potential degeneracy was yielded from 10 of the tournaments.}\label{subfig:unclear_thresh_plot}
     \end{subfigure}
 
-    \begin{subfigure}{.45\textwidth}
+    \begin{subfigure}{0.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{folk_thm/single_game/5/77/0.0/main.pdf}
         \caption{5-player tournament set with no added noise, two stochastic players and five tournaments played yielded potentially degenerate games.}\label{subfig:degenerate_plot}
     \end{subfigure}
-    \begin{subfigure}{.45\textwidth}
+    \begin{subfigure}{0.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{folk_thm/single_game/4/60/0.0/main.pdf}
         \caption{4-player game with no added noise, one stochastic player and no degeneracy identified.}\label{subfig:constant_plot}
@@ -72,9 +72,9 @@ probabilities were not fine enough to highlight the p-threshold. This indicates
 that the ending probability of the tournament has to lie within the interval
 (0.999, 1). That is, almost immediately, the decision to defect is no longer rational.
 
-\scalebox{0.52}{
-    \input{images/folk_thm/initial_analysis/summary_stats.tex}
-}
+%\scalebox{0.52}{
+%    \input{images/folk_thm/initial_analysis/summary_stats.tex}
+%}
 
 The summary statistics gained from running the \textit{describe} method of a
 pandas database is given in Table~\ref{tab:summary_stats}. From this, it can be
@@ -184,12 +184,12 @@ of the strategy sets lead to possible degenerate games.
 Now, an exploration into the overall \(p\)-thresholds is given.
 
 \begin{figure}
-    \begin{subfigure}{.45\textwidth}
+    \begin{subfigure}{0.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{folk_thm/main_analysis/min_p_threshold_hist.pdf}
         \caption{A plot to show the minimum \(p\)-thresholds.}\label{subfig:min_p_thresh}
     \end{subfigure}
-    \begin{subfigure}{.45\textwidth}
+    \begin{subfigure}{0.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{folk_thm/main_analysis/max_p_threshold_hist.pdf}
         \caption{A plot to show the maximum \(p\)-thresholds.}\label{subfig:max_p_thresh}
@@ -208,12 +208,12 @@ density. Yet, there is still a peak around zero as with the minimum threshold
 data. 
 
 \begin{figure}
-    \begin{subfigure}{.45\textwidth}
+    \begin{subfigure}{0.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{folk_thm/main_analysis/mean_p_threshold_hist.pdf}
         \caption{A plot to show the mean \(p\)-thresholds.}\label{subfig:mean_p_thresh}
     \end{subfigure}
-    \begin{subfigure}{.45\textwidth}
+    \begin{subfigure}{0.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{folk_thm/main_analysis/median_p_threshold_hist.pdf}
         \caption{A plot to show the median \(p\)-thresholds.}\label{subfig:median_p_thresh}
@@ -287,12 +287,12 @@ These are omitted from the following plots in order to focus solely on
 non-degenerate games.
 
 \begin{figure}
-    \begin{subfigure}{.45\textwidth}
+    \begin{subfigure}{0.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{folk_thm/main_analysis/non-degen_min_p_threshold_hist.pdf}
         \caption{A plot to show the minimum \(p\)-thresholds.}\label{subfig:non_degen_min_p_thresh}
     \end{subfigure}
-    \begin{subfigure}{.45\textwidth}
+    \begin{subfigure}{0.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{folk_thm/main_analysis/non-degen_max_p_threshold_hist.pdf}
         \caption{A plot to show the maximum \(p\)-thresholds.}\label{subfig:non_degen_max_p_thresh}
@@ -302,12 +302,12 @@ non-degenerate games.
 
 
 \begin{figure}
-    \begin{subfigure}{.45\textwidth}
+    \begin{subfigure}{0.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{folk_thm/main_analysis/non-degen_mean_p_threshold_hist.pdf}
         \caption{A plot to show the mean \(p\)-thresholds.}\label{subfig:non_degen_mean_p_thresh}
     \end{subfigure}
-    \begin{subfigure}{.45\textwidth}
+    \begin{subfigure}{0.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{folk_thm/main_analysis/non-degen_median_p_threshold_hist.pdf}
         \caption{A plot to show the median \(p\)-thresholds.}\label{subfig:non_degen_median_p_thresh}
@@ -334,7 +334,6 @@ only non-degenerate tournaments will be considered.
 
 
 \begin{figure}
-    \centering
     \begin{subfigure}{0.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{folk_thm/main_analysis/min_p_threshold_player_violinplot.pdf}
