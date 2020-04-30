@@ -49,8 +49,8 @@ Algorithm~\ref{alg:restate_of_main_alg}.
 The main functions created were implemented in Python. This was due to its
 versatility and, especially, due to the two game theoretic libraries, Axelrod~\cite{axelrodproject}
 and Nashpy~\cite{Nashpy2019}, which provided key functions already implemented. Aside from these,
-other dependencies of the program include: NumPy, Random, Warnings, os and
-SQLAlchemy, plus additional libraries for the analysis (in Chapter~\ref{}). This
+other dependencies of the program include: NumPy~\cite{Walt2011}, Random, Warnings, os and
+SQLAlchemy~\cite{Bayer2012}, plus additional libraries for the analysis (in Chapter~\ref{}). This
 program was implemented through the creation of eight functions to ensure the
 code was easier to read, debug and test for any current, or future, user.
 Furthermore, variables and functions were given descriptive names in order to
@@ -60,10 +60,11 @@ Observe, Algorithm~\ref{alg:restate_of_main_alg} states the use of a database to
 retain the information collected. This file type was chosen because it supports
 out of memory operations and is known to be robust. In particular, the
 relational database SQLite was utilised due to the existence of Python libraries
-for accessing the file, its structure and its consistency.
+for accessing the file, its structure and its consistency~\cite{Codd2002,ostezer2019}.
 
 \section{Software Development and Remote Computing}
-Version control software Git and associated platform GitHub allowed the author
+Version control software Git~(https://git-scm.com/) and associated platform
+GitHub~(https://github.com/) allowed the author
 to keep track of how the program was evolving. It also ensured a back-up copy
 was always available, should the system fail and meant that past versions of
 functions could be easily accessed. Moreover, GitHub acted as an intermediate
@@ -76,7 +77,7 @@ for several weeks. However, parallel processing was not required, as the
 computational time was deemed `quick enough'.
 Figure~\ref{fig:restate_remote_comp} provides a visualisation of how the
 author's laptop was connected to the School of Mathematics' headless server,
-Siren, via a secure shell (SSH) tunnel and terminal multiplexer TMUX. The latter
+Siren, via a secure shell (SSH) tunnel~\cite{SSH.COM2016} and terminal multiplexer TMUX~\cite{Marriott}. The latter
 ensured the code kept running whilst the author was disconnected from Siren.
 Finally, in order to access the database for analysis, the file was compressed
 and securely transferred from Siren.
@@ -89,6 +90,7 @@ and securely transferred from Siren.
 
 \section{Further Details}
 In conclusion, there were several components to the computing elements of this
-study. The reader is referred to the GitHub repository of this project <URL>,
+study. The reader is referred to the GitHub repository of this 
+project~(https://github.com/shapperzsm/final-project/),
 where all the relevant code can be accessed. Also, the data collected during the
 study is archived at <URL> for future reference.
