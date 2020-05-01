@@ -349,15 +349,14 @@
 }
 
 @Book{Brondsted2012,
-  author        = {Brondsted, A.},
-  title         = {An Introduction to Convex Polytopes},
-  year          = {2012},
-  series        = {Graduate Texts in Mathematics},
-  publisher     = {Springer New York},
-  isbn          = {9781461211488},
-  url           = {https://books.google.co.uk/books?id=7PXxBwAAQBAJ},
-  __markedentry = {[sophi:]},
-  lccn          = {82010585},
+  author    = {Brondsted, A.},
+  title     = {An Introduction to Convex Polytopes},
+  year      = {2012},
+  series    = {Graduate Texts in Mathematics},
+  publisher = {Springer New York},
+  isbn      = {9781461211488},
+  url       = {https://books.google.co.uk/books?id=7PXxBwAAQBAJ},
+  lccn      = {82010585},
 }
 
 @Misc{Knight2019b,
@@ -1230,8 +1229,66 @@
   publisher     = {Basic Books},
   isbn          = {9780465021215},
   url           = {https://books.google.co.uk/books?id=029p7dmFicsC},
-  __markedentry = {[sophi:6]},
+  __markedentry = {[sophi:]},
   lccn          = {lc83045255},
+}
+
+@Article{Press2012,
+  author    = {W. H. Press and F. J. Dyson},
+  title     = {Iterated Prisoner{\textquotesingle}s Dilemma contains strategies that dominate any evolutionary opponent},
+  journal   = {Proceedings of the National Academy of Sciences},
+  year      = {2012},
+  volume    = {109},
+  number    = {26},
+  month     = {may},
+  pages     = {10409--10413},
+  doi       = {10.1073/pnas.1206569109},
+  publisher = {Proceedings of the National Academy of Sciences},
+}
+
+@Misc{Cobb1916,
+  author    = {Belton Cobb},
+  title     = {Stand to Arms},
+  year      = {1916},
+  location  = {London: Wells Gardner},
+  publisher = {Darton \& Co.},
+}
+
+@Book{Henle1979,
+  author        = {Henle, M.},
+  title         = {A Combinatorial Introduction to Topology},
+  year          = {1979},
+  series        = {A series of books in mathematical sciences},
+  publisher     = {W. H. Freeman},
+  isbn          = {9780716700838},
+  url           = {https://books.google.co.uk/books?id=TQSmQgAACAAJ},
+  __markedentry = {[sophi:6]},
+  lccn          = {78014874},
+}
+
+@InProceedings{Jurisic2012,
+  author    = {M. {Jurišić} and D. {Kermek} and M. {Konecki}},
+  title     = {A review of iterated prisoner's dilemma strategies},
+  booktitle = {2012 Proceedings of the 35th International Convention MIPRO},
+  year      = {2012},
+  pages     = {1093-1097},
+}
+
+@TechReport{ORiordan2001,
+  author      = {Colm O'Riordan},
+  title       = {Iterated Prisoner's Dilemma: A review},
+  institution = {Department of Information Technology, National University of Ireland, Galway},
+  year        = {2001},
+  url         = {http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.136.4521&rep=rep1&type=pdf},
+}
+
+@Misc{Glynatsi2019,
+  author        = {Nikoleta E. Glynatsi and Vincent A. Knight},
+  title         = {A bibliometric study of research topics, collaboration and influence in the field of the Iterated Prisoner's Dilemma},
+  year          = {2019},
+  eprint        = {1911.06128},
+  archiveprefix = {arXiv},
+  primaryclass  = {physics.soc-ph},
 }
 
 @Comment{jabref-meta: databaseType:biblatex;}

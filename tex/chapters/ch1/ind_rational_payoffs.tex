@@ -1,0 +1,16 @@
+\begin{tikzpicture}
+    \draw[->] (0,0) -- (6,0);
+    \node[below] at (6.25, -0.25) {player 1};
+    \draw[->] (0,0) -- (0,6);
+    \node[left] at (-0.25, 5.5) {player 2};
+    \foreach \x/\xtext in {0,1,2,3,4,5}
+        \node[below] at (\x, 0) {$\xtext$};
+    \foreach \y/\ytext in {0,1,2,3,4,5}
+        \node[left] at (0, \y) {$\ytext$};
+    \draw[blue, dashed] (1,1) -- (0,5) -- (3,3) -- (5,0) -- (1,1);
+    \draw[red, thick] (1, 1) -- (1, 13/3);
+    \draw[red, thick] (1, 1) -- (13/3, 1);
+    \fill[red!25] (1, 1) -- (1, 13/3) -- (3, 3) -- (13/3, 1) -- (1, 1);
+    \node[red] at (4.25, 4.25) {\small individual rational payoffs};
+    \draw[red, ->, thick] (4, 4) -- (2, 2);
+\end{tikzpicture}
