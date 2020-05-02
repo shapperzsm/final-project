@@ -1291,4 +1291,67 @@
   primaryclass  = {physics.soc-ph},
 }
 
+@Article{Maskin1994,
+  author  = {Eric Maskin and D. Fudenberg and D. Levine},
+  title   = {The Folk Theorem with Imperfect Public Information},
+  journal = {Econometrica},
+  year    = {1994},
+  volume  = {62},
+  number  = {5},
+  pages   = {997-1039},
+  note    = {Reprinted in E. Maskin (ed.), Recent Developments in Game Theory, London: Edward Elgar, 1999, pp. 345-387. Also reprinted in D. Fudenberg and D. Levine (eds.), A Long-Run Collaboration on Games with Long-Run Patient Players, World Scientific Publishers, 2009, pp. 231-274},
+}
+
+@Article{Compte1998,
+  author    = {Olivier Compte},
+  title     = {Communication in Repeated Games with Imperfect Private Monitoring},
+  journal   = {Econometrica},
+  year      = {1998},
+  volume    = {66},
+  number    = {3},
+  pages     = {597--626},
+  issn      = {00129682, 14680262},
+  url       = {http://www.jstor.org/stable/2998576},
+  abstract  = {This paper examines repeated games in which each player observes a private and imperfect signal on the actions played, and in which players are allowed to communicate using public messages. Providing incentives for players to reveal their observations generates (revelation) constraints that, combined with signal imperfections, may be a source of inefficiencies. However, by delaying the revelation of their observations, players may economize on the cost of deterring deviations, and thereby avoid these inefficiencies. Because a player would not want to trigger a sanction that would penalize him too, revelation constraints also tend to make sanctions difficult to enforce. However, with at least three players, detecting deviations may not require that all the players reveal their observations. In that case, we obtain a Nash threat version of the Folk theorem. With two players, we do not obtain a similar result. Nevertheless, we show that an efficient outcome can (almost) always be approximated.},
+  publisher = {[Wiley, Econometric Society]},
+}
+
+@Article{Kandori1998,
+  author   = {Kandori, Michihiro and Matsushima, Hitoshi},
+  title    = {Private Observation, Communication and Collusion},
+  journal  = {Econometrica},
+  year     = {1998},
+  volume   = {66},
+  number   = {3},
+  pages    = {627-652},
+  url      = {https://EconPapers.repec.org/RePEc:ecm:emetrp:v:66:y:1998:i:3:p:627-652},
+  abstract = {The authors examine discounted repeated games where players privately observe different signals. A leading example is secret price cutting; a firm cannot directly observe rival firms' price cutting but its own sales can imperfectly indicate what is going on. The characterization of equilibria in this class of games has been an open question. The authors construct equilibria where players voluntarily communicate what they have observed and prove folk theorems. Their results thus provide a theoretical support for the conventional wisdom that communication facilitates collusion.},
+}
+
+@Article{Dubey1984,
+  author    = {Pradeep Dubey and Mamoru Kaneko},
+  title     = {Information patterns and Nash equilibria in extensive games: 1},
+  journal   = {Mathematical Social Sciences},
+  year      = {1984},
+  volume    = {8},
+  number    = {2},
+  month     = {oct},
+  pages     = {111--139},
+  doi       = {10.1016/0165-4896(84)90011-8},
+  publisher = {Elsevier {BV}},
+}
+
+@Article{Kaneko1982,
+  author    = {Mamoru Kaneko},
+  title     = {Some remarks on the folk theorem in game theory},
+  journal   = {Mathematical Social Sciences},
+  year      = {1982},
+  volume    = {3},
+  number    = {3},
+  month     = {oct},
+  pages     = {281--290},
+  doi       = {10.1016/0165-4896(82)90075-0},
+  publisher = {Elsevier {BV}},
+}
+
 @Comment{jabref-meta: databaseType:biblatex;}
