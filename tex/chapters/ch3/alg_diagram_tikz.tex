@@ -9,29 +9,16 @@ very thick, minimum size=5mm},
     \node[roundnode](defector) [below=of database] {\input{tex/chapters/ch3/add_defector_node.tex}};
     \node[roundnode](select_strat) [right=of defector] {\input{tex/chapters/ch3/select_opponents_node.tex}};
    \node[squarenode](noise&probs) [left=of defector] {FOR ALL $p_{n}$ \& $p_{e}$};
-   % \node[roundnode](tournament) [below=of noise&probs] {\begin{tikzpicture}
-   %     \draw[green] (0,0) circle (0.3);
-   %     \node[green, below] at (0, 0.35) {\tiny 2, 1};
-   %     \node[thick, below] at (1, 0) {\large vs};
-   %     \draw[green] (2, 0) circle (0.3);
-   %     \node[green, below] at (2, 0.35) {\tiny 4, 2};
-   %     \draw[green] (0, -1) circle (0.3);
-   %     \node[green, below] at (0, -0.35) {\tiny 1, 3};
-   %     \node[thick, below] at (1, -1) {\large vs};
-   %     \draw[red] (2, -1) circle (0.5);
-   %     \node[red, below] at (2, -0.35) {D};
-   %     \node at (1, 0) {run IPD tournament};
-   % \end{tikzpicture}};
    \node[roundnode](payoffs) [below=of defector] {\input{tex/chapters/ch3/calc_NE_node.tex}};
-   % \node[squarenode](writing) [right=of payoffs] {WRITE RESULTS TO DATABASE};
-%
-   % \draw[->] (start.east) -- (database.west);
-   % \draw[->] (database.east) -- (while.west);
-   % \draw[->] (while.south) -- (select_strat.north);
-   % \draw[->] (select_strat.west) -- (defector.east);
-   % \draw[->] (defector.west) -- (noise&probs.east);
-   % \draw[->] (noise&probs.south) -- (tournament.north);
-   % \draw[->] (tournament.east) -- (payoffs.west);
-   % \draw[->] (payoffs.east) -- (writing.west);
-   % \draw[->] (writing.west) .. controls +(right:2) and +(up:2) .. (while.west);
+   \node[roundnode](tournament) [left=of payoffs] {\input{tex/chapters/ch3/run_tournament_node.tex}};
+   \node[squarenode](writing) [right=of payoffs] {WRITE RESULTS TO DATABASE};
+   \draw[->] (start.east) -- (database.west);
+   \draw[->] (database.east) -- (while.west);
+   \draw[->] (while.east) -- (15, 0) |- (select_strat.east);
+   \draw[->] (select_strat.west) -- (defector.east);
+   \draw[->] (defector.west) -- (noise&probs.east);
+   \draw[->] (noise&probs.west) -- (-6, -6.12) |- (tournament.west);
+   \draw[->] (tournament.east) -- (payoffs.west);
+   \draw[->] (payoffs.east) -- (writing.west);
+   \draw[->] (writing.east) -- (16, -13.1) |- (select_strat.east);
 \end{tikzpicture}

@@ -16,3 +16,6 @@ _minted-main/
 .vscode/
 .coverage
 tex/chapters/ch2/lit_search_papers/
+data/
+htmlcov/
+src/database_code/__pycache__/

@@ -3,16 +3,17 @@ of this project was the development and execution of a large experiment
 regarding the Iterated Prisoner's Dilemma and the Folk Theorem. As a result of
 this, much focus was given to ensuring good software development principles~\cite{Jimenez2017,Sandve2013,Wilson2014} were
 followed and hence only a brief overview will be provided here. The interested
-reader is encouraged to read Chapter~\ref{} of the main report, where full
+reader is encouraged to read Chapter~\ref{ch:Methods} of the main report, where full
 details are given.
 
 \section{The Overall Program}
 Firstly, the pseudo-code of the program written is provided to give a general
-idea of the purpose. This can be found in
+idea of its purpose. This can be found in
 Algorithm~\ref{alg:restate_of_main_alg}.
 
 \IncMargin{2em}
 \begin{algorithm}
+    \scriptsize
     \DontPrintSemicolon
     \SetKwInOut{Input}{input}
     \SetKwInOut{Output}{output}
@@ -47,24 +48,25 @@ Algorithm~\ref{alg:restate_of_main_alg}.
 \DecMargin{2em}
 
 The main functions created were implemented in Python. This was due to its
-versatility and, especially, due to the two game theoretic libraries, Axelrod~\cite{axelrodproject}
-and Nashpy~\cite{Nashpy2019}, which provided key functions already implemented. Aside from these,
+versatility and due to the two game theoretic libraries, Axelrod~\cite{axelrodproject}
+and Nashpy~\cite{Nashpy2019}, where key functions are already implemented. Aside from these,
 other dependencies of the program include: NumPy~\cite{Walt2011}, Random, Warnings, os and
-SQLAlchemy~\cite{Bayer2012}, plus additional libraries for the analysis (in Chapter~\ref{}). This
-program was implemented through the creation of eight functions to ensure the
-code was easier to read, debug and test for any current, or future, user.
+SQLAlchemy~\cite{Bayer2012}, plus additional libraries for the analysis. This
+program was implemented through the creation of eight functions. This was to ensure the
+code was easier to read, debug and test for any potential user.
 Furthermore, variables and functions were given descriptive names in order to
 produce self-documenting code.
 
+\newpage
 Observe, Algorithm~\ref{alg:restate_of_main_alg} states the use of a database to
 retain the information collected. This file type was chosen because it supports
 out of memory operations and is known to be robust. In particular, the
 relational database SQLite was utilised due to the existence of Python libraries
 for accessing the file, its structure and its consistency~\cite{Codd2002,ostezer2019}.
 
-\section{Software Development and Remote Computing}
-Version control software Git~(https://git-scm.com/) and associated platform
-GitHub~(https://github.com/) allowed the author
+\section{Code Development and Remote Computing}
+Version control software Git (https://git-scm.com/) and associated platform
+GitHub (https://github.com/) allowed the author
 to keep track of how the program was evolving. It also ensured a back-up copy
 was always available, should the system fail and meant that past versions of
 functions could be easily accessed. Moreover, GitHub acted as an intermediate
@@ -84,13 +86,13 @@ and securely transferred from Siren.
 
 \begin{figure}
     \centering
-    \input{tex/chapters/ch3/remote_comp_diag_tikz.tex}
+    \resizebox{\textwidth}{!}{\input{tex/chapters/ch3/remote_comp_diag_tikz.tex}}
     \caption{Representation of how the experiments were run remotely. Note, `tmux sessions' correspond to emulators of terminals.}\label{fig:restate_remote_comp}
 \end{figure}
 
 \section{Further Details}
 In conclusion, there were several components to the computing elements of this
 study. The reader is referred to the GitHub repository of this 
-project~(https://github.com/shapperzsm/final-project/),
+project \\ (https://github.com/shapperzsm/final-project/),
 where all the relevant code can be accessed. Also, the data collected during the
-study is archived at <URL> for future reference.
+study is archived at () for future reference.

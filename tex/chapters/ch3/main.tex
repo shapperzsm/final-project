@@ -9,7 +9,7 @@ repository (https://github.com/shapperzsm/final-project).
 This section describes the overall algorithm used to obtain the data and the
 attributes collected. Firstly, the aim of this exercise was
 to illustrate the Folk Theorem and analyse the \(p\)-thresholds via a large
-experiment. It was expected that plots similar to~\autoref{fig:flk_thm_plt}
+experiment. It was expected that plots similar to Figure~\ref{fig:flk_thm_plt}
 would be yielded. This clearly shows that there eventually exists a
 \(p_{e}\) where defection is not a rational decision.
 
@@ -19,22 +19,22 @@ would be yielded. This clearly shows that there eventually exists a
     \caption{An example plot illustrating the \(p\)-threshold as indicated by the Folk Theorem. The minimum probability of defection in equilibria is denoted \(\min \{p_{d}\} \).}\label{fig:flk_thm_plt}
 \end{figure}
 
-Therefore, in order to observe whether any environmental settings of the
-tournament does affect the p-threshold, a large amount of data was needed. This
-was in order for any observations made to be statistically significant.~\autoref{fig:alg_diag} shows
+Therefore, to observe whether any environmental settings of the
+tournament do affect the p-threshold, a large amount of data was needed. This
+was in order for any observations made to be statistically significant. Figure~\ref{fig:alg_diag} shows
 a pictorial representation of the collection method used. Each step visible is
 explained in detail throughout this chapter with further references to
 appropriate sections.
 
-%\begin{figure}
-%    \centering
-%    \input{tex/chapters/ch3/alg_diagram_tikz.tex}
-%    \caption{Representation of the algorithm used to collect the data.}\label%{fig:alg_diag}
-%\end{figure}
+\begin{figure}
+    \centering
+    \resizebox{\textwidth}{!}{\input{tex/chapters/ch3/alg_diagram_tikz.tex}}
+    \caption{Representation of the algorithm used to collect the data.}\label{fig:alg_diag}
+\end{figure}
 
-From~\autoref{fig:alg_diag}, it can be seen that the first step was to set up an
+From Figure~\ref{fig:alg_diag}, it can be seen that the first step was to set up an
 empty database ready to input each tournament result into. 
-The specific details of implementation into the algorithm is discussed in~\autoref{sec:Databases}. However, the choices made on the attributes to
+The specific details of implementation into the algorithm is discussed in Section~\ref{sec:Databases}. However, the choices made on the attributes to
 collect are described here. 
 
 \begin{table}
@@ -90,7 +90,8 @@ collect are described here.
 \caption{Table of attributes collected.}\label{tab:attr_tab} 
 \end{table}
 
-\autoref{tab:attr_tab}, shows each attribute chosen to be observed in this
+\newpage
+Table~\ref{tab:attr_tab}, shows each attribute chosen to be observed in this
 study. The attributes experiment\_number and tournament\_player\_set were used
 to provide a unique identification for each tournament and set of strategies.
 This was to ensure clear separation during analysis. The three characteristics of the strategies
@@ -107,7 +108,7 @@ collection of strategies in the Axelrod library~\cite{axelrodproject}. Out of
 the 235 strategies currently implemented in Axelrod, only 216 were valid for
 this experiment. Since this prroject was considering the Folk Theorem for the IPD,
 research strategies which `cheated' (that is, those which return False when
-entered into the `obey\_axelrod()' function) were omitted. The \textit{Defector} strategy
+entered into the `obey\_axelrod' function) were omitted. The \textit{Defector} strategy
 was also removed as it would later be added to all sets of players. Furthermore,
 due to time constraints, the 18 strategies which are classified as having a long
 execution time were omitted. 
@@ -142,7 +143,7 @@ mean payoff between \textit{Colbert} and \textit{Tideman and Chieruzzi}.
 
 For the calculation of the Nash equilibria, the support enumeration
 algorithm was used. This algorithm as well as the justification of its use is
-provided in~\autoref{sec:Calculating_Nash_Equilibria}.
+provided in Section~\ref{sec:Calculating_Nash_Equilibria}.
 
 Finally, the values obtained were written to the database file. One record is
 inserted for each strategy in order to retain all characteristics. Here, any
@@ -153,10 +154,11 @@ database in its current format.
 
 
 In summary, pseudo code for the overall algorithm is provided
-in~\autoref{alg:folk_thm_explore}.
+in Algorithm~\ref{alg:folk_thm_explore}.
 
 \IncMargin{2em}
 \begin{algorithm}[H]
+    \footnotesize
     \DontPrintSemicolon
     \SetKwInOut{Input}{input}
     \SetKwInOut{Output}{output}
@@ -190,8 +192,6 @@ in~\autoref{alg:folk_thm_explore}.
 \end{algorithm}
 \DecMargin{2em}
 
-
-
 \section{Databases}\label{sec:Databases}
 There are many different options regarding types of file available for storage of
 data. For example, csv, json, tex, txt, db extensions. These are generally split into
@@ -223,7 +223,7 @@ Using the reasons provided above, it was decided that a binary file, in
 particular a database file, would be
 the most appropriate format to use. Primarily, this was due to the fact that
 databases are generally more robust and support out of memory operations.
-Indeed, a csv file could have been used however every entry would have had to be
+Indeed, a csv file could have been used however every entry would have needed to be
 a string and, if this contained commas, would break the column structure. Research into the ideal
 file format for database collection resulted in the identification of two main
 types of databases: relational and noSQL (Not Only SQL).
@@ -284,12 +284,12 @@ in a single file, meaning it could be transferred easily from the varying
 computers being used. According to~\cite{ostezer2019}, other benefits include:
 its ease of use, with no configuration files, and the fact it is self-contained.
 
-
+\newpage
 \subsection{Implementation of the Database}
 The ability to import results straight from Python was through the library
 SQLAlchemy~\cite{sqlalchemy}. This allowed for the creation of the database
 through to accessing the results, via Python functions and expressions.  
-For example, consider the code in~\autoref{code:python_to_db} which was used to insert a record of
+For example, consider the code in Listing~\ref{code:python_to_db} which was used to insert a record of
 results for one strategy into the database.
 
 \begin{listing}
@@ -329,7 +329,7 @@ Moreover, to ensure records were being inserted into the database correctly, the
 graphical user interface, DB Browser~\cite{piacentini2015db} was utilised. It is implemented
 with a ``familiar spreadsheet-like interface'' for ease of use and is compatible
 with SQLite databases which made it ideal for this use~\cite{piacentini2015db}.
-See~\autoref{fig:db_browser_scrnsht}, for a screenshot of the interface.
+See Figure~\ref{fig:db_browser_scrnsht}, for a screenshot of the interface.
 
 \begin{figure}
     \centering
@@ -360,28 +360,29 @@ the code. Thus unit tests were implemented, using Pytest~\cite{pytestx.y}, to
 assist with the 
 identification of bugs in the functions created for data collection. However, 
 further work in this area is needed to provide a fully tested program. 
-Indeed, from executing the Python library Coverage~\cite{Batchelder2020}, a coverage of 60\% was identified, 
-yielding the table shown~\autoref{fig:cov_scrnsht}. This could be improved through the creation of 
+Indeed, from executing the Python library Coverage~\cite{Batchelder2020}, a
+coverage of 59\% was identified (for the `experiment\_functions.py' file), 
+yielding Table~\ref{tab:cov_scrnsht}. This could be improved through the creation of 
 integration tests, between the database and the experiment results, or the 
 implementation of functional tests, to confirm the end result of the full 
 algorithm.
 
-%\begin{figure}
-%    \centering
-%    \includegraphics[width=\textwidth]{coverage_scrnsht.png}
-%    \caption{A screenshot of the html report produced when utilising Coverage.}%\label{fig:cov_scrnsht}
-%\end{figure}
+\begin{table}
+    \centering
+    \resizebox{\textwidth}{!}{\input{tex/chapters/ch3/coverage_table.tex}}
+    \caption{A screenshot of the html report produced when utilising Coverage.}\label{tab:cov_scrnsht}
+\end{table}
 
 The use of version control is key for keeping track of past changes 
 to the system. In this study the software Git~(https://git-scm.com/) was used. This allowed for the 
 adaption of code from several different function attempts and, through GitHub~(https://github.com/), 
 enabled collaboration between the author and supervisors as seen
-in~\autoref{fig:github_scrnsht}. The use of GitHub ensured that a back-up copy
+in Figure~\ref{fig:github_scrnsht}. The use of GitHub ensured that a back-up copy
 of all project files 
 were available, should the current system happen to fail. Moreover, it acted as
 an intermediate step between the author's laptop and the remote server, which
 was used for
-running the main experiment (see~\autoref{sec:Remote_Computing}).
+running the main experiment (see Section~\ref{sec:Remote_Computing}).
 
 \begin{figure}
     \centering
@@ -401,7 +402,7 @@ Mathematics' computer Siren, a headless server with large storage, was used. How
 it was decided that the run time was `quick enough' and hence parallel
 processing would not be necessary. Yet, for future runs of the code, parallel
 processing is recommended, especially if the player set sizes being trialled are
-`large'. See~\autoref{subsec:Alg_Execution_Times} for an explanation.
+`large'. See Section~\ref{subsec:Alg_Execution_Times} for an explanation.
 
 \begin{figure}
     \centering
@@ -414,7 +415,7 @@ To connect to Siren, an SSH tunnel was used. An SSH (or Secure Shell) tunnel is
 used for sending and receiving network data over an encrypted connection. It adds
 a layer of network security, to those applications that do not natively support
 encryption, and lowers the risk of interception. For a more detailed description
-of SSH, see~\cite{SSH.COM2016}. \autoref{fig:siren_scrnsht} shows the author's
+of SSH, see~\cite{SSH.COM2016}. Figure~\ref{fig:siren_scrnsht} shows the author's
 connection to Siren via SSH\@. 
 
 
@@ -423,7 +424,7 @@ from Siren, a terminal emulator was required, as Siren does not have a job
 scheduler. Specifically, the terminal multiplexer, TMUX~\cite{Marriott} was used. This allowed
 for the creation and execution of several terminals from one screen. Moreover, a
 user could detach from a terminal and reattach later without execution being
-halted. \autoref{fig:remote_comp}, shows a diagram of how the remote server, ssh tunnel, and user's
+halted. Figure~\ref{fig:remote_comp}, shows a diagram of how the remote server, ssh tunnel, and user's
 laptop, were all in connection.
 
 \begin{figure}
@@ -441,7 +442,7 @@ the database file was almost always `open' resulting in the integrity check
 failing once transferred over SSH and an OperationalError in SQLAlchemy. Thus, in
 order to to load the database, with no failures, into a Jupyter Notebook, it
 needed to be compressed before transferring. This was achieved using the command
-line code as seen in~\autoref{fig:cmd_code_db}.
+line code as seen in Figure~\ref{fig:cmd_code_db}.
 
 \begin{figure}
     \centering
@@ -450,13 +451,13 @@ line code as seen in~\autoref{fig:cmd_code_db}.
 \end{figure}
 
 \section{Calculating Nash Equilibria}\label{sec:Calculating_Nash_Equilibria}
-Recall, Nash's Theorem, Theorem~\autoref{thm:Nash}
+Recall Nash's Theorem, Theorem~\ref{thm:Nash},
 explains that there exists at least one equilibrium in every finite game.
 However, it does not indicate how to obtain them. The proof of the theorem
 relies on finding the fixed point of the defined mapping but the proof of
 Brouwer's Fixed Point Theorem is an existence, and not a constructive, proof.
 That is, it does not give a method for obtaining the fixed point. Indeed,
-although not NP-complete~\footnote{Both finding Brouwer fixed points and Nash
+although not NP-complete\footnote{Both finding Brouwer fixed points and Nash
 equilibria cannot be NP-complete since existence of a solution is
 guaranteed~\cite{NoamNisan2007}. Most problems in the set NP-complete are situations in which
 a solution might not exist~\cite{NoamNisan2007}. However,~\cite{papadimitriou1994complexity} has shown that these two
@@ -464,13 +465,13 @@ problems belong to a alternative complexity class, PPAD or Polynomial Parity
 Argument (Directed case). For a discussion into this, readers are referred to~\cite{papadimitriou1994complexity}.}, finding Brouwer fixed points has been shown to be a 
 hard problem~\cite{Hirsch1989,papadimitriou1994complexity}. Thus, defining algorithms which obtain Nash equilibria to
 some degree of efficiency has been a large research topic for many years,
-particularly in the 2000s. Example papers include~\cite{Bossea,Chen2006,Gilpina,Govindan2003,Kontogiannis2006,Krawczyk2000,Littman2005} Within the Python Library Nashpy~\cite{axelrodproject}, three
+particularly in the 2000s. Example papers include~\cite{Bossea,Chen2006,Gilpina,Govindan2003,Kontogiannis2006,Krawczyk2000,Littman2005}. Within the Python Library Nashpy~\cite{axelrodproject}, three
 such algorithms have been
 implemented: Support Enumeration, Vertex Enumeration and Lemke-Howson. However,
 the Lemke-Howson Algorithm will only find \textit{one} equilibria and hence is not
 suitable for this study. Therefore the definitions of the first two algorithms,
 in the case of a two player game, are provided. Unless specified otherwise, this
-section (\autoref{sec:Calculating_Nash_Equilibria}) is adapted from~\cite{NoamNisan2007}.
+section (Section~\ref{sec:Calculating_Nash_Equilibria}) is adapted from~\cite{NoamNisan2007}.
 
 
 \subsection{Support Enumeration}\label{subsec:Support_Enumeration}
@@ -480,6 +481,7 @@ theoretical ideas are needed.
 Recall, a \textit{mixed strategy}, \(\sigma \), is a probability distribution
 over the pure strategies.
 
+\newpage
 \begin{definition}
     The \emph{support} of \(\sigma \) is the set of all pure strategies, \(s_{i}
     \in \sigma \), such that \(s_{i} > 0\). That is, all pure strategies which
@@ -506,10 +508,11 @@ In~\eqref{eqn:degen_game}, if the column player was playing the strategy \(\sigm
 column player picked strategy1 then the row player could choose either their
 first or second strategy and hence this game is \textit{degenerate}. 
 
-The method of support enumeration is given in~\autoref{alg:supp_en}.
+The method of support enumeration is given in Algorithm~\ref{alg:supp_en}.
 
 \IncMargin{2em}
 \begin{algorithm}
+    \footnotesize
     \DontPrintSemicolon
     \SetKwInOut{Input}{input}
     \SetKwInOut{Output}{output}
@@ -544,12 +547,12 @@ The method of support enumeration is given in~\autoref{alg:supp_en}.
 \end{algorithm}
 \DecMargin{2em}
 
-Note, in~\autoref{alg:supp_en}, solutions are not guaranteed to exist for (3.3) and (3.4). In this case, the support does not yield a Nash
+Note, in Algorithm~\ref{alg:supp_en}, solutions are not guaranteed to exist for (3.3) and (3.4). In this case, the support does not yield a Nash
 equilibrium. 
 
 \subsubsection{An example}
 Here the computation of Nash equilibria via support enumeration is considered
-for a payoff matrix obtained from a two-player IPD tournament~\footnote{Note, the \textit{Defector}'s opponent in this tournament
+for a payoff matrix obtained from a two-player IPD tournament\footnote{Note, the \textit{Defector}'s opponent in this tournament
 was stochastic player, \textit{Inverse}. Here, \(p_{e} = 0.0514, ~~ p_{n} = 0\). This game was not identified as degenerate.}. 
 
 Consider the following normal form game:
@@ -569,7 +572,7 @@ Firstly, take \(k = 1\), that is, looking for any pure best responses:
     \end{pmatrix} ~~~ B = \begin{pmatrix}
         \underline{3.000} & 1.686 \\
         0.829 & \underline{1.000} \\
-    \end{pmatrix}
+    \end{pmatrix}.
 \end{displaymath}
 
 Thus, two pairs of pure best responses are visible, giving the following two
@@ -590,7 +593,7 @@ Here, (3.3) and (3.4) become,
 Rearranging and checking the constraint \(\sum{\sigma_{r} = 1}, ~~
 \sum{\sigma_{c} = 1}\), yields 
 \begin{displaymath}
-    \sigma_{r1} = \sigma_{c1} = \frac{19}{165} ~~ \text{ and } ~~ \sigma_{r2} = \sigma_{c2} = \frac{146}{165}
+    \sigma_{r1} = \sigma_{c1} = \frac{19}{165} ~~ \text{ and } ~~ \sigma_{r2} = \sigma_{c2} = \frac{146}{165}.
 \end{displaymath}
 
 Note, checking the best response condition for two players with the same number
@@ -621,7 +624,7 @@ of pure strategies is trivial~\cite{Knight2019b}. However, it is included here f
 
 Therefore, the best response condition holds for both players. Hence, the third and final Nash equilibrium is given by:
 \begin{displaymath}
-    \sigma = \left \{ (\frac{19}{165}, \frac{146}{165}), (\frac{19}{165}, \frac{146}{165})\right \}
+    \sigma = \left \{ (\frac{19}{165}, \frac{146}{165}), (\frac{19}{165}, \frac{146}{165})\right \}.
 \end{displaymath}
 
 
@@ -629,7 +632,7 @@ Therefore, the best response condition holds for both players. Hence, the third 
 Support enumeration is known to be a robust method for obtaining Nash
 equilibria. That is, given a non-degenerate game,
 it is guaranteed to return all equilibria and, even in the case of degeneracy,
-it will find some equilibria (see \autoref{sec:Degeneracy}). However, this method essentially
+it will find some equilibria (see Section~\ref{sec:Degeneracy}). However, this method essentially
 compares all pairs of supports and thus has an exponential complexity~\cite{Rampersaud2014}. This implies that support enumeration is
 computationally expensive and the larger the game, the slower it will become.
 
@@ -643,7 +646,7 @@ referred to~\cite{NoamNisan2007} for a more detailed approach to this topic.
     Let \(A, B\) be \emph{positive} payoff matrices for the row and column
     player; that is, each element \(a_{ij}, b_{ij} > 0\), for all \(i = 1,
     \ldots, M, j = 1, \ldots, N\). Then the row, column
-    \textit{best response polytopes}~\footnote{In general, a
+    \textit{best response polytopes}\footnote{In general, a
     \emph{polytope} is defined as a bounded set \( \{z \in \mathbb{R}^{d} |
     Cz^{T} \le q\} \) where \(C\) is a \(k \times d\) matrix and \(z\) is a \(1
     \times d\) vector~\cite{NoamNisan2007}.}, denoted \(P, Q\) are given respectively by
@@ -679,7 +682,7 @@ Then the best response polytope, \(P\) here is given by the inequalities:
     \)
 \end{center}
 
-which yields the following polytope as given in~\autoref{fig:best_resp_polytope}.
+which yields the following polytope as given in Figure~\ref{fig:best_resp_polytope}.
 
 \begin{figure}
     \centering
@@ -687,10 +690,12 @@ which yields the following polytope as given in~\autoref{fig:best_resp_polytope}
     \caption{Best response polytope, \(P\), obtained from the payoff matrix given in~\eqref{eqn:ex_vert_en}.}\label{fig:best_resp_polytope}
 \end{figure}
 
-Two algorithms are given,~\autoref{alg:vertex_lab} `prepares' the polytope for~\autoref{alg:vertex_en} which returns the Nash equilibria.
+Two algorithms are given, Algorithm~\ref{alg:vertex_lab} `prepares' the polytope
+for Algorithm~\ref{alg:vertex_en} which returns the Nash equilibria.
 
 \IncMargin{2em}
 \begin{algorithm}
+    \footnotesize
     \DontPrintSemicolon
     \SetKwInOut{Input}{input}
     \SetKwInOut{Output}{output}
@@ -705,7 +710,7 @@ Two algorithms are given,~\autoref{alg:vertex_lab} `prepares' the polytope for~\
 
     the label of \(v_{i}\) is given by \( \{c_{i1}, \ldots, c_{il}\} \), where
         \(c_{ij}\) is in the label if and only if equation \(c_{j}\) is binding
-        for \(v_{i}\)
+        for \(v_{i}\).
     }
     \caption{Vertex Labelling}\label{alg:vertex_lab}
 \end{algorithm}
@@ -720,6 +725,7 @@ although this is a fully labelled pair, it corresponds to neither opponent playi
 
 \IncMargin{2em}
 \begin{algorithm}
+    \footnotesize
     \DontPrintSemicolon
     \SetKwInOut{Input}{input}
     \SetKwInOut{Output}{output}
@@ -728,12 +734,12 @@ although this is a fully labelled pair, it corresponds to neither opponent playi
     in~\ref{def:best_resp_polytopes}, for a \emph{nondegenerate} game.}
     \Output{All Nash equilibria of the corresponding game.}
     \For{each polytope, \(P, Q\)}{
-        Execute Algorithm~\ref{alg:vertex_lab}\\
+        Execute Algorithm~\ref{alg:vertex_lab}.\\
     \For{each pair of vertices \( \{u_{i}, v_{j}\} \) in \(P, Q\) respectively,
     \textit{except} \((\textbf{0}, \textbf{0})\)}{
-        check if they are fully labelled. 
+        check if they are fully labelled.\\
         \If{they are fully labelled}{
-            add to the list of equilibria
+            add to the list of equilibria.
         }\Else{
             continue
         }
@@ -758,32 +764,29 @@ degenerate, this algorithm may not return any Nash equilibria.
 \subsection{Algorithm Execution Timings}\label{subsec:Alg_Execution_Times}
 Due to the robustness of the support enumeration, it was decided that this would
 be the main method of calculating Nash equilibria. Having said this, timings for
-each of the three algorithms were obtained, to see
+each of the two algorithms were obtained, to see
 if their computational times were significantly different. For
 the purposes of this trial run, the following parameters were used: 100
 tournament repetitions, \(p_{e} = 0.2\) and \(p_{n} = 0\). The results can be
-seen in~\autoref{fig:timing_exp}.
+seen in Figure~\ref{fig:timing_exp}.
 
 \begin{figure}
-    \begin{subfigure}{0.3\textwidth}
+    \centering
+    \begin{subfigure}{0.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{folk_thm/se_data_time_violinplot.pdf}
         \caption{Timing the support enumeration algorithm.}
     \end{subfigure}
-    \begin{subfigure}{0.3\textwidth}
+    \hspace{3pt}
+    \begin{subfigure}{0.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{folk_thm/ve_data_time_violinplot.pdf}
         \caption{Timing the vertex enumeration algorithm.}
     \end{subfigure}
-    \begin{subfigure}{0.3\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{folk_thm/lh_data_time_violinplot.pdf}
-        \caption{Timing the Lemke-Howson enumeration algorithm.}
-    \end{subfigure}
-    \caption{Violinplots of the log timings obtained for the experiment and calculation of Nash equilibria using the three algorithms implemented in Nashpy.}\label{fig:timing_exp}
+    \caption{Violinplots of the log timings obtained for the experiment and calculation of Nash equilibria using the two algorithms discussed.}\label{fig:timing_exp}
 \end{figure}
 
-From~\autoref{fig:timing_exp}, it can be seen that there is not a significant
+From Figure~\ref{fig:timing_exp}, it can be seen that there is not a significant
 difference in the execution times of the algorithms. Hence, although support
 enumeration has a greater computational complexity than vertex enumeration, it
 is not going to have any recognisable impact on the number of experiments
@@ -792,7 +795,7 @@ executed.
 
 \section{Degeneracy}\label{sec:Degeneracy}
 Recall, the definition of non-degeneracy, given in
-~\autoref{def:non_degen}. This implies a \textit{degenerate} game is one in
+Definition~\ref{def:non_degen}. This implies a \textit{degenerate} game is one in
 which there exists a support of size \(k\) where the number of pure best
 responses is greater than \(k\). For example, consider the following payoff
 matrix:
@@ -808,7 +811,7 @@ responses). Thus, this game is degenerate.
 
 Let \(G = (N, {(S_{i})}_{i \in N}, {(u_{i})}_{i \in N})\) be a degenerate game.
 Then, recall that support enumeration may not return all Nash equilibria. This
-is due to the fact that if solutions to (3.3) and (3.4) of \autoref{alg:supp_en} exist, they may not be unique. Indeed, the number of
+is due to the fact that if solutions to (3.3) and (3.4) of Algorithm~\ref{alg:supp_en} exist, they may not be unique. Indeed, the number of
 Nash equilibria in a degenerate game may be infinite~\cite{NoamNisan2007}.
 Considering degeneracy in terms of vertex enumeration implies that a vertex of
 the best response polytope \(P = \{x \in \mathbb{R}^{M} | x \ge \textbf{0}, ~ xB
@@ -819,7 +822,7 @@ Within the library Nashpy, the algorithms have been implemented such that if
 potential degeneracy is identified, for example, by the reasons given above, then
 a warning is issued. Thus, in order to retain whether a game is possibly
 degenerate, the algorithm was required to `catch' the given warnings. This
-was achieved using the code seen in~\autoref{ls:warn_code}, with the Python
+was achieved using the code seen in Listing~\ref{ls:warn_code}, with the Python
 warnings module.
 
 \begin{listing}
@@ -849,7 +852,7 @@ Note, warnings for potential degeneracy are only highlighted if the
 Nash equilibria obtained do not make sense, that is, are not a probability
 distribution. On the other hand, it is possible for the algorithm to obtain some
 correct Nash equilibria, even if the game is degenerate. This means that, any results, regarding degeneracy of the games, obtained during the
-experiment (see \autoref{ch:Analysis}) need to be inferred with caution. These
+experiment (see Chapter~\ref{ch:Analysis}) need to be inferred with caution. These
 are only the games caught by the algorithms in Nashpy and are not necessarily
 all of them.
 
