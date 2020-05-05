@@ -1,39 +1,35 @@
-\chapter{Conclusions and Recommendations}\label{ch:Conclusions_and_Recommendations}
-
-% perhaps add more references to the main text throughout this section??
-
-This project looked into the Folk Theorem for the IPD and, in particular, the
-threshold at which the probability of defection is less than that given in the
-stage game or the finitely repeated game. The three aims of the study were
-stated in Chapter~\ref{ch:Introduction}. These are provided here for
+\chapter{Conclusions and Recommendations}\label{ch:Conclusions}
+This project looked into the Folk Theorem for the IPD and, in particular, at the
+game-ending probabilities for which defection is no longer rational. The three
+aims of the study, as given in Chapter~\ref{ch:Introduction}, are restated here for
 convenience:
 
 \begin{enumerate}
-    \item To look thoroughly into the recent (and past) literature of research
-    already produced in the area of Folk Theorems;
-    \item To execute a large experiment involving many tournaments of the IPD
-    with different types and numbers of players to obtain graphs similar to
-    those in Figure~\ref{}; and
-    \item To perform analyses on where the p-threshold seem to lie and whether
-    it is affected by the different environments of the tournaments (that is,
-    differing number of players, stochasticity within the tournament itself and
-    the players etc.).
+    \item To provide a review of past and present literature already published in
+    the field of folk theorems;
+    
+    \item To develop a program which executes a large experiment involving
+    tournaments of the IPD with differing environments to obtain
+    graphs similar to those in Figure~\ref{fig:CW_plots}; and
+    
+    \item To perform analyses on where the \(p\)-thresholds seem to lie and
+    whether it is affected by the change in the number of players, levels of
+    standard PD noise, etc.
 \end{enumerate}
 
 Therefore, in this chapter, a brief section discussing the results of each aim
-is provided. Then, a few shortcomings of the project are mentioned, before
-highlighting areas in which the research could be expanded further.
+is provided. Then, a few shortcomings of the project are mentioned and areas in
+which the research could be expanded further are highlighted.
 
 \section{Conclusions}\label{sec:Conclusions}
-In this section, the results of each aim is explored with regards to what was
-found and how well they were addressed. Overall, the first two aims were
-successfully achieved with a well rounded knowledge in the recent research of
-folk theorems and a successful empirical experiment carried out. However,
+In this section, each aim is explored with regards to results found and how well they were addressed. Overall, the first two aims were
+successfully achieved. A well rounded knowledge in the recent research of
+folk theorems was obtained and a successful experiment carried out. However,
 maximal results were not obtained for the final aim due to time limitations and
-the unforeseen non-triviality of the proportion of degeneracy and randomness.
+the non-triviality of degeneracy.
 
-\subsection{Aim 1}\label{subsec:Aim_1_concl}
-The first aim was addressed in Chapter~\ref{ch:Lit_Rev}. Here, a literature
+\subsection{Aim 1: Reviewing the Literature}\label{subsec:Aim_1_concl}
+The first aim was addressed in Chapter~\ref{ch:Lit_Review}. Here, a literature
 search on ``folk theorem'' yielded a vast range of results which spanned the
 last fifty years. It was discussed that the true origin of the `folk theorem' is
 unknown however its statement and proofs appear in written work since the 1970s.
@@ -43,144 +39,137 @@ theorem were explored. Varying types of games, for which folk theorems have been
 considered, were discussed. These included: games with complete information,
 games with imperfect private monitoring and games with communication, among
 others. Within these papers, it was also discovered that other equilibria
-besides the more common subgame perfect equilibria have been considered. Some
+(besides the more common subgame perfect equilibria) have been considered. Some
 examples are: sequential equilibria, belief-free equilibria and type-k
 equilibria. Throughout, there appeared to be two main assumptions required for a
-folk theorem to exist. These regarded full dimensionality and the number of
-signals in proportion to the number of actions. Since these assumptions are
-quite restricting, a few papers have attempted to find situations in which they
-can be weakened, whilst still obtaining a folk theorem. On the other hand, an
-area of research has developed which show the instability of equilibria and / or
+folk theorem to exist. These were full dimensionality and the number of
+signals in proportion to the number of actions. Since these assumptions are restricting, a few papers have attempted to find situations in which they
+can be weakened whilst still obtaining a folk theorem. In contrast, an
+area of research has developed which shows the instability of equilibria and
 the violation of folk theorems. The chapter is concluded by a discussion on
 recent applications of the folk theorem to computing, multi-agent systems and
 quantum transportation. Finally, to the best of the author's knowledge, no folk
-theorem experiments of the same size, as executed in this study, have been
+theorem experiments, of the same size as executed in this study, have been
 computed before.
 
-\subsection{Aim 2}\label{subsec:Aim_2_concl}
-Chapter~\ref{ch:three} discusses the set-up and execution of the IPD experiment
+\subsection{Aim 2: Software Development}\label{subsec:Aim_2_concl}
+Chapter~\ref{ch:Methods} discusses the set-up and execution of the IPD experiment
 referred to in Aim 2. This included justifications for the use of certain
-software and methods as well as a detailed view of the data collection
-algorithm. Within this, reasons were given as to why the particular attributes
-of the tournaments were collected. Following this an exploration into the
-varying file types available for data collection was provided. After considering
-the positives and drawbacks it was decided that a binary file, in particular a
-relational database file, would be the most appropriate format. The chapter then
-continues with an explanation of the software implementation and execution of
-the aforementioned algorithm. It provides details as to how good software
-development principles were followed and the programs utilised (for a more
-detailed overview which is not as involved as the chapter, see~\ref{}). The
-actual experiment was executed remotely over a few weeks and how this was
-achieved was explained, before the issues, how to compute the Nash equilibria
-and degeneracy, were addressed. Out of the three algorithms: Support
+software and methods, as well as a detailed view of the data collection
+algorithm. Within this, reasons were given on why the particular attributes
+of the tournaments were collected. Following this, an exploration into the
+file types available for data collection was provided. After considering
+the advantages and drawbacks, it was decided that a binary file, in particular a
+relational database file, would be the most appropriate. The chapter then
+continues with an explanation of the software implementation of
+the aforementioned algorithm. It provides details on how good software
+development principles were followed and on the programs utilised. For a more
+detailed overview, which is not as involved as the chapter, see
+Chapter~\ref{ch:Comp_Report} in the Appendix. The
+main experiment was executed remotely over a few weeks and how this was
+achieved is explained here. Following this, how to compute the Nash equilibria
+and the notion of degeneracy were addressed. Out of the three algorithms: Support
 Enumeration, Vertex Enumeration and Lemke-Howson; it was decided that Support
-Enumeration would be the main method used in calculating Nash equilibria, due to
+Enumeration would be the method used for calculating Nash equilibria, due to
 its robustness. The execution timings of each algorithm were also explored but
 did not yield any significant differences. To conclude, the difficulties which
 could be faced due to degeneracy were briefly acknowledged and possible
 solutions discussed.
 
-\subsection{Aim 3}\label{subsec:Aim_3_concl}
-The final aim regarding the analysis of \(p\)-threshold was addressed in
-Chapter~\ref{ch:Analyses}. Firstly, an initial analysis was carried out which
-identified the main `shapes' of the graphs obtained and detailed the summary
-statistics. This included looking at characteristics of the strategies as well
+\subsection{Aim 3: Analysing the Thresholds}\label{subsec:Aim_3_concl}
+The final aim, regarding the analysis of \(p\)-thresholds, was addressed in
+Chapter~\ref{ch:Analysis}. Firstly, an initial analysis identified the main `shapes' of the graphs obtained and detailed the summary
+statistics. This included looking at characteristics of the strategies, as well
 as the number of equilibria obtained from each tournament. The majority of
-strategies chosen were deterministic - this is because of the ratio of
-deterministic to stochastic strategies implemented in the Axelrod library. When
-analysing the \(p\)-threshold, the minimum, mean, median and maximum potential
-values of the threshold were taken, due to the varying sources of noise
+strategies chosen were deterministic - this is because of the ratio between
+deterministic and stochastic strategies implemented in the Axelrod library. When
+analysing the thresholds, the minimum, mean, median and maximum
+values of the \(p\)-threshold were taken, due to varying sources of noise
 obscuring a clear threshold. Here, the focus was on the effects of the number
-of players and the effects of the tournament noise level. However, this was
-concluded as a non-trivial task due to the proportion of tournaments which were
-potentially degenerate and the many sources of randomness within them. As a
+of players and standard PD noise. However, this was
+concluded as a non-trivial task due to the difficulty of identifying degenerate
+games and the many sources of noise. As a
 result of this, significant conclusions were unable to be drawn with the
-obtained plots not revealing many (if any) trends. Thus, suggestions are
-provided on how further work regarding this study may reveal more significant
+obtained plots not revealing many trends. Thus, suggestions are
+provided on how further work regarding this study could reveal more significant
 information. These are restated in Section~\ref{sec:Recommendations}. In
-conclusion, however, the experiment was successful in providing clear
-visualisations for the folk theorem and gives insight into a wide range of
+conclusion however, the experiment was successful in providing clear
+visualisations for the folk theorem and it gives insight into a wide range of
 directions for future research.
 
 \section{Limitations}\label{sec:Limitations}
-In this section a few of the shortcomings of the study are highlighted along
+In this section a few shortcomings of the study are highlighted along
 with justifications.
 
-Firstly, this project included a very large empirical study on the folk theorem
-which required the development and implementation of an algorithm into code.
-This inevitably took a significant amount of time; to ensure the functions were
-accurate, clear and gave the required information. Therefore, one of the main
+Firstly, this project included a very large empirical study on the folk theorem.
+This required the development and implementation of an algorithm.
+Inevitably, to ensure the functions were
+accurate, clear and gave the required information, a significant amount of time
+was taken. Therefore, one of the main
 drawbacks was the time constraint of completing the project. Indeed, after the
 successful implementation of the data collection algorithm into Python, there
-was a certain time frame before analysis could start, to ensure enough data had
-been collected. Then the analysis took another significant portion of the time,
-especially due to the data's non-triviality.
+was a certain time frame before analysis could start. This was to ensure enough data had
+been collected. The analysis then took a portion of the time,
+especially due to the data's non-triviality mentioned previously.
 
-As a result of this, the amount of data collected was much less than what was
-required for a large-scale statistical analysis on extremely random data. Also,
-parameters inputted into the algorithm were restricted by this. Only 500
+As a result of this, the amount of data collected was insufficient for a
+large-scale statistical analysis on extremely random data. Also, the
+parameters used in the algorithm were restricted by this. Only 500
 repetitions of each tournament were performed but this was only able to
-`stabilise' some of the payoff matrices, whilst the rest resulted in less clear
-threshold graphs. Thus, higher repetitions were probably needed but
-unrealistic for the time frame. Moreover, the eighteen strategies which are
-classified with a long run-time had to be omitted but, in an ideal situation
+`stabilise' some of the payoff matrices. The rest resulted in
+threshold graphs which were less clear. Thus, higher repetitions were needed but
+unrealistic for the given time-frame. Moreover, the eighteen strategies
+classified as `long-run' had to be omitted but, in an ideal situation, they
 would have been included to obtain more information.
 
-Furthermore, the analysis which was carried out only touched briefly on some of
-the potential effects of the environment on the \(p\)-threshold. The
-`randomness' of the data obtained meant that trends were harder to find and key
-conclusions could not be drawn. Ideally, many more possible environmental
-changes, in addition to number of players and level of tournament noise, would
-have been discussed. Another factor which may have improved the situation, but
+Furthermore, the analysis carried out only briefly considered some of
+the potential environmental effects on the \(p\)-threshold. The
+`randomness' of the data meant that trends were hard to infer and key
+conclusions could not be drawn. Ideally, further environmental
+changes, in addition to number of players and level of standard PD noise, would
+have been discussed. Another factor which could have improved the situation, but
 had to be omitted due to time, was the packaging of the code. Creating a fully
-working Python package, with all the required functions in, may have made the
-remote computing easier.
+working Python package, with all the required functions implemented, may have
+improved the remote computing stage.
 
 Finally, degeneracy was a major limitation due to its uncertainty. Nashpy only
-identifies potential degeneracy if it is `strange'. That is, if the algorithm
-detects division by zero or `peculiar' equilibria, for example. Indeed, some
-games may still be degenerate even if some correct equilibria are identified.
-This implies that all the discussions regarding degeneracy in
-Chapter~\ref{ch:Analyses} are based on the assumption that support enumeration
-detects all degeneracy, which is potentially unrealistic.
+identifies potential degeneracy if the equilibria are `strange'. That is, if the algorithm
+detects division by zero or non-probability distributions, for example. Indeed, some
+games may still be degenerate even if equilibria are identified.
+This implies that discussions regarding degeneracy in
+Chapter~\ref{ch:Analysis} assume that Nashpy can
+detect all degeneracy, which is unrealistic.
 
 \section{Recommendations}\label{sec:Recommendations}
 Throughout this study, many interesting questions have been raised as potential
-directions for further work. Hence, in this section, recommendations on how this
+directions for future work. Hence, in this section, recommendations on how this
 research could be extended, to provide more insightful results, are given.
 
-Firstly, during analysis (Chapter~\ref{ch:Analyses}), a significant proportion
-of the tournament graphs showed no threshold, appearing constant at zero or one.
+Firstly, during analysis (Chapter~\ref{ch:Analysis}), a significant proportion
+of the graphs showed no \(p\)-threshold, appearing constant at zero or one.
 This indicates that the threshold must lie in the intervals (0, 001) or (0.999,
-1) and hence the precision level was not fine enough. Therefore, it is suggested
-that these tournament sets are rerun within these intervals with a fine
-precision in order to obtain more information. Moreover, an analysis of the
-strategies involved and level of tournament noise in these sets might provide a
-clearer insight into reasons for this. In addition, rerunning the whole
-experiment, with a finer precision in the game ending probabilities, may give
+1), implying the precision level was not fine enough. Therefore, it is suggested
+that these tournaments are rerun, within these intervals, using a greater
+precision to obtain more information. Also, an analysis of the
+strategies involved and values of standard PD noise might provide a
+clearer insight into reasons for this. Moreover, re-running the whole
+experiment, with a finer precision could yield
 more accurate thresholds.
 
 In order to explore the effects of stochastic players on the threshold, it is
-recommended that those tournament sets which contain one (many) stochastic
-player(s) are rerun without them. If the threshold is different in both of the
-runs, this could indicate that stochasticity does indeed have an effect.
+recommended that tournament sets which contain stochastic
+players are rerun without them. If the threshold is different, this could indicate that stochasticity does indeed have an effect.
 
-Recall, vertex enumeration was also used in a separate run of the experiment
-however, unfortunately, it was omitted from the analysis due to the time
-restrictions mentioned previously. Having said this, it is highly recommended
-that these results are looked into (or rerun) as a way of checking the
-reliability of the collected data. In particular, it could be used in comparison
-with the support enumeration data to identify whether the same Nash equilibria
-are yielded or, more importantly, whether the same games are identified as
-potentially degenerate. However, care is needed when analysing vertex
-enumeration as it is less robust, as discussed in Chapter~\ref{ch:Methods}.
-Furthermore, increasing the number of tournament repeats is suggested to observe
-whether this `smooths' the payoff matrices with more success, perhaps, resulting
-in clearer \(p\)-thresholds.
+It is highly recommended that a separate run of the experiment is performed,
+using vertex enumeration to calculate the equilibria. This could then be used in comparison
+with the support enumeration data to check the reliability of the results obtained. However, care is needed when implementing vertex
+enumeration as it is less robust, (see Chapter~\ref{ch:Methods}).
+Furthermore, increasing the number of tournament repetitions is suggested to
+observe whether clearer \(p\)-thresholds are obtained.
 
 Regarding multivariate data analysis of this large empirical study, it may be
 insightful to perform a regression or clustering algorithm. This is motivated by
-the possibility of being able to predict approximately the threshold of a
-tournament by its characteristics: strategies, level of tournament noise etc.
+the possibility of being able to approximately predict the \(p\)-threshold of a
+tournament by its characteristics: strategies, level of standard PD noise etc.
 Finally, the experiment could potentially be extended to consider the different
 `types' of folk theorem discussed in Chapter~\ref{ch:Lit_Review}. 

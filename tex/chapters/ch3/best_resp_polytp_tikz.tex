@@ -2,10 +2,7 @@
 \begin{tikzpicture}
     \draw[->] (0,0) -- (5.5,0) node[right]{$x_{1}$};
     \draw[->] (0,0) -- (0,5.5) node[above]{$x_{2}$};
-    \draw[red, very thick] (0,0) -- (5,0);
-    \draw[red, very thick] (5,0) -- (80/19,60/19);
-    \draw[red, very thick] (0,0) -- (0,4);
-    \draw[red, very thick] (80/19,60/19) -- (0,4);
+    \filldraw[draw=red, fill=red!30, very thick] (0,0) -- (5,0) -- (80/19, 60/19) -- (0, 4) -- (0, 0);
     \node[below] at (0,0) {$(0,0)$};
     \node[below] at (5,0) {$(0.25,0)$};
     \node[left] at (0,4) {$(0,0.2)$};
