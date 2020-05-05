@@ -130,13 +130,13 @@ matrix in the Nashpy library~\cite{Nashpy2019}.
 According to~\cite{axelrodproject}, each entry \(a_{i,j}\) gives the mean payoff
 of player \(i\) against player \(j\). Consider the following example:
 \begin{equation}
-    \begin{pmatrix}
+    \begin{pmatrix}\label{eqn:payoff_matrix_ex}
         2.990 &   2.996  &   0.487\\  
         2.996 &   3.000  &   0.989\\
         3.053 &   1.042  &   1.000        
     \end{pmatrix}
-\end{equation}\label{eqn:payoff_matrix_ex}
-The matrix in~\eqref{eqn:payoff_matrix_ex} is yielded from a three player
+\end{equation}
+The matrix in~(\ref{eqn:payoff_matrix_ex}) is yielded from a three player
 tournament with \(p_{e}=0.001 \text{ and } p_{n}=0\). The strategies in this case were \textit{Colbert}; \textit{Tideman and Chieruzzi} and
 \textit{Defector}. In this case, the entry \(a_{1,2} = 2.996\) is interpreted as the
 mean payoff between \textit{Colbert} and \textit{Tideman and Chieruzzi}. 
@@ -149,7 +149,7 @@ Finally, the values obtained were written to the database file. One record is
 inserted for each strategy in order to retain all characteristics. Here, any
 entries that were not integers or floats had to be converted to strings, in order
 to be stored. For example, the payoff matrix given
-in~\eqref{eqn:payoff_matrix_ex} is a list and hence could not be inserted into the
+in~(\ref{eqn:payoff_matrix_ex}) is a list and hence could not be inserted into the
 database in its current format.
 
 
@@ -349,7 +349,7 @@ Throughout the implementation of this experiment into Python, good software
 development principles were followed~\cite{Jimenez2017, Sandve2013, Wilson2014}. Self-documenting code was 
 ensured through the careful naming of variables, as well as the use of 
 docstrings to fully describe function parameters and usage. Python libraries 
-Black~\cite{Langa2019} and Blackbook~\cite{Knight2019a} assisted in improving the readability of the code, through 
+Black~\cite{Langa2019} and Blackbook~\cite{Knight2019c} assisted in improving the readability of the code, through 
 formatting according to the guidelines of PEP-8~\cite{Rossum2001}. This gave consistency to all 
 code files created during the study. Moreover, modularity was ensured through the creation of several 
 smaller functions, focusing on one task. This not only assisted with debugging,
@@ -488,22 +488,22 @@ over the pure strategies.
     have a positive probability within the mixed strategy.
 \end{definition}
 
-\begin{definition}
+\begin{definition}\label{def:non_degen}
     A game \(G = (N, {(S_{i})}_{i \in N}, {(u_{i})}_{i \in N})\)
     is called \emph{non-degenerate} if no mixed strategy of support size \(1 \le
     k \le |S_{i}|\) has more than \(k\) pure best responses.
-\end{definition}\label{def:non_degen}
+\end{definition}
 
 For example, consider the following 2-player normal form game:
-\begin{equation}
+\begin{equation}\label{eqn:degen_game}
         A = \begin{pmatrix}
                 2 & 1 & 0\\
                 2 & 0 & 3
         \end{pmatrix}
-\end{equation}\label{eqn:degen_game}
+\end{equation}
 
 
-In~\eqref{eqn:degen_game}, if the column player was playing the strategy \(\sigma_{2} = (0.2, 0.8,
+In~(\ref{eqn:degen_game}), if the column player was playing the strategy \(\sigma_{2} = (0.2, 0.8,
 0)\) then the support is \{strategy1, strategy2\}. Also, observe that, if the
 column player picked strategy1 then the row player could choose either their
 first or second strategy and hence this game is \textit{degenerate}. 
@@ -524,15 +524,15 @@ The method of support enumeration is given in Algorithm~\ref{alg:supp_en}.
     \For{all \(k = 1, \ldots, \min{\{m, n\}}\)}{
     \For{all support pairs \(I, J\), with \(I \in M, J \in N\) and
     \(|I|=|J|=k\)}{
-            Solve \begin{equation}
+            Solve \begin{equation}\label{eqn:lin_eqn_1_se}
     \sum_{i \in I}{\sigma_{1i}B_{i,j}} = v, \text{ such that } \sum_{i \in
     I}{\sigma_{1i}} = 1, \sigma_{1i} \ge \textbf{0} \text{ for all } j \in J
-            \end{equation}\label{eqn:lin_eqn_1_se} and 
-            \begin{equation}
+            \end{equation} and 
+            \begin{equation}\label{eqn:lin_eqn_2_se}
                     \sum_{j \in J}{A_{i, j}\sigma_{2j}} = u, \text{ such that }
                     \sum_{j \ in J}{\sigma_{1i}} = 1, \sigma_{1i} \ge
                     \textbf{0} \text{ for all } i \in I     
-            \end{equation}\label{eqn:lin_eqn_2_se}\;
+            \end{equation}\;
             
             Check the best response conditions \begin{equation}
                 \sigma_{1i} > 0 \implies {(A\sigma_{2})}_{i} = \max \{{{(A\sigma_{2})}_{k} | k \in M}\}
@@ -547,7 +547,7 @@ The method of support enumeration is given in Algorithm~\ref{alg:supp_en}.
 \end{algorithm}
 \DecMargin{2em}
 
-Note, in Algorithm~\ref{alg:supp_en}, solutions are not guaranteed to exist for (3.3) and (3.4). In this case, the support does not yield a Nash
+Note, in Algorithm~\ref{alg:supp_en}, solutions are not guaranteed to exist for (\ref{eqn:lin_eqn_1_se}) and (\ref{eqn:lin_eqn_2_se}). In this case, the support does not yield a Nash
 equilibrium. 
 
 \subsubsection{An example}
@@ -556,13 +556,13 @@ for a payoff matrix obtained from a two-player IPD tournament\footnote{Note, the
 was stochastic player, \textit{Inverse}. Here, \(p_{e} = 0.0514, ~~ p_{n} = 0\). This game was not identified as degenerate.}. 
 
 Consider the following normal form game:
-\begin{equation}
+\begin{equation}\label{eqn:supp_en_ex}
     A = \begin{pmatrix}
         3.000 & 0.829 \\
         1.686 & 1.000 \\
     \end{pmatrix}; ~~~
     B = A^{T}
-\end{equation}\label{eqn:supp_en_ex}
+\end{equation}
 
 Firstly, take \(k = 1\), that is, looking for any pure best responses:
 \begin{displaymath}
@@ -584,7 +584,7 @@ Nash equilibria:
 Since this is a two-player game, the only other support that needs checking is
 \(I = J = \{1, 2\} \). 
 
-Here, (3.3) and (3.4) become,
+Here, (\ref{eqn:lin_eqn_1_se}) and (\ref{eqn:lin_eqn_2_se}) become,
 \begin{displaymath}
     3\sigma_{r1} + 0.829\sigma_{r2} = 1.686\sigma{r1} + \sigma_{r2} ~~ \text{   and   } ~~ \\
     3\sigma_{c1} + 0.829\sigma_{c2} = 1.686\sigma{c1} + \sigma_{c2}.
@@ -597,7 +597,7 @@ Rearranging and checking the constraint \(\sum{\sigma_{r} = 1}, ~~
 \end{displaymath}
 
 Note, checking the best response condition for two players with the same number
-of pure strategies is trivial~\cite{Knight2019b}. However, it is included here for completeness.
+of pure strategies is trivial~\cite{Knight2019}. However, it is included here for completeness.
 \begin{displaymath}
     A\sigma_{c}^{T} = \begin{pmatrix}
         3 & 0.829 \\
@@ -653,24 +653,24 @@ referred to~\cite{NoamNisan2007} for a more detailed approach to this topic.
     \begin{equation}
         P = \{x \in \mathbb{R}^{M} | x \ge \textbf{0}, ~ xB \le \textbf{1}\} ~~~
         Q = \{y \in \mathbb{R}^{N} | Ay^{T} \le \textbf{1}, ~ y \ge \textbf{0}\}.
-    \end{equation}
+    \end{equation}\label{def:best_resp_polytopes}
     It is assumed that the utility values which appear
-    in (3.3) and (3.4) have been normalised
+    in (\ref{eqn:lin_eqn_1_se}) and (\ref{eqn:lin_eqn_2_se}) have been normalised
     to 1. This means that the vertices are no longer probabilities and hence
     scaling will be required to find the Nash equilibria. Note, the strictly
     positive payoffs is not a constraint since a constant can be added to each
     with no effect. 
-\end{definition}\label{def:best_resp_polytopes}
+\end{definition}
 
 
 For example, consider the payoff matrix 
 
-\begin{equation}
+\begin{equation}\label{eqn:ex_vert_en}
     A = \begin{pmatrix}
         1 & 5 \\
         4 & 1
     \end{pmatrix}
-\end{equation}\label{eqn:ex_vert_en}
+\end{equation}
 
 Then the best response polytope, \(P\) here is given by the inequalities:
 \begin{center}
@@ -687,7 +687,7 @@ which yields the following polytope as given in Figure~\ref{fig:best_resp_polyto
 \begin{figure}
     \centering
     \input{tex/chapters/ch3/best_resp_polytp_tikz.tex}
-    \caption{Best response polytope, \(P\), obtained from the payoff matrix given in~\eqref{eqn:ex_vert_en}.}\label{fig:best_resp_polytope}
+    \caption{Best response polytope, \(P\), obtained from the payoff matrix given in~(\ref{eqn:ex_vert_en}).}\label{fig:best_resp_polytope}
 \end{figure}
 
 Two algorithms are given, Algorithm~\ref{alg:vertex_lab} `prepares' the polytope
@@ -811,7 +811,7 @@ responses). Thus, this game is degenerate.
 
 Let \(G = (N, {(S_{i})}_{i \in N}, {(u_{i})}_{i \in N})\) be a degenerate game.
 Then, recall that support enumeration may not return all Nash equilibria. This
-is due to the fact that if solutions to (3.3) and (3.4) of Algorithm~\ref{alg:supp_en} exist, they may not be unique. Indeed, the number of
+is due to the fact that if solutions to (\ref{eqn:lin_eqn_1_se}) and (\ref{eqn:lin_eqn_2_se}) of Algorithm~\ref{alg:supp_en} exist, they may not be unique. Indeed, the number of
 Nash equilibria in a degenerate game may be infinite~\cite{NoamNisan2007}.
 Considering degeneracy in terms of vertex enumeration implies that a vertex of
 the best response polytope \(P = \{x \in \mathbb{R}^{M} | x \ge \textbf{0}, ~ xB

@@ -28,7 +28,7 @@ regarding ``games of strategy'' and its applications within the subject of
 economics. Following this, several advancements have been
 made in the area including, most notably, John Nash's papers on the
 consequently named
-Nash Equilibria in 1950-51~\cite{nash1951non, nash1950equilibrium}. Due to the
+Nash Equilibria in 1950-51~\cite{nash1950equilibrium,nash1951non}. Due to the
 ``context-free mathematical toolbox''~\cite{maschler_solan_zamir_2013} nature of
 this subject, it has been applied to many areas, from
 networks~\cite{liang2012game, 1593279} to biology~\cite{adeoye2012application, chen2009robust}. 
@@ -78,13 +78,13 @@ literature, cooperation and defection is indicated by \(C\) and \(D\), respectiv
 \end{table}
 
 More formally, the game can be represented as the following matrix:
-\begin{equation}
+\begin{equation}\label{eqn:PDMatrix}
     \kbordermatrix{
         \mbox{ } & C & D\\ 
         C & (3, 3) (R, R) & (0, 5) (S, T)\\ 
         D & (5, 0) (T, S) & (1, 1) (P, P)
     }
-\end{equation}\label{eqn:PDMatrix}
+\end{equation}
 where each coordinate \((a, b)\) in the table represents the utility values
 obtained for each player, where \(a\) is the utility value obtained by the row
 player and \(b\) is the utility gained by the column player. These utility
@@ -94,17 +94,17 @@ in~\cite{axelrod1980effective} and
 used throughout this project. In general, the PD payoffs are constrained by the
 two conditions:
 
-\begin{equation}
+\begin{equation}\label{eqn:PD_1}
     T > R > P > S
-\end{equation}\label{eqn:PD_1}
+\end{equation}
 and
-\begin{equation}
+\begin{equation}\label{eqn:PD_2}
     2R > T + S
-\end{equation}\label{eqn:PD_2}
+\end{equation}
 
-where~(1.2) ensures that \(D\) is preferable to \(C\) and
-yet~(1.3) ensures that mutual \(C\) is
-best~\cite{Knight2019,Press2012}. The matrix given in~\eqref{eqn:PDMatrix} is
+where~(\ref{eqn:PD_1}) ensures that \(D\) is preferable to \(C\) and
+yet~(\ref{eqn:PD_2}) ensures that mutual \(C\) is
+best~\cite{Knight2019,Press2012}. The matrix given in~(\ref{eqn:PDMatrix}) is
 known as a \textit{normal form} representation of the game.
 
 \begin{definition}
@@ -191,11 +191,11 @@ and \(U_{i} : \Sigma \to \mathbb{R}\) is the corresponding payoff function,
 where each \(\sigma = (\sigma_{1}, \sigma_{2}, \ldots, \sigma_{n}) \in \Sigma =
 \Sigma_{1} \times \Sigma_{2} \times \cdots \times \Sigma_{n}\) is mapped to the
 payoff:
-\begin{equation}
+\begin{equation}\label{eqn:mixed_payoff_function}
     U_{i} = \mathbb{E}_{\sigma}(u_{i}(\sigma)) = \sum_{(s_{1}, s_{2}, \ldots, s_
     {n}) \in S}{u_{i}(s_{1}, s_{2}, \ldots, s_{n})\sigma_{1}(s_{1})\sigma_{2}(s_
     {2})\cdots\sigma_{n}(s_{n})} 
-\end{equation}\label{eqn:mixed_payoff_function}
+\end{equation}
 for all players \(i \in N\).
 \end{definition}
 
@@ -215,13 +215,13 @@ S_{i}}u_{i}(t_{i}, s_{-i})\).
 \end{definition}
 
 This leads onto the main definition of the section.
-\begin{definition}
+\begin{definition}\label{def:NE}
     Given a game \(G=(N, {(S_{i})}_{i \in N}, {(u_{i})}_{i \in N})\) and its
     mixed extension, \(\Gamma \), the vector of
     strategies \(\sigma^{*} = (\sigma_{1}^{*}, \sigma_{2}^{*}, \ldots, \sigma_{n}^{*})\) is a
     \textit{Nash equilibrium} if, for all players \(i \in N\), \(\sigma_{i}^{*}\) is 
     a best response to \(\sigma_{-i}^{*} \in N\).
-\end{definition}\label{def:NE}
+\end{definition}
 
 In other words, \(\sigma^{*}\) is a Nash equilibrium if and only if no player has any
 reason to deviate from their current strategy \(\sigma_{i}^{*}\).
@@ -285,9 +285,9 @@ This next result is taken from~\cite{nash1951non}, Nash's second paper on
 equilibria in games. The notion obtained here is fundamental to many areas of
 game theory, including the folk theorems.
 
-\begin{theorem}
+\begin{theorem}\label{thm:Nash}
     Every finite game has an equilibrium point.
-\end{theorem}\label{thm:Nash}
+\end{theorem}
 
 The proof of Theorem~\ref{thm:Nash} includes the use of a \textit{fixed point
 theorem}. Thus, a short sub-section regarding one such result is given for
@@ -303,31 +303,31 @@ The following three definitions appear as
 in~\cite{Barile,Weissteina,Weisstein}
 for Definitions~\ref{def:open_cover},~\ref{def:compact}, and~\ref{def:convex}, respectively.
 
-\begin{definition}
+\begin{definition}\label{def:convex}
     A set \(X \subseteq \mathbb{R}^{d}\) is called \textit{convex} if it
     contains all line segments connecting any two points \({x}_{1},
     {x}_{2} \in X\).
-\end{definition}\label{def:convex}
+\end{definition}
 
-\begin{definition}
+\begin{definition}\label{def:open_cover}
     An \textit{open cover} of a set \(S \subset X\), a topological space, is a
     collection of open sets \(A_{1}, A_{2}, \ldots \subset X\) such that
     \(A_{1} \cup A_{2} \cup \ldots \supset S\), that is, the union of the open
     sets contain S.
-\end{definition}\label{def:open_cover}
+\end{definition}
 
-\begin{definition}
+\begin{definition}\label{def:compact}
     A subset \(S \subseteq X\), a topological space, is called \textit{compact}
     if, for each open cover of \(S\), there is a finite sub-cover of S.
-\end{definition}\label{def:compact}
+\end{definition}
 
 The presentation of Brouwer's Fixed Point Theorem is now given as 
 in~\cite{maschler_solan_zamir_2013}.
 
-\begin{theorem}
+\begin{theorem}\label{thm:Brouwer}
     Let \(X \subseteq \mathbb{R}^{n}\) be a non-empty convex and compact
     set, then each continuous function \(f : X \to X\) has a fixed point.  
-\end{theorem}\label{thm:Brouwer}
+\end{theorem}
 
 In other words if \(X\) and \(f\) satisfy the conditions given above then there
 exists a point \(x \in X\) such that \(f(x) = x\). 
@@ -353,7 +353,7 @@ Here, \(N = \{1, \ldots, n\} \) denotes the set of players; \(S = S_{1} \times S
 \ldots \times S_{n}\) is the set of pure strategies for all players, with
 \({(S_i)}_{i \in N}\) the pure strategy set for player i; \(\Sigma \) is
 defined similarly but relating to mixed strategies; and \(U_{i}: \Sigma \to
-\mathbb{R}\) are the payoff functions as given in~\eqref{eqn:mixed_payoff_function}.
+\mathbb{R}\) are the payoff functions as given in~(\ref{eqn:mixed_payoff_function}).
 
 \begin{proof}
     Let \(\sigma = (\sigma_{1}, \sigma_{2}, \ldots, \sigma_{n})\) be a tuple of
@@ -448,7 +448,7 @@ referred to as an \textit{action} to differentiate it from a strategy of a
 repeated game, see Section~\ref{subsec:Finite_Repeated_Games}.
 
 \subsection{Finite Repeated Games}\label{subsec:Finite_Repeated_Games}
-According to~\cite{Knight2017a}, a \textit{\(T\)-stage repeated game}, \(T <
+According to~\cite{Knight2017}, a \textit{\(T\)-stage repeated game}, \(T <
 \infty \) is when the stage game, \(G\), is played \(T\) times, over discrete
 time intervals. Each player has a strategy based on previous `rounds' of
 the game and the payoff of a repeated game is calculated as the total sum of the
@@ -457,16 +457,16 @@ stage game payoffs.
 Prior to giving a formal description of a strategy in a repeated game, the idea
 of \textit{history}, within the context of repeated games, is provided.
 
-\begin{definition}
+\begin{definition}\label{def:history}
     The \textit{history}, \(H(t)\) of a repeated game is the knowledge of
     previous actions of all players up until the \(t\)th stage game, assumed to
     be known by all players. Note that, when \(t=0\), \(H(0) =
 \underbrace{(\emptyset, \emptyset, \ldots, \emptyset)}_{N \text{times}}\), since
 no stage games have yet been played.
-\end{definition}\label{def:history}
+\end{definition}
 
 \begin{definition}
-    As given in~\cite{Knight2019a,maschler_solan_zamir_2013}, a
+    As given in~\cite{Knight2019,maschler_solan_zamir_2013}, a
     \textit{strategy} of a \(T\)-stage repeated
     game is defined to be a mapping from the complete history so far to an
     action of the stage game, that is 
@@ -512,19 +512,19 @@ a 2-stage repeated IPD with two players.
 
 Now, a discussion on Nash equilibria in repeated games is provided. It can be
 proven that there exist many equilibria in repeated
-games~\cite{friedman1971non}. The next result,
-adapted from~\cite{Knight2019a,maschler_solan_zamir_2013} guarantees at least
+games~\cite{Friedman1971}. The next result,
+adapted from~\cite{Knight2019,maschler_solan_zamir_2013} guarantees at least
 one.
 
 \newpage
-\begin{theorem}
+\begin{theorem}\label{thm:seq_of_stage_NE} 
     Consider a \(T\)-stage repeated game with \(G=(N, {(S_{i})}_{i \in N},
     {(u_{i})}_{i \in N})\) as the stage game, \(0 < T < \infty \). Define by
     \( {\sigma}^{*} = (\sigma_{1}^{*}, \sigma_{2}^{*}, \ldots,
     \sigma_{n}^{*})\), a stage Nash equilibrium of \(G\). Then the sequence in
     which \({\sigma}^{*}\) is continuously played is a Nash equilibrium of the
     \(T\)-stage repeated game.
-\end{theorem}\label{thm:seq_of_stage_NE} 
+\end{theorem}
 
 \begin{proof}
     Since \( \sigma^{*} \) is a stage Nash equilibrium, it is, in particular,
@@ -616,20 +616,20 @@ introducing the Folk Theorem.
 Now, in order to be able to discuss the payoffs of strategies in infinite games,
 a few final definitions are required.
 
-\begin{definition}
-In~\cite{Knight2017b} a \textit{discounted payoff} is defined as:
+\begin{definition}\label{def:disc_payoff}
+In~\cite{Knight2017} a \textit{discounted payoff} is defined as:
 \begin{equation}
     V_{i}(\sigma) = \sum_{t=1}^{\infty}{\delta^{t-1}U_{i}(\sigma)},
 \end{equation}
 where the discount factor, \(\delta \), can be thought of as the probability
 that the game continues. That is, the probability that another stage game will
 be played. 
-\end{definition}\label{def:disc_payoff}
+\end{definition}
 
 Definition~\ref{def:disc_payoff} can be used to define \textit{average payoffs}.
 
 \begin{definition}
-    According to~\cite{Knight2017b}, the \textit{average payoffs} per stage
+    According to~\cite{Knight2017}, the \textit{average payoffs} per stage
     game, are given by:
    \begin{equation}
         \frac{1}{\overline{T}}V_{i}(\sigma) = (1-\delta)V_{i}(\sigma),    
@@ -641,7 +641,7 @@ Finally, Figure~\ref{fig:Feasible_Payoff_Plot} shows those payoffs which are
 individually rational for a two player version of PD\@. In
 general, an \textit{individually rational payoff} is an average payoff which
 exceeds those obtained in the stage Nash equilibria for all
-players~\cite{Knight2017b}. Often the Nash equilibrium payoff is not the
+players~\cite{Knight2017}. Often the Nash equilibrium payoff is not the
 optimal payoff players could achieve.
 
 \begin{figure}
@@ -660,21 +660,21 @@ payoff than the Nash equilibrium (if the Nash equilibrium payoff is not optimal)
 when the stage game is repeated many times and the probability of the game
 continuing is high enough. 
 
-It is believed that~\cite{friedman1971non} was one of the
+It is believed that~\cite{Friedman1971} was one of the
 first to provide a formal proof to the widely accepted Folk
 Theorem~\cite{Abreu1994, Webb2007}. Thus, the presentation of the statement and
-proof given here is adapted from~\cite{friedman1971non} as well as~\cite{Knight2017b}.
+proof given here is adapted from~\cite{Friedman1971} as well as~\cite{Knight2017}.
 
-\begin{theorem}
+\begin{theorem}\label{thm:Folk}
     Assume the conditions provided in Section~\ref{subsec:Assumptions} are
     satisfied for the given infinite repeated game. Then, for any individually
     rational payoff \(V_{i}\), there exists a discount parameter \(\delta^{*}\)
     such that for all \(\delta_{i}\), \(0 < \delta^{*} < \delta_{i} < 1\) there
     is a subgame perfect Nash equilibria with payoffs equal to \(V_{i}\).
-\end{theorem}\label{thm:Folk}
+\end{theorem}
 
 \subsection{Assumptions}\label{subsec:Assumptions}
-Here, the assumptions which Friedman~\cite{friedman1971non} requires the
+Here, the assumptions which Friedman~\cite{Friedman1971} requires the
 infinite repeated game to satisfy in order for Theorem~\ref{thm:Folk} to hold are listed.
 \begin{enumerate}
     \item The mixed action sets, \(\Sigma_{i}\) are compact and convex for all
@@ -697,7 +697,7 @@ infinite repeated game to satisfy in order for Theorem~\ref{thm:Folk} to hold ar
     U_{N}(\sigma))\).
 
     \item \(\mathcal{U}^{*}\) is concave, where \(\mathcal{U}^{*} \subset \mathcal{U}\) denotes the
-    set of all Pareto optimal payoffs\footnote{The paper~\cite{friedman1971non} defines a
+    set of all Pareto optimal payoffs\footnote{The paper~\cite{Friedman1971} defines a
     \textit{Pareto optimal payoff} as a point in the payoff space
     \(U_{i}(\sigma^{*})\) which satisfies the conditions: \(\sigma^{*} \in
     \Sigma \) and \(U_{i}(\sigma^{*}) > U_{i}(\sigma)\) for all \(i \in N\)}.
@@ -712,7 +712,7 @@ infinite repeated game to satisfy in order for Theorem~\ref{thm:Folk} to hold ar
     payoff yielded from the Nash equilibrium is not a Pareto optimal payoff.}. 
 \end{enumerate}
 
-Note~\cite{friedman1971non} later goes on to prove that assumptions
+Note~\cite{Friedman1971} later goes on to prove that assumptions
 six to nine can be removed with only a small effect on the result. However,
 since the game being studied in this project is the IPD (which satisfies
 all the above assumptions), this generalisation will be omitted. Only the
@@ -727,18 +727,18 @@ proof of the original theorem will be provided.
         B = \{\sigma : \sigma \in \Sigma, U_{i}(\sigma) > U_{i}(\sigma^{*}), i \in N\}
     \end{equation}
     where \(\sigma^{*}\) is the Nash equilibrium strategy. Define the following trigger strategy:
-    \begin{equation}
+    \begin{equation}\label{eqn:trigger_strategy}
         \sigma_{i1} = \sigma_{i}^{\prime};~~~
         \sigma_{it} = \begin{cases}
             \sigma_{i}^{\prime}, & \quad \text{if } \sigma_{j\tau}=\sigma_{j}^{\prime} \ j \ne i, \tau=1, 2, \ldots, t-1, t=2, 3, \ldots \\
             \sigma_{i}^{*}, & \quad \text{otherwise},
         \end{cases}
-    \end{equation}\label{eqn:trigger_strategy}
+    \end{equation}
     where \(\sigma_{i}^{\prime} \in B\). In words, the \(i\)th player will choose \(\sigma_{i}^{\prime}\) unless any
     other player does not play \( \sigma_{j}^{\prime}\), in which case they
     continue by playing their Nash equilibrium action, \(\sigma_{i}^{*}\). 
     
-    Now, by definition, the strategy in~\eqref{eqn:trigger_strategy} is an
+    Now, by definition, the strategy in~(\ref{eqn:trigger_strategy}) is an
     equilibrium of the repeated game if 
     \begin{equation}
         \sum_{\tau=0}^{\infty}{\delta_{i}^{\tau}U_{i}(\sigma_{i}^{\prime})} > U_{i}(\sigma_{-i}^{\prime}, t_{i}) + \sum_{\tau=1}^{\infty}{\delta_{i}^{\tau}U_{i}(\sigma^{*})},~~~ i \in N,
@@ -754,9 +754,9 @@ proof of the original theorem will be provided.
     player removed.
 
     To check if this strategy is indeed a best response to all others players,
-    who are executing the same strategy in~\eqref{eqn:trigger_strategy},
+    who are executing the same strategy in~(\ref{eqn:trigger_strategy}),
     consider their alternatives. The \(i\)th player has two options. Either
-    they execute the strategy~\eqref{eqn:trigger_strategy}, or they play the
+    they execute the strategy~(\ref{eqn:trigger_strategy}), or they play the
     strategy in which \(\sigma_{i1} = t_{i}\). The latter implies \(\sigma_{i\tau} =
     \sigma^{*}\) will be the best response as every other player will convert
     to \(\sigma_{j\tau} = \sigma^{*}\), for all \(\tau > 1\). Note that any
@@ -764,28 +764,28 @@ proof of the original theorem will be provided.
     \(t_{i}\) in any other stage \(\tau \ne 1\) will yield less gains due to increased discounting.
 
     Now if, from playing the Nash equilibria, the discounted loss 
-    \begin{equation}
+    \begin{equation}\label{eqn:discounted_loss}
         \frac{\delta_{i}}{1-\delta_{i}}[U_{i}(\sigma^{\prime}) -
         U_{i}(\sigma^{*})],
-    \end{equation}\label{eqn:discounted_loss}
+    \end{equation}
     is greater than the gain achieved by playing
     \(t_{i}\) against \(\sigma_{-i}^{\prime}\), then the rational
     strategy choice for player \(i\), assuming all other players are
-    executing~\eqref{eqn:trigger_strategy}, is to play~\eqref{eqn:trigger_strategy}.
+    executing~(\ref{eqn:trigger_strategy}), is to play~(\ref{eqn:trigger_strategy}).
     
     Observe, as the discount parameter, \(\delta \to 1\) from
-    below, the discounted loss in~\eqref{eqn:discounted_loss} tends to infinity.
+    below, the discounted loss in~(\ref{eqn:discounted_loss}) tends to infinity.
     However, the gain obtained from playing \(t_{i}\), that is,
     \(U_{i}(\sigma_{-i}^{\prime}, t_{i}) - U_{i}(\sigma{\prime})\) is finite.
     Thus, for all \(\sigma_{i}^{\prime} \in B\) there exists a \(\delta^{*} \in
     (0, 1)\) such that for all \(\delta_{i} > \delta^{*}\), the
-    strategy~\eqref{eqn:trigger_strategy} is optimal against the same strategy
+    strategy~(\ref{eqn:trigger_strategy}) is optimal against the same strategy
     for all players \(j \ne i\). Therefore, if the conditions are true for all
     players \(i = 1,2,\ldots,n\), the strategy \((\bar{\sigma}_{1},
     \bar{\sigma}_{2}, \ldots, \bar{\sigma}_{n})\), where  \(\bar{\sigma}_{i}\)
-    denotes~\eqref{eqn:trigger_strategy}, yields a Nash equilibrium.
+    denotes~(\ref{eqn:trigger_strategy}), yields a Nash equilibrium.
 
-    Finally, by construction, the strategy~\eqref{eqn:trigger_strategy} is
+    Finally, by construction, the strategy~(\ref{eqn:trigger_strategy}) is
     indeed a subgame perfect equilibrium. 
 \end{proof}
 
