@@ -7,6 +7,8 @@ This repository contains the report and code for a final year project submitted 
 ## Project Title
 An Empirical Study on the Folk Theorem
 
+### Project Supervisors
+Dr Vince Knight (https://github.com/drvinceknight) and Henry Wilde (https://github.com/daffidwilde)
 
 ### Abstract
 This project consists of an empirical study into a class of theorems, entitled
