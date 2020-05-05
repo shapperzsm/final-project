@@ -3,7 +3,7 @@ import sqlalchemy as sa
 import pandas as pd
 import matplotlib.pyplot as plt
 
-plt.switch_backend('agg')
+plt.switch_backend("agg")
 
 plt.rcParams.update({"figure.max_open_warning": 0})
 

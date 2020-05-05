@@ -28,7 +28,7 @@ with open(str(threshold_file), "w") as thresh_file:
             "mean_p_threshold",
             "median_p_threshold",
             "max_p_threshold",
-            "possible_degeneracy"
+            "possible_degeneracy",
         )
     )
 
@@ -48,19 +48,24 @@ player_set_collection = """
 
 for each_set in range(maximum_player_set + 1):
     collect_relevant_data = connect_dbms_to_db.execute(player_set_collection, each_set)
-    each_set_data = pd.DataFrame(collect_relevant_data.fetchall(), columns=table_headings)
-        
+    each_set_data = pd.DataFrame(
+        collect_relevant_data.fetchall(), columns=table_headings
+    )
+
     num_of_players = each_set_data["number_of_players"].drop_duplicates()[0]
-    
+
     for noise_level in list(each_set_data["noise"].drop_duplicates()):
-        
+
         each_set_data_noise = each_set_data[each_set_data["noise"] == noise_level]
         each_set_data_noise.index = range(len(each_set_data_noise))
-        possible_degeneracy = len(each_set_data_noise[each_set_data_noise["warning_message"] != "None"]) > 0
-        
+        possible_degeneracy = (
+            len(each_set_data_noise[each_set_data_noise["warning_message"] != "None"])
+            > 0
+        )
 
-        indices_of_non_zero_defection_prob = each_set_data_noise.index[each_set_data_noise["least_prob_of_defection"] > 0]
-        
+        indices_of_non_zero_defection_prob = each_set_data_noise.index[
+            each_set_data_noise["least_prob_of_defection"] > 0
+        ]
 
         if len(indices_of_non_zero_defection_prob) == 0:
             min_threshold = np.nan
@@ -73,19 +78,21 @@ for each_set in range(maximum_player_set + 1):
             max_threshold = min(each_set_data_noise["prob_of_game_ending"])
             mean_threshold = min(each_set_data_noise["prob_of_game_ending"])
             median_threshold = min(each_set_data_noise["prob_of_game_ending"])
-        
+
         else:
             jump_up_ending_probs = []
             for index in indices_of_non_zero_defection_prob:
                 if each_set_data_noise.iloc[index - 1]["least_prob_of_defection"] == 0:
-                    jump_up_ending_probs.append(each_set_data_noise.iloc[index]["prob_of_game_ending"])
+                    jump_up_ending_probs.append(
+                        each_set_data_noise.iloc[index]["prob_of_game_ending"]
+                    )
                 else:
                     continue
             if len(jump_up_ending_probs) == 0:
                 min_threshold = np.nan
                 max_threshold = np.nan
                 mean_threshold = np.nan
-                median_threshold = np.nan 
+                median_threshold = np.nan
             else:
                 min_threshold = min(jump_up_ending_probs)
                 max_threshold = max(jump_up_ending_probs)
@@ -103,6 +110,6 @@ for each_set in range(maximum_player_set + 1):
                     str(mean_threshold),
                     str(median_threshold),
                     str(max_threshold),
-                    str(possible_degeneracy)
+                    str(possible_degeneracy),
                 )
             )

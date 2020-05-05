@@ -17,5 +17,5 @@ while True:
         database_filepath="../database-code/data/se/",
         support_enumeration=True,
         unique_tournament_identifier=177000,
-        tournament_player_set=161
+        tournament_player_set=161,
     )
